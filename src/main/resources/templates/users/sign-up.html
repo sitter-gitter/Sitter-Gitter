@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Create New Post')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+<div class="row">
+<div class="col s12">
+
+    <div class="row">
+        <div class="col s12">
+            <h5>Create an account</h5>
+        </div>
+    </div>
+
+    <form th:action="@{/sign-up}" th:method="POST" th:object="${user}">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" th:field="*{username}" name="username" class="validate" type="text" />
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" th:field="*{email}" name="email" type="text" class="validate" />
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" th:field="*{password}" />
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input value="Sign me up!" type="submit" class="btn blue-grey darken-2" />
+            </div>
+        </div>
+    </form>
+
+</div>
+</div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
