@@ -19,10 +19,58 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    @Column
+    private String first_name;
+
+    @Column
+    private String last_name;
+
+    @Column
+    private String street_addr;
+
+    @Column
+    private String city;
+
+    @Column
+    private String state;
+
+    @Column
+    private String zipcode;
+
+    @Column
+    private boolean is_babysitter = false;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private List<Post> posts;
 
     public User() {
+    }
+
+    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.street_addr = street_addr;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.is_babysitter = is_babysitter;
+    }
+
+    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter, List<Post> posts) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.street_addr = street_addr;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.is_babysitter = is_babysitter;
+        this.posts = posts;
     }
 
     public User(String username, String password, String email) {
@@ -43,6 +91,13 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        first_name = copy.first_name;
+        last_name = copy.last_name;
+        street_addr = copy.street_addr;
+        city = copy.city;
+        state = copy.state;
+        zipcode = copy.zipcode;
+        is_babysitter = copy.is_babysitter;
     }
 
     public Long getId() {
@@ -75,6 +130,62 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getStreet_addr() {
+        return street_addr;
+    }
+
+    public void setStreet_addr(String street_addr) {
+        this.street_addr = street_addr;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public boolean isIs_babysitter() {
+        return is_babysitter;
+    }
+
+    public void setIs_babysitter(boolean is_babysitter) {
+        this.is_babysitter = is_babysitter;
     }
 
     public List<Post> getPosts() {
