@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<th:block th:fragment="includes" id="includes1">
+
+    <!-- jQuery -->
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Materialize JS Initializers -->
+     <script>
+    // "use strict";
+    // $(document).ready(function () {
+    document.addEventListener('DOMContentLoaded', function() {
+    console.warn( 'The DOM has finished loading in HTML!' );
+
+    var Time = document.querySelectorAll('.timepicker');
+    var openTime = M.Timepicker.init(Time, {
+        twelveHour: false,
+        autoClose: true
+    });
+
+    var Calendar = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(Calendar, {
+        format:'yyyy-mm-dd',
+        autoClose: true,
+        onClose: openTime
+    });
+
+
+    var slider = document.getElementById('test-slider');
+    noUiSlider.create(slider, {
+        start: [17, 23],
+        connect: true,
+        step: .5,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 24
+        },
+        format: wNumb({
+            decimals: 2
+        })
+    });
+
+
+    });
+    </script>
+
+</th:block>
+
+
+</body>
+</html>
