@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Users Index')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="row"></div>
+<div class="container">
+<div class="row">
+<ul>
+
+    <li th:each="user : ${users}">
+
+        <div class="card grey hoverable">
+            <div class="card-content white-text" style="padding-top: 16px;">
+                <span class="card-title">
+                    Username:
+                    <a th:href="@{'/users/'+${user.getId()}}">
+                        <span th:text="${user.getUsername()}" ></span>
+                    </a>
+                </span>
+                <span>
+                    ID:
+                    <span th:text="${user.getId()}"></span>.
+                </span>
+                <br />
+                <span>
+                    Email:
+                    <span th:text="${user.getEmail()}"></span>.
+                </span>
+                <br />
+                <span class="truncate">
+                    Password:
+                    <span th:text="${user.getPassword()}"></span>
+                </span>
+            </div>
+        </div>
+
+    </li>
+
+</ul>
+</div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer"/></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
