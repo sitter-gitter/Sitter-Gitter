@@ -5,10 +5,7 @@ import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -16,19 +13,20 @@ public class UserController {
     private final UserRepository usersRepo;
     private PasswordEncoder passwordEncoder;
 
-
     public UserController(UserRepository usersRepo, PasswordEncoder passwordEncoder) {
         this.usersRepo = usersRepo;
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/sign-up")
+    // CREATE PROFILE GET
+    @GetMapping("/register")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
-    @PostMapping("/sign-up")
+    // CREATE PROFILE POST
+    @PostMapping("/register")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
@@ -36,40 +34,52 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/users")
+    // READ PROFILES
+    @GetMapping("/profile/index")
     public String showUsers(Model model) {
         model.addAttribute("users", usersRepo.findAll());
-        return "/users/index";
+        return "users/index";
     }
 
-    @GetMapping("users/{id}")
-    public String showUser(@PathVariable Long id, Model model){
-        User user = usersRepo.findOne(id);
+    // READ PROFILE
+    @GetMapping("profile/{username}")
+    public String showUser(@PathVariable String username, Model model){
+        User user = usersRepo.findByUsername(username);
         model.addAttribute("user", user);
-        return "/users/show";
+        return "users/show";
     }
 
-//    @GetMapping("/users/{id}/edit")
-//    public String showEditUser(@PathVariable Long id, Model model) {
-//        User user = usersRepo.findOne(id);
-//        model.addAttribute("user", user);
-//        return "/users/edit";
-//    }
-//
-//    @PostMapping("/users/{id}/edit")
-//    public String editUser(@PathVariable Long id, @RequestParam String username, @RequestParam String password, @RequestParam String email) {
-//        User user = usersRepo.findOne(id);
-//        user.setUsername(username);
-//        user.setPassword(password);
-//        user.setEmail(email);
-//        usersRepo.save(user);
-//        return "redirect:/users";
-//    }
+    // UPDATE PROFILE GET
+    @GetMapping("/profile/{username}/edit")
+    public String showEditUser(@PathVariable String username, Model model) {
+        User user = usersRepo.findByUsername(username);
+        model.addAttribute("user", user);
+        return "users/edit";
+    }
 
-//    @GetMapping("/users/{id}/delete")
-//    public String deleteUser(@PathVariable Long id) {
-//        usersRepo.delete(usersRepo.findOne(id));
-//        return "redirect:/users";
-//    }
+    // UPDATE PROFILE POST
+    @PostMapping("/profile/{username}/edit")
+    public String editUser(@PathVariable String username, @RequestParam String password, @RequestParam String email) {
+        User user = usersRepo.findByUsername(username);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        usersRepo.save(user);
+        return "redirect:/profile/index";
+    }
+
+    // DELETE PROFILE
+    @GetMapping("/profile/{username}/delete")
+    public String deleteUser(@PathVariable String username) {
+        usersRepo.delete(usersRepo.findByUsername(username));
+        return "redirect:/profile/index";
+    }
+
+    // READ SEARCH FOR BABYSITTERS
+    @GetMapping("/sitters")
+    public String showSitters() {
+        //////////// logic for showing only babysitters here /////////////
+        return "users/sitters";
+    }
 
 }
