@@ -36,5 +36,5 @@ VALUES ('2019-05-31 12:00:00', '2019-05-31 23:00:00', 3),
        ('2019-06-08 12:00:00', '2019-06-08 23:00:00', 3);
 
 
-INSERT INTO specifications (is_smoker, hascprtraining, has_transportation, years_of_experience, education_level, birthdate, babysitter_id)
+INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, education_level, birthdate, babysitter_id)
 VALUES (0, 1, 1, 5, 3, '1993-10-23', 3);

@@ -14,7 +14,7 @@ public class Specification {
     private Boolean isSmoker;
 
     @Column(nullable = false)
-    private Boolean hasCPRTraining;
+    private Boolean hasCprTraining;
 
     @Column(nullable = false)
     private Boolean hasTransportation;
@@ -37,7 +37,7 @@ public class Specification {
 
     public Specification(Boolean isSmoker, Boolean hasCPRTraining, Boolean hasTransportation, Integer yearsOfExperience, EducationLevel educationLevel, Date birthdate, User user) {
         this.isSmoker = isSmoker;
-        this.hasCPRTraining = hasCPRTraining;
+        this.hasCprTraining = hasCPRTraining;
         this.hasTransportation = hasTransportation;
         this.yearsOfExperience = yearsOfExperience;
         this.educationLevel = educationLevel;
@@ -62,11 +62,11 @@ public class Specification {
     }
 
     public Boolean getHasCPRTraining() {
-        return hasCPRTraining;
+        return hasCprTraining;
     }
 
     public void setHasCPRTraining(Boolean hasCPRTraining) {
-        this.hasCPRTraining = hasCPRTraining;
+        this.hasCprTraining = hasCPRTraining;
     }
 
     public Boolean getHasTransportation() {
