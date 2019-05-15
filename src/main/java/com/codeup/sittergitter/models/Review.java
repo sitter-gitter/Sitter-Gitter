@@ -2,9 +2,6 @@ package com.codeup.sittergitter.models;
 
 import javax.persistence.*;
 
-// create constructors for each instance (for edit dont construct user, etc.)
-
-
 @Entity
 @Table(name="reviews")
 public class Review {
@@ -18,10 +15,6 @@ public class Review {
     private Boolean is_recommended;
 
     @ManyToOne
-//    @JoinColumns({
-//        @JoinColumn(name = "author_id", referencedColumnName="id"),
-//        @JoinColumn(name = "author_username", referencedColumnName="username")
-//    })
     @JoinColumn (name = "author_id", referencedColumnName="id")
     private User author;
 
@@ -60,7 +53,12 @@ public class Review {
         this.body = body;
     }
 
-
+    public Review(String title, String body, Boolean is_recommended, User author) {
+        this.title = title;
+        this.body = body;
+        this.is_recommended = is_recommended;
+        this.author = author;
+    }
 
     public User getAuthor() {
         return author;
@@ -94,32 +92,12 @@ public class Review {
         this.body = body;
     }
 
-//    public boolean contains( String[] array, String key) {
-//        return Arrays.asList(array).contains(key);
-//    }
+    public Boolean getIs_recommended() {
+        return is_recommended;
+    }
 
-//    public static void main(String[] args) {
-//        String[] search = new String[] {"red", "orange", "yellow", "green", "blue", "indigo", "violet"};
-//
-//        int[] nums = new int[] {6,7,8,9,0,1,2,3,9,8,8,5,4,3};
-//
-//        System.out.println(Arrays.toString(search));
-//        System.out.println(Arrays.toString(nums) + " before sort.");
-//        Arrays.sort(nums);
-//        System.out.println(Arrays.toString(nums) + " after sort");
-//
-//        Review asdf = new Review("asdf", "ASdf");
-//
-//
-//        boolean s1 = asdf.contains(search, "purple");
-//        boolean s2 = asdf.contains(search, "violet");
-//
-//        System.out.println("" + s1 + s2);
-//
-//        boolean s3 = Arrays.asList(search).contains("blue");
-//
-//        System.out.println(s3);
-//
-//    }
+    public void setIs_recommended(Boolean is_recommended) {
+        this.is_recommended = is_recommended;
+    }
 
 }

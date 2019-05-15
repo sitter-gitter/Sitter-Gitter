@@ -7,7 +7,7 @@ import java.util.Date;
 public class AvailableTime {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -23,17 +23,17 @@ public class AvailableTime {
 
     public AvailableTime() {}
 
-    public AvailableTime(Date start, Date end, User user) {
+    public AvailableTime(Date start, Date end, User babysitter) {
         this.start = start;
         this.end = end;
-        this.babysitter = user;
+        this.babysitter = babysitter;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
