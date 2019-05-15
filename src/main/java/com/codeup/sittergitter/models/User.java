@@ -40,7 +40,7 @@ public class User {
     @Column
     private boolean isBabysitter = false;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<Review> reviews;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
@@ -53,24 +53,24 @@ public class User {
     }
 
   
-    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
 
         this.username = username;
         this.password = password;
         this.email = email;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.street_addr = street_addr;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.streetAddr = streetAddr;
         this.city = city;
         this.state = state;
-        this.zipcode = zipcode;
-        this.is_babysitter = is_babysitter;
+        this.zipCode = zipCode;
+        this.isBabysitter = isBabysitter;
         this.reviews = reviews;
         this.children = children;
         this.specifications = specifications;
     }
 
-    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean isBabysitter) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter) {
         this.username = username;
         this.password = password;
         this.email = email;

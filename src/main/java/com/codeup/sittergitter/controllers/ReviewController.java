@@ -56,7 +56,7 @@ public class ReviewController {
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-        reviewToSaved.setAuthor(userDB);
+        reviewToSaved.setParent(userDB);
         Review savedReview = reviewsRepo.save(reviewToSaved);
 
 //        emailService.prepareAndSend(savedReview, "Review has been created", "The review has been created successfully
@@ -75,7 +75,7 @@ public class ReviewController {
 
     @PostMapping("/reviews/{id}/edit")
     public String editReview(@ModelAttribute Review reviewToBeEdited){
-        reviewToBeEdited.setAuthor(usersRepo.findOne(1L));
+        reviewToBeEdited.setParent(usersRepo.findOne(1L));
         reviewsRepo.save(reviewToBeEdited);
         return "redirect:/reviews/" + reviewToBeEdited.getId();
     }

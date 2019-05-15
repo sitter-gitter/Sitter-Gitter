@@ -45,7 +45,7 @@ public class HomeController {
     public String datepicker(@ModelAttribute Review reviewToSaved){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-        reviewToSaved.setAuthor(userDB);
+        reviewToSaved.setParent(userDB);
         Review savedReview = reviewsRepo.save(reviewToSaved);
 
 

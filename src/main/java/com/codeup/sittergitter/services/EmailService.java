@@ -20,7 +20,7 @@ public class EmailService {
     public void prepareAndSend(Review review, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo(review.getAuthor().getEmail());
+        msg.setTo(review.getParent().getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 
