@@ -63,11 +63,11 @@ public class Review {
         this.body = body;
     }
 
-    public Review(String title, String body, Boolean is_recommended, User author) {
+    public Review(String title, String body, Boolean is_recommended, User parent) {
         this.title = title;
         this.body = body;
         this.is_recommended = is_recommended;
-        this.author = author;
+        this.parent = parent;
     }
 
     public User getParent() {
