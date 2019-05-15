@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Edit Post')" /></head>
+<head><th:block th:replace="fragments/head :: header('Edit Review')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
@@ -8,14 +8,14 @@
 <div class="container">
 <div class="input-field">
 
-    <form th:action="@{'/posts/'+${post.id}+'/edit'}" method="post">
+    <form th:action="@{'/reviews/'+${review.id}+'/edit'}" method="review">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" th:value="${post.title}" class="validate" />
+        <input type="text" name="title" id="title" th:value="${review.title}" class="validate" />
 
         <label for="body">Body</label>
-        <textarea type="textarea" name="body" id="body" th:field="${post.body}"
+        <textarea type="textarea" name="body" id="body" th:field="${review.body}"
                   class="materialize-textarea validate"></textarea>
-        <input type="hidden" th:value="${post.id}" />
+        <input type="hidden" th:value="${review.id}" />
 
         <button type="submit" class="btn blue-grey darken-2 hoverable">Submit</button>
     </form>

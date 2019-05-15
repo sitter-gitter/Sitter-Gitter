@@ -34,10 +34,10 @@
 
     <div>
         <ul>
-            Posts:
-            <li th:each="post : ${user.posts}"  style="list-style: none; display: inline;">
-                <a th:href="@{'/posts/' + ${post.id}}">
-                    <span th:text="${post.title}"></span>
+            Reviews:
+            <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
+                <a th:href="@{'/reviews/' + ${review.id}}">
+                    <span th:text="${review.title}"></span>
                 </a>|
             </li>
         </ul>

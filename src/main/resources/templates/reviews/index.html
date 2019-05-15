@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Posts Index')" /></head>
+<head><th:block th:replace="fragments/head :: header('Reviews Index')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
@@ -10,24 +10,24 @@
 <div class="row">
 <ul>
 
-    <li th:each="post : ${posts}">
+    <li th:each="review : ${reviews}">
 
         <div class="card grey hoverable">
             <div class="card-content white-text" style="padding-top: 16px;">
                 <span class="card-title">
                     Title:
-                    <a th:href="@{'/posts/'+${post.getId()}}">
-                        <span th:text="${post.title}" ></span>
+                    <a th:href="@{'/reviews/'+${review.getId()}}">
+                        <span th:text="${review.title}" ></span>
                     </a>
                 </span>
                 <span>
                     ID:
-                    <span th:text="${post.getId()}"></span>.
+                    <span th:text="${review.getId()}"></span>.
                 </span>
                 <br />
                 <span class="truncate">
                     Body:
-                    <span th:text="${post.body}"></span>
+                    <span th:text="${review.body}"></span>
                 </span>
             </div>
         </div>

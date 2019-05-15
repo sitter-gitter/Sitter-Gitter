@@ -6,14 +6,17 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="posts")
-public class Post {
+@Table(name="reviews")
+public class Review {
     @Id @GeneratedValue
     private Long id;
     @Column(nullable = false, length = 100, name = "title")
     private String title;
     @Column(nullable = false)
     private String body;
+    @Column
+    private Boolean is_recommended;
+
     @ManyToOne
 //    @JoinColumns({
 //        @JoinColumn(name = "author_id", referencedColumnName="id"),
@@ -23,11 +26,11 @@ public class Post {
     private User author;
 
     // C in CRUD
-    public Post() {
+    public Review() {
     }
 
     // R in CRUD
-    public Post(Long id, String title, String body, User author) {
+    public Review(Long id, String title, String body, User author) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -35,24 +38,24 @@ public class Post {
     }
 
     // U in CRUD
-    public Post(String title, String body, User author) {
+    public Review(String title, String body, User author) {
         this.title = title;
         this.body = body;
         this.author = author;
     }
 
     // D in CRUD
-    public Post(Long id) {
+    public Review(Long id) {
         this.id = id;
     }
 
-    public Post(String title, String body, Long id) {
+    public Review(String title, String body, Long id) {
         this.title = title;
         this.body = body;
         this.id = id;
     }
 
-    public Post(String title, String body) {
+    public Review(String title, String body) {
         this.title = title;
         this.body = body;
     }
@@ -105,7 +108,7 @@ public class Post {
 //        Arrays.sort(nums);
 //        System.out.println(Arrays.toString(nums) + " after sort");
 //
-//        Post asdf = new Post("asdf", "ASdf");
+//        Review asdf = new Review("asdf", "ASdf");
 //
 //
 //        boolean s1 = asdf.contains(search, "purple");

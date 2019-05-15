@@ -41,7 +41,7 @@ public class User {
     private boolean is_babysitter = false;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
-    private List<Post> posts;
+    private List<Review> reviews;
 
     public User() {
     }
@@ -59,7 +59,7 @@ public class User {
         this.is_babysitter = is_babysitter;
     }
 
-    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter, List<Post> posts) {
+    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter, List<Review> reviews) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -70,7 +70,7 @@ public class User {
         this.state = state;
         this.zipcode = zipcode;
         this.is_babysitter = is_babysitter;
-        this.posts = posts;
+        this.reviews = reviews;
     }
 
     public User(String username, String password, String email) {
@@ -79,11 +79,11 @@ public class User {
         this.email = email;
     }
 
-    public User(String username, String password, String email, List<Post> posts) {
+    public User(String username, String password, String email, List<Review> reviews) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.posts = posts;
+        this.reviews = reviews;
     }
 
     public User(User copy) {
@@ -188,12 +188,12 @@ public class User {
         this.is_babysitter = is_babysitter;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public List<Review> getReviews() {
+        return reviews;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
 
