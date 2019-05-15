@@ -5,6 +5,10 @@
     <title>Register for Sitter Gitter - the app that connects babysitters and parents!</title>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link rel="stylesheet" href="sitter-gitter.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,66 +20,37 @@
 <main>
     <div class="container">
         <div class="card"><div class="card-content">
-            <span class="card-title center-align">Register as a New Babysitter - Specifications</span>
+            <span class="card-title center-align">Create Your Profile</span>
 
             <form method="post" action="ENTER ACTION HERE">
 
                 <!--  Birthdate  -->
+
                 <div class="row">
-                    <div class="input-field col s4">
-                        <select>
-                            <option value="" disabled selected>Month</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
+                    <div class="col s12 m10">
+                        <label for="dob">When is your birthday?</label>
+                        <input type="text" id="dob" name="dob" placeholder="mm/dd/yyyy">
                     </div>
-                    <div class="input-field col s4">
-                        <select>
-                            <option value="" disabled selected>Day</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <select>
-                            <option value="" disabled selected>Year</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
-                    </div>
-                        <!--<option value="1">January</option>-->
-                        <!--<option value="2">February</option>-->
-                        <!--<option value="3">March</option>-->
-                        <!--<option value="4">April</option>-->
-                        <!--<option value="5">May</option>-->
-                        <!--<option value="6">June</option>-->
-                        <!--<option value="7">July</option>-->
-                        <!--<option value="8">August</option>-->
-                        <!--<option value="9">September</option>-->
-                        <!--<option value="10">October</option>-->
-                        <!--<option value="11">November</option>-->
-                        <!--<option value="12">December</option>-->
                 </div>
 
                 <!--  Years of Experience  -->
                 <div class="row">
-                    <div class="col">
-                        <label for="experience">How many years of babysitting experience do you have?</label>
-
+                    <div class="col s12 m10">
+                        <label for="exp">How many years of babysitting experience do you have?</label>
+                        <input type="text" id="exp" name="exp" placeholder="Years of Experience">
                     </div>
                 </div>
 
                 <!--  Education -->
                 <div class="row">
-                    <div class="col">
-                        <label for="education">My education level is...</label>
-
+                    <div class="col s12 m10">
+                        <label for="education">What is your education level?</label>
+                        <select>
+                            <option value="" disabled selected>Enter your education level...</option>
+                            <option value="1">In high school</option>
+                            <option value="2">High school diploma</option>
+                            <option value="3">In college or college graduate</option>
+                        </select>
                     </div>
                 </div>
 
@@ -83,7 +58,12 @@
                 <div class="row">
                     <div class="col">
                         <label for="cpr">Are you certified in CPR?</label>
-
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Yes, I have a CPR card</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
 
@@ -91,6 +71,12 @@
                 <div class="row">
                     <div class="col">
                         <label for="transport">Can you provide your own transportation?</label>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Yes, I have my own transportation</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
 
@@ -98,7 +84,12 @@
                 <div class="row">
                     <div class="col">
                         <label for="smoking">Do you use tobacco or nicotine products?</label>
-
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>No, I do not use tobacco or nicotine products</span>
+                            </label>
+                        </p>
                     </div>
                 </div>
         </div>
@@ -120,5 +111,14 @@
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+    $('.datepicker').datepicker({
+      yearRange: [1930, 1931, 1932, 1933, 1934]
+    });
+  });
+</script>
 </body>
 </html>
