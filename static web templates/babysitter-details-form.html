@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register for Sitter Gitter - the app that connects babysitters and parents!</title>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="stylesheet" href="sitter-gitter.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center" id="logo">Sitter Gitter</a>
+    </div>
+</nav>
+<main>
+    <div class="container">
+        <div class="card"><div class="card-content">
+            <span class="card-title center-align">Create Your Babysitter Profile</span>
+
+            <form method="post" action="ENTER ACTION HERE">
+
+                <!--  Birthdate  -->
+
+                <div class="row">
+                    <div class="col s12 m10">
+                        <label for="dob">When is your birthday?</label>
+                        <input type="text" id="dob" name="dob" placeholder="mm/dd/yyyy">
+                    </div>
+                </div>
+
+                <!--  Years of Experience  -->
+                <div class="row">
+                    <div class="col s12 m10">
+                        <label for="exp">How many years of babysitting experience do you have?</label>
+                        <input type="text" id="exp" name="exp" placeholder="Years of Experience">
+                    </div>
+                </div>
+
+                <!--  Education -->
+                <div class="row">
+                    <div class="col s12 m10">
+                        <label for="education">What is your education level?</label>
+                        <select>
+                            <option value="" disabled selected>Enter your education level...</option>
+                            <option value="1">In high school</option>
+                            <option value="2">High school diploma</option>
+                            <option value="3">In college or college graduate</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--  CPR  -->
+                <div class="row">
+                    <div class="col">
+                        <label for="cpr">Are you certified in CPR?</label>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Yes, I have a CPR card</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <!--  Transportation -->
+                <div class="row">
+                    <div class="col">
+                        <label for="transport">Can you provide your own transportation?</label>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>Yes, I have my own transportation</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+
+                <!--  Smoking  -->
+                <div class="row">
+                    <div class="col">
+                        <label for="smoking">Do you use tobacco or nicotine products?</label>
+                        <p>
+                            <label>
+                                <input type="checkbox" />
+                                <span>No, I do not use tobacco or nicotine products</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+        </div>
+
+        <!--  B U T T O N S  -->
+        <div class="card-action">
+            <div class="row center-align">
+                <div class="input-field col s12">
+                    <a class="waves-effect waves-light btn-large" href="babysitter-registrar.html">< Back</a>
+                    <a class="waves-effect waves-light btn-large">Next ></a>
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+    $('.datepicker').datepicker({
+      yearRange: [1930, 1931, 1932, 1933, 1934]
+    });
+  });
+</script>
+</body>
+</html>
