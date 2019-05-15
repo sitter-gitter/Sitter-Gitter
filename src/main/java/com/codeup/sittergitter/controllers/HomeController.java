@@ -1,8 +1,8 @@
 package com.codeup.sittergitter.controllers;
 
-import com.codeup.sittergitter.models.Post;
+import com.codeup.sittergitter.models.Review;
 import com.codeup.sittergitter.models.User;
-import com.codeup.sittergitter.repositories.PostRepository;
+import com.codeup.sittergitter.repositories.ReviewRepository;
 import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-    private final PostRepository postsRepo;
+    private final ReviewRepository reviewsRepo;
     private final UserRepository usersRepo;
 //    private EmailService emailService;
 
-    public HomeController(PostRepository postsRepo, UserRepository usersRepo) {
-        this.postsRepo = postsRepo;
+    public HomeController(ReviewRepository reviewsRepo, UserRepository usersRepo) {
+        this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
     }
 
@@ -37,19 +37,19 @@ public class HomeController {
 
     @GetMapping("/home")
     public String welcome2(Model model) {
-        model.addAttribute("datetime", new Post());
+        model.addAttribute("datetime", new Review());
         return "home";
     }
 
     @PostMapping("/home")
-    public String datepicker(@ModelAttribute Post postToSaved){
+    public String datepicker(@ModelAttribute Review reviewToSaved){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-        postToSaved.setAuthor(userDB);
-        Post savedPost = postsRepo.save(postToSaved);
+        reviewToSaved.setAuthor(userDB);
+        Review savedReview = reviewsRepo.save(reviewToSaved);
 
 
-        System.out.println(savedPost.getBody());
+        System.out.println(savedReview.getBody());
 
 
 
@@ -61,7 +61,7 @@ public class HomeController {
 //        model.addAttribute("timepicker2", timepicker2);
 //        System.out.println("" + datepicker1 + timepicker1 + datepicker2 + timepicker2);
 //        return "home";
-        return "redirect:/posts/" + savedPost.getId();
+        return "redirect:/reviews/" + savedReview.getId();
 
     }
 }

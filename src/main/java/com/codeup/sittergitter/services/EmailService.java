@@ -1,6 +1,6 @@
 package com.codeup.sittergitter.services;
 
-import com.codeup.sittergitter.models.Post;
+import com.codeup.sittergitter.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -17,10 +17,10 @@ public class EmailService {
     @Value("${spring.mail.from}")
     private String from;
 
-    public void prepareAndSend(Post post, String subject, String body) {
+    public void prepareAndSend(Review review, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        msg.setTo(post.getAuthor().getEmail());
+        msg.setTo(review.getAuthor().getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 

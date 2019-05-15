@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Show Post')" /></head>
+<head><th:block th:replace="fragments/head :: header('Show Review')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
@@ -13,24 +13,24 @@
         <div class="card-content white-text" style="padding-bottom: 0; padding-top: 16px;">
             <span class="card-title">
                 Title:
-                <span th:text="${post.title}"></span>
+                <span th:text="${review.title}"></span>
             </span>
             <p>
                 Body:
-                <span th:text="${post.body}"></span>
+                <span th:text="${review.body}"></span>
             </p>
             <p>
                 Email:
-                    <span th:text="${post.author.email}"></span>
+                    <span th:text="${review.author.email}"></span>
             </p>
             <p>
                 Author:
-                <a th:href="@{'/users/' + ${post.author.id}}"><span th:text="${post.author.username}"></span></a>
+                <a th:href="@{'/users/' + ${review.author.id}}"><span th:text="${review.author.username}"></span></a>
             </p>
             <div class="card-action">
-                <a th:href="@{'/posts/'+${post.getId()}+'/edit'}">
+                <a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">
                     <i class="fas fa-edit"></i></a>
-                <a th:href="@{'/posts/'+${post.getId()}+'/delete/'}">
+                <a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">
                     <i class="fas fa-trash-alt"></i></a>
             </div>
         </div>

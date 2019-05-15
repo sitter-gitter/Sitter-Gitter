@@ -10,16 +10,16 @@
 <div class="container">
 <div class="row">
 <div class="col s5">
-    <a href="/posts" class="brand-logo">Super Cool Spring Blog App By Erik</a>
+    <a href="/reviews" class="brand-logo">Super Cool Spring Blog App By Erik</a>
 </div>
     <div class="col s7">
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/home"><i class="fas fa-home"></i></a></li>
         <li>
-            <a href="/posts"><i class="fas fa-comments"></i></a></li>
+            <a href="/reviews"><i class="fas fa-comments"></i></a></li>
         <li>
             <span sec:authorize="isAuthenticated()"></span>
-            <a href="/posts/create">
+            <a href="/reviews/create">
             <i class="fas fa-plus"></i></a>
         </li>
         <li><a href="/users"><i class="fas fa-users"></i></a></li>
@@ -28,7 +28,7 @@
         <li sec:authorize="isAnonymous()"><a href="/sign-up">Sign Up</a></li>
 
         <li sec:authorize="isAuthenticated()" style="display: inline;">
-            <form th:action="@{/logout}" th:method="post" style="display: inline-block;">
+            <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
             <span sec:authorize="isAuthenticated()"
                   th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
                   style="display: inline-block;"></span>
