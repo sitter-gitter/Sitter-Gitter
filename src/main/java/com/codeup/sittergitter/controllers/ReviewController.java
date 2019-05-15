@@ -18,7 +18,8 @@ public class ReviewController {
 
     private final ReviewRepository reviewsRepo;
     private final UserRepository usersRepo;
-    private EmailService emailService;
+    private EmailService emailService; // uncomment email section in postmapping for reviews/create in order to
+    // function //
 
     public ReviewController(ReviewRepository reviewsRepo, UserRepository usersRepo, EmailService emailService) {
         this.reviewsRepo = reviewsRepo;

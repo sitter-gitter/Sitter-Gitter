@@ -18,12 +18,14 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // CREATE PROFILE GET
     @GetMapping("/register")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
+    // CREATE PROFILE POST
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
@@ -32,12 +34,14 @@ public class UserController {
         return "redirect:/login";
     }
 
+    // READ PROFILES
     @GetMapping("/profile/index")
     public String showUsers(Model model) {
         model.addAttribute("users", usersRepo.findAll());
         return "users/index";
     }
 
+    // READ PROFILE
     @GetMapping("profile/{username}")
     public String showUser(@PathVariable String username, Model model){
         User user = usersRepo.findByUsername(username);
@@ -45,6 +49,7 @@ public class UserController {
         return "users/show";
     }
 
+    // UPDATE PROFILE GET
     @GetMapping("/profile/{username}/edit")
     public String showEditUser(@PathVariable String username, Model model) {
         User user = usersRepo.findByUsername(username);
@@ -52,6 +57,7 @@ public class UserController {
         return "users/edit";
     }
 
+    // UPDATE PROFILE POST
     @PostMapping("/profile/{username}/edit")
     public String editUser(@PathVariable String username, @RequestParam String password, @RequestParam String email) {
         User user = usersRepo.findByUsername(username);
@@ -62,10 +68,18 @@ public class UserController {
         return "redirect:/profile/index";
     }
 
-    @GetMapping("/users/{username}/delete")
+    // DELETE PROFILE
+    @GetMapping("/profile/{username}/delete")
     public String deleteUser(@PathVariable String username) {
         usersRepo.delete(usersRepo.findByUsername(username));
         return "redirect:/profile/index";
+    }
+
+    // READ SEARCH FOR BABYSITTERS
+    @GetMapping("/sitters")
+    public String showSitters() {
+        //////////// logic for showing only babysitters here /////////////
+        return "users/sitters";
     }
 
 }
