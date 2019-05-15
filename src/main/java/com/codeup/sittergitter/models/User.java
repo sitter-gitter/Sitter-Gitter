@@ -52,7 +52,25 @@ public class User {
     public User() {
     }
 
+  
     public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter) {
+
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.street_addr = street_addr;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.is_babysitter = is_babysitter;
+        this.reviews = reviews;
+        this.children = children;
+        this.specifications = specifications;
+    }
+
+    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean isBabysitter) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -200,6 +218,22 @@ public class User {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Child> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Child> children) {
+        this.children = children;
+    }
+
+    public List<Specification> getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(List<Specification> specifications) {
+        this.specifications = specifications;
     }
 }
 

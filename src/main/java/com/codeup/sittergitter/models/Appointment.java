@@ -1,6 +1,5 @@
 package com.codeup.sittergitter.models;
 
-
 import javax.persistence.*;
 
 @Entity
