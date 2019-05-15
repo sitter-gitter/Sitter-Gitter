@@ -23,19 +23,19 @@ public class HomeController {
         this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
     }
+//
+//    @GetMapping("/")
+//    public String welcome() {
+//        return "home";
+//    }
+
+//    @GetMapping("/home/{name}")
+//    public String welcome(@PathVariable String name, Model viewModel) {
+//        viewModel.addAttribute("name", name);
+//        return "home";
+//    }
 
     @GetMapping("/")
-    public String welcome() {
-        return "home";
-    }
-
-    @GetMapping("/home/{name}")
-    public String welcome(@PathVariable String name, Model viewModel) {
-        viewModel.addAttribute("name", name);
-        return "home";
-    }
-
-    @GetMapping("/home")
     public String welcome2(Model model) {
         model.addAttribute("datetime", new Review());
         return "home";
