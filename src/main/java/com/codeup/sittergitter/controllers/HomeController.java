@@ -17,23 +17,11 @@ public class HomeController {
 
     private final ReviewRepository reviewsRepo;
     private final UserRepository usersRepo;
-//    private EmailService emailService;
 
     public HomeController(ReviewRepository reviewsRepo, UserRepository usersRepo) {
         this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
     }
-//
-//    @GetMapping("/")
-//    public String welcome() {
-//        return "home";
-//    }
-
-//    @GetMapping("/home/{name}")
-//    public String welcome(@PathVariable String name, Model viewModel) {
-//        viewModel.addAttribute("name", name);
-//        return "home";
-//    }
 
     @GetMapping("/")
     public String welcome2(Model model) {
@@ -41,19 +29,14 @@ public class HomeController {
         return "home";
     }
 
-    @PostMapping("/home")
+    @PostMapping("/")
     public String datepicker(@ModelAttribute Review reviewToSaved){
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
         reviewToSaved.setAuthor(userDB);
         Review savedReview = reviewsRepo.save(reviewToSaved);
 
-
         System.out.println(savedReview.getBody());
-
-
-
-
 
 //        model.addAttribute("datepicker1", datepicker1);
 //        model.addAttribute("timepicker1", timepicker1);
@@ -62,6 +45,5 @@ public class HomeController {
 //        System.out.println("" + datepicker1 + timepicker1 + datepicker2 + timepicker2);
 //        return "home";
         return "redirect:/reviews/" + savedReview.getId();
-
     }
 }

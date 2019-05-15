@@ -29,7 +29,7 @@ public class ReviewController {
     @GetMapping("/reviews")
     public String showReviews(Model model) {
         model.addAttribute("reviews", reviewsRepo.findAll());
-        return "/reviews/index";
+        return "reviews/index";
     }
 
     @GetMapping("/reviews/{id}")
@@ -40,13 +40,13 @@ public class ReviewController {
 
         Review review = reviewsRepo.findOne(id);
         model.addAttribute("review", review);
-        return "/reviews/show";
+        return "reviews/show";
     }
 
     @GetMapping("/reviews/create")
     public String showCreateReview(Model model) {
         model.addAttribute("review", new Review());
-        return "/reviews/create";
+        return "reviews/create";
     }
 
     @PostMapping("/reviews/create")
@@ -70,7 +70,7 @@ public class ReviewController {
         User user = usersRepo.findOne(id);
         model.addAttribute("user", user);
         model.addAttribute("review", review);
-        return "/reviews/edit";
+        return "reviews/edit";
     }
 
     @PostMapping("/reviews/{id}/edit")
