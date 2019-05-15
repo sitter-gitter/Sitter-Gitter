@@ -4,5 +4,10 @@ public enum EducationLevel {
 
     stillInHighSchool,
     highSchoolDegree,
-    collegeDegree
+    collegeDegree;
+
+    EducationLevel() {
+    }
+
 }
+

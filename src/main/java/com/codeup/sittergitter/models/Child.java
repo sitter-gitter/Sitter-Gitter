@@ -10,7 +10,7 @@ import java.util.Date;
 public class Child {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -20,7 +20,7 @@ public class Child {
     private Date birthdate;
 
     @Column
-    private String specialNote;
+    private String special_note;
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
@@ -28,18 +28,34 @@ public class Child {
 
     public Child() {}
 
-    public Child(String name, Date birthdate, String specialNote, User user) {
+    public Child(String name, Date birthdate, String special_note, User parent) {
         this.name = name;
         this.birthdate = birthdate;
-        this.specialNote = specialNote;
-        this.parent = user;
+        this.special_note = special_note;
+        this.parent = parent;
     }
 
-    public long getId() {
+    public String getSpecial_note() {
+        return special_note;
+    }
+
+    public void setSpecial_note(String special_note) {
+        this.special_note = special_note;
+    }
+
+    public User getParent() {
+        return parent;
+    }
+
+    public void setParent(User parent) {
+        this.parent = parent;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +76,11 @@ public class Child {
     }
 
     public String getSpecialNote() {
-        return specialNote;
+        return special_note;
     }
 
-    public void setSpecialNote(String specialNote) {
-        this.specialNote = specialNote;
+    public void setSpecialNote(String special_note) {
+        this.special_note = special_note;
     }
 
     public User getUser() {
