@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" />
+    <title>Sitter Gitter - connecting babysitters and parents!</title>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="stylesheet" href="sitter-gitter.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<nav>
+    <th:block th:fragment="navbar">
+    <div class="nav-wrapper"><div class="container">
+        <div class="row">
+            <div class="col s5">
+                <a href="/home" class="brand-logo" id="logo">Sitter Gitter</a>
+            </div>
+            <div class="col s7">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/home"><i class="fas fa-home"></i></a></li>
+                <li><a href="/reviews"><i class="fas fa-comments"></i></a></li>
+                <li>
+                    <span sec:authorize="isAuthenticated()"></span>
+                    <a href="/reviews/create">
+                    <i class="fas fa-plus"></i></a>
+                </li>
+                <li><a href="/users"><i class="fas fa-users"></i></a></li>
+
+        <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/sign-up">Sign Up</a></li>
+
+        <li sec:authorize="isAuthenticated()" style="display: inline;">
+            <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+            <span sec:authorize="isAuthenticated()"
+                  th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
+                  style="display: inline-block;"></span>
+                <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable" style="display:
+                inline;">Logout</button>
+            </form>
+        </li>
+    </ul>
+
+    </div>
+    </div>
+    </div>
+    </div>
+</nav>
+
+<!--<div sec:authorize="isAuthenticated()">-->
+    <!--This content is only shown to authenticated users.-->
+
+    <!--User ID: <span th:text="${#authentication.principal.id}"/>-->
+    <!--Username: <span th:text="${#authentication.principal.username}"/>-->
+    <!--Email: <span th:text="${#authentication.principal.email}"/>-->
+<!--</div>-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
