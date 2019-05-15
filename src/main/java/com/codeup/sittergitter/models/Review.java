@@ -15,26 +15,36 @@ public class Review {
     private Boolean is_recommended;
 
     @ManyToOne
-    @JoinColumn (name = "author_id", referencedColumnName="id")
-    private User author;
+//    @JoinColumns({
+//        @JoinColumn(name = "author_id", referencedColumnName="id"),
+//        @JoinColumn(name = "author_username", referencedColumnName="username")
+//    })
+    @JoinColumn (name = "parent_id", referencedColumnName="id")
+    private User parent;
+
+    @ManyToOne
+    @JoinColumn (name = "babysitter_id", referencedColumnName = "id")
+    private User babysitter;
 
     // C in CRUD
     public Review() {
     }
 
     // R in CRUD
-    public Review(Long id, String title, String body, User author) {
+    public Review(Long id, String title, String body, User parent, User babysitter) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.author = author;
+        this.parent = parent;
+        this.babysitter = babysitter;
     }
 
     // U in CRUD
-    public Review(String title, String body, User author) {
+    public Review(String title, String body, User parent, User babysitter) {
         this.title = title;
         this.body = body;
-        this.author = author;
+        this.parent = parent;
+        this.babysitter = babysitter;
     }
 
     // D in CRUD
@@ -60,12 +70,20 @@ public class Review {
         this.author = author;
     }
 
-    public User getAuthor() {
-        return author;
+    public User getParent() {
+        return parent;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setParent(User parent) {
+        this.parent = parent;
+    }
+
+    public User getBabysitter() {
+        return babysitter;
+    }
+
+    public void setBabysitter(User babysitter) {
+        this.babysitter = babysitter;
     }
 
     public Long getId() {

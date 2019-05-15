@@ -20,13 +20,13 @@ public class User {
     private String email;
 
     @Column
-    private String first_name;
+    private String firstName;
 
     @Column
-    private String last_name;
+    private String lastName;
 
     @Column
-    private String street_addr;
+    private String streetAddr;
 
     @Column
     private String city;
@@ -35,10 +35,10 @@ public class User {
     private String state;
 
     @Column
-    private String zipcode;
+    private String zipCode;
 
     @Column
-    private boolean is_babysitter = false;
+    private boolean isBabysitter = false;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private List<Review> reviews;
@@ -52,7 +52,9 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
+  
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter) {
+
         this.username = username;
         this.password = password;
         this.email = email;
@@ -68,30 +70,30 @@ public class User {
         this.specifications = specifications;
     }
 
-    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter) {
+    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean isBabysitter) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.street_addr = street_addr;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.streetAddr = streetAddr;
         this.city = city;
         this.state = state;
-        this.zipcode = zipcode;
-        this.is_babysitter = is_babysitter;
+        this.zipCode = zipCode;
+        this.isBabysitter = isBabysitter;
     }
 
-    public User(String username, String password, String email, String first_name, String last_name, String street_addr, String city, String state, String zipcode, boolean is_babysitter, List<Review> reviews) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter, List<Review> reviews) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.street_addr = street_addr;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.streetAddr = streetAddr;
         this.city = city;
         this.state = state;
-        this.zipcode = zipcode;
-        this.is_babysitter = is_babysitter;
+        this.zipCode = zipCode;
+        this.isBabysitter = isBabysitter;
         this.reviews = reviews;
     }
 
@@ -113,13 +115,13 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        first_name = copy.first_name;
-        last_name = copy.last_name;
-        street_addr = copy.street_addr;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        streetAddr = copy.streetAddr;
         city = copy.city;
         state = copy.state;
-        zipcode = copy.zipcode;
-        is_babysitter = copy.is_babysitter;
+        zipCode = copy.zipCode;
+        isBabysitter = copy.isBabysitter;
     }
 
     public Long getId() {
@@ -154,28 +156,28 @@ public class User {
         this.email = email;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getStreet_addr() {
-        return street_addr;
+    public String getStreetAddr() {
+        return streetAddr;
     }
 
-    public void setStreet_addr(String street_addr) {
-        this.street_addr = street_addr;
+    public void setStreetAddr(String streetAddr) {
+        this.streetAddr = streetAddr;
     }
 
     public String getCity() {
@@ -194,20 +196,20 @@ public class User {
         this.state = state;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public boolean isIs_babysitter() {
-        return is_babysitter;
+    public boolean getisBabysitter() {
+        return isBabysitter;
     }
 
-    public void setIs_babysitter(boolean is_babysitter) {
-        this.is_babysitter = is_babysitter;
+    public void setIsBabysitter(boolean isBabysitter) {
+        this.isBabysitter = isBabysitter;
     }
 
     public List<Review> getReviews() {
