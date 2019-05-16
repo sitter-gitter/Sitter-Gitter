@@ -16,7 +16,7 @@
             <div class="card-content white-text" style="padding-top: 16px;">
                 <span class="card-title">
                     Username:
-                    <a th:href="@{'/users/'+${user.getId()}}">
+                    <a th:href="@{'/profile/'+${user.getUsername()}}">
                         <span th:text="${user.getUsername()}" ></span>
                     </a>
                 </span>

@@ -21,11 +21,13 @@
             </p>
             <p>
                 Email:
-                    <span th:text="${review.author.email}"></span>
+                    <span th:text="${review.parent.email}"></span>
             </p>
             <p>
-                Author:
-                <a th:href="@{'/users/' + ${review.author.id}}"><span th:text="${review.author.username}"></span></a>
+                Parent:
+                <a
+                        th:href="@{'/profile/' + ${review.parent.username}}"><span
+                        th:text="${review.parent.username}"></span></a>
             </p>
             <div class="card-action">
                 <a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">

@@ -24,9 +24,9 @@
                 <span th:text="${user.email}"></span>
             </p>
             <div class="card-action">
-                <a th:href="@{'/users/'+${user.getId()}+'/edit'}">
+                <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
                     <i class="fas fa-user-edit"></i></a>
-                <a th:href="@{'/users/'+${user.getId()}+'/delete/'}">
+                <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">
                     <i class="fas fa-trash-alt"></i></a>
             </div>
         </div>
