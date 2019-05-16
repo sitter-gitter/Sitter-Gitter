@@ -22,7 +22,8 @@
 </head>
 
 <body>
-<nav th:fragment="navbar">
+<th:block th:fragment="navbar">
+    <nav>
     <div class="nav-wrapper"><div class="container">
         <div class="row">
             <div class="col s5">
@@ -57,9 +58,8 @@
         </div>
     </div>
     </div>
-</nav>
-
-
+    </nav>
+</th:block>
 
 </body>
 </html>
