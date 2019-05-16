@@ -4,22 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TestController {
+public class TestMindyController {
 
-  @GetMapping("/test")
-  public String SplashTest() {
-    return "sghome";
-  }
+  @GetMapping("/test/mindy")
+  public String SplashTest() { return "sghome"; }
 
-  @GetMapping("/test/login")
+  @GetMapping("/test/mindy/login")
   public String LoginTest() { return "login"; }
 
-  @GetMapping("/test/register")
+  @GetMapping("/test/mindy/register")
   public String RegisterTest() { return "register"; }
 
-  @GetMapping("/test/register-parent")
+  @GetMapping("/test/mindy/register-parent")
   public String RegisterParent() { return "register-parent"; }
 
-  @GetMapping("/test/register-babysitter")
+  @GetMapping("/test/mindy/register-babysitter")
   public String RegisterBabysitter() { return "register-babysitter"; }
 }
