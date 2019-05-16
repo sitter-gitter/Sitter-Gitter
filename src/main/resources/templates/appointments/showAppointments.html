@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Eriks Test')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+<div class="row">
+<ul>
+
+    <!-- changes start here ///////////////////////////////////////////////////////// -->
+    <li th:each="appointment : ${appointments}">
+    <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+        <div class="card grey hoverable">
+            <div class="card-content white-text" style="padding-top: 16px;">
+                <span class="card-title">
+
+                    <!-- changes start here ///////////////////////////////////////////////////////// -->
+                    appointments.start:
+                    <a th:href="@{'/appointments/'+${appointment.getId()}}">
+                        <span th:text="${appointment.getStart()}" ></span>
+                    </a>
+                    <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+                </span>
+                <span>
+
+                    <!-- changes start here ///////////////////////////////////////////////////////// -->
+                    ID:
+                    <span th:text="${appointment.getEnd()}"></span>
+                    <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+                </span>
+            </div>
+        </div>
+
+    </li>
+
+</ul>
+</div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>

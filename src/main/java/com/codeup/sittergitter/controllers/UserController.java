@@ -34,14 +34,14 @@ public class UserController {
         return "redirect:/login";
     }
 
-    // READ PROFILES
+    // READ ALL PROFILES
     @GetMapping("/profile/index")
     public String showUsers(Model model) {
         model.addAttribute("users", usersRepo.findAll());
         return "users/index";
     }
 
-    // READ PROFILE
+    // READ ONE PROFILE
     @GetMapping("profile/{username}")
     public String showUser(@PathVariable String username, Model model){
         User user = usersRepo.findByUsername(username);

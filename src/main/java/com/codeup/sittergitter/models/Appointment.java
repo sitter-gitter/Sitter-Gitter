@@ -17,7 +17,7 @@ public class Appointment {
     @JoinColumn(name = "babysitter_id")
     private User babysitter;
     @ManyToOne
-    @JoinColumn(name = "parent_id")
+    @JoinColumn(name = "parent_id") // referencedColumnName="id"
     private User parent;
 
     public Appointment() {
