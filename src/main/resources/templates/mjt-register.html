@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="mjt-partials :: header" />
+<body>
+    <nav th:replace="mjt-partials :: navbar"></nav>
+
+    <main>
+        <div class="container">
+            I am a...<br />
+            <a class="waves-effect waves-light btn-large" href="/test/mindy/register-babysitter">Babysitter</a>
+            <a class="waves-effect waves-light btn-large" href="/test/mindy/register-parent">Parent</a>
+        </div>
+    </main>
+
+<th:block th:replace="mjt-partials :: footer"> </th:block>
+
+</body>
+</html>

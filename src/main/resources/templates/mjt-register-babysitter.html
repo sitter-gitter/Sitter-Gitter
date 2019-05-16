@@ -1,27 +1,28 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:replace="testing/sgpartials :: header" />
+<th:block th:replace="mjt-partials :: header" />
 
 <body>
-<nav th:replace="testing/sgpartials :: navbar"> </nav>
+<nav th:replace="mjt-partials :: navbar"> </nav>
 
 <div class="container">
     Register as a New Babysitter
-    <form method="post" action="ENTER ACTION HERE">
+    <form th:action="@{SOMETHING}" th:method="POST" th:object="${user}"
+            method="post" action="/test/mindy/register-babysitter">
         <p>
-            <input placeholder="First Name" id="first_name" type="text" class="validate" /><br />
-            <input placeholder="Last Name" id="last_name" type="text" class="validate" />
+            <input placeholder="First Name" th:field="*{firstName}" id="first_name" type="text" class="validate" /><br />
+            <input placeholder="Last Name" th:field="*{lastName}" id="last_name" type="text" class="validate" />
         </p>
         <p>
-            <input placeholder="Username" id="username" type="text" class="validate" /><br />
-            <input placeholder="Email Address" id="email" type="email" class="validate" /><br />
-            <input placeholder="Password" id="password" type="password" class="validate" />
+            <input placeholder="Username" th:field="*{username}" id="username" type="text" class="validate" /><br />
+            <input placeholder="Email Address" th:field="*{email}" id="email" type="email" class="validate" /><br />
+            <input placeholder="Password" th:field="*{password} id="password" type="password" class="validate" />
         </p>
         <p>
-            <input placeholder="Street Address" id="street_address" type="text" class="validate" /><br />
-            <input placeholder="City" id="city" type="text" class="validate" />, Texas<br />
-        <input placeholder="Zipcode" id="zipcode" type="text" class="validate" />
+            <input placeholder="Street Address" th:field="*{streetAdd}" id="street_address" type="text" class="validate" /><br />
+            <input placeholder="City" th:field="*{city}" id="city" type="text" class="validate" />, Texas<br />
+        <input placeholder="Zipcode" th:field="*{zipCode}" id="zipcode" type="text" class="validate" />
         </p>
         <p>
             <label for="dob">When were you born?</label><br />
@@ -62,7 +63,7 @@
 </div>
 
 
-<th:block th:replace="testing/sgpartials :: footer" />
+<th:block th:replace="mjt-partials :: footer" />
 
 </body>
 </html>
