@@ -9,37 +9,42 @@
 <div class="nav-wrapper indigo">
 <div class="container">
 <div class="row">
-<div class="col s5">
-    <a href="/reviews" class="brand-logo">Sitter Gitter</a>
-</div>
+
+    <div class="col s5">
+        <a href="/" class="brand-logo">Sitter Gitter</a>
+    </div>
+
     <div class="col s7">
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/contact">/contact</a></li>
-        <li><a href="/"><i class="fas fa-home"></i></a></li>
-        <li>
-            <a href="/reviews"><i class="fas fa-comments"></i></a></li>
-        <li>
-            <span sec:authorize="isAuthenticated()"></span>
-            <a href="/reviews/create">
-            <i class="fas fa-plus"></i></a>
-        </li>
-        <li><a href="/profile/index"><i class="fas fa-users"></i></a></li>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/register">Register</a></li>
+            <li><a href="/appointments">/appointments</a></li>
+            <li><a href="/contact">/contact</a></li>
 
-        <li sec:authorize="isAuthenticated()" style="display: inline;">
-            <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
-            <span sec:authorize="isAuthenticated()"
-                  th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
-                  style="display: inline-block;"></span>
-                <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable" style="display:
-                inline;">Logout</button>
-            </form>
-        </li>
-    </ul>
+            <li><a href="/"><i class="fas fa-home"></i></a></li>
+            <li><a href="/reviews"><i class="fas fa-comments"></i></a></li>
+            <li>
+                <span sec:authorize="isAuthenticated()"></span>
+                <a href="/reviews/create">
+                <i class="fas fa-plus"></i></a>
+            </li>
+            <li><a href="/profile/index"><i class="fas fa-users"></i></a></li>
 
-</div>
+            <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/register">Register</a></li>
+
+            <li sec:authorize="isAuthenticated()" style="display: inline;">
+                <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+                <span sec:authorize="isAuthenticated()"
+                      th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
+                      style="display: inline-block;"></span>
+                    <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable" style="display:
+                    inline;">Logout</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+
 </div>
 </div>
 </div>
