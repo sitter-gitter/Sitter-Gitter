@@ -10,26 +10,54 @@
     Register as a New Babysitter
     <form method="post" action="ENTER ACTION HERE">
         <p>
-            <input placeholder="First Name" id="first_name" type="text" class="validate" />
+            <input placeholder="First Name" id="first_name" type="text" class="validate" /><br />
             <input placeholder="Last Name" id="last_name" type="text" class="validate" />
         </p>
-        <input placeholder="Email Address" id="email" type="email" class="validate" />
-        <input placeholder="Username" id="username" type="text" class="validate" />
-         <input placeholder="Password" id="password" type="password" class="validate" />
-
-
-        <label for="experience">How many years of babysitting experience do you have?</label>
-
-        <label for="education">My education level is...</label>
-
-        <label for="cpr">Are you certified in CPR?</label>
-
-        <label for="transport">Can you provide your own transportation?</label>
-
-        <label for="smoking">Do you use tobacco or nicotine products?</label>
-
-        <a class="waves-effect waves-light btn-large">Cancel</a>
-        <a class="waves-effect waves-light btn-large">Submit</a>
+        <p>
+            <input placeholder="Username" id="username" type="text" class="validate" /><br />
+            <input placeholder="Email Address" id="email" type="email" class="validate" /><br />
+            <input placeholder="Password" id="password" type="password" class="validate" />
+        </p>
+        <p>
+            <input placeholder="Street Address" id="street_address" type="text" class="validate" /><br />
+            <input placeholder="City" id="city" type="text" class="validate" />, Texas<br />
+        <input placeholder="Zipcode" id="zipcode" type="text" class="validate" />
+        </p>
+        <p>
+            <label for="dob">When were you born?</label><br />
+            <input placeholder="mm/dd/yyyy" id="dob" type="text" class="validate" />
+        </p>
+        <p>
+            <label for="experience">How many years of babysitting experience do you have?</label><br />
+            <input placeholder="Number of years" id="experience" type="text" class="validate" />
+        </p>
+        <p>
+            <label for="education">My education level is..</label>
+            <select id="education">
+                <option value="1">High school student</option>
+                <option value="2">High school diploma</option>
+                <option value="3">In college or college graduate</option>
+            </select>
+        </p>
+        <p>
+            <label for="cpr">Are you certified in CPR?</label><br />
+            <input type="checkbox" id="cpr" />
+            <span>Yes, I have a CPR card</span>
+        </p>
+        <p>
+            <label for="transport">Can you provide your own transportation?</label><br />
+            <input type="checkbox" id="transport" />
+            <span>Yes, I have my own transportation</span>
+        </p>
+        <p>
+            <label for="smoking">Do you use tobacco or nicotine products?</label><br />
+            <input type="checkbox" id="smoking" />
+            <span>Yes, I use tobacco or nicotine products</span>
+        </p>
+        <p>
+            <a class="waves-effect waves-light btn-large">Cancel</a>
+            <a class="waves-effect waves-light btn-large">Submit</a>
+        </p>
     </form>
 </div>
 
