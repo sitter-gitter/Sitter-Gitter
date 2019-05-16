@@ -42,8 +42,8 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}")
     public String showReview(@PathVariable Long id, Model model) {
-        User author = usersRepo.findOne(1L);
-        model.addAttribute("author", author);
+        User parent = usersRepo.findOne(1L);
+        model.addAttribute("parent", parent);
         //////////////////////////// refactor ^
 
         Review review = reviewsRepo.findOne(id);
