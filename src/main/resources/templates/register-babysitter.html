@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:replace="testing/sgpartials :: header" />
+
+<body>
+<nav th:replace="testing/sgpartials :: navbar"> </nav>
+
+<div class="container">
+    Register as a New Babysitter
+    <form method="post" action="ENTER ACTION HERE">
+        <p>
+            <input placeholder="First Name" id="first_name" type="text" class="validate" />
+            <input placeholder="Last Name" id="last_name" type="text" class="validate" />
+        </p>
+        <input placeholder="Email Address" id="email" type="email" class="validate" />
+        <input placeholder="Username" id="username" type="text" class="validate" />
+         <input placeholder="Password" id="password" type="password" class="validate" />
+
+
+        <label for="experience">How many years of babysitting experience do you have?</label>
+
+        <label for="education">My education level is...</label>
+
+        <label for="cpr">Are you certified in CPR?</label>
+
+        <label for="transport">Can you provide your own transportation?</label>
+
+        <label for="smoking">Do you use tobacco or nicotine products?</label>
+
+        <a class="waves-effect waves-light btn-large">Cancel</a>
+        <a class="waves-effect waves-light btn-large">Submit</a>
+    </form>
+</div>
+
+
+<th:block th:replace="testing/sgpartials :: footer" />
+
+</body>
+</html>

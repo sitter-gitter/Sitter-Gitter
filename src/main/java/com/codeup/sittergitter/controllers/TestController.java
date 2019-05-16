@@ -1,7 +1,6 @@
 package com.codeup.sittergitter.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -18,9 +17,9 @@ public class TestController {
   @GetMapping("/test/register")
   public String RegisterTest() { return "register"; }
 
-  @GetMapping("/test/parent")
-  public String RegisterParent() { return "parent"; }
+  @GetMapping("/test/register-parent")
+  public String RegisterParent() { return "register-parent"; }
 
-  @GetMapping("/test/babysitter")
-  public String RegisterBabysitter() { return "babysitter"; }
+  @GetMapping("/test/register-babysitter")
+  public String RegisterBabysitter() { return "register-babysitter"; }
 }
