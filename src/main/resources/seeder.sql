@@ -1,7 +1,7 @@
 USE sitter_gitter_db;
 
 
-INSERT INTO users (username, email, password, first_name, last_name, street_addr, city, state, zipcode, is_babysitter)
+INSERT INTO users (username, email, password, first_name, last_name, street_addr, city, state, zip_code, is_babysitter)
 VALUES ('Dwight', 'dwight@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Dwight', 'Bemisderfer', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
        ('Erik', 'erik@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Erik', 'Behnke', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
        ('Mindy', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy', 'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1);
@@ -19,7 +19,7 @@ VALUES ('2019-05-31 18:00:00', '2019-05-31 21:00:00', 1, 3, 1),
        ('2019-06-05 16:00:00', '2019-06-05 22:00:00', 1, 3, 2);
 
 
-INSERT INTO reviews (title, body, is_recommmended, babysitter_id, parent_id)
+INSERT INTO reviews (title, body, is_recommended, babysitter_id, parent_id)
 VALUES ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 3, 1),
        ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t even bother to clean up the mess. Horrid!', 0, 3, 2);
 
@@ -36,5 +36,5 @@ VALUES ('2019-05-31 12:00:00', '2019-05-31 23:00:00', 3),
        ('2019-06-08 12:00:00', '2019-06-08 23:00:00', 3);
 
 
-INSERT INTO specifications (is_smoker, hascprtraining, has_transportation, years_of_experience, education_level, birthdate, babysitter_id)
+INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, education_level, birthdate, babysitter_id)
 VALUES (0, 1, 1, 5, 3, '1993-10-23', 3);
