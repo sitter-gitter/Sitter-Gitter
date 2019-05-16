@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="header">
+    <title>Sitter Gitter - connecting babysitters and parents!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="sitter-gitter.css" />
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+
+    <!-- Materialize Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Materialize Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="sitter-gitter.css" />
+</head>
+
+<body>
+<nav th:fragment="navbar">
+    <div class="nav-wrapper"><div class="container">
+        <div class="row">
+            <div class="col s5">
+                <a href="/home" class="brand-logo" id="logo">Sitter Gitter</a>
+            </div>
+            <div class="col s7">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/home"><i class="fas fa-home"></i></a></li>
+                    <li><a href="/reviews"><i class="fas fa-comments"></i></a></li>
+                    <li>
+                        <span sec:authorize="isAuthenticated()"></span>
+                        <a href="/reviews/create">
+                            <i class="fas fa-plus"></i></a>
+                    </li>
+                    <li><a href="/users"><i class="fas fa-users"></i></a></li>
+
+                    <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+                    <li sec:authorize="isAnonymous()"><a href="/sign-up">Sign Up</a></li>
+
+                    <li sec:authorize="isAuthenticated()" style="display: inline;">
+                        <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+            <span sec:authorize="isAuthenticated()"
+                  th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
+                  style="display: inline-block;"></span>
+                            <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable" style="display:
+                inline;">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</nav>
+
+
+
+</body>
+</html>
