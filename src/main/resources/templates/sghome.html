@@ -1,22 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Sitter Gitter - connecting babysitters and parents!</title>
-    <!--<th:block th:replace="fragments/testing/sghead :: header" />-->
-</head>
+<th:block th:replace="testing/sgpartials :: header" />
 
 <body>
-<nav th:insert="fragments/testing/sgpartials :: navbar">
+<nav th:replace="testing/sgpartials :: navbar">
 
 </nav>
 
 <div class="container">
-    <h1>Hello Sitter Gitter</h1>
+    <h3>Hello Sitter Gitter</h3>
 </div>
 
 <footer>
-    <!--<th:block th:replace="fragments/testing/sgfooter :: footer" />-->
+    <th:block th:replace="testing/sgpartials :: footer" />
 </footer>
 
 </body>

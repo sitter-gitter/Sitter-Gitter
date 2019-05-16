@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="header">
+<th:block th:fragment="header">
+<head>
     <title>Sitter Gitter - connecting babysitters and parents!</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" />
     <!-- Local CSS -->
     <link rel="stylesheet" href="sitter-gitter.css" />
-
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
           integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
@@ -18,8 +21,9 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Materialize Compiled and minified JavaScript -->
-    <link rel="stylesheet" href="sitter-gitter.css" />
+
 </head>
+</th:block>
 
 <body>
 <th:block th:fragment="navbar">
