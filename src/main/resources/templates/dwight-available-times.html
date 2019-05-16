@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Available Times')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+    <div class="row">
+        <ul>
+            <li th:each="time : ${available-times}">
+                <p th:text="${time.start}"></p>
+                <p th:text="${time.end}"></p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
+
