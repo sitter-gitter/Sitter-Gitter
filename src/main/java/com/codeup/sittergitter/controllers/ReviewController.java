@@ -2,8 +2,7 @@ package com.codeup.sittergitter.controllers;
 
 import com.codeup.sittergitter.models.Review;
 import com.codeup.sittergitter.models.User;
-import com.codeup.sittergitter.repositories.ReviewRepository;
-import com.codeup.sittergitter.repositories.UserRepository;
+import com.codeup.sittergitter.repositories.*;
 import com.codeup.sittergitter.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,12 +17,20 @@ public class ReviewController {
 
     private final ReviewRepository reviewsRepo;
     private final UserRepository usersRepo;
+    private final AppointmentRepository appointmentsRepo;
+    private final AvailableTimeRepository availableTimesRepo;
+    private final ChildRepository childrenRepo;
+    private final SpecificationRepository specificationsRepo;
     private EmailService emailService; // uncomment email section in postmapping for reviews/create in order to
     // function //
 
-    public ReviewController(ReviewRepository reviewsRepo, UserRepository usersRepo, EmailService emailService) {
+    public ReviewController(ReviewRepository reviewsRepo, UserRepository usersRepo, AppointmentRepository appointmentsRepo, AvailableTimeRepository availableTimesRepo, ChildRepository childrenRepo, SpecificationRepository specificationsRepo, EmailService emailService) {
         this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
+        this.appointmentsRepo = appointmentsRepo;
+        this.availableTimesRepo = availableTimesRepo;
+        this.childrenRepo = childrenRepo;
+        this.specificationsRepo = specificationsRepo;
         this.emailService = emailService;
     }
 
