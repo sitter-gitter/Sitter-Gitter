@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="testing/sgpartials :: header" />
+<body>
+    <nav th:replace="testing/sgpartials :: navbar"></nav>
+
+    <main>
+        <div class="container">
+            I am a...<br />
+            <a class="waves-effect waves-light btn-large" href="/test/babysitter">Babysitter</a>
+            <a class="waves-effect waves-light btn-large" href="/test/parent">Parent</a>
+        </div>
+    </main>
+
+<!--  M A T E R I A L I Z E  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
