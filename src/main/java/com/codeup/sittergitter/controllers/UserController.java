@@ -42,7 +42,7 @@ public class UserController {
     }
 
     // READ ONE PROFILE
-    @GetMapping("profile/{username}")
+    @GetMapping("/profile/{username}")
     public String showUser(@PathVariable String username, Model model){
         User user = usersRepo.findByUsername(username);
         model.addAttribute("user", user);
@@ -69,9 +69,13 @@ public class UserController {
     }
 
     // DELETE PROFILE
-    @GetMapping("/profile/{username}/delete")
-    public String deleteUser(@PathVariable String username) {
-        usersRepo.delete(usersRepo.findByUsername(username));
+    @PostMapping("/profile/{username}/delete")
+    public String deleteUser(@PathVariable User username) {
+//        usersRepo.delete(usersRepo.findByUsername(username));
+//        username.getId();
+        usersRepo.delete(username.getId());
+//        usersRepo.findOne()
+//        usersRepo.deleteByUsername(username);
         return "redirect:/profile/index";
     }
 
