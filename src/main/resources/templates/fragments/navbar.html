@@ -14,6 +14,7 @@
 </div>
     <div class="col s7">
     <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/contact">/contact</a></li>
         <li><a href="/"><i class="fas fa-home"></i></a></li>
         <li>
             <a href="/reviews"><i class="fas fa-comments"></i></a></li>
@@ -25,7 +26,7 @@
         <li><a href="/profile/index"><i class="fas fa-users"></i></a></li>
 
         <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/register">Sign Up</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/register">Register</a></li>
 
         <li sec:authorize="isAuthenticated()" style="display: inline;">
             <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
