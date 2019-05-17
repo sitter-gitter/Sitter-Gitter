@@ -79,9 +79,9 @@ CREATE TABLE specifications
   has_cpr_training TINYINT,
   has_transportation TINYINT,
   years_of_experience INT,
-  education_level ENUM('Still in high school', 'High School Degree', 'College Degree'),
   birthdate DATE,
   babysitter_id INT UNSIGNED   NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (babysitter_id) REFERENCES users (id) ON DELETE CASCADE
 );
+#   education_level ENUM('Still in high school', 'High School Degree', 'College Degree'),
