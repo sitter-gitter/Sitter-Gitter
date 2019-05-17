@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form th:action="@{/register}" th:method="POST" th:object="${user}">
+    <form th:action="@{/register/babysitter}" th:method="POST" th:object="${user}">
         <div class="row">
             <div class="input-field col s12">
                 <input id="username" th:field="*{username}" name="username" class="validate" type="text" />
@@ -36,14 +36,14 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="firstName" th:field="*{firstName}" name="firstName" type="text" class="validate" />
-                <label for="email">First Name</label>
+                <input id="firstName" type="text" th:field="*{firstName}" />
+                <label for="firstName">First Name</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="lastName" th:field="*{lastName}" name="lastName" type="text" class="validate" />
-                <label for="email">Last Name</label>
+                <input id="lastName" type="text" th:field="*{lastName}" />
+                <label for="lastName">Last Name</label>
             </div>
         </div>
         <div class="row">
@@ -61,7 +61,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <input id="zipCode" type="text" th:field="*{zipCode}" />
-                <label for="city">Zip Code</label>
+                <label for="zipCode">Zip Code</label>
             </div>
         </div>
         <div class="row">
