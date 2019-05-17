@@ -100,14 +100,12 @@ public class UserController {
         user.setZipCode(zipCode);
         user.setIsBabysitter(false);
 
-        String hash = passwordEncoder.encode(password);
-        user.setPassword(hash);
-
+            String hash = passwordEncoder.encode(password);
+            user.setPassword(hash);
         usersRepo.save(user);
 
         return "redirect:/login";
     }
-
 
     // READ ALL PROFILES
     @GetMapping("/profile/index")

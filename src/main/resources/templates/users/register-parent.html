@@ -66,6 +66,36 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
+                <input id="firstName" th:field="*{firstName}" name="firstName" type="text" class="validate" />
+                <label for="email">First Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="lastName" th:field="*{lastName}" name="lastName" type="text" class="validate" />
+                <label for="email">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="street_address" type="text" th:field="*{streetAddr}" />
+                <label for="street_address">Street Address</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="city" type="text" th:field="*{city}" />
+                <label for="city">City</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="zipCode" type="text" th:field="*{zipCode}" />
+                <label for="city">Zip Code</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
                 <input value="Sign me up!" type="submit" class="btn blue-grey darken-2" />
             </div>
         </div>
