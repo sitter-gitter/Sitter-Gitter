@@ -34,6 +34,9 @@ public class TestDwightController {
     @PostMapping("/dwight-babysitter-choose-times")
     public String createAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         AvailableTime newAvailTime = new AvailableTime();
+        if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
+            return "redirect:/babysitter-choices-null-values";
+        }
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
         Timestamp startTimeStamp = Timestamp.valueOf(startTime);
         String endTime = datepicker2 + " " + timepicker2 + ":00.000";
@@ -57,6 +60,9 @@ public class TestDwightController {
     @PostMapping("/dwight-choose-times-error")
     public String recreateAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         AvailableTime newAvailTime = new AvailableTime();
+        if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
+            return "redirect:/babysitter-choices-null-values";
+        }
         if (makeStartTimeStamp(datepicker1, timepicker1).after(makeEndTimeStamp(datepicker2, timepicker2))) {
             return "redirect:/babysitter-choices-error";
         }
@@ -65,6 +71,29 @@ public class TestDwightController {
         newAvailTime.setBabysitter(usersRepo.findOne(3L));
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
+    }
+
+    @GetMapping("/babysitter-choices-null-values")
+    public String babysitterChoices3(Model model) {
+        model.addAttribute("datetime", new AvailableTime());
+        return "dwight-choose-times-null-values";
+    }
+
+    @PostMapping("/dwight-choose-times-null-values")
+    public String redoAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
+        AvailableTime newAvailTime = new AvailableTime();
+        if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
+            return "redirect:/babysitter-choices-null-values";
+        }
+        if (makeStartTimeStamp(datepicker1, timepicker1).after(makeEndTimeStamp(datepicker2, timepicker2))) {
+            return "redirect:/babysitter-choices-error";
+        }
+        newAvailTime.setStart(makeStartTimeStamp(datepicker1, timepicker1));
+        newAvailTime.setEnd(makeEndTimeStamp(datepicker2, timepicker2));
+        newAvailTime.setBabysitter(usersRepo.findOne(3L));
+        availableTimesRepo.save(newAvailTime);
+        return "redirect:/available-times";
+
     }
 
     public Timestamp makeStartTimeStamp(String date, String time) {
