@@ -45,7 +45,6 @@ public class TestDwightController {
         newAvailTime.setEnd(endTimeStamp);
         newAvailTime.setBabysitter(usersRepo.findOne(3L));
         availableTimesRepo.save(newAvailTime);
-        System.out.println(startTimeStamp + " " + endTimeStamp);
         return "redirect:/available-times";
     }
 
@@ -58,37 +57,28 @@ public class TestDwightController {
     @PostMapping("/dwight-choose-times-error")
     public String recreateAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         AvailableTime newAvailTime = new AvailableTime();
-        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
-        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
-        String endTime = datepicker2 + " " + timepicker2 + ":00.000";
-        Timestamp endTimeStamp = Timestamp.valueOf(endTime);
-        if (startTimeStamp.after(endTimeStamp)) {
+        if (makeStartTimeStamp(datepicker1, timepicker1).after(makeEndTimeStamp(datepicker2, timepicker2))) {
             return "redirect:/babysitter-choices-error";
         }
-        newAvailTime.setStart(startTimeStamp);
-        newAvailTime.setEnd(endTimeStamp);
+        newAvailTime.setStart(makeStartTimeStamp(datepicker1, timepicker1));
+        newAvailTime.setEnd(makeEndTimeStamp(datepicker2, timepicker2));
         newAvailTime.setBabysitter(usersRepo.findOne(3L));
         availableTimesRepo.save(newAvailTime);
-        System.out.println(startTimeStamp + " " + endTimeStamp);
         return "redirect:/available-times";
     }
 
-//    public Timestamp makeStartTimeStamp(String datepicker1, String timepicker1) {
-//        AvailableTime newAvailTime = new AvailableTime();
-//        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
-//        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
-//
-//        if (startTimeStamp.after(endTimeStamp)) {
-//            return "redirect:/babysitter-choices-error";
-//        }
-//
-//    public Timestamp makeEndTimeStamp(String datepicker2, String timepicker2) {
-//            String endTime = datepicker2 + " " + timepicker2 + ":00.000";
-//            Timestamp endTimeStamp = Timestamp.valueOf(endTime);
-//            return endTimeStamp;
-//        }
-//
-//    }
+    public Timestamp makeStartTimeStamp(String date, String time) {
+        String startTime = date + " " + time + ":00.000";
+        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
+        return startTimeStamp;
+    }
+
+    public Timestamp makeEndTimeStamp(String date, String time) {
+            String endTime = date + " " + time + ":00.000";
+            Timestamp endTimeStamp = Timestamp.valueOf(endTime);
+            return endTimeStamp;
+    }
+
 
 //    @GetMapping("/available-times/{id}/display")
 //    public String displayAvailTimesById(@PathVariable long id, Model model) {
