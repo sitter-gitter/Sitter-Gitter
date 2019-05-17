@@ -21,9 +21,15 @@ public class TestDwightController {
 
     @GetMapping("/available-times")
     public String displayAllAvailTimes(Model model) {
-        model.addAttribute("available-times", availableTimesRepo.findAll());
+        model.addAttribute("available_times", availableTimesRepo.findAll());
         return "dwight-available-times";
     }
+
+//    @GetMapping("/")
+//    public String welcome2(Model model) {
+//        model.addAttribute("datetime", new Review());
+//        return "home";
+//    }
 
 //    @GetMapping("/available-times/{id}/display")
 //    public String displayAvailTimesById(@PathVariable long id, Model model) {
