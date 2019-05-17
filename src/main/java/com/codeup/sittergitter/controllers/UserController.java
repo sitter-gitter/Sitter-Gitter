@@ -1,11 +1,17 @@
 package com.codeup.sittergitter.controllers;
 
+import com.codeup.sittergitter.models.EducationLevel;
+import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.UserRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -99,6 +105,15 @@ public class UserController {
         user.setState("TX");
         user.setZipCode(zipCode);
         user.setIsBabysitter(false);
+//            User user = new User();
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setStreetAddr(streetAddr);
+            user.setCity(city);
+            user.setState("TX");
+            user.setZipCode(zipCode);
 
             String hash = passwordEncoder.encode(password);
             user.setPassword(hash);
