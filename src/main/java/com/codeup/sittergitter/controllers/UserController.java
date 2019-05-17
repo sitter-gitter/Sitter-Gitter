@@ -3,7 +3,7 @@ package com.codeup.sittergitter.controllers;
 import com.codeup.sittergitter.models.EducationLevel;
 import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
-import com.codeup.sittergitter.repositories.UserRepository;
+import com.codeup.sittergitter.repositories.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,22 +16,37 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    private final ReviewRepository reviewsRepo;
     private final UserRepository usersRepo;
-    private PasswordEncoder passwordEncoder;
+    private final AppointmentRepository appointmentsRepo;
+    private final AvailableTimeRepository availableTimesRepo;
+    private final ChildRepository childrenRepo;
+    private final SpecificationRepository specificationsRepo;
+    private final PasswordEncoder passwordEncoder;
 
-
-    public UserController(UserRepository usersRepo, PasswordEncoder passwordEncoder) {
+    public UserController(ReviewRepository reviewsRepo, UserRepository usersRepo, AppointmentRepository appointmentsRepo, AvailableTimeRepository availableTimesRepo, ChildRepository childrenRepo, SpecificationRepository specificationsRepo, PasswordEncoder passwordEncoder) {
+        this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
+        this.appointmentsRepo = appointmentsRepo;
+        this.availableTimesRepo = availableTimesRepo;
+        this.childrenRepo = childrenRepo;
+        this.specificationsRepo = specificationsRepo;
         this.passwordEncoder = passwordEncoder;
     }
 
+//    public UserController(UserRepository usersRepo, PasswordEncoder passwordEncoder) {
+//        this.usersRepo = usersRepo;
+//        this.passwordEncoder = passwordEncoder;
+//    }
+
     // CREATE PROFILE GET
     @GetMapping("/register")
-    public String showSignupForm(Model model){
+    public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
         return "users/select-acct-type";
     }
 
+<<<<<<< HEAD
     @GetMapping("/register/parent")
     public String showParentForm(Model model){
         model.addAttribute("user", new User());
@@ -43,15 +58,6 @@ public class UserController {
         model.addAttribute("user", new User());
         return "users/register-babysitter";
     }
-
-    // CREATE PROFILE POST
-//    @PostMapping("/register")
-//    public String saveUser(@ModelAttribute User user){
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        usersRepo.save(user);
-//        return "redirect:/login";
-//    }
 
     // CREATE PROFILE POST
     @PostMapping("/register/babysitter")
@@ -105,18 +111,9 @@ public class UserController {
         user.setState("TX");
         user.setZipCode(zipCode);
         user.setIsBabysitter(false);
-//            User user = new User();
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setUsername(username);
-            user.setEmail(email);
-            user.setStreetAddr(streetAddr);
-            user.setCity(city);
-            user.setState("TX");
-            user.setZipCode(zipCode);
 
-            String hash = passwordEncoder.encode(password);
-            user.setPassword(hash);
+        String hash = passwordEncoder.encode(password);
+        user.setPassword(hash);
         usersRepo.save(user);
 
         return "redirect:/login";
@@ -131,7 +128,7 @@ public class UserController {
 
     // READ ONE PROFILE
     @GetMapping("/profile/{username}")
-    public String showUser(@PathVariable String username, Model model){
+    public String showUser(@PathVariable String username, Model model) {
         User user = usersRepo.findByUsername(username);
         // get appts for user with appts repo
         model.addAttribute("user", user);
