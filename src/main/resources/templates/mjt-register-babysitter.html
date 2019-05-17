@@ -9,7 +9,7 @@
 <div class="container">
     Register as a New Babysitter
     <form th:action="@{/test/mindy/register-babysitter}" th:method="POST" th:object="${user}">
-        <input type="hidden" th:field="*{isBabysitter}" name="user_role" value="true" />
+        <input type="hidden" th:field="*{isBabysitter}" value="1" />
 
         <input placeholder="First Name" th:field="*{firstName}" id="first_name" type="text" class="validate" /><br />
         <input placeholder="Last Name" th:field="*{lastName}" id="last_name" type="text" class="validate" />
