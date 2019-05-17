@@ -10,16 +10,18 @@
         <h1>Available Hours</h1>
         <ul>
             <li th:each="time : ${available_times}">
-                <div class="card grey hoverable">
-                    <div class="card-content white-text" style="padding-top: 16px;">
-                        <a th:href="@{'/available-times/'+${time.id}}">
+                <div th:if="${time.start > current_time}" >
+                    <div class="card grey hoverable">
+                        <div class="card-content white-text" style="padding-top: 16px;">
+                            <a th:href="@{'/available-times/'+ ${time.id}}">
                             <span class="card-title">
                                 From:
-                                <span th:text="${time.start}" ></span><br/>
+                                <span th:text="${time.start}"></span><br/>
                                 To:
-                                <span th:text="${time.end}" ></span>
+                                <span th:text="${time.end}"></span>
                             </span>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
