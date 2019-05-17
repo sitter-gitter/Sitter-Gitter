@@ -7,10 +7,21 @@
 
 <div class="container">
     <div class="row">
+        <h1>Available Hours</h1>
         <ul>
-            <li th:each="time : ${available-times}">
-                <p th:text="${time.start}"></p>
-                <p th:text="${time.end}"></p>
+            <li th:each="time : ${available_times}">
+                <div class="card grey hoverable">
+                    <div class="card-content white-text" style="padding-top: 16px;">
+                        <a th:href="@{'/available-times/'+${time.id}}">
+                            <span class="card-title">
+                                From:
+                                <span th:text="${time.start}" ></span><br/>
+                                To:
+                                <span th:text="${time.end}" ></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
@@ -21,4 +32,3 @@
 <th:block th:replace="fragments/includes :: includes" />
 </body>
 </html>
-
