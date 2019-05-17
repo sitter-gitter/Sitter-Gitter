@@ -1,7 +1,7 @@
 package com.codeup.sittergitter.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.lang.String;
 
 @Entity
 @Table(name="specifications")
@@ -10,24 +10,24 @@ public class Specification {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column
     private Boolean isSmoker;
 
-    @Column(nullable = false)
+    @Column
     private Boolean hasCprTraining;
 
-    @Column(nullable = false)
+    @Column
     private Boolean hasTransportation;
 
-    @Column(nullable = false)
+    @Column
     private Integer yearsOfExperience;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private EducationLevel educationLevel;
 
-    @Column(nullable = false)
-    private Date birthdate;
+    @Column
+    private String birthdate;
 
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
@@ -35,7 +35,7 @@ public class Specification {
 
     public Specification() {}
 
-    public Specification(Boolean isSmoker, Boolean hasCPRTraining, Boolean hasTransportation, Integer yearsOfExperience, EducationLevel educationLevel, Date birthdate, User user) {
+    public Specification(Boolean isSmoker, Boolean hasCPRTraining, Boolean hasTransportation, Integer yearsOfExperience, EducationLevel educationLevel, String birthdate, User user) {
         this.isSmoker = isSmoker;
         this.hasCprTraining = hasCPRTraining;
         this.hasTransportation = hasTransportation;
@@ -93,11 +93,11 @@ public class Specification {
         this.educationLevel = educationLevel;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 

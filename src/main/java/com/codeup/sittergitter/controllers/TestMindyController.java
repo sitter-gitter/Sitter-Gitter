@@ -18,6 +18,6 @@ public class TestMindyController {
   @GetMapping("/test/mindy/register-parent")
   public String registerParent() { return "mjt-register-parent"; }
 
-  @GetMapping("/test/mindy/register-babysitter")
-  public String registerBabysitter() { return "mjt-register-babysitter"; }
+//  @GetMapping("/test/mindy/register-babysitter")
+//  public String registerBabysitter() { return "mjt-register-babysitter"; }
 }
