@@ -1,34 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Register for Sitter Gitter - the app that connects babysitters and parents!</title>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link rel="stylesheet" href="sitter-gitter.css">
 </head>
-<body>
 
-<!--  N A V B A R  -->
+<body>
 <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo center" id="logo">Sitter Gitter</a>
+        <a href="index.html" class="brand-logo center" id="logo">Sitter Gitter</a>
     </div>
 </nav>
-
-
 <main>
     <div class="container">
-        <div class="card center-align"><div class="card-content">
-            <span class="card-title"> I am a...</span>
-            <a class="waves-effect waves-light btn-large" href="babysitter-registrar.html">Babysitter</a>
-            <a class="waves-effect waves-light btn-large" href="parent-registrar.html">Parent</a>
-        </div></div>
+        <div class="card"><div class="card-content">
+            <span class="card-title center-align">Register New Account</span>
+
+            <form method="post" action="ENTER ACTION HERE">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="First Name" id="first_name" type="text" class="validate">
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Last Name" id="last_name" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Email Address" id="email" type="email" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Username" id="username" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Password" id="password" type="password" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Street Address" id="street_address" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="City" id="city" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        Texas
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Zipcode" id="zipcode" type="text" class="validate">
+                    </div>
+                </div>
+                <!--  B U T T O N S  -->
+                <div class="card-action">
+                    <div class="row center-align">
+                        <div class="input-field col s12">
+                            <a class="waves-effect waves-light btn-large" href="babysitter-or-parent.html">Cancel</a>
+                            <a class="waves-effect waves-light btn-large" href="babysitter-details-form.html">Submit</a>
+            </form>
+        </div>
+        </div>
+    </div>
     </div>
 </main>
-
-<!--  M A T E R I A L I Z E  -->
+<!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

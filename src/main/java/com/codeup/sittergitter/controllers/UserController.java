@@ -32,11 +32,9 @@ public class UserController {
         return "users/register";
     }
 
-    @GetMapping("/test/mindy/register-babysitter")
-    public String registerBabysitter(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("specifications", new Specification());
-        return "mjt-register-babysitter";
+    @GetMapping("/test/mindy/register")
+    public String showRegisterForm(Model model) {
+        return "mjt-register";
     }
 
     // CREATE PROFILE POST
@@ -49,21 +47,33 @@ public class UserController {
     }
 
     // CREATE PROFILE POST
-    @PostMapping("/test/mindy/register-babysitter")
-    public String createBabysitter(@ModelAttribute User user, @RequestParam Integer yearsOfExperience, @RequestParam Boolean isSmoker, @RequestParam Boolean hasCprTraining, @RequestParam Boolean hasTransportation, @RequestParam EducationLevel educationLevel, @RequestParam String birthdate) {
-        String hash = passwordEncoder.encode(user.getPassword());
+    @PostMapping("/test/mindy/register")
+    public String createUser(Model model,
+        @RequestParam(name = "firstName") String firstName,
+        @RequestParam(name = "lastName") String lastName,
+        @RequestParam(name = "username") String username,
+        @RequestParam(name = "password") String password,
+        @RequestParam(name = "email") String email,
+        @RequestParam(name = "streetAddr") String streetAddr,
+        @RequestParam(name = "city") String city,
+        @RequestParam(name = "zipCode") String zipCode
+    ) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setStreetAddr(streetAddr);
+        user.setCity(city);
+        user.setState('TX');
+        user.setZipCode(zipCode);
+
+        String hash = passwordEncoder.encode(password);
         user.setPassword(hash);
+
         usersRepo.save(user);
-//        List<Specification> newSpecification = new ArrayList<Specification>();
-//        newSpecification.add(yearsOfExperience);
-//
-//        newSpecification.setBirthdate(birthdate);
-//        newSpecification.setEducationLevel(educationLevel);
-//        newSpecification.setHasCPRTraining(hasCprTraining);
-//        newSpecification.setYearsOfExperience(yearsOfExperience);
-//        newSpecification.setSmoker(isSmoker);
-//        newSpecification.setHasTransportation(hasTransportation);
-        return "redirect:/login";
+
+        return "redirect:/mjt-home";
     }
 
     // READ ALL PROFILES

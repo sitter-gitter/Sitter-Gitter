@@ -11,12 +11,12 @@ public class TestMindyController {
 
   @GetMapping("/test/mindy/login")
   public String loginTest() { return "mjt-login"; }
-
-  @GetMapping("/test/mindy/register")
-  public String registerTest() { return "mjt-register"; }
-
-  @GetMapping("/test/mindy/register-parent")
-  public String registerParent() { return "mjt-register-parent"; }
+//
+//  @GetMapping("/test/mindy/register")
+//  public String registerTest() { return "mjt-register"; }
+//
+//  @GetMapping("/test/mindy/register-parent")
+//  public String registerParent() { return "mjt-register-parent"; }
 
 //  @GetMapping("/test/mindy/register-babysitter")
 //  public String registerBabysitter() { return "mjt-register-babysitter"; }
