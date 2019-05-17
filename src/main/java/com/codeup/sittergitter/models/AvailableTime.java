@@ -1,7 +1,7 @@
 package com.codeup.sittergitter.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 @Entity
 @Table(name="available_times")
 public class AvailableTime {
@@ -9,13 +9,19 @@ public class AvailableTime {
     @GeneratedValue
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date start;
+    @Column
+    private Timestamp start;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date end;
+    @Column
+    private Timestamp end;
+
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column
+//    private Date start;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column
+//    private Date end;
 
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
@@ -23,7 +29,7 @@ public class AvailableTime {
 
     public AvailableTime() {}
 
-    public AvailableTime(Date start, Date end, User babysitter) {
+    public AvailableTime(Timestamp start, Timestamp end, User babysitter) {
         this.start = start;
         this.end = end;
         this.babysitter = babysitter;
@@ -37,19 +43,19 @@ public class AvailableTime {
         this.id = id;
     }
 
-    public Date getStart() {
+    public Timestamp getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(Timestamp start) {
         this.start = start;
     }
 
-    public Date getEnd() {
+    public Timestamp getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(Timestamp end) {
         this.end = end;
     }
 
