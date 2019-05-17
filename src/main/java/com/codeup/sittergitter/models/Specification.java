@@ -21,9 +21,12 @@ public class Specification {
     @Column
     private Integer yearsOfExperience;
 
-    @Enumerated(EnumType.STRING)
-    @Column
-    private EducationLevel educationLevel;
+//    @Enumerated(EnumType.STRING)
+//    @Column
+//    private EducationLevel educationLevel;
+//    EducationLevel e1 = EducationLevel.stillInHighSchool;
+//    EducationLevel e2 = EducationLevel.highSchoolDegree;
+//    EducationLevel e3 = EducationLevel.collegeDegree;
 
     @Column
     private String birthdate;
@@ -34,15 +37,25 @@ public class Specification {
 
     public Specification() {}
 
-    public Specification(Boolean isSmoker, Boolean hasCPRTraining, Boolean hasTransportation, Integer yearsOfExperience, EducationLevel educationLevel, String birthdate, User user) {
+    public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation, Integer yearsOfExperience, String birthdate, User babysitter) {
         this.isSmoker = isSmoker;
-        this.hasCprTraining = hasCPRTraining;
+        this.hasCprTraining = hasCprTraining;
         this.hasTransportation = hasTransportation;
         this.yearsOfExperience = yearsOfExperience;
-        this.educationLevel = educationLevel;
         this.birthdate = birthdate;
-        this.babysitter = user;
+        this.babysitter = babysitter;
     }
+
+    //    public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation, Integer yearsOfExperience,
+//                         EducationLevel educationLevel, String birthdate, User user) {
+//        this.isSmoker = isSmoker;
+//        this.hasCprTraining = hasCprTraining;
+//        this.hasTransportation = hasTransportation;
+//        this.yearsOfExperience = yearsOfExperience;
+//        this.educationLevel = educationLevel;
+//        this.birthdate = birthdate;
+//        this.babysitter = user;
+//    }
 
     public long getId() {
         return id;
@@ -60,12 +73,12 @@ public class Specification {
         isSmoker = smoker;
     }
 
-    public Boolean getHasCPRTraining() {
+    public Boolean getHasCprTraining() {
         return hasCprTraining;
     }
 
-    public void setHasCPRTraining(Boolean hasCPRTraining) {
-        this.hasCprTraining = hasCPRTraining;
+    public void setHasCprTraining(Boolean hasCprTraining) {
+        this.hasCprTraining = hasCprTraining;
     }
 
     public Boolean getHasTransportation() {
@@ -84,13 +97,13 @@ public class Specification {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    public EducationLevel getEducationLevel() {
-        return educationLevel;
-    }
-
-    public void setEducationLevel(EducationLevel educationLevel) {
-        this.educationLevel = educationLevel;
-    }
+//    public EducationLevel getEducationLevel() {
+//        return educationLevel;
+//    }
+//
+//    public void setEducationLevel(EducationLevel educationLevel) {
+//        this.educationLevel = educationLevel;
+//    }
 
     public String getBirthdate() {
         return birthdate;

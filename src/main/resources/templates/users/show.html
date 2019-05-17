@@ -33,15 +33,105 @@
     </div>
 
     <div>
-        <ul>
-            Reviews:
-            <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
-                <a th:href="@{'/reviews/' + ${review.id}}">
-                    <span th:text="${review.title}"></span>
-                </a>|
-            </li>
-        </ul>
+    <ul>
+        Reviews made:
+        <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
+            <a th:href="@{'/reviews/' + ${review.id}}">
+                <span th:text="${review.title}"></span>
+            </a>|
+        </li>
+    </ul>
     </div>
+    <hr />
+
+    <!-- erik additions 0517:1020 -->
+    <!-- child stuff -->
+    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
+    <ul>
+        Children (only works in parent profiles):
+        <br />
+        <li th:each="child : ${user.children}">
+            Name:
+            <span th:text="${child.name}"></span>
+            <ul>
+                <li>
+                    DOB:
+                    <span th:text="${child.birthdate}"></span>
+                </li>
+                <li>
+                    Notes:
+                    <p>
+                        <span th:text="${child.special_note}"></span>
+                    </p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+
+    <!-- appointment stuff -->
+    <!--<div class="col s12 m4">-->
+    <!--<ul>-->
+        <!--Appointments:-->
+        <!--<li th:each="appointment : ${user.appointments}"  style="list-style: none; display:-->
+        <!--inline;">-->
+
+            <!--Babysitter name:-->
+            <!--<span th:text="${appointment.start}"></span>-->
+            <!--<ul>-->
+
+                <!--<li>-->
+                    <!--Start:-->
+                    <!--<span th:text="${appointment.start}"></span>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--End:-->
+                    <!--<span th:text="${appointment.end}"></span>-->
+                <!--</li>-->
+
+            <!--</ul>-->
+        <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!-- specifications stuff -->
+    <div th:if="${user.getisBabysitter()}" class="col s12 m4">
+    <ul>
+        Specifications (only works for babysitter profiles):
+        <br />
+        <li th:each="specification : ${user.specifications}">
+            Babysitter id/name: ?
+            <!--<span th:text="${specification.id}"></span>-->
+            <ul>
+                <li>
+                    dob:
+                    <span th:text="${specification.birthdate}"></span>
+                </li>
+                <li>
+                    education:
+                    <!--<span th:text="${specification.educationLevel}"></span>-->
+                </li>
+                <li>
+                    has cpr:
+                    <span th:text="${specification.hasCprTraining}"></span>
+                </li>
+                <li>
+                    is smoker:
+                    <span th:text="${specification.smoker}"></span>
+                </li>
+                <li>
+                    years of exp:
+                    <span th:text="${specification.yearsOfExperience}"></span>
+                </li>
+                <li>
+                    has transportation:
+                    <span th:text="${specification.hasTransportation}"></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    </div>
+    <!-- end additions -->
 
 </div>
 </div>

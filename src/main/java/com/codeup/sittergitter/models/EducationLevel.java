@@ -6,8 +6,5 @@ public enum EducationLevel {
     highSchoolDegree,
     collegeDegree;
 
-    EducationLevel() {
-    }
-
 }
 
