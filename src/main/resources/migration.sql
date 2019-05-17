@@ -85,5 +85,3 @@ CREATE TABLE specifications
   PRIMARY KEY (id),
   FOREIGN KEY (babysitter_id) REFERENCES users (id) ON DELETE CASCADE
 );
-
-

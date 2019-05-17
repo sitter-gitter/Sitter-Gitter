@@ -11,4 +11,8 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
     //void save(Appointment appointment);
     //void delete(Appointment appointment);
 
+
+   // get appts by sitter
+    // get appts by gitter
+
 }

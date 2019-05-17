@@ -1,5 +1,7 @@
 package com.codeup.sittergitter.models;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class User {
     private String zipCode;
 
     @Column
-    private boolean isBabysitter = false;
+    private Boolean isBabysitter;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<Review> reviews;
@@ -53,7 +55,8 @@ public class User {
     }
 
   
-    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
+                String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
 
         this.username = username;
         this.password = password;
@@ -70,7 +73,8 @@ public class User {
         this.specifications = specifications;
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
+                String city, String state, String zipCode, Boolean isBabysitter) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -83,7 +87,8 @@ public class User {
         this.isBabysitter = isBabysitter;
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, boolean isBabysitter, List<Review> reviews) {
+    public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
+                String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -204,11 +209,11 @@ public class User {
         this.zipCode = zipCode;
     }
 
-    public boolean getisBabysitter() {
+    public Boolean getisBabysitter() {
         return isBabysitter;
     }
 
-    public void setIsBabysitter(boolean isBabysitter) {
+    public void setIsBabysitter(Boolean isBabysitter) {
         this.isBabysitter = isBabysitter;
     }
 

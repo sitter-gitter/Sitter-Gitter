@@ -4,6 +4,7 @@ import com.codeup.sittergitter.models.EducationLevel;
 import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.UserRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class UserController {
 
     private final UserRepository usersRepo;
     private PasswordEncoder passwordEncoder;
+
 
     public UserController(UserRepository usersRepo, PasswordEncoder passwordEncoder) {
         this.usersRepo = usersRepo;
@@ -75,6 +77,7 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String showUser(@PathVariable String username, Model model){
         User user = usersRepo.findByUsername(username);
+        // get appts for user with appts repo
         model.addAttribute("user", user);
         return "users/show";
     }
