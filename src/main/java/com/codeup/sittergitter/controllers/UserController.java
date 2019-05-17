@@ -33,7 +33,6 @@ public class UserController {
     @GetMapping("/test/mindy/register-babysitter")
     public String registerBabysitter(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("specifications", new Specification());
         return "mjt-register-babysitter";
     }
 
@@ -48,20 +47,11 @@ public class UserController {
 
     // CREATE PROFILE POST
     @PostMapping("/test/mindy/register-babysitter")
-    public String createBabysitter(@ModelAttribute User user, @RequestParam Integer yearsOfExperience, @RequestParam Boolean isSmoker, @RequestParam Boolean hasCprTraining, @RequestParam Boolean hasTransportation, @RequestParam EducationLevel educationLevel, @RequestParam String birthdate) {
+    public String createBabysitter(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersRepo.save(user);
-//        List<Specification> newSpecification = new ArrayList<Specification>();
-//        newSpecification.add(yearsOfExperience);
-//
-//        newSpecification.setBirthdate(birthdate);
-//        newSpecification.setEducationLevel(educationLevel);
-//        newSpecification.setHasCPRTraining(hasCprTraining);
-//        newSpecification.setYearsOfExperience(yearsOfExperience);
-//        newSpecification.setSmoker(isSmoker);
-//        newSpecification.setHasTransportation(hasTransportation);
-        return "redirect:/login";
+        return "mjt-register-babysitter-specifications";
     }
 
     // READ ALL PROFILES
