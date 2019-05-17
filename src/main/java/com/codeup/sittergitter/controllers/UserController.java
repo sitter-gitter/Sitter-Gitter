@@ -1,11 +1,16 @@
 package com.codeup.sittergitter.controllers;
 
+import com.codeup.sittergitter.models.EducationLevel;
+import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -25,12 +30,37 @@ public class UserController {
         return "users/register";
     }
 
+    @GetMapping("/test/mindy/register-babysitter")
+    public String registerBabysitter(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("specifications", new Specification());
+        return "mjt-register-babysitter";
+    }
+
     // CREATE PROFILE POST
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user){
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersRepo.save(user);
+        return "redirect:/login";
+    }
+
+    // CREATE PROFILE POST
+    @PostMapping("/test/mindy/register-babysitter")
+    public String createBabysitter(@ModelAttribute User user, @RequestParam Integer yearsOfExperience, @RequestParam Boolean isSmoker, @RequestParam Boolean hasCprTraining, @RequestParam Boolean hasTransportation, @RequestParam EducationLevel educationLevel, @RequestParam String birthdate) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        usersRepo.save(user);
+//        List<Specification> newSpecification = new ArrayList<Specification>();
+//        newSpecification.add(yearsOfExperience);
+//
+//        newSpecification.setBirthdate(birthdate);
+//        newSpecification.setEducationLevel(educationLevel);
+//        newSpecification.setHasCPRTraining(hasCprTraining);
+//        newSpecification.setYearsOfExperience(yearsOfExperience);
+//        newSpecification.setSmoker(isSmoker);
+//        newSpecification.setHasTransportation(hasTransportation);
         return "redirect:/login";
     }
 

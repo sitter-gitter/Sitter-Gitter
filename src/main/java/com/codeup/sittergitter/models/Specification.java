@@ -1,6 +1,8 @@
 package com.codeup.sittergitter.models;
 
 import javax.persistence.*;
+import java.lang.String;
+
 
 @Entity
 @Table(name="specifications")

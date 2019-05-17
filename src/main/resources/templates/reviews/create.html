@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form th:action="@{/reviews/create}" th:method="review" th:object="${review}">
+    <form th:action="@{/reviews/create}" th:method="post" th:object="${review}">
         <div class="row">
             <div class="input-field col s12">
                 <input th:field="*{title}" id="title" class="validate" name="title" type="text" />
