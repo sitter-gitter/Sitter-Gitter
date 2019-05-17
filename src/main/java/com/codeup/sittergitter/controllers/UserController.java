@@ -65,7 +65,7 @@ public class UserController {
         user.setEmail(email);
         user.setStreetAddr(streetAddr);
         user.setCity(city);
-        user.setState('TX');
+        user.setState("TX");
         user.setZipCode(zipCode);
 
         String hash = passwordEncoder.encode(password);
