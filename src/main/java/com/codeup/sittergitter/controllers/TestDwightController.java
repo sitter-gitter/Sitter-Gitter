@@ -6,15 +6,7 @@ import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Controller
 public class TestDwightController {
@@ -34,26 +26,69 @@ public class TestDwightController {
     }
 
     @GetMapping("/make-babysitter-choices")
-    public String welcome2(Model model) {
+    public String babysitterChoices1(Model model) {
         model.addAttribute("datetime", new AvailableTime());
         return "dwight-babysitter-choose-times";
     }
 
     @PostMapping("/dwight-babysitter-choose-times")
-    @ResponseBody
-    public String createAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) throws ParseException {
+    public String createAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         AvailableTime newAvailTime = new AvailableTime();
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
         Timestamp startTimeStamp = Timestamp.valueOf(startTime);
         String endTime = datepicker2 + " " + timepicker2 + ":00.000";
         Timestamp endTimeStamp = Timestamp.valueOf(endTime);
+        if (startTimeStamp.after(endTimeStamp)) {
+            return "redirect:/babysitter-choices-error";
+        }
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
         newAvailTime.setBabysitter(usersRepo.findOne(3L));
         availableTimesRepo.save(newAvailTime);
         System.out.println(startTimeStamp + " " + endTimeStamp);
-        return "Successful.";
+        return "redirect:/available-times";
     }
+
+    @GetMapping("/babysitter-choices-error")
+    public String babysitterChoices2(Model model) {
+        model.addAttribute("datetime", new AvailableTime());
+        return "dwight-choose-times-error";
+    }
+
+    @PostMapping("/dwight-choose-times-error")
+    public String recreateAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
+        AvailableTime newAvailTime = new AvailableTime();
+        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
+        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
+        String endTime = datepicker2 + " " + timepicker2 + ":00.000";
+        Timestamp endTimeStamp = Timestamp.valueOf(endTime);
+        if (startTimeStamp.after(endTimeStamp)) {
+            return "redirect:/babysitter-choices-error";
+        }
+        newAvailTime.setStart(startTimeStamp);
+        newAvailTime.setEnd(endTimeStamp);
+        newAvailTime.setBabysitter(usersRepo.findOne(3L));
+        availableTimesRepo.save(newAvailTime);
+        System.out.println(startTimeStamp + " " + endTimeStamp);
+        return "redirect:/available-times";
+    }
+
+//    public Timestamp makeStartTimeStamp(String datepicker1, String timepicker1) {
+//        AvailableTime newAvailTime = new AvailableTime();
+//        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
+//        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
+//
+//        if (startTimeStamp.after(endTimeStamp)) {
+//            return "redirect:/babysitter-choices-error";
+//        }
+//
+//    public Timestamp makeEndTimeStamp(String datepicker2, String timepicker2) {
+//            String endTime = datepicker2 + " " + timepicker2 + ":00.000";
+//            Timestamp endTimeStamp = Timestamp.valueOf(endTime);
+//            return endTimeStamp;
+//        }
+//
+//    }
 
 //    @GetMapping("/available-times/{id}/display")
 //    public String displayAvailTimesById(@PathVariable long id, Model model) {
