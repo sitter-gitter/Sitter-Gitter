@@ -32,23 +32,14 @@ public class UserController {
         return "users/register";
     }
 
-    @GetMapping("/test/mindy/register")
-    public String showRegisterForm(Model model) {
-        return "mjt-register";
-    }
+//    @GetMapping("/test/mindy/register")
+//    public String showRegisterForm(Model model) {
+//        return "mjt-register";
+//    }
 
     // CREATE PROFILE POST
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        usersRepo.save(user);
-        return "redirect:/login";
-    }
-
-    // CREATE PROFILE POST
-    @PostMapping("/test/mindy/register")
-    public String createUser(Model model,
+    public String saveUser(@ModelAttribute User user,
         @RequestParam(name = "firstName") String firstName,
         @RequestParam(name = "lastName") String lastName,
         @RequestParam(name = "username") String username,
@@ -58,23 +49,51 @@ public class UserController {
         @RequestParam(name = "city") String city,
         @RequestParam(name = "zipCode") String zipCode
     ) {
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setStreetAddr(streetAddr);
-        user.setCity(city);
-        user.setState('TX');
-        user.setZipCode(zipCode);
+//            User user = new User();
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setStreetAddr(streetAddr);
+            user.setCity(city);
+            user.setState("TX");
+            user.setZipCode(zipCode);
 
-        String hash = passwordEncoder.encode(password);
-        user.setPassword(hash);
-
+            String hash = passwordEncoder.encode(password);
+            user.setPassword(hash);
         usersRepo.save(user);
-
-        return "redirect:/mjt-home";
+        return "redirect:/login";
     }
+
+    // CREATE PROFILE POST
+//    @PostMapping("/test/mindy/register")
+//    public String createUser(Model model,
+//        @RequestParam(name = "firstName") String firstName,
+//        @RequestParam(name = "lastName") String lastName,
+//        @RequestParam(name = "username") String username,
+//        @RequestParam(name = "password") String password,
+//        @RequestParam(name = "email") String email,
+//        @RequestParam(name = "streetAddr") String streetAddr,
+//        @RequestParam(name = "city") String city,
+//        @RequestParam(name = "zipCode") String zipCode
+//    ) {
+//        User user = new User();
+//        user.setFirstName(firstName);
+//        user.setLastName(lastName);
+//        user.setUsername(username);
+//        user.setEmail(email);
+//        user.setStreetAddr(streetAddr);
+//        user.setCity(city);
+//        user.setState("TX");
+//        user.setZipCode(zipCode);
+//
+//        String hash = passwordEncoder.encode(password);
+//        user.setPassword(hash);
+//
+//        usersRepo.save(user);
+//
+//        return "redirect:/mjt-home";
+//    }
 
     // READ ALL PROFILES
     @GetMapping("/profile/index")
