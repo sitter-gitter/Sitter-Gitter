@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/test/mindy/register")
-    public String showRegisterForm() {
+    public String showRegisterForm(Model model) {
         return "mjt-register";
     }
 
@@ -46,7 +46,7 @@ public class UserController {
 
     // CREATE PROFILE POST
     @PostMapping("/test/mindy/register")
-    public String createUser(
+    public String createUser(Model model,
         @RequestParam(name = "firstName") String firstName,
         @RequestParam(name = "lastName") String lastName,
         @RequestParam(name = "username") String username,
@@ -63,7 +63,7 @@ public class UserController {
         user.setEmail(email);
         user.setStreetAddr(streetAddr);
         user.setCity(city);
-        user.setState("TX");
+        user.setState('TX');
         user.setZipCode(zipCode);
 
         String hash = passwordEncoder.encode(password);
