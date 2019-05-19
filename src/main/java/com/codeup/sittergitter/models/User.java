@@ -1,6 +1,7 @@
 package com.codeup.sittergitter.models;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -40,6 +41,7 @@ public class User {
     private String zipCode;
 
     @Column
+    @Type(type = "numeric_boolean")
     private Boolean isBabysitter;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
