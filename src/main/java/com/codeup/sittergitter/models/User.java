@@ -1,6 +1,5 @@
 package com.codeup.sittergitter.models;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;

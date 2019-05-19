@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="appointments")
 public class Appointment {
+
     @Id @GeneratedValue
     private Long id;
 

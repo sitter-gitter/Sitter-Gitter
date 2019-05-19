@@ -1,5 +1,7 @@
 package com.codeup.sittergitter.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.lang.String;
 
@@ -7,17 +9,21 @@ import java.lang.String;
 @Entity
 @Table(name="specifications")
 public class Specification {
+
     @Id
     @GeneratedValue
     private long id;
 
     @Column
+    @Type(type = "numeric_boolean")
     private Boolean isSmoker;
 
     @Column
+    @Type(type = "numeric_boolean")
     private Boolean hasCprTraining;
 
     @Column
+    @Type(type = "numeric_boolean")
     private Boolean hasTransportation;
 
     @Column
