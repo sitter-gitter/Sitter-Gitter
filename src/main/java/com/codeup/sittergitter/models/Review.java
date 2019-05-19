@@ -1,18 +1,25 @@
 package com.codeup.sittergitter.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="reviews")
 public class Review {
+
     @Id @GeneratedValue
     private Long id;
+
     @Column(nullable = false, length = 100, name = "title")
     private String title;
+
     @Column(nullable = false)
     private String body;
+
     @Column
-    private Boolean is_recommended;
+    @Type(type = "numeric_boolean")
+    private Boolean isRecommended;
 
     @ManyToOne
 //    @JoinColumns({
@@ -63,10 +70,10 @@ public class Review {
         this.body = body;
     }
 
-    public Review(String title, String body, Boolean is_recommended, User parent) {
+    public Review(String title, String body, Boolean isRecommended, User parent) {
         this.title = title;
         this.body = body;
-        this.is_recommended = is_recommended;
+        this.isRecommended = isRecommended;
         this.parent = parent;
     }
 
@@ -110,12 +117,12 @@ public class Review {
         this.body = body;
     }
 
-    public Boolean getIs_recommended() {
-        return is_recommended;
+    public Boolean getIsRecommended() {
+        return isRecommended;
     }
 
-    public void setIs_recommended(Boolean is_recommended) {
-        this.is_recommended = is_recommended;
+    public void setIsRecommended(Boolean isRecommended) {
+        this.isRecommended = isRecommended;
     }
 
 }

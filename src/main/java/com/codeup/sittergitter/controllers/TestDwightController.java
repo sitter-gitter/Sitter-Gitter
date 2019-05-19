@@ -32,7 +32,8 @@ public class TestDwightController {
         java.sql.Timestamp currentTimeStamp = new java.sql.Timestamp(now.getTime());
         System.out.println(currentTimeStamp);
         model.addAttribute("current_time", currentTimeStamp);
-        model.addAttribute("available_times", availableTimesRepo.findAll());
+        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+//        model.addAttribute("available_times", availableTimesRepo.findAll());
         return "dwight-available-times";
     }
 
