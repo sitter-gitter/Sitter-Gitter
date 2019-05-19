@@ -1,7 +1,8 @@
 USE sitter_gitter_db;
 
 
-INSERT INTO users (username, email, password, first_name, last_name, street_addr, city, state, zip_code, is_babysitter)
+INSERT INTO users (username, email, password, first_name, last_name, street_addr, city, state, zip_code,
+                   is_babysitter)
 VALUES ('Dwight', 'dwight@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Dwight', 'Bemisderfer', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
        ('Erik', 'erik@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Erik', 'Behnke', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
        ('Mindy', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy', 'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1);

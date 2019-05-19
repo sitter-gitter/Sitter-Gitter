@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Choose Available Times')" /><title></title></head>
+<head><th:block th:replace="fragments/head :: header('Enter Appointment Time')" /><title></title></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 
 <div class="container">
 
-    <h3>Please enter a time range, <span th:text=" ${name}"></span>:</h3>
+    <h3>Please enter an appointment time range, <span th:text=" ${name}"></span>:</h3>
     <div class="row">
         <!--<div th:if="${}">-->
-            <!--Sorry, the end time must come after the start time. Please re-enter.-->
+        <!--Sorry, the end time must come after the start time. Please re-enter.-->
         <!--</div>-->
-        <form th:action="@{/dwight-babysitter-choose-times}" th:method="post" th:object="${datetime}">
+        <form th:action="@{/dwight-parent-choose-times}" th:method="post" th:object="${datetime}">
             <div class="input-field col s12 m3">
                 <input type="text" class="datepicker" name="datepicker1" id="datepicker1" />
                 <label for="datepicker1">Start Date</label>
