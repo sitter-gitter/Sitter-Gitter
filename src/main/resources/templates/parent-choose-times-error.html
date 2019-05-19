@@ -6,13 +6,12 @@
 
 
 <div class="container">
-
-    <h3>This is the home page, welcome <span th:text=" ${name}"></span></h3>
     <div class="row">
         <div>
-        <h2>Sorry, the End Date/Time must come after the Start Date/Time. Please re-enter.</h2>
+            <h2>Sorry, the End Date/Time must come after the Start Date/Time. Please re-enter.</h2>
+            <h3>Please enter time range of appointment, <span th:text=" ${name}"></span>:</h3>
         </div>
-        <form th:action="@{/dwight-choose-times-null-values}" th:method="post" th:object="${datetime}">
+        <form th:action="@{/parent-choose-times-error}" th:method="post" th:object="${datetime}">
             <div class="input-field col s12 m3">
                 <input type="text" class="datepicker" name="datepicker1" id="datepicker1" />
                 <label for="datepicker1">Start Date</label>

@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Enter Appointment Time')" /><title></title></head>
+<head><th:block th:replace="fragments/head :: header('Choose Available Times')" /><title></title></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 
 <div class="container">
-
-    <h3>Please enter time range of appointment, <span th:text=" ${name}"></span>:</h3>
     <div class="row">
-        <!--<div th:if="${}">-->
-        <!--Sorry, the end time must come after the start time. Please re-enter.-->
-        <!--</div>-->
-        <form th:action="@{/dwight-parent-choose-times}" th:method="post" th:object="${datetime}">
+        <div>
+            <h2>Sorry, you cannot leave any of the input fields blank.</h2>
+            <h3>Please enter time range of appointment, <span th:text=" ${name}"></span>:</h3>
+        </div>
+        <form th:action="@{/parent-choose-times-null-values}" th:method="post" th:object="${datetime}">
             <div class="input-field col s12 m3">
                 <input type="text" class="datepicker" name="datepicker1" id="datepicker1" />
                 <label for="datepicker1">Start Date</label>
@@ -29,15 +28,6 @@
                 <input type="text" class="timepicker" name="timepicker2" id="timepicker2" />
                 <label for="timepicker2">End Time</label>
             </div>
-
-            <!--<div class="input-field col s12 m3">-->
-            <!--<input type="text" class="datepicker" name="datepicker2" id="datepicker2" />-->
-            <!--<label for="datepicker2">Date Picker 2</label>-->
-            <!--</div>-->
-            <!--<div class="input-field col s12 m3">-->
-            <!--<input type="text" class="timepicker" name="timepicker2" id="timepicker2" />-->
-            <!--<label for="timepicker2">Time Picker 2</label>-->
-            <!--</div>-->
 
             <button type="submit" class="btn blue-grey darken-2 hoverable">Submit</button>
 
