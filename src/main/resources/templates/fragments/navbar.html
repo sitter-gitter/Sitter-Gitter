@@ -3,28 +3,26 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 
-
 <th:block th:fragment="navbar" id="Navbar1">
 
-<div class="nav-wrapper indigo">
-<div class="container">
-<div class="row">
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="/available-times">/avail-times</a></li>
+    <li><a href="/make-babysitter-choices">/avail-schedule</a></li>
+    <li><a href="/appointments">/appointments</a></li>
+    <li><a href="/contact">/contact</a></li>
+</ul>
 
-    <div class="col s12 m2">
-        <a href="/" class="brand-logo">Sitter Gitter</a>
-    </div>
-
-    <div class="col s12 m10">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-            <li><a href="/available-times">/avail-times</a></li>
-            <li><a href="/make-babysitter-choices">/avail-schedule</a></li>
-            <li><a href="/appointments">/appointments</a></li>
-            <li><a href="/contact">/contact</a></li>
-
-            <li><a href="/"><i class="fas fa-home"></i></a></li>
-            <li><a href="/reviews"><i class="fas fa-comments"></i></a></li>
-            <li>
+<nav class="nav-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m2">
+                <a href="/" class="brand-logo left" style="font-family: 'Kaushan Script', cursive; color: #F3D250; text-shadow: 3px 3px #5DA2D5">Sitter Gitter</a>
+            </div>
+            <div class="col s12 m10">
+                <ul id="nav-mobile" class="right hide-on-s-and-down">
+                    <li><a href="/"><i class="fas fa-home"></i></a></li>
+                    <li><a href="/reviews"><i class="fas fa-comments"></i></a></li>
+                    <li>
                 <span sec:authorize="isAuthenticated()"></span>
                 <a href="/reviews/create">
                 <i class="fas fa-plus"></i></a>
@@ -43,13 +41,16 @@
                     inline;">Logout</button>
                 </form>
             </li>
-
+            <li>
+                <a class="dropdown-trigger" href="#" data-target="dropdown1">Menu
+                <i class="material-icons right">arrow_drop_down</i></a>
+            </li>
         </ul>
     </div>
 
 </div>
 </div>
-</div>
+</nav>
 
 </th:block>
 
