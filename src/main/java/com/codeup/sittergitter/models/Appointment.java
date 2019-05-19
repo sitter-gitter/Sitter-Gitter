@@ -1,21 +1,30 @@
 package com.codeup.sittergitter.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="appointments")
 public class Appointment {
     @Id @GeneratedValue
     private Long id;
+
     @Column
-    private String start;
+    private Timestamp start;
+
     @Column
-    private String end;
+    private Timestamp end;
+
     @Column
-    private Boolean sitter_approved;
+    @Type(type = "numeric_boolean")
+    private Boolean sitterApproved;
+
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
     private User babysitter;
+
     @ManyToOne
     @JoinColumn(name = "parent_id") // referencedColumnName="id"
     private User parent;
@@ -23,10 +32,10 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String start, String end, Boolean sitter_approved, User babysitter, User parent) {
+    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, User babysitter, User parent) {
         this.start = start;
         this.end = end;
-        this.sitter_approved = sitter_approved;
+        this.sitterApproved = sitterApproved;
         this.babysitter = babysitter;
         this.parent = parent;
     }
@@ -39,28 +48,28 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getStart() {
+    public Timestamp getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(Timestamp start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public Timestamp getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Timestamp end) {
         this.end = end;
     }
 
-    public Boolean getSitter_approved() {
-        return sitter_approved;
+    public Boolean getSitterApproved() {
+        return sitterApproved;
     }
 
-    public void setSitter_approved(Boolean sitter_approved) {
-        this.sitter_approved = sitter_approved;
+    public void setSitterApproved(Boolean sitterApproved) {
+        this.sitterApproved = sitterApproved;
     }
 
     public User getBabysitter() {
