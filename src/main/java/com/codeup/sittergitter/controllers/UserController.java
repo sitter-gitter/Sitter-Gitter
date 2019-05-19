@@ -46,7 +46,6 @@ public class UserController {
         return "users/select-acct-type";
     }
 
-<<<<<<< HEAD
     @GetMapping("/register/parent")
     public String showParentForm(Model model){
         model.addAttribute("user", new User());
