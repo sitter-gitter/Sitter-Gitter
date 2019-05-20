@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class TestDwightController {
     private final AvailableTimeRepository availableTimesRepo;
     private final AppointmentRepository appointmentsRepo;
     private final UserRepository usersRepo;
+    private List<AvailableTime> availBabysitters;
 
     public TestDwightController(AvailableTimeRepository availableTimesRepo, AppointmentRepository appointmentsRepo, UserRepository usersRepo) {
         this.availableTimesRepo = availableTimesRepo;
@@ -118,7 +120,7 @@ public class TestDwightController {
     }
 
     @PostMapping("/dwight-parent-choose-times")
-    public String enterApptTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
+    public String enterApptTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2, Model model) {
         Appointment newApptTime = new Appointment();
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/parent-choices-null-values";
@@ -130,14 +132,14 @@ public class TestDwightController {
         if (startTimeStamp.after(endTimeStamp)) {
             return "redirect:/parent-choices-error";
         }
-        System.out.println(checkTimeAvailability(startTimeStamp, endTimeStamp));
+        availBabysitters = checkTimeAvailability(startTimeStamp, endTimeStamp);
 //        newApptTime.setStart(startTimeStamp);
 //        newApptTime.setEnd(endTimeStamp);
 //        newApptTime.setBabysitter(usersRepo.findOne(3L));
 //        newApptTime.setParent(usersRepo.findOne(1L));
 //        newApptTime.setSitterApproved(false);
 //        appointmentsRepo.save(newApptTime);
-        return "redirect:/available-times";
+        return "redirect:/available-babysitters";
     }
 
     @GetMapping("/parent-choices-error")
@@ -188,6 +190,23 @@ public class TestDwightController {
         return "redirect:/available-times";
     }
 
+    @GetMapping("/available-babysitters")
+    public String displayAvailBabysitters(Model model) {
+        model.addAttribute("babysitters", availBabysitters);
+        return "dwight-available-babysitters";
+    }
+
+    @PostMapping("/dwight-available-babysitters")
+    public String chooseBabysitter(@RequestParam long id) {
+        //        newApptTime.setStart(startTimeStamp);
+//        newApptTime.setEnd(endTimeStamp);
+//        newApptTime.setBabysitter(usersRepo.findOne(3L));
+//        newApptTime.setParent(usersRepo.findOne(1L));
+//        newApptTime.setSitterApproved(false);
+//        appointmentsRepo.save(newApptTime);
+        return "redirect:/available-times";
+    }
+
 
     public Timestamp makeStartTimeStamp(String date, String time) {
         String startTime = date + " " + time + ":00.000";
@@ -201,8 +220,8 @@ public class TestDwightController {
         return endTimeStamp;
     }
 
-    public boolean checkTimeAvailability(Timestamp apptFrom, Timestamp apptTo) {
-        boolean test = false;
+    public List<AvailableTime> checkTimeAvailability(Timestamp apptFrom, Timestamp apptTo) {
+        List<AvailableTime> babysitters = new ArrayList<>();
         List<AvailableTime> availableTimes = availableTimesRepo.findAll();
         for (AvailableTime time : availableTimes) {
             Timestamp startTime = time.getStart();
@@ -212,12 +231,12 @@ public class TestDwightController {
                     (apptFrom.before(endTime) || apptFrom.equals(endTime))) &&
                     ((apptTo.after(startTime) || (apptTo.equals(startTime))) &&
                     ((apptTo.before(endTime)) || apptTo.equals(endTime)))) {
-                return true;
-            };
+                babysitters.add(time);
+            }
 
         }
 //        if ((fromTime.isAfter(startTime)))
-        return test;
+        return babysitters;
     }
 
 //    @GetMapping("/available-times/{id}/display")
