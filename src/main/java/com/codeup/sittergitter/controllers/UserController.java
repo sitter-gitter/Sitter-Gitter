@@ -43,12 +43,24 @@ public class UserController {
     @GetMapping("/register")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-        return "users/register";
+        return "users/select-acct-type";
+    }
+
+    @GetMapping("/register/parent")
+    public String showParentForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/register-parent";
+    }
+
+    @GetMapping("/register/babysitter")
+    public String showBabysitterForm(Model model){
+        model.addAttribute("user", new User());
+        return "users/register-babysitter";
     }
 
     // CREATE PROFILE POST
-    @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user,
+    @PostMapping("/register/babysitter")
+    public String createBabysitter(Model model,
         @RequestParam(name = "firstName") String firstName,
         @RequestParam(name = "lastName") String lastName,
         @RequestParam(name = "username") String username,
@@ -58,18 +70,51 @@ public class UserController {
         @RequestParam(name = "city") String city,
         @RequestParam(name = "zipCode") String zipCode
     ) {
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setUsername(username);
-            user.setEmail(email);
-            user.setStreetAddr(streetAddr);
-            user.setCity(city);
-            user.setState("TX");
-            user.setZipCode(zipCode);
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setStreetAddr(streetAddr);
+        user.setCity(city);
+        user.setState("TX");
+        user.setZipCode(zipCode);
+        user.setIsBabysitter(true);
 
-            String hash = passwordEncoder.encode(password);
-            user.setPassword(hash);
+        String hash = passwordEncoder.encode(password);
+        user.setPassword(hash);
+
         usersRepo.save(user);
+
+        return "redirect:/login";
+    }
+
+    @PostMapping("/register/parent")
+    public String createParent(Model model,
+         @RequestParam(name = "firstName") String firstName,
+         @RequestParam(name = "lastName") String lastName,
+         @RequestParam(name = "username") String username,
+         @RequestParam(name = "password") String password,
+         @RequestParam(name = "email") String email,
+         @RequestParam(name = "streetAddr") String streetAddr,
+         @RequestParam(name = "city") String city,
+         @RequestParam(name = "zipCode") String zipCode
+    ) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setStreetAddr(streetAddr);
+        user.setCity(city);
+        user.setState("TX");
+        user.setZipCode(zipCode);
+        user.setIsBabysitter(false);
+
+        String hash = passwordEncoder.encode(password);
+        user.setPassword(hash);
+        usersRepo.save(user);
+
         return "redirect:/login";
     }
 

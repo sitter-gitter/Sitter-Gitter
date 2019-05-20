@@ -1,0 +1,42 @@
+html {
+    font-family: 'Kaushan Script', cursive !important;
+}
+body {
+    background-color: #ECECEC;
+}
+nav {
+    margin-bottom: 3em !important;
+}
+
+.brand-logo {
+    font-family: 'Kaushan Script', cursive !important;
+    color: #F3D250 !important;
+    text-shadow: 3px 3px #5DA2D5;
+}
+
+#splash-image {
+    width: 50%;
+    height: 50%;
+}
+
+html {
+    background: #eeeeee;
+    color: #212121;
+}
+
+.card i, .card a {
+    color: #3f51b5;
+}
+
+.card i:hover, .card a:hover {
+    color: #1a237e;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+footer ul li {
+    list-style: none;
+    display: inline;
+}
