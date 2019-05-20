@@ -6,34 +6,18 @@
 
 
 <div class="container">
-    <img src="././images/babysitter2.jpg" style="width:40%; height: 40%"
-    alt="Sitter Gitter" />
-    <h3>This is the home page, welcome <span th:text=" ${name}"></span></h3>
-    <div class="row">
-            <form th:action="@{/home}" th:method="review" th:object="${datetime}">
-                <div class="input-field col s12 m3">
-                    <input th:field="*{title}" type="text" class="datepicker" name="datepicker1" id="datepicker1" />
-                    <label for="datepicker1">Date Picker 1</label>
-                </div>
-                <div class="input-field col s12 m3">
-                    <input th:field="*{body}" type="text" class="timepicker" name="timepicker1" id="timepicker1" />
-                    <label for="timepicker1">Time Picker 1</label>
-                </div>
 
-                <!--<div class="input-field col s12 m3">-->
-                    <!--<input type="text" class="datepicker" name="datepicker2" id="datepicker2" />-->
-                    <!--<label for="datepicker2">Date Picker 2</label>-->
-                <!--</div>-->
-                <!--<div class="input-field col s12 m3">-->
-                    <!--<input type="text" class="timepicker" name="timepicker2" id="timepicker2" />-->
-                    <!--<label for="timepicker2">Time Picker 2</label>-->
-                <!--</div>-->
-
-                    <button type="submit" class="btn blue-grey darken-2 hoverable">Submit</button>
-
-            </form>
-
+<div class="row">
+    <div class="col s12">
+            <img src="././images/babysitter2.jpg" style="width:40%; height: 40%" alt="Sitter Gitter" />
     </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        home page
+    </div>
+</div>
+
 
 </div>
 

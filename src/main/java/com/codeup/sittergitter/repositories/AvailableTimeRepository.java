@@ -18,5 +18,10 @@ public interface AvailableTimeRepository extends CrudRepository<AvailableTime, L
 
     List<AvailableTime> findByOrderByStartAsc();
 
+//    List<AvailableTime> findByOrOrderByEndAsc();
+
+
+
+
     List<AvailableTime> findAvailableTimesByBabysitter_Id(Long id);
 }

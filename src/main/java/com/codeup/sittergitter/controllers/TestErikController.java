@@ -1,23 +1,79 @@
-//package com.codeup.sittergitter.controllers;
-//
-//import com.codeup.sittergitter.models.User;
-//import com.codeup.sittergitter.repositories.UserRepository;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
-//
-//@Controller
-//public class TestErikController {
-//
+package com.codeup.sittergitter.controllers;
+
+import com.codeup.sittergitter.models.AvailableTime;
+import com.codeup.sittergitter.models.Review;
+import com.codeup.sittergitter.models.User;
+import com.codeup.sittergitter.repositories.AppointmentRepository;
+import com.codeup.sittergitter.repositories.AvailableTimeRepository;
+import com.codeup.sittergitter.repositories.UserRepository;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+public class TestErikController {
+
+    private final AvailableTimeRepository availableTimesRepo;
+    private final AppointmentRepository appointmentsRepo;
+    private final UserRepository usersRepo;
+
+    public TestErikController(AvailableTimeRepository availableTimesRepo, AppointmentRepository appointmentsRepo,
+                              UserRepository usersRepo) {
+        this.availableTimesRepo = availableTimesRepo;
+        this.appointmentsRepo = appointmentsRepo;
+        this.usersRepo = usersRepo;
+    }
+
+    @PostMapping("/available-times/{id}/edit")
+    public String editAvailTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
+        availableTimeToBeEdited.setBabysitter(usersRepo.findOne(1L));
+        availableTimesRepo.save(availableTimeToBeEdited);
+        return "redirect:/reviews/" + availableTimeToBeEdited.getId();
+    }
+
+    @PostMapping("/available-times/{id}/delete")
+    public String deleteAvailTime(@PathVariable Long id){
+        availableTimesRepo.delete(id);
+        return "redirect:/available-times";
+    }
+
+
+}
+
 //    private final UserRepository usersRepo;
+//    private final AvailableTimeRepository availRepo;
 //    private PasswordEncoder passwordEncoder;
 //
-//    public TestErikController(UserRepository usersRepo, PasswordEncoder passwordEncoder) {
+//    public TestErikController(UserRepository usersRepo, PasswordEncoder passwordEncoder, AvailableTimeRepository availRepo) {
 //        this.usersRepo = usersRepo;
 //        this.passwordEncoder = passwordEncoder;
+//        this.availRepo = availRepo;
 //    }
 //
+//    @GetMapping("/erik")
+////    @ResponseBody
+//    public String asdf(){
+//        List<AvailableTime> startTimes = availRepo.findByOrderByStartAsc();
+//
+//        StringUtils.join(startTimes, "|");
+//
+//        System.out.println(startTimes);
+////        for (time : startTimes) {
+////
+////        }
+//
+////        startTimes.forEach(time -> System.out.println(time));
+//        return "newPageTemplate";
+//    }
+
+//    public static void main(String[] args) {
+//        AvailableTime availStart = availRepo.findByOrderByStartAsc();
+//
+//    }
 //    // CREATE PROFILE GET
 //    @GetMapping("/register")
 //    public String showSignupForm(Model model){
@@ -85,5 +141,4 @@
 //        //////////// logic for showing only babysitters here /////////////
 //        return "users/sitters";
 //    }
-//
-//}
+
