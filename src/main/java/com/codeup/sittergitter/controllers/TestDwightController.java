@@ -8,8 +8,11 @@ import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 
 
 @Controller
@@ -127,12 +130,13 @@ public class TestDwightController {
         if (startTimeStamp.after(endTimeStamp)) {
             return "redirect:/parent-choices-error";
         }
-        newApptTime.setStart(startTimeStamp);
-        newApptTime.setEnd(endTimeStamp);
-        newApptTime.setBabysitter(usersRepo.findOne(3L));
-        newApptTime.setParent(usersRepo.findOne(1L));
-        newApptTime.setSitterApproved(false);
-        appointmentsRepo.save(newApptTime);
+        System.out.println(checkTimeAvailability(startTimeStamp, endTimeStamp));
+//        newApptTime.setStart(startTimeStamp);
+//        newApptTime.setEnd(endTimeStamp);
+//        newApptTime.setBabysitter(usersRepo.findOne(3L));
+//        newApptTime.setParent(usersRepo.findOne(1L));
+//        newApptTime.setSitterApproved(false);
+//        appointmentsRepo.save(newApptTime);
         return "redirect:/available-times";
     }
 
@@ -197,11 +201,39 @@ public class TestDwightController {
         return endTimeStamp;
     }
 
+    public boolean checkTimeAvailability(Timestamp apptFrom, Timestamp apptTo) {
+        boolean test = false;
+        List<AvailableTime> availableTimes = availableTimesRepo.findAll();
+        for (AvailableTime time : availableTimes) {
+            Timestamp startTime = time.getStart();
+            Timestamp endTime = time.getEnd();
+
+            if (((apptFrom.after(startTime) || apptFrom.equals(startTime)) &&
+                    (apptFrom.before(endTime) || apptFrom.equals(endTime))) &&
+                    ((apptTo.after(startTime) || (apptTo.equals(startTime))) &&
+                    ((apptTo.before(endTime)) || apptTo.equals(endTime)))) {
+                return true;
+            };
+
+        }
+//        if ((fromTime.isAfter(startTime)))
+        return test;
+    }
+
 //    @GetMapping("/available-times/{id}/display")
 //    public String displayAvailTimesById(@PathVariable long id, Model model) {
 //        model.addAttribute("available-times", availableTimesRepository.findAvailableTimesByBabysitter_Id(id));
 //        return "dwight-available-times";
 //    }
+
+    public static void main(String[] args) {
+//        List<AvailableTime> availableTimes = availableTimesRepo.findAll();
+//        for (AvailableTime time : availableTimes) {
+//            System.out.println(time);
+//        }
+
+
+    }
 
 
 }
