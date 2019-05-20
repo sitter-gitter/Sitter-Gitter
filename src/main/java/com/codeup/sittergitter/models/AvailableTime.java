@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="available_times")
 public class AvailableTime {
+
     @Id
     @GeneratedValue
     private Long id;

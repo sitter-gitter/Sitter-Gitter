@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name="children")
 public class Child {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -20,7 +21,7 @@ public class Child {
     private Date birthdate;
 
     @Column
-    private String special_note;
+    private String specialNote;
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
@@ -28,19 +29,11 @@ public class Child {
 
     public Child() {}
 
-    public Child(String name, Date birthdate, String special_note, User parent) {
+    public Child(String name, Date birthdate, String specialNote, User parent) {
         this.name = name;
         this.birthdate = birthdate;
-        this.special_note = special_note;
+        this.specialNote = specialNote;
         this.parent = parent;
-    }
-
-    public String getSpecial_note() {
-        return special_note;
-    }
-
-    public void setSpecial_note(String special_note) {
-        this.special_note = special_note;
     }
 
     public User getParent() {
@@ -76,11 +69,11 @@ public class Child {
     }
 
     public String getSpecialNote() {
-        return special_note;
+        return specialNote;
     }
 
-    public void setSpecialNote(String special_note) {
-        this.special_note = special_note;
+    public void setSpecialNote(String specialNote) {
+        this.specialNote = specialNote;
     }
 
     public User getUser() {
