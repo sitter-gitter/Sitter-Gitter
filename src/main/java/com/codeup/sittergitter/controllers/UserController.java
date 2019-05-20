@@ -171,4 +171,8 @@ public class UserController {
         return "users/sitters";
     }
 
+    @GetMapping("/my-acct")
+    public String loggedIn() {
+        return "users/my-acct";
+    }
 }
