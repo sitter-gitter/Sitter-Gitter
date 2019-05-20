@@ -2,6 +2,7 @@ package com.codeup.sittergitter.controllers;
 
 import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.AvailableTime;
+import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.AppointmentRepository;
 import com.codeup.sittergitter.repositories.AvailableTimeRepository;
 import com.codeup.sittergitter.repositories.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -22,7 +24,10 @@ public class TestDwightController {
     private final AvailableTimeRepository availableTimesRepo;
     private final AppointmentRepository appointmentsRepo;
     private final UserRepository usersRepo;
-    private List<AvailableTime> availBabysitters;
+    private List<AvailableTime> availApptTimes;
+    private Long sitterId;
+    private Timestamp apptStartTime;
+    private Timestamp apptEndTime;
 
     public TestDwightController(AvailableTimeRepository availableTimesRepo, AppointmentRepository appointmentsRepo, UserRepository usersRepo) {
         this.availableTimesRepo = availableTimesRepo;
@@ -121,25 +126,18 @@ public class TestDwightController {
 
     @PostMapping("/dwight-parent-choose-times")
     public String enterApptTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2, Model model) {
-        Appointment newApptTime = new Appointment();
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/parent-choices-null-values";
         }
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
-        Timestamp startTimeStamp = Timestamp.valueOf(startTime);
+        apptStartTime = Timestamp.valueOf(startTime);
         String endTime = datepicker2 + " " + timepicker2 + ":00.000";
-        Timestamp endTimeStamp = Timestamp.valueOf(endTime);
-        if (startTimeStamp.after(endTimeStamp)) {
+        apptEndTime = Timestamp.valueOf(endTime);
+        if (apptStartTime.after(apptEndTime)) {
             return "redirect:/parent-choices-error";
         }
-        availBabysitters = checkTimeAvailability(startTimeStamp, endTimeStamp);
-//        newApptTime.setStart(startTimeStamp);
-//        newApptTime.setEnd(endTimeStamp);
-//        newApptTime.setBabysitter(usersRepo.findOne(3L));
-//        newApptTime.setParent(usersRepo.findOne(1L));
-//        newApptTime.setSitterApproved(false);
-//        appointmentsRepo.save(newApptTime);
-        return "redirect:/available-babysitters";
+        availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
+        return "redirect:/dwight-available-babysitters";
     }
 
     @GetMapping("/parent-choices-error")
@@ -150,20 +148,18 @@ public class TestDwightController {
 
     @PostMapping("/parent-choose-times-error")
     public String recreateApptTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
-        Appointment newApptTime = new Appointment();
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/parent-choices-null-values";
         }
-        if (makeStartTimeStamp(datepicker1, timepicker1).after(makeEndTimeStamp(datepicker2, timepicker2))) {
+        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
+        apptStartTime = Timestamp.valueOf(startTime);
+        String endTime = datepicker2 + " " + timepicker2 + ":00.000";
+        apptEndTime = Timestamp.valueOf(endTime);
+        if (apptStartTime.after(apptEndTime)) {
             return "redirect:/parent-choices-error";
         }
-        newApptTime.setStart(makeStartTimeStamp(datepicker1, timepicker1));
-        newApptTime.setEnd(makeEndTimeStamp(datepicker2, timepicker2));
-        newApptTime.setBabysitter(usersRepo.findOne(3L));
-        newApptTime.setParent(usersRepo.findOne(1L));
-        newApptTime.setSitterApproved(false);
-        appointmentsRepo.save(newApptTime);
-        return "redirect:/available-times";
+        availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
+        return "redirect:/dwight-available-babysitters";
     }
 
     @GetMapping("/parent-choices-null-values")
@@ -174,36 +170,38 @@ public class TestDwightController {
 
     @PostMapping("/parent-choose-times-null-values")
     public String redoApptTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
-        Appointment newApptTime = new Appointment();
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/parent-choices-null-values";
         }
-        if (makeStartTimeStamp(datepicker1, timepicker1).after(makeEndTimeStamp(datepicker2, timepicker2))) {
+        String startTime = datepicker1 + " " + timepicker1 + ":00.000";
+        apptStartTime = Timestamp.valueOf(startTime);
+        String endTime = datepicker2 + " " + timepicker2 + ":00.000";
+        apptEndTime = Timestamp.valueOf(endTime);
+        if (apptStartTime.after(apptEndTime)) {
             return "redirect:/parent-choices-error";
         }
-        newApptTime.setStart(makeStartTimeStamp(datepicker1, timepicker1));
-        newApptTime.setEnd(makeEndTimeStamp(datepicker2, timepicker2));
-        newApptTime.setBabysitter(usersRepo.findOne(3L));
-        newApptTime.setParent(usersRepo.findOne(1L));
-        newApptTime.setSitterApproved(false);
-        appointmentsRepo.save(newApptTime);
-        return "redirect:/available-times";
+        availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
+        return "redirect:/dwight-available-babysitters";
     }
 
-    @GetMapping("/available-babysitters")
-    public String displayAvailBabysitters(Model model) {
-        model.addAttribute("babysitters", availBabysitters);
+    @GetMapping("/dwight-available-babysitters")
+    public String displayAvailBabysitters(Model model, HttpSession session) {
+        model.addAttribute("availAppts", availApptTimes);
         return "dwight-available-babysitters";
     }
 
+
     @PostMapping("/dwight-available-babysitters")
-    public String chooseBabysitter(@RequestParam long id) {
-        //        newApptTime.setStart(startTimeStamp);
-//        newApptTime.setEnd(endTimeStamp);
-//        newApptTime.setBabysitter(usersRepo.findOne(3L));
-//        newApptTime.setParent(usersRepo.findOne(1L));
-//        newApptTime.setSitterApproved(false);
-//        appointmentsRepo.save(newApptTime);
+    public String chooseBabysitter(@RequestParam long sitterid) {
+        Appointment newApptTime = new Appointment();
+        System.out.println(sitterid);
+        sitterId = sitterid;
+        newApptTime.setStart(apptStartTime);
+        newApptTime.setEnd(apptEndTime);
+        newApptTime.setBabysitter(usersRepo.findOne(sitterId));
+        newApptTime.setParent(usersRepo.findOne(1L));
+        newApptTime.setSitterApproved(true);
+        appointmentsRepo.save(newApptTime);
         return "redirect:/available-times";
     }
 
@@ -221,7 +219,7 @@ public class TestDwightController {
     }
 
     public List<AvailableTime> checkTimeAvailability(Timestamp apptFrom, Timestamp apptTo) {
-        List<AvailableTime> babysitters = new ArrayList<>();
+        List<AvailableTime> babysitterTimes = new ArrayList<>();
         List<AvailableTime> availableTimes = availableTimesRepo.findAll();
         for (AvailableTime time : availableTimes) {
             Timestamp startTime = time.getStart();
@@ -231,12 +229,12 @@ public class TestDwightController {
                     (apptFrom.before(endTime) || apptFrom.equals(endTime))) &&
                     ((apptTo.after(startTime) || (apptTo.equals(startTime))) &&
                     ((apptTo.before(endTime)) || apptTo.equals(endTime)))) {
-                babysitters.add(time);
+                babysitterTimes.add(time);
             }
 
         }
-//        if ((fromTime.isAfter(startTime)))
-        return babysitters;
+
+        return babysitterTimes;
     }
 
 //    @GetMapping("/available-times/{id}/display")

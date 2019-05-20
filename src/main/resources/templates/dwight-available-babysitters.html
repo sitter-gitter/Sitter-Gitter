@@ -7,26 +7,30 @@
 
 <div class="container">
     <div class="row">
-        <h1>Available Babysitters</h1>
-        <!--<a th:href="@{'/make-babysitter-choices'}" ><h4>+ Add Times</h4></a>-->
-        <form th:action="@{/dwight-parent-choose-times}" th:method="post" th:object="${babysitters}">
-            <ul>
-                <li th:each="sitter : ${babysitters}">
-                    <div class="card grey hoverable">
-                        <div class="card-content white-text" style="padding-top: 16px;">
-                            <!--<a th:href="@{'/available-times/'+ ${time.id}}">-->
-                            <span class="card-title">
-                                From:
-                                <span th:text="${sitter.start}"></span><br/>
-                                To:
-                                <span th:text="${sitter.end}"></span>
-                            </span>
-                            <!--</a>-->
-                        </div>
+        <h1>The following babysitters are available during your requested timeframe:</h1>
+        <ul>
+            <li th:each="appointment : ${availAppts}">
+                <form th:action="@{/dwight-available-babysitters}" th:method="post">
+                <div class="card grey hoverable">
+                    <div class="card-content white-text" style="padding-top: 16px;">
+                        <!--<a th:href="@{'/available-times/'+ ${time.id}}">-->
+                        <span class="card-title">
+                            Babysitter:
+                            <span th:text="${appointment.babysitter.username}"></span><br/>
+                            From:
+                            <span th:text="${appointment.start}"></span><br/>
+                            To:
+                            <span th:text="${appointment.end}"></span><br/>
+                            <span th:text="${appointment.id}"></span>
+                            <input type="hidden" th:value="${appointment.babysitter.getId()}" name="sitterid"/>
+                            <button>Choose</button>
+                        </span>
+                        <!--</a>-->
                     </div>
-                </li>
-            </ul>
-        </form>
+                </div>
+                </form>
+            </li>
+        </ul>
     </div>
 </div>
 
