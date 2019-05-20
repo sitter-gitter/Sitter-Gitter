@@ -29,15 +29,15 @@ public class TestErikController {
     }
 
     @PostMapping("/available-times/{id}/edit")
-    public String editAvailTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
+    public String editAvailableTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
         availableTimeToBeEdited.setBabysitter(usersRepo.findOne(1L));
         availableTimesRepo.save(availableTimeToBeEdited);
         return "redirect:/reviews/" + availableTimeToBeEdited.getId();
     }
 
-    @PostMapping("/available-times/{id}/delete")
-    public String deleteAvailTime(@PathVariable Long id){
-        availableTimesRepo.delete(id);
+    @GetMapping("/available-times/{id}/delete")
+    public String deleteAvailableTime(@PathVariable Long id){
+        availableTimesRepo.deleteById(id);
         return "redirect:/available-times";
     }
 
