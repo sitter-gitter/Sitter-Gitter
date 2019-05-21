@@ -90,7 +90,13 @@ public class AppointmentController {
         // READ ALL APPOINTMENTS
     @GetMapping("/appointments")
     public String showAppointments(Model model) {
-        model.addAttribute("appointments", appointmentsRepo.findAll());
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+        System.out.println(currentTimeStamp);
+        model.addAttribute("current_time", currentTimeStamp);
+        model.addAttribute("appointments", appointmentsRepo.findByOrderByStartAsc());
+//        model.addAttribute("appointments", appointmentsRepo.findAll());
         return "appointments/showAppointments";
     }
 
@@ -153,6 +159,13 @@ public class AppointmentController {
         newApptTime.setParent(userDB);
         newApptTime.setSitterApproved(true);
         appointmentsRepo.save(newApptTime);
+        return "redirect:/appointments";
+    }
+
+    // DELETE AVAILABLE TIMES
+    @GetMapping("/appointments/{id}/delete")
+    public String deleteAppointment(@PathVariable Long id){
+        appointmentsRepo.deleteById(id);
         return "redirect:/appointments";
     }
 

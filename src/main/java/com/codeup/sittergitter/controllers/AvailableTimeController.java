@@ -70,15 +70,24 @@ public class AvailableTimeController {
         return "availableTimes/showAvailableTimes";
     }
 
-    // UPDATE AVAILABLE TIMES POST
-    @PostMapping("/available-times/{id}/edit")
-    public String editAvailableTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userDB = usersRepo.findOne(sessionUser.getId());
-        availableTimeToBeEdited.setBabysitter(userDB);
-        availableTimesRepo.save(availableTimeToBeEdited);
-        return "redirect:/available-times/";
-    }
+//    //// TURNED EDIT FUNCTIONALITY OFF //////////
+//    @GetMapping("/available-times/{id}/edit")
+//    public String editForm(@PathVariable long id, Model model) {
+//        AvailableTime availableTimes = availableTimesRepo.findOne(id);
+//        model.addAttribute("available_times", availableTimes);
+//        return "availableTimes/editAvailableTimes";
+//    }
+//
+//    // UPDATE AVAILABLE TIMES POST
+//    @PostMapping("/available-times/{id}/edit")
+//    public String editAvailableTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userDB = usersRepo.findOne(sessionUser.getId());
+//        availableTimeToBeEdited.setBabysitter(userDB);
+//        availableTimesRepo.save(availableTimeToBeEdited);
+//        return "redirect:/available-times/";
+//    }
+//    /////////////////////////////////////////////
 
     // DELETE AVAILABLE TIMES
     @GetMapping("/available-times/{id}/delete")

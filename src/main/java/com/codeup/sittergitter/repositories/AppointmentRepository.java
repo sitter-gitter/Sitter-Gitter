@@ -5,12 +5,20 @@ import com.codeup.sittergitter.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Repository
 public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
     //List<Appointment> findAll();
     //Appointment findOne(Long id);
     //void save(Appointment appointment);
     //void delete(Appointment appointment);
+
+    @Transactional
+    void deleteById(Long id);
+
+    List<Appointment> findByOrderByStartAsc();
 
     void getAppointmentsByBabysitterId(Long id);
     void getAppointmentsByParentId(Long id);
