@@ -1,10 +1,12 @@
 package com.codeup.sittergitter.controllers;
 
+import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.EducationLevel;
 import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -129,8 +131,30 @@ public class UserController {
     @GetMapping("/profile/{username}")
     public String showUser(@PathVariable String username, Model model) {
         User user = usersRepo.findByUsername(username);
+
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
+
+
+        Appointment appointment = appointmentsRepo.findOne(sessionUser.getId());
+        String appointmentBabysitterName = appointment.getBabysitter().getUsername();
+        String appointmentParentName = appointment.getBabysitter().getUsername();
+        model.addAttribute("babysitter", appointmentBabysitterName);
+        model.addAttribute("parent", appointmentParentName);
+
+
+        model.addAttribute("appointment", appointment);
+//        reviewToSaved.setParent(userDB);
+
+
+//        userDB.get
+//        List<Appointment> appointmentsList = appointmentsRepo.getAppointmentsByBabysitterId(user.getId());
+//        user.getAppointments();
+//        Appointment sitterAppointments = appointmentsRepo.getAppointmentByBabsitter(user);
+//        Appointment parentAppointments = appointmentsRepo.getAppointmentByParent();
         // get appts for user with appts repo
         model.addAttribute("user", user);
+
         return "users/show";
     }
 

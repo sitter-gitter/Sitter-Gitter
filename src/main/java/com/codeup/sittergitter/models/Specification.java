@@ -1,9 +1,12 @@
 package com.codeup.sittergitter.models;
 
+import javafx.util.converter.DateStringConverter;
 import org.hibernate.annotations.Type;
+import org.joda.time.Years;
 
 import javax.persistence.*;
 import java.lang.String;
+import java.time.LocalDate;
 
 
 @Entity
@@ -64,7 +67,6 @@ public class Specification {
 //        this.birthdate = birthdate;
 //        this.babysitter = user;
 //    }
-
     public long getId() {
         return id;
     }
