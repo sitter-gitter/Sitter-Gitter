@@ -9,7 +9,8 @@ import java.sql.Timestamp;
 @Table(name="appointments")
 public class Appointment {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     @Column

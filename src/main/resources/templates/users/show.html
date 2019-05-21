@@ -12,16 +12,17 @@
     <div class="card grey">
         <div class="card-content white-text" style="padding-bottom: 0; padding-top: 16px;">
             <span class="card-title">
-                Username:
                 <span th:text="${user.username}"></span>
             </span>
             <p>
-                Password:
-                <span th:text="${user.password}"></span>
-            </p>
-            <p>
                 Email:
                 <span th:text="${user.email}"></span>
+            </p>
+            <p>
+                <span th:text="${user.streetAddr}"></span>
+                <span th:text="${user.city}"></span>,
+                <span th:text="${user.state}"></span>
+                <span th:text="${user.zipCode}"></span>
             </p>
             <div class="card-action">
                 <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
@@ -31,24 +32,13 @@
             </div>
         </div>
     </div>
-
-    <div>
-    <ul>
-        Reviews made:
-        <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
-            <a th:href="@{'/reviews/' + ${review.id}}">
-                <span th:text="${review.title}"></span>
-            </a>|
-        </li>
-    </ul>
-    </div>
     <hr />
 
     <!-- erik additions 0517:1020 -->
     <!-- child stuff -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
     <ul>
-        Children (only works in parent profiles):
+        Children:
         <br />
         <li th:each="child : ${user.children}">
             Name:
@@ -69,42 +59,45 @@
     </ul>
     </div>
 
-    <!-- appointment stuff -->
-    <!--<div class="col s12 m4">-->
-    <!--<ul>-->
-        <!--Appointments:-->
-        <!--<li th:each="appointment : ${user.appointments}"  style="list-style: none; display:-->
-        <!--inline;">-->
+    <!-- appointments stuff -->
+    <div class="col s12 m4">
+    <ul>
+        Future Appointments: <br />
+        <li th:each="item : ${appointment}"  style="list-style: none; display: inline;">
 
-            <!--Babysitter name:-->
-            <!--<span th:text="${appointment.start}"></span>-->
-            <!--<ul>-->
 
-                <!--<li>-->
-                    <!--Start:-->
-                    <!--<span th:text="${appointment.start}"></span>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--End:-->
-                    <!--<span th:text="${appointment.end}"></span>-->
-                <!--</li>-->
+            <span th:if="${(user.getisBabysitter() == true)}">
+                Parent: <span th:text="${babysitter}"></span>
+            </span>
+            <span th:if="${(user.getisBabysitter() == false)}">
+                Babysitter name: <span th:text="${babysitter}"></span>
+            </span>
 
-            <!--</ul>-->
-        <!--</li>-->
-    <!--</ul>-->
-    <!--</div>-->
+            <ul>
+
+                <li>
+                    Start:
+                    <span th:text="${item.start}"></span>
+                </li>
+                <li>
+                    End:
+                    <span th:text="${item.end}"></span>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+    </div>
 
     <!-- specifications stuff -->
     <div th:if="${user.getisBabysitter()}" class="col s12 m4">
     <ul>
-        Specifications (only works for babysitter profiles):
+        Specifications:
         <br />
         <li th:each="specification : ${user.specifications}">
-            Babysitter id/name: ?
-            <!--<span th:text="${specification.id}"></span>-->
             <ul>
                 <li>
-                    dob:
+                    DOB:
                     <span th:text="${specification.birthdate}"></span>
                 </li>
                 <!--<li>-->
@@ -131,7 +124,21 @@
         </li>
     </ul>
     </div>
+
+    <div class="col s12 m4">
+        <ul>
+            Reviews made: <br />
+            <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
+                <a th:href="@{'/reviews/' + ${review.id}}">
+                    <span th:text="${review.title}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <!-- end additions -->
+
+
 
 </div>
 </div>

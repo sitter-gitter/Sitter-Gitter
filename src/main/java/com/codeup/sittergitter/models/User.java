@@ -52,10 +52,30 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "babysitter")
     private List<Specification> specifications;
 
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
+//    private List<Appointment> appointments;
+
     public User() {
     }
 
-  
+
+//    public User(String username, String password, String email, String firstName, String lastName, String streetAddr, String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications, List<Appointment> appointments) {
+//        this.username = username;
+//        this.password = password;
+//        this.email = email;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.streetAddr = streetAddr;
+//        this.city = city;
+//        this.state = state;
+//        this.zipCode = zipCode;
+//        this.isBabysitter = isBabysitter;
+//        this.reviews = reviews;
+//        this.children = children;
+//        this.specifications = specifications;
+//        this.appointments = appointments;
+//    }
+
     public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
                 String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
 
@@ -129,6 +149,22 @@ public class User {
         zipCode = copy.zipCode;
         isBabysitter = copy.isBabysitter;
     }
+
+    public Boolean getBabysitter() {
+        return isBabysitter;
+    }
+
+    public void setBabysitter(Boolean babysitter) {
+        isBabysitter = babysitter;
+    }
+
+//    public List<Appointment> getAppointments() {
+//        return appointments;
+//    }
+//
+//    public void setAppointments(List<Appointment> appointments) {
+//        this.appointments = appointments;
+//    }
 
     public Long getId() {
         return id;
