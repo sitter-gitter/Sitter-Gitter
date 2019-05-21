@@ -5,8 +5,28 @@
 
 <th:block th:fragment="navbar" id="Navbar1">
 
-<!-- DROPDOWN LINKS -->
-<ul id="dropdown1" class="dropdown-content">
+<!-- SIDE NAV -->
+<ul class="sidenav" id="mobile-demo">
+    <li>
+        <a href="/"><i class="fas fa-home"></i>Home</a>
+    </li>
+    <li>
+        <a href="/profile/index"><i class="fas fa-users"></i>Show Users</a>
+    </li>
+    <li>
+        <a href="/reviews"><i class="fas fa-comments"></i>View Reviews</a>
+    </li>
+    <li>
+        <span sec:authorize="isAuthenticated()"></span>
+        <a href="/reviews/create">
+            <i class="fas fa-plus"></i>Create Reviews</a>
+    </li>
+    <li sec:authorize="isAnonymous()">
+        <a href="/login">Login</a>
+    </li>
+    <li sec:authorize="isAnonymous()">
+        <a href="/register">Register</a>
+    </li>
     <li>
         <a href="/available-times">Available Hours</a>
     </li>
@@ -14,46 +34,48 @@
         <a href="/appointments">Appointments</a>
     </li>
     <li>
-        <a href="/appointments/create">Create Appointmetnt</a>
+        <a href="/appointments/create">Create Appointment</a>
     </li>
     <li>
         <a href="/contact">Contact</a>
     </li>
+    <li sec:authorize="isAuthenticated()" style="display: inline;">
+        <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+                        <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
+                     ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
+            <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable"
+                    style="display:
+                inline;">Logout</button>
+        </form>
+    </li>
 </ul>
 
-<!-- SIDE NAV -->
-<ul class="sidenav" id="mobile-demo">
+<!-- DROPDOWN LINKS -->
+<ul id="dropdown1" class="dropdown-content">
     <li>
-        <a href="/"><i class="fas fa-home"></i></a>
+        <a href="/"><i class="fas fa-home"></i>Home</a>
     </li>
     <li>
-        <a href="/reviews"><i class="fas fa-comments"></i></a>
+        <a href="/profile/index"><i class="fas fa-users"></i>Show Users</a>
+    </li>
+    <li>
+        <a href="/reviews"><i class="fas fa-comments"></i>Show Reviews</a>
     </li>
     <li>
         <span sec:authorize="isAuthenticated()"></span>
-        <a href="/reviews/create">
-            <i class="fas fa-plus"></i></a>
+        <a href="/reviews/create"><i class="fas fa-plus"></i>Create Review</a>
     </li>
     <li>
-        <a href="/profile/index"><i class="fas fa-users"></i></a>
+        <a href="/available-times">Available Times</a>
     </li>
-
-    <li sec:authorize="isAnonymous()">
-        <a href="/login">Login</a>
+    <li>
+        <a href="/appointments">Appointments</a>
     </li>
-
-    <li sec:authorize="isAnonymous()">
-        <a href="/register">Register</a>
+    <li>
+        <a href="/appointments/create">Create Appointment</a>
     </li>
-
-    <li sec:authorize="isAuthenticated()" style="display: inline;">
-        <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
-                            <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
-                         ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
-            <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable"
-                    style="display:
-                    inline;">Logout</button>
-        </form>
+    <li>
+        <a href="/contact">Contact</a>
     </li>
 </ul>
 
@@ -69,22 +91,8 @@
         </a>
     </div>
 
-    <div class="col s12 m10">
+    <div class="col s12">
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li>
-                <a href="/"><i class="fas fa-home"></i></a>
-            </li>
-            <li>
-                <a href="/reviews"><i class="fas fa-comments"></i></a>
-            </li>
-            <li>
-                <span sec:authorize="isAuthenticated()"></span>
-                <a href="/reviews/create">
-                <i class="fas fa-plus"></i></a>
-            </li>
-            <li>
-                <a href="/profile/index"><i class="fas fa-users"></i></a>
-            </li>
 
             <li sec:authorize="isAnonymous()">
                 <a href="/login">Login</a>
