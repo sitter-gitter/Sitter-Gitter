@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Edit Children')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title center-align">Create Your Parent Profile</span>
+            <div class="card-content input-field col s12">
+
+                <!--<label for="children">How many children do you have?</label>-->
+                <!--<select id="childSelect">-->
+                    <!--<option value="" disabled="disabled" selected="selected" >Number of children...</option>-->
+                    <!--<option value="1">1</option>-->
+                    <!--<option value="2">2</option>-->
+                    <!--<option value="3">3</option>-->
+                    <!--<option value="4">4</option>-->
+                <!--</select>-->
+
+                <div th:each="child : ${user.children}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Child's Name" id="child${i}name" type="text" class="validate" />
+                            <input placeholder="mm/dd/yyy" id="child${i}birthday" type="text" class="validate" />
+                            <input placeholder="Special Notes" id="child${i}notes" type="text" class="validate" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--  B U T T O N S  -->
+        <!--<div class="card-action">-->
+            <!--<div class="row center-align">-->
+                <!--<div class="input-field col s12">-->
+                    <!--<a class="waves-effect waves-light btn-large" href="parent-location-form.html">< Back</a>-->
+                    <!--<a class="waves-effect waves-light btn-large">Next ></a>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</div>
+
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--$('select').formSelect();-->
+        <!--$('#childSelect').change(function() {-->
+            <!--$('#childSelect option:selected').each(function () {-->
+                <!--let numOfChildren = $(this).text();-->
+                <!--console.log(numOfChildren);-->
+                <!--let test = childFormGenerator(numOfChildren);-->
+                <!--console.log(test);-->
+                <!--$('#childrenInfo').html(childFormGenerator(numOfChildren));-->
+
+            <!--});-->
+        <!--});-->
+    <!--});-->
+
+    <!--const childFormGenerator = (numOfChildren) => {-->
+        <!--let childHTML = ``;-->
+        <!--for (let i = 0; i < numOfChildren; i++) {-->
+            <!--childHTML += `-->
+            <!--<div class="row">-->
+                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--<div class="input-field col s12">-->
+                        <!--<input placeholder="Child's Name" id="child${i}name" type="text" class="validate" />-->
+                        <!--<input placeholder="mm/dd/yyy" id="child${i}birthday" type="text" class="validate" />-->
+                        <!--<input placeholder="Special Notes" id="child${i}notes" type="text" class="validate" />-->
+                    <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--`;-->
+        <!--}-->
+        <!--return childHTML;-->
+    <!--}-->
+<!--</script>-->
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
