@@ -6,46 +6,37 @@
 
 
 <div class="container">
+<div class="card">
+<div class="card-content">
 
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title center-align">Create Your Parent Profile</span>
-            <div class="card-content input-field col s12">
+    <span class="card-title center-align">Add a Child</span>
+    <div class="card-content col s12">
 
-                <!--<label for="children">How many children do you have?</label>-->
-                <!--<select id="childSelect">-->
-                    <!--<option value="" disabled="disabled" selected="selected" >Number of children...</option>-->
-                    <!--<option value="1">1</option>-->
-                    <!--<option value="2">2</option>-->
-                    <!--<option value="3">3</option>-->
-                    <!--<option value="4">4</option>-->
-                <!--</select>-->
+            <form th:action="@{'/profile/'+${username}+'/edit/children'}" th:method="post" th:object="${child}" >
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:field="*{name}" id="name" name="name" type="text" class="validate" />
+                        <label for="name">Name</label>
+                    </div>
 
-                <div th:each="child : ${user.children}">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="Child's Name" id="child${i}name" type="text" class="validate" />
-                            <input placeholder="mm/dd/yyy" id="child${i}birthday" type="text" class="validate" />
-                            <input placeholder="Special Notes" id="child${i}notes" type="text" class="validate" />
-                        </div>
+                    <div class="input-field col s12">
+                        <input th:field="*{birthdate}" type="text" class="datepicker2" name="birthdate"
+                               id="birthdate" />
+                        <label for="birthdate">Birthdate</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea th:field="*{specialNote}" id="specialNote" name="specialNote" class="materialize-textarea validate"></textarea>
+                        <label for="specialNote">Special Notes</label>
+                    </div>
+                    <div class="input-field col s12 center">
+                        <input type="submit" value="Add Child" class="btn blue-grey darken-2" />
                     </div>
                 </div>
+            </form>
 
-            </div>
-        </div>
-
-        <!--  B U T T O N S  -->
-        <!--<div class="card-action">-->
-            <!--<div class="row center-align">-->
-                <!--<div class="input-field col s12">-->
-                    <!--<a class="waves-effect waves-light btn-large" href="parent-location-form.html">< Back</a>-->
-                    <!--<a class="waves-effect waves-light btn-large">Next ></a>-->
-                    <!--</form>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
     </div>
-
+</div>
+</div>
 </div>
 
 <!--<script>-->
