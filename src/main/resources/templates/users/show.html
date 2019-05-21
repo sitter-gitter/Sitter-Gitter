@@ -34,8 +34,8 @@
     </div>
     <hr />
 
-    <!-- erik additions 0517:1020 -->
-    <!-- child stuff -->
+    <!-- erik additions -->
+    <!-- children list -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
     <ul>
         Children:
@@ -59,29 +59,28 @@
     </ul>
     </div>
 
-    <!-- appointments stuff -->
-    <div class="col s12 m4">
+    <!-- parent appointments -->
+    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
     <ul>
         Future Appointments: <br />
-        <li th:each="item : ${appointment}"  style="list-style: none; display: inline;">
-
+        <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
 
             <span th:if="${(user.getisBabysitter() == true)}">
-                Parent: <span th:text="${babysitter}"></span>
+                Parent: <span th:text="${appt.getParent().getUsername()}"></span>
             </span>
             <span th:if="${(user.getisBabysitter() == false)}">
-                Babysitter name: <span th:text="${babysitter}"></span>
+                Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
             </span>
 
             <ul>
 
                 <li>
                     Start:
-                    <span th:text="${item.start}"></span>
+                    <span th:text="${appt.start}"></span>
                 </li>
                 <li>
                     End:
-                    <span th:text="${item.end}"></span>
+                    <span th:text="${appt.end}"></span>
                 </li>
 
             </ul>
@@ -89,7 +88,36 @@
     </ul>
     </div>
 
-    <!-- specifications stuff -->
+    <!-- babysitter appointments -->
+    <div th:if="${(user.getisBabysitter() == true)}" class="col s12 m4">
+        <ul>
+            Future Appointments: <br />
+            <li th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
+
+            <span th:if="${(user.getisBabysitter() == true)}">
+                Parent: <span th:text="${appt.getParent().getUsername()}"></span>
+            </span>
+                <span th:if="${(user.getisBabysitter() == false)}">
+                Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
+            </span>
+
+                <ul>
+
+                    <li>
+                        Start:
+                        <span th:text="${appt.start}"></span>
+                    </li>
+                    <li>
+                        End:
+                        <span th:text="${appt.end}"></span>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- specifications list -->
     <div th:if="${user.getisBabysitter()}" class="col s12 m4">
     <ul>
         Specifications:
@@ -125,20 +153,18 @@
     </ul>
     </div>
 
-    <div class="col s12 m4">
-        <ul>
-            Reviews made: <br />
-            <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
-                <a th:href="@{'/reviews/' + ${review.id}}">
-                    <span th:text="${review.title}"></span>
-                </a>
-            </li>
-        </ul>
+    <!-- reviews list -->
+    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
+    <ul>
+        Reviews made: <br />
+        <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
+            <a th:href="@{'/reviews/' + ${review.id}}">
+                <span th:text="${review.title}"></span>
+            </a>
+        </li>
+    </ul>
     </div>
-
     <!-- end additions -->
-
-
 
 </div>
 </div>
