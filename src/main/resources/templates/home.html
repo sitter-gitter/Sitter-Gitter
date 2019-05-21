@@ -4,22 +4,22 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
+<div class="container center-align">
+    <div class="col s10 m6">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">Welcome!</span>
+                <img src="images/babysitter2.jpg" alt="Sitter Gitter"
+                     style="width: 40%; height: 40%;" /><br />
+                <a class="waves-effect waves-light btn-large"
+                    href="/login">Login</a>
+                <a class="waves-effect waves-light btn-large"
+                    href="/register">Register</a>
 
-<div class="container">
-
-<div class="row">
-    <div class="col s12">
-            <img src="images/babysitter2.jpg" style="width:40%; height: 40%" alt="Sitter Gitter" />
+            </div>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col s12">
-        home page
-    </div>
-</div>
-    
-</div>
-
 
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
