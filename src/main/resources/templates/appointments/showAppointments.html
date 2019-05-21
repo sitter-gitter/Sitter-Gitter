@@ -7,40 +7,44 @@
 
 <div class="container">
 <div class="row">
-<ul>
 
-    <!-- changes start here ///////////////////////////////////////////////////////// -->
-    <li th:each="appointment : ${appointments}">
-    <!-- changes end here ///////////////////////////////////////////////////////// -->
-    <div class="col s12 m6 l4">
-    <div class="card grey hoverable">
+    <div class="col s12">
+        <h2>Scheduled Appointments</h2>
+    </div>
+    <ul>
 
-        <div class="card-content white-text" style="padding-top: 16px;">
-            <span class="card-title">
+        <!-- changes start here ///////////////////////////////////////////////////////// -->
+        <li th:each="appointment : ${appointments}">
+        <!-- changes end here ///////////////////////////////////////////////////////// -->
+        <div th:if="${appointment.start > current_time}" class="col s12 m6 l4">
+            <div class="card grey hoverable">
 
-                <!-- changes start here ///////////////////////////////////////////////////////// -->
-                appointments.start:
-                <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                    <span th:text="${appointment.getStart()}" ></span>
-                </a>
-                <!-- changes end here ///////////////////////////////////////////////////////// -->
+                <div class="card-content white-text" style="padding-top: 16px;">
+                    <span class="card-title">
 
-            </span>
-            <span>
+                        <!-- changes start here ///////////////////////////////////////////////////////// -->
+                        From:
+                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
+                            <span th:text="${appointment.getStart()}" ></span>
+                        </a>
+                        <!-- changes end here ///////////////////////////////////////////////////////// -->
 
-                <!-- changes start here ///////////////////////////////////////////////////////// -->
-                ID:
-                <span th:text="${appointment.getEnd()}"></span>
-                <!-- changes end here ///////////////////////////////////////////////////////// -->
+                    </span>
+                    <span>
 
-            </span>
+                        <!-- changes start here ///////////////////////////////////////////////////////// -->
+                        To:
+                        <span th:text="${appointment.getEnd()}"></span>
+                        <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
 
-    </li>
+        </li>
 
-</ul>
+    </ul>
 </div>
 </div>
 

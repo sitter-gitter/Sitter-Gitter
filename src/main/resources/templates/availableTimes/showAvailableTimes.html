@@ -6,45 +6,45 @@
 
 
 <div class="container">
-<div class="row">
+    <div class="row">
 
-    <div class="col s12">
-        <h2>Available Hours</h2>
-        <a th:href="@{'/available-times/create'}" >
-            <h4>+ Add Times</h4>
-        </a>
-    </div>
+        <div class="col s12">
+            <h2>Available Hours</h2>
+            <a th:href="@{'/available-times/create'}" >
+                <h4>+ Add Times</h4>
+            </a>
+        </div>
 
-    <ul>
-        <li th:each="time : ${available_times}">
-            <div th:if="${time.start > current_time}" class="col s12 m6 l4">
-                <div class="card grey hoverable">
-                    <div class="card-content white-text" style="padding-top: 16px;">
-                        <!--<a th:href="@{'/availableTimes/'+ ${time.id}}">-->
-                        <span class="card-title">
-                        </span>
-                        <p>
-                            From:
-                            <span th:text="${time.start}"></span>
-                        </p>
-                        <p>
-                            To:
-                            <span th:text="${time.end}"></span>
-                        </p>
-                        <div class="card-action">
-                            <a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">
-                                <i class="fas fa-edit"></i></a>
-                            <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-                                <i class="fas fa-trash-alt"></i></a>
+        <ul>
+            <li th:each="time : ${available_times}">
+                <div th:if="${time.start > current_time}" class="col s12 m6 l4">
+                    <div class="card grey hoverable">
+                        <div class="card-content white-text" style="padding-top: 16px;">
+                            <!--<a th:href="@{'/availableTimes/'+ ${time.id}}">-->
+                            <span class="card-title">
+                            </span>
+                            <p>
+                                From:
+                                <span th:text="${time.start}"></span>
+                            </p>
+                            <p>
+                                To:
+                                <span th:text="${time.end}"></span>
+                            </p>
+                            <div class="card-action">
+                                <a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">
+                                    <i class="fas fa-edit"></i></a>
+                                <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                                    <i class="fas fa-trash-alt"></i></a>
+                            </div>
+                            <!--</a>-->
                         </div>
-                        <!--</a>-->
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
 
-</div>
+    </div>
 </div>
 
 
