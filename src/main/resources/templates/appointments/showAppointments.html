@@ -23,21 +23,31 @@
                     <span class="card-title">
 
                         <!-- changes start here ///////////////////////////////////////////////////////// -->
-                        From:
+                        <p>
+                            From:<br/>
                         <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                            <span th:text="${appointment.getStart()}" ></span>
+                            <span th:text="${appointment.getStart()}"></span>
                         </a>
+                        </p>
                         <!-- changes end here ///////////////////////////////////////////////////////// -->
 
-                    </span>
-                    <span>
 
                         <!-- changes start here ///////////////////////////////////////////////////////// -->
-                        To:
-                        <span th:text="${appointment.getEnd()}"></span>
+                        <p>
+                            To:<br/>
+                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
+                            <span th:text="${appointment.getEnd()}"></span>
+                        </a>
+                        </p>
                         <!-- changes end here ///////////////////////////////////////////////////////// -->
 
                     </span>
+                    <div class="card-action">
+                        <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
+                        <!--<i class="fas fa-edit"></i></a>-->
+                        <a th:href="@{'/appointments/'+${appointment.getId()}+'/delete/'}">
+                            <i class="fas fa-trash-alt"></i> DELETE</a>
+                    </div>
                 </div>
             </div>
         </div>

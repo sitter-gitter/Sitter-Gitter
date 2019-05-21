@@ -22,20 +22,20 @@
                         <div class="card-content white-text" style="padding-top: 16px;">
                             <!--<a th:href="@{'/availableTimes/'+ ${time.id}}">-->
                             <span class="card-title">
+                                <p>
+                                    From:<br/>
+                                    <span th:text="${time.start}"></span>
+                                </p>
+                                <p>
+                                    To:<br/>
+                                    <span th:text="${time.end}"></span>
+                                </p>
                             </span>
-                            <p>
-                                From:
-                                <span th:text="${time.start}"></span>
-                            </p>
-                            <p>
-                                To:
-                                <span th:text="${time.end}"></span>
-                            </p>
                             <div class="card-action">
-                                <a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">
-                                    <i class="fas fa-edit"></i></a>
+                                <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
+                                    <!--<i class="fas fa-edit"></i></a>-->
                                 <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-                                    <i class="fas fa-trash-alt"></i></a>
+                                    <i class="fas fa-trash-alt"></i> DELETE</a>
                             </div>
                             <!--</a>-->
                         </div>

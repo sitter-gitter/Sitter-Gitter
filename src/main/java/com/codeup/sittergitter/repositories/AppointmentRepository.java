@@ -5,6 +5,7 @@ import com.codeup.sittergitter.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -13,6 +14,9 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
     //Appointment findOne(Long id);
     //void save(Appointment appointment);
     //void delete(Appointment appointment);
+
+    @Transactional
+    void deleteById(Long id);
 
     List<Appointment> findByOrderByStartAsc();
 

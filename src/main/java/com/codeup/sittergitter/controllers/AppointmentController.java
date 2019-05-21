@@ -162,6 +162,13 @@ public class AppointmentController {
         return "redirect:/appointments";
     }
 
+    // DELETE AVAILABLE TIMES
+    @GetMapping("/appointments/{id}/delete")
+    public String deleteAppointment(@PathVariable Long id){
+        appointmentsRepo.deleteById(id);
+        return "redirect:/appointments";
+    }
+
 }
 
 
