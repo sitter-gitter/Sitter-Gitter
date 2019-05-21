@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Register')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+<form th:action="@{/register/babysitter}" th:method="POST" th:object="${user}">
+<div class="container">
+    <div class="card center-align"><div class="card-content">
+        <span class="card-title">Create a babysitter account</span>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" th:field="*{username}" name="username" class="validate" type="text" />
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" th:field="*{password}" />
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" th:field="*{email}" name="email" type="text" class="validate" />
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="firstName" type="text" th:field="*{firstName}" />
+                <label for="firstName">First Name</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="lastName" type="text" th:field="*{lastName}" />
+                <label for="lastName">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="street_address" type="text" th:field="*{streetAddr}" />
+                <label for="street_address">Street Address</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="city" type="text" th:field="*{city}" />
+                <label for="city">City</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="zipCode" type="text" th:field="*{zipCode}" />
+                <label for="zipCode">Zip Code</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 center">
+                <input value="Sign me up!" type="submit" class="btn blue-grey darken-2" />
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>

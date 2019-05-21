@@ -8,14 +8,16 @@
 <div class="container">
 <div class="row">
 <div class="col s12">
-
+    <div class="container">
+        <div class="card center-align"><div class="card-content">
+            <span class="card-title">Create a babysitter account</span>
     <div class="row">
         <div class="col s12">
-            <h5>Create an account</h5>
+            <h5>Create a parent account</h5>
         </div>
     </div>
 
-    <form th:action="@{/register}" th:method="POST" th:object="${user}">
+    <form th:action="@{/register/parent}" th:method="POST" th:object="${user}">
         <div class="row">
             <div class="input-field col s12">
                 <input id="username" th:field="*{username}" name="username" class="validate" type="text" />
@@ -36,14 +38,12 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <input id="firstName" th:field="*{firstName}" name="firstName" type="text" class="validate" />
-                <label for="email">First Name</label>
+                <input id="firstName" type="text" th:field="*{firstName}" />
+                <label for="firstName">First Name</label>
             </div>
-        <!--</div>-->
-        <!--<div class="row">-->
             <div class="input-field col s12 m6">
-                <input id="lastName" th:field="*{lastName}" name="lastName" type="text" class="validate" />
-                <label for="email">Last Name</label>
+                <input id="lastName" type="text" th:field="*{lastName}" />
+                <label for="lastName">Last Name</label>
             </div>
         </div>
         <div class="row">
@@ -51,21 +51,17 @@
                 <input id="street_address" type="text" th:field="*{streetAddr}" />
                 <label for="street_address">Street Address</label>
             </div>
-        <!--</div>-->
-        <!--<div class="row">-->
             <div class="input-field col s12 m4">
                 <input id="city" type="text" th:field="*{city}" />
                 <label for="city">City</label>
             </div>
-        <!--</div>-->
-        <!--<div class="row">-->
             <div class="input-field col s12 m4">
                 <input id="zipCode" type="text" th:field="*{zipCode}" />
-                <label for="city">ZIP Code</label>
+                <label for="zipCode">Zip Code</label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12 center">
+            <div class="input-field col s12">
                 <input value="Sign me up!" type="submit" class="btn blue-grey darken-2" />
             </div>
         </div>

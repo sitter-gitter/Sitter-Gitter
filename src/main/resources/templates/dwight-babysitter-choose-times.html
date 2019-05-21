@@ -13,19 +13,19 @@
             <!--Sorry, the end time must come after the start time. Please re-enter.-->
         <!--</div>-->
         <form th:action="@{/dwight-babysitter-choose-times}" th:method="post" th:object="${datetime}">
-            <div class="input-field col s12 m3">
+            <div class="input-field col s12 m6 l3">
                 <input type="text" class="datepicker" name="datepicker1" id="datepicker1" />
                 <label for="datepicker1">Start Date</label>
             </div>
-            <div class="input-field col s12 m3">
+            <div class="input-field col s12 m6 l3">
                 <input type="text" class="timepicker" name="timepicker1" id="timepicker1" />
                 <label for="timepicker1">Start Time</label>
-            </div><br/><br/><br/>
-            <div class="input-field col s12 m3">
+            </div>
+            <div class="input-field col s12 m6 l3">
                 <input type="text" class="datepicker" name="datepicker2" id="datepicker2" />
                 <label for="datepicker2">End Date</label>
             </div>
-            <div class="input-field col s12 m3">
+            <div class="input-field col s12 m6 l3">
                 <input type="text" class="timepicker" name="timepicker2" id="timepicker2" />
                 <label for="timepicker2">End Time</label>
             </div>

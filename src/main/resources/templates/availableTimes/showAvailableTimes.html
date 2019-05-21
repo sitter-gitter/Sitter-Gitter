@@ -10,7 +10,7 @@
 
     <div class="col s12">
         <h2>Available Hours</h2>
-        <a th:href="@{'/make-babysitter-choices'}" >
+        <a th:href="@{'/available-times/create'}" >
             <h4>+ Add Times</h4>
         </a>
     </div>
@@ -20,7 +20,7 @@
             <div th:if="${time.start > current_time}" class="col s12 m6 l4">
                 <div class="card grey hoverable">
                     <div class="card-content white-text" style="padding-top: 16px;">
-                        <!--<a th:href="@{'/available-times/'+ ${time.id}}">-->
+                        <!--<a th:href="@{'/availableTimes/'+ ${time.id}}">-->
                         <span class="card-title">
                         </span>
                         <p>
