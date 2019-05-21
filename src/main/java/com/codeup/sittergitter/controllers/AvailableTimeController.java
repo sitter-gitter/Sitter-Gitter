@@ -2,9 +2,11 @@ package com.codeup.sittergitter.controllers;
 
 import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.AvailableTime;
+import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.AppointmentRepository;
 import com.codeup.sittergitter.repositories.AvailableTimeRepository;
 import com.codeup.sittergitter.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +19,10 @@ import java.util.Calendar;
 public class AvailableTimeController {
 
     private final AvailableTimeRepository availableTimesRepo;
-    private final AppointmentRepository appointmentsRepo;
     private final UserRepository usersRepo;
 
-    public AvailableTimeController(AvailableTimeRepository availableTimesRepo, AppointmentRepository appointmentsRepo
-            , UserRepository usersRepo) {
+    public AvailableTimeController(AvailableTimeRepository availableTimesRepo, UserRepository usersRepo) {
         this.availableTimesRepo = availableTimesRepo;
-        this.appointmentsRepo = appointmentsRepo;
         this.usersRepo = usersRepo;
     }
 
@@ -40,9 +39,8 @@ public class AvailableTimeController {
             @RequestParam String datepicker1,
             @RequestParam String timepicker1,
             @RequestParam String datepicker2,
-            @RequestParam String timepicker2) {
-
-        AvailableTime newAvailTime = new AvailableTime();
+            @RequestParam String timepicker2,
+            @ModelAttribute AvailableTime newAvailTime) {
 
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
         Timestamp startTimeStamp = Timestamp.valueOf(startTime);
@@ -51,9 +49,11 @@ public class AvailableTimeController {
         if (startTimeStamp.after(endTimeStamp)) {
             return "availableTimes/createError";
         }
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
-        newAvailTime.setBabysitter(usersRepo.findOne(3L));
+        newAvailTime.setBabysitter(userDB);
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
     }
@@ -67,14 +67,15 @@ public class AvailableTimeController {
         System.out.println(currentTimeStamp);
         model.addAttribute("current_time", currentTimeStamp);
         model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
-//        model.addAttribute("available_times", availableTimesRepo.findAll());
         return "availableTimes/showAvailableTimes";
     }
 
     // UPDATE AVAILABLE TIMES POST
     @PostMapping("/available-times/{id}/edit")
     public String editAvailableTime(@ModelAttribute AvailableTime availableTimeToBeEdited){
-        availableTimeToBeEdited.setBabysitter(usersRepo.findOne(1L));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
+        availableTimeToBeEdited.setBabysitter(userDB);
         availableTimesRepo.save(availableTimeToBeEdited);
         return "redirect:/available-times/";
     }
@@ -99,9 +100,8 @@ public class AvailableTimeController {
             @RequestParam String datepicker1,
             @RequestParam String timepicker1,
             @RequestParam String datepicker2,
-            @RequestParam String timepicker2) {
-
-        AvailableTime newAvailTime = new AvailableTime();
+            @RequestParam String timepicker2,
+            @ModelAttribute AvailableTime newAvailTime) {
 
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
         Timestamp startTimeStamp = Timestamp.valueOf(startTime);
@@ -110,9 +110,11 @@ public class AvailableTimeController {
         if (startTimeStamp.after(endTimeStamp)) {
             return "availableTimes/createError";
         }
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
-        newAvailTime.setBabysitter(usersRepo.findOne(3L));
+        newAvailTime.setBabysitter(userDB);
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
     }
