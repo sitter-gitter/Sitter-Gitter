@@ -2,7 +2,6 @@ package com.codeup.sittergitter.models;
 
 import javafx.util.converter.DateStringConverter;
 import org.hibernate.annotations.Type;
-import org.joda.time.Years;
 
 import javax.persistence.*;
 import java.lang.String;
