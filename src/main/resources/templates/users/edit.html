@@ -2,29 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><th:block th:replace="fragments/head :: header('Edit User')" /></head>
 <body>
-<header>users/edit.html</header>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 
+
 <div class="container">
+    <div class="card center-align"><div class="card-content">
+        <span class="card-title">Edit My Profile</span>
 
-<div class="input-field">
-    <form th:action="@{'/users/'+${user.id}+'/edit'}" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" th:value="${user.username}" />
+        <form th:action="@{'/users/'+${user.id}+'/edit'}" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" th:value="${user.username}" />
+            </div>
+        </div>
 
-        <label for="password">Password</label>
-        <input name="password" id="password" th:field="${user.password}" />
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password"
+                   th:field="${user.password}" />
+            </div>
+        </div>
 
-        <label for="email">Email</label>
-        <input name="email" id="email" th:field="${user.email}" />
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email"
+                   th:field="${user.email}" />
+            </div>
+        </div>
 
-        <input type="hidden" th:value="${user.id}" />
-
-        <button type="submit" class="btn blue-grey darken-2">Submit</button>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="hidden" th:value="${user.id}" />
+                <button type="submit" class="btn blue-grey
+                darken-2">Submit</button>
+            </div>
+        </div>
     </form>
 </div>
-
+</div>
 </div>
 
 

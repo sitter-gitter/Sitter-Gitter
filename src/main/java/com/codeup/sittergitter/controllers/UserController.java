@@ -206,4 +206,5 @@ public class UserController {
     public String loggedIn() {
         return "users/my-acct";
     }
+
 }
