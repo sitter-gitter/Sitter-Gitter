@@ -15,8 +15,11 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="../../static/js/materialize.min.js"></script>
     <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-            crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous">
+    </script>
+
     <script>
         $(document).ready(function() {
 
@@ -24,9 +27,23 @@
 
             $('.sidenav').sidenav();
 
+            $('select').formSelect();
+            $('.datepicker').datepicker({
+                yearRange: [1930, 1931, 1932, 1933, 1934]
+            });
+
+            $('#childSelect').change(function() {
+                $('#childSelect option:selected').each(function () {
+                    let numOfChildren = $(this).text();
+                    console.log(numOfChildren);
+                    let test = childFormGenerator(numOfChildren);
+                    console.log(test);
+                    $('#childrenInfo').html(childFormGenerator(numOfChildren));
+
+                });
+            });
+
         });
-
-
     </script>
 
 </th:block>
