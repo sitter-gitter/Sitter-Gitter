@@ -35,6 +35,13 @@
         onClose: openTime
     });
 
+    var Calendar2 = document.querySelectorAll('.datepicker2');
+    M.Datepicker.init(Calendar2, {
+        format:'yyyy-mm-dd',
+        autoClose: true,
+        onClose: openTime
+    });
+
 
     var slider = document.getElementById('test-slider');
     noUiSlider.create(slider, {

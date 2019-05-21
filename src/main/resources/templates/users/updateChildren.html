@@ -1,0 +1,79 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Edit Children')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+<div class="card">
+<div class="card-content">
+
+    <span class="card-title center-align">Add a Child</span>
+    <div class="card-content col s12">
+
+            <form th:action="@{'/profile/'+${username}+'/edit/children'}" th:method="post" th:object="${child}" >
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:field="*{name}" id="name" name="name" type="text" class="validate" />
+                        <label for="name">Name</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input th:field="*{birthdate}" type="text" class="datepicker2" name="birthdate"
+                               id="birthdate" />
+                        <label for="birthdate">Birthdate</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea th:field="*{specialNote}" id="specialNote" name="specialNote" class="materialize-textarea validate"></textarea>
+                        <label for="specialNote">Special Notes</label>
+                    </div>
+                    <div class="input-field col s12 center">
+                        <input type="submit" value="Add Child" class="btn blue-grey darken-2" />
+                    </div>
+                </div>
+            </form>
+
+    </div>
+</div>
+</div>
+</div>
+
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--$('select').formSelect();-->
+        <!--$('#childSelect').change(function() {-->
+            <!--$('#childSelect option:selected').each(function () {-->
+                <!--let numOfChildren = $(this).text();-->
+                <!--console.log(numOfChildren);-->
+                <!--let test = childFormGenerator(numOfChildren);-->
+                <!--console.log(test);-->
+                <!--$('#childrenInfo').html(childFormGenerator(numOfChildren));-->
+
+            <!--});-->
+        <!--});-->
+    <!--});-->
+
+    <!--const childFormGenerator = (numOfChildren) => {-->
+        <!--let childHTML = ``;-->
+        <!--for (let i = 0; i < numOfChildren; i++) {-->
+            <!--childHTML += `-->
+            <!--<div class="row">-->
+                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--<div class="input-field col s12">-->
+                        <!--<input placeholder="Child's Name" id="child${i}name" type="text" class="validate" />-->
+                        <!--<input placeholder="mm/dd/yyy" id="child${i}birthday" type="text" class="validate" />-->
+                        <!--<input placeholder="Special Notes" id="child${i}notes" type="text" class="validate" />-->
+                    <!--</div>-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--`;-->
+        <!--}-->
+        <!--return childHTML;-->
+    <!--}-->
+<!--</script>-->
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
