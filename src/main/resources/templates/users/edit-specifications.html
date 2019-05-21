@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Edit User')" /></head>
+<body>
+<header>users/edit.html</header>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+    <div class="input-field">
+        <form th:action="@{'/users/'+${username}+'/edit/specifications'}" method="post">
+        <span th:each="specificiation : ${user.specifications}"> </span>
+
+            <button type="submit" class="btn blue-grey darken-2">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>
