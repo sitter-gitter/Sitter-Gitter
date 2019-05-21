@@ -23,6 +23,8 @@
                             <span th:text="${appointment.end}"></span><br/>
                             <span th:text="${appointment.id}"></span>
                             <input type="hidden" th:value="${appointment.babysitter.getId()}" name="sitterid"/>
+                            <span th:text="${username}"></span>
+                            <input type="hidden" th:value="${username}" name="username"/>
                             <button>Choose</button>
                         </span>
                         <!--</a>-->

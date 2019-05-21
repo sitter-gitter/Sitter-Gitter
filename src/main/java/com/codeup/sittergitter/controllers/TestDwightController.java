@@ -6,11 +6,19 @@ import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.AppointmentRepository;
 import com.codeup.sittergitter.repositories.AvailableTimeRepository;
 import com.codeup.sittergitter.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -28,6 +36,9 @@ public class TestDwightController {
     private Long sitterId;
     private Timestamp apptStartTime;
     private Timestamp apptEndTime;
+    private Long sessionId;
+
+
 
     public TestDwightController(AvailableTimeRepository availableTimesRepo, AppointmentRepository appointmentsRepo, UserRepository usersRepo) {
         this.availableTimesRepo = availableTimesRepo;
@@ -54,8 +65,7 @@ public class TestDwightController {
     }
 
     @PostMapping("/dwight-babysitter-choose-times")
-    public String createAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
-        AvailableTime newAvailTime = new AvailableTime();
+    public String createAvailTime(@ModelAttribute AvailableTime newAvailTime, @RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2, @RequestParam User babysitter) {
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/babysitter-choices-null-values";
         }
@@ -68,7 +78,7 @@ public class TestDwightController {
         }
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
-        newAvailTime.setBabysitter(usersRepo.findOne(3L));
+        newAvailTime.setBabysitter(usersRepo.findOne(babysitter.getId()));
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
     }
@@ -80,8 +90,7 @@ public class TestDwightController {
     }
 
     @PostMapping("/babysitter-choose-times-error")
-    public String recreateAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
-        AvailableTime newAvailTime = new AvailableTime();
+    public String recreateAvailTime(@ModelAttribute AvailableTime newAvailTime, @RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/babysitter-choices-null-values";
         }
@@ -102,8 +111,7 @@ public class TestDwightController {
     }
 
     @PostMapping("/babysitter-choose-times-null-values")
-    public String redoAvailTime(@RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
-        AvailableTime newAvailTime = new AvailableTime();
+    public String redoAvailTime(@ModelAttribute AvailableTime newAvailTime, @RequestParam String datepicker1, @RequestParam String timepicker1, @RequestParam String datepicker2, @RequestParam String timepicker2) {
         if (datepicker1.isEmpty() || datepicker2.isEmpty() || timepicker1.isEmpty() || timepicker2.isEmpty()) {
             return "redirect:/babysitter-choices-null-values";
         }
@@ -185,21 +193,26 @@ public class TestDwightController {
     }
 
     @GetMapping("/dwight-available-babysitters")
-    public String displayAvailBabysitters(Model model, HttpSession session) {
+    public String displayAvailBabysitters(Model model) {
+//        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username = user.getUsername();
+//        model.addAttribute("username", username);
         model.addAttribute("availAppts", availApptTimes);
         return "dwight-available-babysitters";
     }
 
 
     @PostMapping("/dwight-available-babysitters")
-    public String chooseBabysitter(@RequestParam long sitterid) {
-        Appointment newApptTime = new Appointment();
-        System.out.println(sitterid);
+    public String chooseBabysitter(@ModelAttribute Appointment newApptTime, @RequestParam long sitterid) {
+//        System.out.println(RequestContextHolder.currentRequestAttributes().getSessionId());
+//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getDetails());
+//        System.out.println(sitterid);
         sitterId = sitterid;
         newApptTime.setStart(apptStartTime);
         newApptTime.setEnd(apptEndTime);
         newApptTime.setBabysitter(usersRepo.findOne(sitterId));
-        newApptTime.setParent(usersRepo.findOne(1L));
+//        newApptTime.setParent(usersRepo.findOne(Long.parseLong(RequestContextHolder.currentRequestAttributes().getSessionId())));
+//        newApptTime.setParent(usersRepo.findOne(1L));
         newApptTime.setSitterApproved(true);
         appointmentsRepo.save(newApptTime);
         return "redirect:/available-times";
