@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block th:fragment="header">
 <head>
@@ -53,7 +53,7 @@
             <span sec:authorize="isAuthenticated()"
                   th:text="'Logged in as ' + ${#authentication.principal.username} + ' '"
                   style="display: inline-block;"></span>
-                            <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable" style="display:
+                            <button class="btn waves-effect waves-light btn-small hoverable" style="display:
                 inline;">Logout</button>
                         </form>
                     </li>

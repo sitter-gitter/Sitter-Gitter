@@ -9,29 +9,54 @@
 <div class="card">
 <div class="card-content">
 
-    <span class="card-title center-align">Add a Child</span>
+    <span class="card-title center-align">Manage your specifications</span>
     <div class="card-content col s12">
 
-            <form th:action="@{'/profile/'+${username}+'/edit/children'}" th:method="post" th:object="${child}" >
+            <form th:action="@{'/profile/'+${username}+'/edit/specifications'}" th:method="post" th:object="${specification}" >
+
+
                 <div class="row">
                     <div class="input-field col s12">
-                        <input th:field="*{name}" id="name" name="name" type="text" class="validate" />
-                        <label for="name">Name</label>
+                        <input th:field="*{birthdate}" id="dob" name="dob" type="text" class="datepicker2" />
+                        <label for="dob">Birthdate</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input th:field="*{birthdate}" type="text" class="datepicker2" name="birthdate"
-                               id="birthdate" />
-                        <label for="birthdate">Birthdate</label>
+                        <input th:field="*{yearsOfExperience}" id="exp" name="exp" type="text" class="validate" />
+                        <label for="exp">How many years of babysitting experience do you have?</label>
                     </div>
+
                     <div class="input-field col s12">
-                        <textarea th:field="*{specialNote}" id="specialNote" name="specialNote" class="materialize-textarea validate"></textarea>
-                        <label for="specialNote">Special Notes</label>
+                        <label for="cpr">Are you certified in CPR?</label>
+                        <p>
+                            <input th:checked="*{hasCprTraining}" type="checkbox" name="cpr" id="cpr" />
+                            <span>Yes, I have a CPR card.</span>
+                        </p>
                     </div>
+
+                    <!--<div class="input-field col s12">-->
+                        <!--<label for="smoking">Do you use tobacco or nicotine products?</label>-->
+                        <!--<p>-->
+                            <!--<label>-->
+                                <!--<input th:field="*{isSmoker}" type="checkbox" name="smoking" id="smoking" />-->
+                                <!--<span>No, I do not use tocacco or nicotine products.</span>-->
+                            <!--</label>-->
+                        <!--</p>-->
+                    <!--</div>-->
+
+                    <div class="input-field col s12">
+                        <label for="transport">Can you provide your own transporation?</label>
+                        <p>
+                            <input th:checked="*{hasTransportation}" type="checkbox" name="transport" id="transport" />
+                            <span>Yes, I have my own transportation</span>
+                        </p>
+                    </div>
+
                     <div class="input-field col s12 center">
-                        <input type="submit" value="Add Child" class="btn" />
+                        <input type="submit" value="Submit" class="btn" />
                     </div>
                 </div>
+
             </form>
 
     </div>

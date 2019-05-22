@@ -7,76 +7,119 @@
 
 <!-- SIDE NAV -->
 <ul class="sidenav" id="mobile-demo">
+
     <li>
         <a href="/"><i class="fas fa-home"></i>Home</a>
     </li>
-    <li>
+    <li class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/profile/index"><i class="fas fa-users"></i>Show Users</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/reviews"><i class="fas fa-comments"></i>View Reviews</a>
     </li>
-    <li>
-        <span sec:authorize="isAuthenticated()"></span>
-        <a href="/reviews/create">
-            <i class="fas fa-plus"></i>Create Reviews</a>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
+            <a href="/reviews/create">
+                <i class="fas fa-plus"></i>Create Reviews
+            </a>
     </li>
+    <li  sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
     <li sec:authorize="isAnonymous()">
         <a href="/login">Login</a>
     </li>
+    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
+
     <li sec:authorize="isAnonymous()">
         <a href="/register">Register</a>
     </li>
-    <li>
+    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/available-times">Available Hours</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/appointments">Appointments</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/appointments/create">Create Appointment</a>
     </li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
     <li>
         <a href="/contact">Contact</a>
     </li>
+    <li class="divider" tabindex="-1"></li>
+
     <li sec:authorize="isAuthenticated()" style="display: inline;">
         <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
-                        <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
-                     ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
-            <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable"
-                    style="display:
-                inline;">Logout</button>
+            <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' + ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
+            <button class="btn waves-effect waves-light btn-small hoverable center" style="display: inline;">
+                Logout
+            </button>
         </form>
     </li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
 </ul>
 
 <!-- DROPDOWN LINKS -->
 <ul id="dropdown1" class="dropdown-content">
-    <li>
+
+    <li sec:authorize="isAuthenticated()">
+        <a href="/my-acct"><i class="fas fa-home"></i>Home</a>
+    </li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAnonymous()">
         <a href="/"><i class="fas fa-home"></i>Home</a>
     </li>
-    <li>
+    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/profile/index"><i class="fas fa-users"></i>Show Users</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/reviews"><i class="fas fa-comments"></i>Show Reviews</a>
     </li>
-    <li>
-        <span sec:authorize="isAuthenticated()"></span>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/reviews/create"><i class="fas fa-plus"></i>Create Review</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/available-times">Available Times</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/appointments">Appointments</a>
     </li>
-    <li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+    <li sec:authorize="isAuthenticated()">
         <a href="/appointments/create">Create Appointment</a>
     </li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
     <li>
         <a href="/contact">Contact</a>
     </li>
+    <li class="divider" tabindex="-1"></li>
+
 </ul>
 
 <!-- MAIN NAVBAR -->
@@ -84,15 +127,21 @@
 <div class="container">
 <div class="row">
 
+    <!--<div class="col s12">-->
+        <!--<a href="/" class="brand-logo left" style="font-family: 'Kaushan Script', cursive; color: #F3D250; text-shadow: 3px 3px #5DA2D5">Sitter Gitter</a>-->
+
+        <!--<a href="#" data-target="mobile-demo" class="sidenav-trigger right">-->
+            <!--<i class="material-icons">menu</i>-->
+        <!--</a>-->
+    <!--</div>-->
+
     <div class="col s12">
-        <a href="/" class="brand-logo left" style="font-family: 'Kaushan Script', cursive; color: #F3D250; text-shadow: 3px 3px #5DA2D5">Sitter Gitter</a>
+        <a href="/" class="brand-logo">Sitter Gitter</a>
+
         <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
             <i class="material-icons">menu</i>
         </a>
-    </div>
-
-    <div class="col s12">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="display: inline;">
 
             <li sec:authorize="isAnonymous()">
                 <a href="/login">Login</a>
@@ -104,11 +153,11 @@
 
             <li sec:authorize="isAuthenticated()" style="display: inline;">
                 <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
-                    <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
-                 ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
-                    <button class="btn waves-effect waves-light btn-small blue-grey darken-2 hoverable"
-                            style="display:
-            inline;">Logout</button>
+                    <a href="/my-acct" style="display: inline;">
+                        <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
+                        ${#authentication.principal.username}" style="display: inline-block;"></span>
+                    </a>
+                    <button class="btn-small waves-effect waves-light hoverable blue-button" style="display: inline;">Logout</button>
                 </form>
             </li>
             <li>
@@ -129,6 +178,7 @@
     <!--Username: <span th:text="${#authentication.principal.username}"/>-->
     <!--Email: <span th:text="${#authentication.principal.email}"/>-->
 <!--</div>-->
+
 
 </th:block>
 </body>
