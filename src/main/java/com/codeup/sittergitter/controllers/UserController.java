@@ -204,7 +204,10 @@ public class UserController {
 
     @GetMapping("/my-acct")
     public String loggedIn() {
-        return "users/my-acct";
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = sessionUser.getUsername();
+
+        return "redirect:/profile/" + username;
     }
 
 }
