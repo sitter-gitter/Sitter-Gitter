@@ -57,6 +57,10 @@ public class SpecificationController {
 //    specificationsToBeEdited.setId(userId);
     user.setUsername(username);
     specificationsToBeEdited.setBabysitter(user);
+
+    Long specId = user.getId();
+    specificationsToBeEdited.setId(specId);
+
     user.setSpecifications(specificationsToBeEdited);
 //    specificationsRepo.save(specificationsToBeEdited);
     return "redirect:/profile/{username}";

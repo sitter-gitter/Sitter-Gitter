@@ -24,12 +24,12 @@
                 <span th:text="${user.state}"></span>
                 <span th:text="${user.zipCode}"></span>
             </p>
-            <div class="card-action">
-                <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
-                    <i class="fas fa-user-edit"></i></a>
-                <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">
-                    <i class="fas fa-trash-alt"></i></a>
-            </div>
+        </div>
+        <div class="card-action">
+            <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
+                <i class="fas fa-user-edit"></i></a>
+            <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">
+                <i class="fas fa-trash-alt"></i></a>
         </div>
     </div>
     <hr />
@@ -48,10 +48,6 @@
                         DOB:
                         <span th:text="${specification.birthdate}"></span>
                     </li>
-                    <!--<li>-->
-                    <!--education:-->
-                    <!--<span th:text="${specification.educationLevel}"></span>-->
-                    <!--</li>-->
                     <li>
                         has cpr:
                         <span th:text="${specification.hasCprTraining}"></span>
@@ -71,8 +67,11 @@
                 </ul>
             </li>
         </ul>
+        <div class="card-action">
+            <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/specifications'}">
+                <i class="fas fa-user-edit"></i></a>
+        </div>
     </div>
-    <!-- erik additions -->
     <!-- children list -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
 
@@ -93,9 +92,19 @@
                         <span th:text="${child.specialNote}"></span>
                     </p>
                 </li>
+                <li>
+                    <div class="card-action">
+                        <a th:href="@{'/profile/'+${user.getUsername()}+'/create/children'}">
+                            <i class="fas fa-user-edit"></i></a>
+                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/children/'+${child.id}}">
+                            <i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </li>
+
             </ul>
         </li>
     </ul>
+
     </div>
 
 
@@ -104,14 +113,19 @@
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
 
     <ul>
-        Future Appointments: <br />
+        Future Appointments:
+        <br />
         <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
 
-            <span th:if="${(user.getisBabysitter() == true)}">
-                Parent: <span th:text="${appt.getParent().getUsername()}"></span>
-            </span>
+            <!--<span th:if="${(user.getisBabysitter() == true)}">-->
+                <!--Parent:-->
+                    <!--<span th:text="${appt.getParent().getUsername()}"></span>-->
+            <!--</span>-->
             <span th:if="${(user.getisBabysitter() == false)}">
-                Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
+                Babysitter name:
+                <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
+                    <span th:text="${appt.getBabysitter().getUsername()}"></span>
+                </a>
             </span>
 
             <ul>
@@ -123,6 +137,14 @@
                 <li>
                     End:
                     <span th:text="${appt.end}"></span>
+                </li>
+                <li>
+                    <div class="card-action">
+                        <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
+                            <i class="fas fa-user-edit"></i></a>
+                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
+                            <i class="fas fa-trash-alt"></i></a>
+                    </div>
                 </li>
 
             </ul>
@@ -137,8 +159,11 @@
             Future Appointments: <br />
             <li th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
 
-            <span th:if="${(user.getisBabysitter() == true)}">
-                Parent: <span th:text="${appt.getParent().getUsername()}"></span>
+             <span th:if="${(user.getisBabysitter() == true)}">
+                Parent:
+                <a th:href="@{'/profile/' + ${appt.getParent().getUsername()}}">
+                    <span th:text="${appt.getParent().getUsername()}"></span>
+                </a>
             </span>
                 <span th:if="${(user.getisBabysitter() == false)}">
                 Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
@@ -153,6 +178,14 @@
                         End:
                         <span th:text="${appt.end}"></span>
                     </li>
+                    <li>
+                        <div class="card-action">
+                            <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
+                                <i class="fas fa-user-edit"></i></a>
+                            <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -163,35 +196,38 @@
     <ul>
         Specifications:
         <br />
-        <li th:each="specification : ${user.specifications}">
-            <ul>
+        <!--<li th:each="specification : ${user.specifications}">-->
+            <!--<ul>-->
                 <li>
                     DOB:
-                    <span th:text="${specification.birthdate}"></span>
-                </li>
-                <!--<li>-->
-                    <!--education:-->
-                    <!--<span th:text="${specification.educationLevel}"></span>-->
-                <!--</li>-->
-                <li>
-                    has cpr:
-                    <span th:text="${specification.hasCprTraining}"></span>
-                </li>
-                <li>
-                    is smoker:
-                    <span th:text="${specification.smoker}"></span>
+                    <span th:text="${user.specifications.birthdate}"></span>
                 </li>
                 <li>
                     years of exp:
-                    <span th:text="${specification.yearsOfExperience}"></span>
+                    <span th:text="${user.specifications.yearsOfExperience}"></span>
+                </li>
+                <li>
+                    has cpr:
+                    <span th:text="${user.specifications.hasCprTraining}"></span>
+                </li>
+                <li>
+                    is smoker:
+                    <span th:text="${user.specifications.smoker}"></span>
                 </li>
                 <li>
                     has transportation:
-                    <span th:text="${specification.hasTransportation}"></span>
+                    <span th:text="${user.specifications.hasTransportation}"></span>
                 </li>
-            </ul>
+            <!--</ul>-->
+        <!--</li>-->
+        <li>
+            <div class="card-action">
+                <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/specifications/'}">
+                    <i class="fas fa-user-edit"></i></a>
+            </div>
         </li>
     </ul>
+
     </div>
 
     <!-- reviews list -->
@@ -202,6 +238,14 @@
             <a th:href="@{'/reviews/' + ${review.id}}">
                 <span th:text="${review.title}"></span>
             </a>
+        </li>
+        <li>
+            <div class="card-action">
+                <a href="#">
+                    <i class="fas fa-user-edit"></i></a>
+                <a href="#">
+                    <i class="fas fa-trash-alt"></i></a>
+            </div>
         </li>
     </ul>
 
