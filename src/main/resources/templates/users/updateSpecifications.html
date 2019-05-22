@@ -29,39 +29,33 @@
                     <div class="input-field col s12">
                         <label for="cpr">Are you certified in CPR?</label>
                         <p>
-                            <label>
-                                <input th:field="*{hasCprTraining}" type="checkbox" name="cpr" id="cpr" />
-                                <span>Yes, I have a CPR card.</span>
-                            </label>
+                            <input th:checked="*{hasCprTraining}" type="checkbox" name="cpr" id="cpr" />
+                            <span>Yes, I have a CPR card.</span>
                         </p>
                     </div>
 
-                    <div class="input-field col s12">
-                        <label for="smoking">Do you use tobacco or nicotine products?</label>
-                        <p>
-                            <label>
-                                <input th:field="*{isSmoker}" type="checkbox" name="smoking" id="smoking" />
-                                <span>No, I do not use tocacco or nicotine products.</span>
-                            </label>
-                        </p>
-                    </div>
+                    <!--<div class="input-field col s12">-->
+                        <!--<label for="smoking">Do you use tobacco or nicotine products?</label>-->
+                        <!--<p>-->
+                            <!--<label>-->
+                                <!--<input th:field="*{isSmoker}" type="checkbox" name="smoking" id="smoking" />-->
+                                <!--<span>No, I do not use tocacco or nicotine products.</span>-->
+                            <!--</label>-->
+                        <!--</p>-->
+                    <!--</div>-->
 
                     <div class="input-field col s12">
                         <label for="transport">Can you provide your own transporation?</label>
                         <p>
-                            <label>
-                                <input th:field="*{hasTransportation}" type="checkbox" name="transport" id="transport" />
-                            </label>
+                            <input th:checked="*{hasTransportation}" type="checkbox" name="transport" id="transport" />
                             <span>Yes, I have my own transportation</span>
                         </p>
                     </div>
 
                     <div class="input-field col s12 center">
-                        <input type="submit" value="Add Child" class="btn" />
+                        <input type="submit" value="Submit" class="btn" />
                     </div>
                 </div>
-
-
 
             </form>
 
