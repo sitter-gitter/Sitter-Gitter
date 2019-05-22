@@ -5,74 +5,67 @@
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 
-
 <div class="container">
 
-<div class="input-field">
-    <form th:action="@{'/profile/'+${user.username}+'/edit'}" method="post" th:object="${user}">
+    <div class="card center-align">
+        <div class="card-content">
+            <span class="card-title">Edit My Profile</span>
+            <form th:action="@{'/profile/'+${user.username}+'/edit'}" method="post" th:object="${user}">
 
-        <label for="email">Email</label>
-        <input id="email" th:field="*{email}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" th:field="*{email}"/>
+                    </div>
+                </div>
 
-        <label for="firstName">First Name</label>
-        <input id="firstName" th:field="*{firstName}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" th:field="*{firstName}"/>
+                    </div>
+                </div>
 
-        <label for="lastName">Last Name</label>
-        <input id="lastName" th:field="*{lastName}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" th:field="*{lastName}"/>
+                    </div>
+                </div>
 
-        <label for="streetAddr">Street Address</label>
-        <input id="streetAddr" th:field="*{streetAddr}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="streetAddr">Street Address</label>
+                        <input type="text" id="streetAddr" th:field="*{streetAddr}"/>
+                    </div>
+                </div>
 
-        <label for="city">City</label>
-        <input id="city" th:field="*{city}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="city">City</label>
+                        <input type="text" id="city" th:field="*{city}"/>
+                    </div>
+                </div>
 
-        <label for="state">State</label>
-        <input id="state" th:field="*{state}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="state">State</label>
+                        <input type="text" id="state" th:field="*{state}"/>
+                    </div>
+                </div>
 
-        <label for="zipCode">Zip Code</label>
-        <input id="zipCode" th:field="*{zipCode}" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="zipCode">Zip Code</label>
+                        <input type="text" id="zipCode" th:field="*{zipCode}"/>
+                    </div>
+                </div>
 
-        <button type="submit" class="btn blue-grey darken-2">Submit</button>
-
-
-<div class="container">
-    <div class="card center-align"><div class="card-content">
-        <span class="card-title">Edit My Profile</span>
-
-        <form th:action="@{'/users/'+${user.id}+'/edit'}" method="post">
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" th:value="${user.username}" />
-            </div>
+                <button type="submit" class="btn blue-grey darken-2">Submit</button>
+            </form>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="password">Password</label>
-                <input type="text" name="password" id="password"
-                   th:field="${user.password}" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email"
-                   th:field="${user.email}" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="hidden" th:value="${user.id}" />
-                <button type="submit" class="btn">Submit</button>
-            </div>
-        </div>
-
-    </form>
-</div>
-</div>
 </div>
 
 
