@@ -17,13 +17,13 @@ nav {
     color: #F3D250 !important;
     text-shadow: 3px 3px #5DA2D5 !important;
 }
-.card {
+.card-splash {
     background-color: #F3D250 !important;
     min-width: 400px !important;
     max-width: 600px !important;
     margin: 0 auto !important;
     /*border: 1px solid gray !important;*/
-    border-radius: 0.5em !important;
+    border-radius: 2em !important;
     box-shadow: none !important;
     /*padding-bottom: 1em !important;*/
 }

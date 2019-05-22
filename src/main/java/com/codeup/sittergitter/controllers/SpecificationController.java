@@ -46,7 +46,7 @@ public class SpecificationController {
     List<Specification> specification = specificationsRepo.findByBabysitterUsername(username);
     model.addAttribute("specification", specification);
     model.addAttribute("user", user);
-    return "users/updateSpecifications";
+    return "users/edit-specifications";
   }
 
   @PostMapping("/profile/{username}/edit/specifications")
