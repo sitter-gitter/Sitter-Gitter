@@ -2,10 +2,42 @@
     /*font-family: 'Kaushan Script', cursive !important;*/
 /*}*/
 body {
-    background-color: #ECECEC;
+    background-color: #F3D250;
 }
 nav {
-    margin-bottom: 3em !important;
+    background-color: #F78888 !important;
+    /*margin-bottom: 3em !important;*/
+    box-shadow: none !important;
+}
+.brand-logo {
+    font-family: 'Kaushan Script', cursive;
+    color: #F3D250 !important;
+    text-shadow: 3px 3px #5DA2D5 !important;
+}
+.card {
+    border-radius: 2em !important;
+    padding-bottom: 1em !important;
+}
+img {
+    border-top-left-radius: 2em !important;
+    border-top-right-radius: 2em !important;
+}
+.yellow-button {
+    background-color: #F3D250 !important;
+    color: #5DA2D5;
+}
+.blue-button {
+    background-color: #5DA2D5 !important;
+    color: #ECECEC;
+}
+.page-footer {
+    background-color: #90CCF4 !important;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: -1.5em;
 }
 
 /*.brand-logo {*/
