@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -146,6 +148,15 @@ public class UserController {
 //        String appointmentParentName = appointments.getBabysitter().getUsername();
 //        model.addAttribute("babysitter", appointmentBabysitterName);
 //        model.addAttribute("parent", appointmentParentName);
+
+        //Erik additions for avail time //
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+        System.out.println(currentTimeStamp);
+        model.addAttribute("current_time", currentTimeStamp);
+        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+        // end additions
 
         model.addAttribute("appointment", appointment);
         model.addAttribute("parentAppointments", parentAppointments);
