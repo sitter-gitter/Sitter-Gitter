@@ -9,17 +9,28 @@
 <div class="container">
 
 <div class="input-field">
-    <form th:action="@{'/users/'+${user.id}+'/edit'}" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" th:value="${user.username}" />
-
-        <label for="password">Password</label>
-        <input name="password" id="password" th:field="${user.password}" />
+    <form th:action="@{'/profile/'+${user.username}+'/edit'}" method="post" th:object="${user}">
 
         <label for="email">Email</label>
-        <input name="email" id="email" th:field="${user.email}" />
+        <input id="email" th:field="*{email}" />
 
-        <input type="hidden" th:value="${user.id}" />
+        <label for="firstName">First Name</label>
+        <input id="firstName" th:field="*{firstName}" />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" th:field="*{lastName}" />
+
+        <label for="streetAddr">Street Address</label>
+        <input id="streetAddr" th:field="*{streetAddr}" />
+
+        <label for="city">City</label>
+        <input id="city" th:field="*{city}" />
+
+        <label for="state">State</label>
+        <input id="state" th:field="*{state}" />
+
+        <label for="zipCode">Zip Code</label>
+        <input id="zipCode" th:field="*{zipCode}" />
 
         <button type="submit" class="btn blue-grey darken-2">Submit</button>
     </form>
