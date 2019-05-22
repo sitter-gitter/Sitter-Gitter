@@ -124,7 +124,7 @@ public class Specification {
 
 //    public int getAge() {
 //        Date today = new Date();
-//        Date birthday = birthdate;
+//        Date birthday = (Date) birthdate;
 //        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 //        int d1 = Integer.parseInt(formatter.format(birthday));
 //        int d2 = Integer.parseInt(formatter.format(today));

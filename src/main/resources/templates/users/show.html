@@ -105,18 +105,16 @@
                 <div class="col">
                     <ul>
                         <li th:each="child : ${user.children}">
-                            <span th:text="${child.name}"></span>
+                            <span th:text="${child.name}"></span>, age <span th:text="${child.getAge()}"></span>
                             <ul>
                                 <li>
-                                    Birthday: <span th:text="${child.getAge()}"></span>
-                                </li>
-                                <li>
-                                    Notes:
-                                    <p>
+                                    <p th:if="${child.specialNote}" style="font-size: 0.8em;">
+                                        Notes: <br />
                                         <span th:text="${child.specialNote}"></span>
                                     </p>
                                 </li>
                             </ul>
+                            <hr />
                         </li>
                     </ul>
                 </div>

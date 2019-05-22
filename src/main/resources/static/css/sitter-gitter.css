@@ -30,6 +30,9 @@ nav {
 .row {
     margin: 0 !important;
 }
+.card-title {
+    font-size: 1em !important;
+}
 .card-content {
     padding: 24px 24px 36px 24px !important;
 }
