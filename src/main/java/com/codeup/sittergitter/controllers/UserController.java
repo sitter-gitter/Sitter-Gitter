@@ -175,13 +175,26 @@ public class UserController {
 
     // UPDATE PROFILE POST
     @PostMapping("/profile/{username}/edit")
-    public String editUser(@PathVariable String username, @RequestParam String password, @RequestParam String email) {
+    public String editUser(
+            @RequestParam String email,
+            @PathVariable String username) {
+
         User user = usersRepo.findByUsername(username);
-        user.setUsername(username);
-        user.setPassword(password);
         user.setEmail(email);
         usersRepo.save(user);
-        return "redirect:/profile/index";
+    return "redirect:/my-acct";
+
+
+
+//        @PathVariable String username, @RequestParam String password, @RequestParam String email
+
+        /////////
+//        User user = usersRepo.findByUsername(username);
+//        user.setUsername(username);
+//        user.setPassword(password);
+//        user.setEmail(email);
+//        usersRepo.save(user);
+//        return "redirect:/my-acct";
     }
 
     // DELETE PROFILE
