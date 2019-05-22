@@ -12,7 +12,7 @@
     <span class="card-title center-align">Manage your specifications</span>
     <div class="card-content col s12">
 
-            <form th:action="@{'/profile/'+${username}+'/edit/specifications'}" th:method="post" th:object="${specification}" >
+            <form th:action="@{'/profile/'+${user.username}+'/edit/specifications'}" th:method="post" th:object="${specification}" >
 
 
                 <div class="row">
