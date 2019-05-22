@@ -1,10 +1,8 @@
 package com.codeup.sittergitter.models;
 
-import javafx.util.converter.DateStringConverter;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.lang.String;
-import java.time.LocalDate;
 
 
 @Entity

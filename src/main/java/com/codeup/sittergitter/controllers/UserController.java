@@ -135,13 +135,23 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
 
+
+        List<Appointment> parentAppointments = appointmentsRepo.findAllByParentUsername(username);
         Appointment appointment = appointmentsRepo.findOne(sessionUser.getId());
-        String appointmentBabysitterName = appointment.getBabysitter().getUsername();
-        String appointmentParentName = appointment.getBabysitter().getUsername();
-        model.addAttribute("babysitter", appointmentBabysitterName);
-        model.addAttribute("parent", appointmentParentName);
+
+        List<Appointment> babysitterAppointments = appointmentsRepo.findAllByBabysitterUsername(username);
+
+
+//        List<String> appointmentBabysitterName = appointment.getBabysitter().getUsername();
+//        String appointmentParentName = appointments.getBabysitter().getUsername();
+//        model.addAttribute("babysitter", appointmentBabysitterName);
+//        model.addAttribute("parent", appointmentParentName);
 
         model.addAttribute("appointment", appointment);
+        model.addAttribute("parentAppointments", parentAppointments);
+        model.addAttribute("babysitterAppointments", babysitterAppointments);
+
+
 //        reviewToSaved.setParent(userDB);
 
 //        userDB.get
@@ -196,4 +206,5 @@ public class UserController {
     public String loggedIn() {
         return "users/my-acct";
     }
+
 }

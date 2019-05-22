@@ -1,6 +1,6 @@
-html {
-    font-family: 'Kaushan Script', cursive !important;
-}
+/*html {*/
+    /*font-family: 'Kaushan Script', cursive !important;*/
+/*}*/
 body {
     background-color: #ECECEC;
 }
@@ -8,11 +8,11 @@ nav {
     margin-bottom: 3em !important;
 }
 
-.brand-logo {
-    font-family: 'Kaushan Script', cursive !important;
-    color: #F3D250 !important;
-    text-shadow: 3px 3px #5DA2D5;
-}
+/*.brand-logo {*/
+    /*font-family: 'Kaushan Script', cursive !important;*/
+    /*color: #F3D250 !important;*/
+    /*text-shadow: 3px 3px #5DA2D5;*/
+/*}*/
 
 #splash-image {
     width: 50%;
