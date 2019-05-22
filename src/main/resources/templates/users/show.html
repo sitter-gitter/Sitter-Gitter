@@ -96,7 +96,7 @@
                     <div class="card-action">
                         <a th:href="@{'/profile/'+${user.getUsername()}+'/create/children'}">
                             <i class="fas fa-user-edit"></i></a>
-                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/children/'+${child.id}}">
+                        <a th:href="@{'/child/'+${child.id}+'/delete'}">
                             <i class="fas fa-trash-alt"></i></a>
                     </div>
                 </li>
