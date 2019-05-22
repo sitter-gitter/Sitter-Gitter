@@ -37,6 +37,9 @@ nav {
     border-bottom-left-radius: 2em !important;
     border-bottom-right-radius: 2em !important;
 }
+p {
+    margin-bottom: 4px !important;
+}
 img {
     border-top-left-radius: 2em !important;
     border-top-right-radius: 2em !important;

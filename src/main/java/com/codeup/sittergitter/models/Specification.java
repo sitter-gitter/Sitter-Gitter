@@ -3,6 +3,9 @@ package com.codeup.sittergitter.models;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.lang.String;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Entity
@@ -119,9 +122,16 @@ public class Specification {
         this.birthdate = birthdate;
     }
 
-    public User getBabysitter() {
-        return babysitter;
-    }
+//    public int getAge() {
+//        Date today = new Date();
+//        Date birthday = birthdate;
+//        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+//        int d1 = Integer.parseInt(formatter.format(birthday));
+//        int d2 = Integer.parseInt(formatter.format(today));
+//        return (d2 - d1) / 10000;
+//    }
+
+    public User getBabysitter() { return babysitter; }
 
     public void setBabysitter(User user) {
         this.babysitter = user;
