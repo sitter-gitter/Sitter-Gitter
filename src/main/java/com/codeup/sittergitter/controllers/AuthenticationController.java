@@ -1,5 +1,6 @@
 package com.codeup.sittergitter.controllers;
 
+import com.codeup.sittergitter.models.Specification;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.SpecificationRepository;
 import com.codeup.sittergitter.repositories.UserRepository;
@@ -32,8 +33,8 @@ public class AuthenticationController {
         User user = usersRepo.findByUsername(username);
 
         if (user.getisBabysitter()) {
-            List userSpecs = user.getSpecifications();
-            if (userSpecs.isEmpty())
+            Specification userSpecs = user.getSpecifications();
+//            if (userSpecs.isEmpty())
                 return "redirect:/editSpecs";
         } else if (!user.getisBabysitter()) {
             List userChildren = user.getChildren();
