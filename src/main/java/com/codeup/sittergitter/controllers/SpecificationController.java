@@ -52,16 +52,14 @@ public class SpecificationController {
   public String editUser(@PathVariable String username, @ModelAttribute Specification specificationsToBeEdited) {
 
     User user = usersRepo.findByUsername(username);
-//    Long userId = user.getId();
-
-//    specificationsToBeEdited.setId(userId);
-    user.setUsername(username);
-    specificationsToBeEdited.setBabysitter(user);
-
-    Long specId = user.getId();
-    specificationsToBeEdited.setId(specId);
 
     user.setSpecifications(specificationsToBeEdited);
+
+//    specificationsToBeEdited.setBabysitter(user);
+//
+//    Long specId = user.getId();
+//    specificationsToBeEdited.setId(specId);
+
 //    specificationsRepo.save(specificationsToBeEdited);
     return "redirect:/profile/{username}";
   }
