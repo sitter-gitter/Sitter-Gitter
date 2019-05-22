@@ -19,7 +19,7 @@
                 <span th:text="${user.email}"></span>
             </p>
             <p>
-                <span th:text="${user.streetAddr}"></span>
+                <span th:text="${user.streetAddr}"></span><br />
                 <span th:text="${user.city}"></span>,
                 <span th:text="${user.state}"></span>
                 <span th:text="${user.zipCode}"></span>
@@ -35,8 +35,46 @@
     <hr />
 
     <!-- erik additions 0517:1020 -->
+
+    <!-- specifications stuff -->
+    <div th:if="${user.getisBabysitter()}" class="card medium col s12 m4">
+        <ul>
+            Specifications:
+            <br />
+            <li th:each="specification : ${user.specifications}">
+                <ul>
+                    <li>
+                        DOB:
+                        <span th:text="${specification.birthdate}"></span>
+                    </li>
+                    <!--<li>-->
+                    <!--education:-->
+                    <!--<span th:text="${specification.educationLevel}"></span>-->
+                    <!--</li>-->
+                    <li>
+                        has cpr:
+                        <span th:text="${specification.hasCprTraining}"></span>
+                    </li>
+                    <li>
+                        is smoker:
+                        <span th:text="${specification.smoker}"></span>
+                    </li>
+                    <li>
+                        years of exp:
+                        <span th:text="${specification.yearsOfExperience}"></span>
+                    </li>
+                    <li>
+                        has transportation:
+                        <span th:text="${specification.hasTransportation}"></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
     <!-- child stuff -->
-    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
+    <div th:if="${(user.getisBabysitter() == false)}" class="card medium col s12 m4">
     <ul>
         Children:
         <br />
@@ -60,7 +98,7 @@
     </div>
 
     <!-- appointments stuff -->
-    <div class="col s12 m4">
+    <div class="card medium col s12 m4">
     <ul>
         Future Appointments: <br />
         <li th:each="item : ${appointment}"  style="list-style: none; display: inline;">
@@ -89,43 +127,8 @@
     </ul>
     </div>
 
-    <!-- specifications stuff -->
-    <div th:if="${user.getisBabysitter()}" class="col s12 m4">
-    <ul>
-        Specifications:
-        <br />
-        <li th:each="specification : ${user.specifications}">
-            <ul>
-                <li>
-                    DOB:
-                    <span th:text="${specification.birthdate}"></span>
-                </li>
-                <!--<li>-->
-                    <!--education:-->
-                    <!--<span th:text="${specification.educationLevel}"></span>-->
-                <!--</li>-->
-                <li>
-                    has cpr:
-                    <span th:text="${specification.hasCprTraining}"></span>
-                </li>
-                <li>
-                    is smoker:
-                    <span th:text="${specification.smoker}"></span>
-                </li>
-                <li>
-                    years of exp:
-                    <span th:text="${specification.yearsOfExperience}"></span>
-                </li>
-                <li>
-                    has transportation:
-                    <span th:text="${specification.hasTransportation}"></span>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    </div>
 
-    <div class="col s12 m4">
+    <div class="card medium col s12 m4">
         <ul>
             Reviews made: <br />
             <li th:each="review : ${user.reviews}"  style="list-style: none; display: inline;">
