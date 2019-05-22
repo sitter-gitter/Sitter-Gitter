@@ -2,7 +2,10 @@
     /*font-family: 'Kaushan Script', cursive !important;*/
 /*}*/
 html {
-    background-color: #F3D250 !important;
+    background-color: #ECECEC !important;
+}
+body {
+    padding-bottom: 7em !important;
 }
 nav {
     background-color: #F78888 !important;
@@ -15,24 +18,39 @@ nav {
     text-shadow: 3px 3px #5DA2D5 !important;
 }
 .card {
-    background-color: #ECECEC !important;
-    width: 400px !important;
+    background-color: #F3D250 !important;
+    min-width: 400px !important;
+    max-width: 600px !important;
     margin: 0 auto !important;
-    border-radius: 2em !important;
+    /*border: 1px solid gray !important;*/
+    border-radius: 0.5em !important;
+    box-shadow: none !important;
     /*padding-bottom: 1em !important;*/
+}
+.row {
+    margin: 0 !important;
+}
+.card-content {
+    padding: 24px 24px 36px 24px !important;
 }
 .card-action {
     border-bottom-left-radius: 2em !important;
     border-bottom-right-radius: 2em !important;
-
 }
 img {
     border-top-left-radius: 2em !important;
     border-top-right-radius: 2em !important;
 }
+input {
+    background-color: white !important;
+}
 .yellow-button {
-    background-color: #F3D250 !important;
-    color: #5DA2D5;
+     background-color: #F3D250 !important;
+     color: #5DA2D5 !important;
+ }
+.pink-button {
+    background-color: #F78888 !important;
+    color: #F3D250 !important;
 }
 .blue-button {
     background-color: #5DA2D5 !important;
@@ -42,13 +60,14 @@ img {
     width: 2em !important;
 }
 .page-footer {
+    z-index: 1;
     background-color: #90CCF4 !important;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-    margin-bottom: -1.5em;
+    padding-top: 0 !important;
 }
 
 /*.brand-logo {*/
