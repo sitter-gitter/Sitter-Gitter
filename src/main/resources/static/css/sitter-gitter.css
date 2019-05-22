@@ -1,12 +1,12 @@
 /*html {*/
     /*font-family: 'Kaushan Script', cursive !important;*/
 /*}*/
-body {
-    background-color: #F3D250;
+html {
+    background-color: #F3D250 !important;
 }
 nav {
     background-color: #F78888 !important;
-    /*margin-bottom: 3em !important;*/
+    margin-bottom: 2.5em !important;
     box-shadow: none !important;
 }
 .brand-logo {
@@ -15,8 +15,16 @@ nav {
     text-shadow: 3px 3px #5DA2D5 !important;
 }
 .card {
+    background-color: #ECECEC !important;
+    width: 400px !important;
+    margin: 0 auto !important;
     border-radius: 2em !important;
-    padding-bottom: 1em !important;
+    /*padding-bottom: 1em !important;*/
+}
+.card-action {
+    border-bottom-left-radius: 2em !important;
+    border-bottom-right-radius: 2em !important;
+
 }
 img {
     border-top-left-radius: 2em !important;
@@ -28,7 +36,10 @@ img {
 }
 .blue-button {
     background-color: #5DA2D5 !important;
-    color: #ECECEC;
+    color: #ECECEC !important;
+}
+.space {
+    width: 2em !important;
 }
 .page-footer {
     background-color: #90CCF4 !important;
