@@ -12,7 +12,7 @@ public class User {
     @Id @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
@@ -49,8 +49,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
     private List<Child> children;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "babysitter")
-    private List<Specification> specifications;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "babysitter")
+    private Specification specifications;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
 //    private List<Appointment> appointments;
@@ -77,7 +77,7 @@ public class User {
 //    }
 
     public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
-                String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews, List<Child> children, List<Specification> specifications) {
+                String city, String state, String zipCode, Boolean isBabysitter, List<Review> reviews, List<Child> children, Specification specifications) {
 
         this.username = username;
         this.password = password;
@@ -91,7 +91,6 @@ public class User {
         this.isBabysitter = isBabysitter;
         this.reviews = reviews;
         this.children = children;
-        this.specifications = specifications;
     }
 
     public User(String username, String password, String email, String firstName, String lastName, String streetAddr,
@@ -270,13 +269,15 @@ public class User {
         this.children = children;
     }
 
-    public List<Specification> getSpecifications() {
+    public Specification getSpecifications() {
         return specifications;
     }
 
-    public void setSpecifications(List<Specification> specifications) {
+    public void setSpecifications(Specification specifications) {
         this.specifications = specifications;
     }
+
+
 }
 
 

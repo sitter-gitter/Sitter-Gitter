@@ -5,7 +5,18 @@ INSERT INTO users (username, email, password, first_name, last_name, street_addr
                    is_babysitter)
 VALUES ('Dwight', 'dwight@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Dwight', 'Bemisderfer', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
        ('Erik', 'erik@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Erik', 'Behnke', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 0),
-       ('Mindy', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy', 'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1);
+       ('Mindy', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1),
+       ('Mindy2', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1),
+       ('Mindy3', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1),
+       ('Mindy4', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1),
+       ('Mindy5', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1),
+       ('Mindy6', 'mindy@codeup.com', '$2a$10$Vh/68GBeHSHiIgujx.zEzetpwORkBI0i7b9I43kyTIgP2JzTaz4Q2', 'Mindy',
+        'Tillman', '600 Navarro St #350', 'San Antonio', 'TX', '78205', 1);
 
 
 INSERT INTO children (name, birthdate, special_note, parent_id)
@@ -37,7 +48,12 @@ VALUES ('2019-05-31 12:00:00', '2019-05-31 23:00:00', 3),
        ('2019-06-08 12:00:00', '2019-06-08 23:00:00', 3);
 
 INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, birthdate, babysitter_id)
-VALUES (false, true, true, 5, '1993-10-23', 3);
+VALUES (false, true, true, 5, '1993-10-23', 3),
+       (false, true, true, 5, '1993-10-23', 4),
+       (false, true, true, 5, '1993-10-23', 5),
+       (false, true, true, 5, '1993-10-23', 6),
+       (false, true, true, 5, '1993-10-23', 7),
+       (false, true, true, 5, '1993-10-23', 8);
 
 # INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, education_level, birthdate, babysitter_id)
 # VALUES (false, true, true, 5, e3, '1993-10-23', 3);
