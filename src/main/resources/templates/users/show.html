@@ -266,7 +266,8 @@
             <h6>Available Hours:</h6>
             <br />
             <li th:each="time : ${available_times}"  style="list-style: none; display: inline;">
-                <div th:if="${time.start > current_time}" class="col s12">
+                <div
+                    th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
                     <!--<div class="card grey hoverable">-->
                         <!--<div class="card-content white-text" style="padding-top: 16px;">-->
                             <span class="card-title">
