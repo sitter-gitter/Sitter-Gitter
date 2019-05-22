@@ -7,6 +7,35 @@
 
 
 <div class="container">
+
+<div class="input-field">
+    <form th:action="@{'/profile/'+${user.username}+'/edit'}" method="post" th:object="${user}">
+
+        <label for="email">Email</label>
+        <input id="email" th:field="*{email}" />
+
+        <label for="firstName">First Name</label>
+        <input id="firstName" th:field="*{firstName}" />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" th:field="*{lastName}" />
+
+        <label for="streetAddr">Street Address</label>
+        <input id="streetAddr" th:field="*{streetAddr}" />
+
+        <label for="city">City</label>
+        <input id="city" th:field="*{city}" />
+
+        <label for="state">State</label>
+        <input id="state" th:field="*{state}" />
+
+        <label for="zipCode">Zip Code</label>
+        <input id="zipCode" th:field="*{zipCode}" />
+
+        <button type="submit" class="btn blue-grey darken-2">Submit</button>
+
+
+<div class="container">
     <div class="card center-align"><div class="card-content">
         <span class="card-title">Edit My Profile</span>
 
@@ -40,6 +69,7 @@
                 <button type="submit" class="btn">Submit</button>
             </div>
         </div>
+
     </form>
 </div>
 </div>
