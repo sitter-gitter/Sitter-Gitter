@@ -64,20 +64,6 @@ public class SpecificationController {
     user.getSpecifications().setHasTransportation(hasTransportation);
     user.getSpecifications().setSmoker(smoker);
     usersRepo.save(user);
-
     return "redirect:/profile/{username}";
   }
 }
-
-
-
-////////// WORKING COPY /////////////////
-//  @PostMapping("/profile/{username}/edit/specifications")
-//  public String editUser(@PathVariable String username, @RequestParam String birthdate) {
-//
-//    User user = usersRepo.findByUsername(username);
-//    user.getSpecifications().setBirthdate(birthdate);
-//    usersRepo.save(user);
-//
-//    return "redirect:/profile/{username}";
-//  }

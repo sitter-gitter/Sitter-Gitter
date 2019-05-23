@@ -93,7 +93,7 @@ public class AvailableTimeController {
     @GetMapping("/available-times/{id}/delete")
     public String deleteAvailableTime(@PathVariable Long id){
         availableTimesRepo.deleteById(id);
-        return "redirect:/available-times";
+        return "redirect:/my-acct";
     }
 
     // CREATE ERROR GET
