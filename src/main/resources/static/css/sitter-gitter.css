@@ -21,7 +21,8 @@ nav {
     background-color: #F3D250 !important;
     min-width: 400px !important;
     max-width: 600px !important;
-    margin: 0 auto !important;
+    margin: 1em auto;
+    /*margin-top: 1em;*/
     /*border: 1px solid gray !important;*/
     border-radius: 0.5em !important;
     box-shadow: none !important;
