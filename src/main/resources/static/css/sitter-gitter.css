@@ -6,6 +6,8 @@ html {
 }
 body {
     padding-bottom: 7em !important;
+    background-image: url("static/img/muted-bkg.png");
+
 }
 nav {
     background-color: #F78888 !important;

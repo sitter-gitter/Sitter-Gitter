@@ -4,12 +4,22 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-<div class="container">
-    <div class="card center-align"><div class="card-content">
-        <span class="card-title"> I am a...</span>
-        <a class="waves-effect waves-light btn-large" href="/register/babysitter">Babysitter</a>
-        <a class="waves-effect waves-light btn-large" href="/register/parent">Parent</a>
-    </div></div>
+<div class="row center">
+    <h4>Register as a...</h4>
+</div>
+<div class="row center">
+    <div class="col s6">
+        <div class="card center-align"><div class="card-content">
+            <img th:src="@{/image/parent.png}" alt="Parent" /><br />
+            <a class="waves-effect waves-light btn-large" href="/register/parent">Parent</a>
+        </div></div>
+    </div>
+    <div class="col s6">
+        <div class="card center-align"><div class="card-content">
+            <img src="/img/babysitter.png" alt="Babysitter" /><br />
+            <a class="waves-effect waves-light btn-large" href="/register/babysitter">Babysitter</a>
+        </div></div>
+    </div>
 </div>
 
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
