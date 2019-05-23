@@ -73,7 +73,7 @@ public class AppointmentController {
             return "redirect:/appointments/available-babysitters";
         }
 
-        // CREATE ERROR GET
+        // CREATE ERROR GET asdf
         @GetMapping("/appointments/create?error")
         public String showCreateAppointmentsError(Model model) {
             model.addAttribute("datetime", new AvailableTime());

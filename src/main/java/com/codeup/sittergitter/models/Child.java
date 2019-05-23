@@ -3,9 +3,6 @@ package com.codeup.sittergitter.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -69,15 +66,6 @@ public class Child {
 
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
-    }
-
-    public int getAge() {
-        Date today = new Date();
-        Date birthday = birthdate;
-        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        int d1 = Integer.parseInt(formatter.format(birthday));
-        int d2 = Integer.parseInt(formatter.format(today));
-        return (d2 - d1) / 10000;
     }
 
     public String getSpecialNote() {
