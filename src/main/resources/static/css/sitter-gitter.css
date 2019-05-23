@@ -17,21 +17,18 @@ nav {
     color: #F3D250 !important;
     text-shadow: 3px 3px #5DA2D5 !important;
 }
-.card-splash {
+.card {
     background-color: #F3D250 !important;
     min-width: 400px !important;
     max-width: 600px !important;
     margin: 0 auto !important;
     /*border: 1px solid gray !important;*/
-    border-radius: 2em !important;
+    border-radius: 0.5em !important;
     box-shadow: none !important;
     /*padding-bottom: 1em !important;*/
 }
 .row {
     margin: 0 !important;
-}
-.card-title {
-    font-size: 1em !important;
 }
 .card-content {
     padding: 24px 24px 36px 24px !important;
@@ -39,9 +36,6 @@ nav {
 .card-action {
     border-bottom-left-radius: 2em !important;
     border-bottom-right-radius: 2em !important;
-}
-p {
-    margin-bottom: 4px !important;
 }
 img {
     border-top-left-radius: 2em !important;
