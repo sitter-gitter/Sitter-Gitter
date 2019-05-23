@@ -1,4 +1,4 @@
-package com.codeup.sittergitter.controllers;
+package com.codeup.sittergitter.controllers.oldControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

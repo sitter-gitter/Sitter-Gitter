@@ -45,7 +45,7 @@ public class SpecificationController {
 
     model.addAttribute("specifications", specifications);
     model.addAttribute("user", user);
-    return "users/updateSpecifications";
+    return "users/edit-specifications";
   }
 
 

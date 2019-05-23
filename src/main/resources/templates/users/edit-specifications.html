@@ -4,7 +4,9 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-<form method="post" action="ENTER ACTION HERE">
+<form th:action="@{'/users/'+${username}+'/edit/specifications'}" method="post">
+<span th:each="specificiation : ${user.specifications}"> </span>
+
 <div class="container">
     <div class="card"><div class="card-content">
         <span class="card-title center-align">Create Your Babysitter Profile</span>
@@ -13,7 +15,7 @@
             <div class="row">
                 <div class="col s12 m10">
                     <label for="dob">When is your birthday?</label>
-                    <input type="text" id="dob" name="dob" placeholder="mm/dd/yyyy">
+                    <input type="text" id="dob" name="dob" placeholder="mm/dd/yyyy" />
                 </div>
             </div>
 
@@ -21,22 +23,22 @@
             <div class="row">
                 <div class="col s12 m10">
                     <label for="exp">How many years of babysitting experience do you have?</label>
-                    <input type="text" id="exp" name="exp" placeholder="Years of Experience">
+                    <input type="text" id="exp" name="exp" placeholder="Years of Experience" />
                 </div>
             </div>
 
             <!--  Education -->
-            <div class="row">
-                <div class="col s12 m10">
-                    <label for="education">What is your education level?</label>
-                    <select id="education">
-                        <option value="" disabled selected>Enter your education level...</option>
-                        <option value="1">In high school</option>
-                        <option value="2">High school diploma</option>
-                        <option value="3">In college or college graduate</option>
-                    </select>
-                </div>
-            </div>
+            <!--<div class="row">-->
+                <!--<div class="col s12 m10">-->
+                    <!--<label for="education">What is your education level?</label>-->
+                    <!--<select id="education">-->
+                        <!--<option value="" disabled selected>Enter your education level...</option>-->
+                        <!--<option value="1">In high school</option>-->
+                        <!--<option value="2">High school diploma</option>-->
+                        <!--<option value="3">In college or college graduate</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <!--  CPR  -->
             <div class="row">
@@ -82,8 +84,8 @@
         <div class="card-action">
             <div class="row center-align">
                 <div class="input-field col s12">
-                    <a class="waves-effect waves-light btn-large">< Back</a>
-                    <a class="waves-effect waves-light btn-large">Next ></a>
+                    <a class="waves-effect waves-light btn-large">Back</a>
+                    <a class="waves-effect waves-light btn-large">Next</a>
                 </div>
             </div>
         </div>
@@ -91,18 +93,6 @@
     </div>
 </div>
 </form>
-
-
-
-<div class="container">
-    <div class="input-field">
-        <form th:action="@{'/users/'+${username}+'/edit/specifications'}" method="post">
-        <span th:each="specificiation : ${user.specifications}"> </span>
-
-            <button type="submit" class="btn">Submit</button>
-        </form>
-    </div>
-</div>
 
 
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
