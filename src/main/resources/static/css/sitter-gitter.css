@@ -3,11 +3,18 @@
 /*}*/
 html {
     background-color: #ECECEC !important;
+    font-family: 'Merriweather', serif !important;
 }
 body {
+    min-height: 100%;
     padding-bottom: 7em !important;
-    background-image: url("static/img/muted-bkg.png");
-
+    background-image: url("../image/muted-bkg2.png");
+    background-size: 350px 350px;
+    background-repeat: repeat;
+    background-position: center;
+}
+html, body {
+    height: 100%;
 }
 nav {
     background-color: #F78888 !important;
@@ -19,9 +26,35 @@ nav {
     color: #F3D250 !important;
     text-shadow: 3px 3px #5DA2D5 !important;
 }
+.splash-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url("../image/babysitter2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.parent-image {
+    margin: 0 auto;
+    background-image: url("../image/parent.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+.babysitter-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url("../image/babysitter.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .card {
-    background-color: #F3D250 !important;
-    min-width: 400px !important;
+    /*background-color: #ECECEC !important;*/
+    min-width: 200px !important;
     max-width: 600px !important;
     margin: 0 auto !important;
     /*border: 1px solid gray !important;*/
@@ -65,6 +98,7 @@ input {
     border-radius: 0.5em !important;
 }
 input[type=text], input[type=password] {
+    font-family: 'Merriweather', serif;
     padding-left: 1em !important;
 }
 input:focus {
@@ -156,4 +190,8 @@ footer ul li {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.card-content .profile {
+    max-width: 250px !important;
+    /*padding:*/
 }
