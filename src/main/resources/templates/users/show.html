@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><th:block th:replace="fragments/head :: header('Show User')" /></head>
 <body>
+<div>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-
 
 <div class="container">
 <div class="row">
@@ -12,30 +12,21 @@
     <!--  GENERAL USER INFORMATION  -->
     <div class="card grey">
         <div class="card-content white-text" style="padding-bottom: 0; padding-top: 16px;">
-            <span class="card-title">
-                <span th:text="${user.username}"></span>
-            </span>
-            <p>
-                <span th:text="${user.email}"></span>
-            </p>
-            <p>
-                <span th:text="${user.streetAddr}"></span><br />
-                <span th:text="${user.city}"></span>,
-                <span th:text="${user.state}"></span>
-                <span th:text="${user.zipCode}"></span>
-            </p>
+            <span class="card-title"><span th:text="${user.username}"></span></span>
+            <span th:text="${user.email}"></span><br />
+            <span th:text="${user.streetAddr}"></span><br />
+            <span th:text="${user.city}"></span>,
+            <span th:text="${user.state}"></span>
+            <span th:text="${user.zipCode}"></span>
         </div>
         <div class="card-action">
             <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
-                <i class="fas fa-user-edit"></i> Edit Profile</a>
+            <i class="fas fa-user-edit"></i> Edit Profile</a>
             <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">-->
                 <!--<i class="fas fa-trash-alt"></i> Delete Profile</a>-->
         </div>
     </div>
     <hr />
-
-
-    <!-- erik additions 0517:1020 -->
 
     <!--  BABYSITTER INFORMATION  -->
     <div th:if="${user.getisBabysitter()}" class="card medium col s12 m4">
@@ -50,10 +41,6 @@
                                     DOB:
                                     <span th:text="${specification.birthdate}"></span>
                                 </li>
-                                <!--<li>-->
-                                <!--education:-->
-                                <!--<span th:text="${specification.educationLevel}"></span>-->
-                                <!--</li>-->
                                 <li>
                                     <span th:if="${specification.yearsOfExperience == 1}">
                                         <span th:text="${specification.yearsOfExperience}"></span>
@@ -65,20 +52,15 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <!--has cpr:-->
-                                    <!--<span th:text="${specification.hasCprTraining}"></span>-->
                                     <span th:if="${specification.hasCprTraining}">
                                         <span th:text="${user.getFirstName()}"></span> is CPR-certified.
                                     </span>
                                 </li>
                                 <li>
-                                    <!--is smoker:-->
-                                    <!--<span th:text="${specification.smoker}"></span>-->
                                     <span th:unless="${specification.smoker}">
                                         <span th:text="${user.getFirstName()}"></span> is tobacco and nicotine-free.
                                     </span>
                                 </li>
-
                                 <li>
                                     <span th:if="${specification.hasTransportation}">
                                         <span th:text="${user.username}"></span> has transportation
@@ -96,7 +78,6 @@
         </div>
     </div>
 
-    <!-- erik additions -->
     <!--  CHILD INFORMATION  -->
     <div th:if="${(user.getisBabysitter() == false)}" class="card col s12 m4">
         <div class="card-content">
@@ -120,6 +101,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 <!--         <ul>
             <h6>Specifications:</h6>
@@ -216,96 +198,95 @@
                 </div>
             </div>
         </div>
+    </div>
 
-    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
-
-    <ul>
-        <h6>Future Appointments:</h6>
-        <br />
-        <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
-
-            <!--<span th:if="${(user.getisBabysitter() == true)}">-->
-                <!--Parent:-->
-                    <!--<span th:text="${appt.getParent().getUsername()}"></span>-->
-            <!--</span>-->
-            <span th:if="${(user.getisBabysitter() == false)}">
-                Babysitter name:
-                <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
-                    <span th:text="${appt.getBabysitter().getUsername()}"></span>
-                </a>
-            </span>
+    <div th:if="${(user.getisBabysitter() == false)}" class="card col s12 m4">
+        <div class="card-content">
+            <span class="card-title">Future Appointments:</span>
 
             <ul>
+                <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
 
-                <li>
-                    Start:
-                    <span th:text="${appt.start}"></span>
-                </li>
-                <li>
-                    End:
-                    <span th:text="${appt.end}"></span>
-                </li>
-                <li>
-                    <div class="card-action">
-                        <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
+                <!--<span th:if="${(user.getisBabysitter() == true)}">-->
+                    <!--Parent:-->
+                        <!--<span th:text="${appt.getParent().getUsername()}"></span>-->
+                <!--</span>-->
+                <span th:if="${(user.getisBabysitter() == false)}">
+                    Babysitter name:
+                    <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
+                    <span th:text="${appt.getBabysitter().getUsername()}"></span></a>
+                </span>
+
+                <ul>
+
+                    <li>
+                        Start:
+                        <span th:text="${appt.start}"></span>
+                    </li>
+                    <li>
+                        End:
+                        <span th:text="${appt.end}"></span>
+                    </li>
+                    <li>
+                        <div class="card-action">
+                            <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
                             <i class="fas fa-user-edit"></i> Edit Appointment</a>
                         <br />
                         <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
-                    </div>
-                </li>
+                        </div>
+                    </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
     </ul>
-    <div class="card-action">
-        <a th:href="@{'/appointments/create'}">
+        <div class="card-action">
+            <a th:href="@{'/appointments/create'}">
             <i class="fas fa-plus"></i> Schedule New Appointment</a>
-    </div>
+        </div>
 
     </div>
 
 
     <!-- babysitter appointments -->
-    <div th:if="${(user.getisBabysitter() == true)}" class="col s12 m4">
-        <ul>
-            <h6>Future Appointments: </h6>
-            <br />
-            <li th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
-                <div class="col s12">
-
-                     <span th:if="${(user.getisBabysitter() == true)}">
-                        Parent:
-                        <a th:href="@{'/profile/' + ${appt.getParent().getUsername()}}">
-                            <span th:text="${appt.getParent().getUsername()}"></span>
-                        </a>
-                    </span>
-                    <span th:if="${(user.getisBabysitter() == false)}">
-                        Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
-                    </span>
-                    <ul>
-                        <li>
-                            Start:
-                            <span th:text="${appt.start}"></span>
-                        </li>
-                        <li>
-                            End:
-                            <span th:text="${appt.end}"></span>
-                        </li>
-                        <li>
-                            <div class="card-action">
-                                <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
-                                    <i class="fas fa-user-edit"></i> Edit Appointment</a>
-                                <br />
-                                <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
-                                    <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </li>
-        </ul>
+    <div th:if="${(user.getisBabysitter() == true)}" class="card col s12 m4">
+        <div class="card-content">
+            <span class="card-title">Future Appointments</span>
+                <ul>
+                    <li th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
+                        <div class="col s12">
+                            <span th:if="${(user.getisBabysitter() == true)}">
+                                Parent:
+                                <a th:href="@{'/profile/' + ${appt.getParent().getUsername()}}">
+                                <span th:text="${appt.getParent().getUsername()}"></span>
+                                </a>
+                            </span>
+                            <span th:if="${(user.getisBabysitter() == false)}">
+                                Babysitter name: <span th:text="${appt.getBabysitter().getUsername()}"></span>
+                            </span>
+                            <ul>
+                                <li>
+                                    Start:
+                                    <span th:text="${appt.start}"></span>
+                                </li>
+                                <li>
+                                    End:
+                                    <span th:text="${appt.end}"></span>
+                                </li>
+                                <li>
+                                    <div class="card-action">
+                                        <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">
+                                        <i class="fas fa-user-edit"></i> Edit Appointment</a>
+                                        <br />
+                                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
+                                            <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+        </div>
     </div>
 
     <!--&lt;!&ndash; specifications list &ndash;&gt;-->
@@ -382,8 +363,7 @@
     <!--</div>-->
 
     <!-- reviews list -->
-    <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m4">
-
+    <div th:if="${(user.getisBabysitter() == false)}" class="card col s12 m4">
         <div class="card-content">
             <span class="card-title">My Reviews:</span>
             <div class="row">
@@ -397,6 +377,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 <!--     <ul>
         <h6>Reviews made:</h6>
@@ -416,45 +397,44 @@
         </li>
     </ul> -->
 
-    </div>
+    <!--</div>-->
 
     <!-- Available Times List -->
 
-    <div th:if="${(user.getisBabysitter() == true)}" class="col s12 m4">
-        <ul>
-            <h6>Available Hours:</h6>
-            <br />
-            <li th:each="time : ${available_times}"  style="list-style: none; display: inline;">
-                <div
-                    th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
-                    <!--<div class="card grey hoverable">-->
+    <div th:if="${(user.getisBabysitter() == true)}" class="card col s12 m4">
+        <div class="card-content">
+            <span class="card-title">Available Hours:</span>
+            <ul>
+                <li th:each="time : ${available_times}"  style="list-style: none; display: inline;">
+                    <div th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
+                        <!--<div class="card grey hoverable">-->
                         <!--<div class="card-content white-text" style="padding-top: 16px;">-->
-                            <span class="card-title">
-                                    From: <span th:text="${time.start}"></span>
-                                <br />
-                                    To: <span th:text="${time.end}"></span>
-                            </span>
-                    <br />
+                        <span class="card-title">
+                            From: <span th:text="${time.start}"></span>
+                            <br />
+                            To: <span th:text="${time.end}"></span>
+                        </span>
+                        <br />
 
-                    <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                        <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
                         <i class="fas fa-trash-alt"></i> Cancel Available Hours</a>
+                            <!--</div>-->
                         <!--</div>-->
-                    <!--</div>-->
-                </div>
-            </li>
-        </ul>
-
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div class="card-action">
             <a th:href="@{'/available-times/create'}">
                 <i class="fas fa-plus"></i> Schedule Available Hours</a>
         </div>
     </div>
 
-
 </div>
 </div>
 </div>
-
+</div>
+</div>
 
 <footer><th:block th:replace="fragments/footer :: footer"/></footer>
 <th:block th:replace="fragments/includes :: includes" />
