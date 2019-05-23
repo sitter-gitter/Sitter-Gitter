@@ -7,61 +7,61 @@
 
 <div class="container">
 
-<div class="card">
-<div class="card-content">
+    <div class="card">
+        <div class="card-content">
 
-    <span class="card-title center-align">Manage your specifications</span>
-    <div class="card-content col s12">
+            <span class="card-title center-align">Manage your specifications</span>
+            <div class="card-content col s12">
 
-    <form th:action="@{'/profile/'+${user.username}+'/edit/specifications'}" th:method="post" th:object="${specifications}">
+                <form th:action="@{'/profile/'+${user.username}+'/edit/specifications'}" th:method="post" th:object="${specifications}">
 
-    <div class="row">
+                    <div class="row">
 
-        <div class="input-field col s12">
-            <input th:field="*{birthdate}" id="dob" type="text"
-                   class="datepicker2" />
-            <label for="dob">Birthdate</label>
-        </div>
+                        <div class="input-field col s12">
+                            <input th:field="*{birthdate}" id="dob" type="text"
+                                   class="datepicker2" />
+                            <label for="dob">Birthdate</label>
+                        </div>
 
-        <div class="input-field col s12">
-            <input th:field="*{yearsOfExperience}" id="exp" type="text" />
-            <label for="exp">Years of babysitting experience?</label>
-        </div>
+                        <div class="input-field col s12">
+                            <input th:field="*{yearsOfExperience}" id="exp" type="text" />
+                            <label for="exp">Years of babysitting experience?</label>
+                        </div>
 
-        <div class="input-field col s12">
-                <label for="cpr">
-                    <input th:checked="*{hasCprTraining} ? 'checked'" name="hasCprTraining" type="checkbox" id="cpr" />
-                    <span>Yes, I have a CPR card.</span>
-                </label>
-        </div>
+                        <div class="input-field col s12">
+                            <label for="cpr">
+                                <input th:checked="*{hasCprTraining} ? 'checked'" name="hasCprTraining" type="checkbox" id="cpr" />
+                                <span>Yes, I have a CPR card.</span>
+                            </label>
+                        </div>
 
-        <div class="input-field col s12">
-                <label for="transport">
-                    <input th:checked="*{hasTransportation} ? 'checked'" name="hasTransportation" type="checkbox" id="transport" />
-                    <span>I have my own transportation.</span>
-                </label>
-        </div>
+                        <div class="input-field col s12">
+                            <label for="transport">
+                                <input th:checked="*{hasTransportation} ? 'checked'" name="hasTransportation" type="checkbox" id="transport" />
+                                <span>I have my own transportation.</span>
+                            </label>
+                        </div>
 
-        <div class="input-field col s12">
-                <label for="smoking">
-                    <input th:checked="*{smoker} ? 'checked'" name="smoker" type="checkbox" id="smoking" />
-                    <span>I use tobacco/nicotine products.</span>
-                </label>
-        </div>
+                        <div class="input-field col s12">
+                            <label for="smoking">
+                                <input th:checked="*{smoker} ? 'checked'" name="smoker" type="checkbox" id="smoking" />
+                                <span>I use tobacco/nicotine products.</span>
+                            </label>
+                        </div>
 
-        <!--<input type="hidden" th:value="*{id}" />-->
+                        <!--<input type="hidden" th:value="*{id}" />-->
 
-        <div class="input-field col s12 center">
-            <input type="submit" value="Submit" class="btn" />
+                        <div class="input-field col s12 center">
+                            <input type="submit" value="Submit" class="btn" />
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
         </div>
     </div>
-
-</form>
-
-
-</div>
-</div>
-</div>
 </div>
 
 <!--<script>-->
