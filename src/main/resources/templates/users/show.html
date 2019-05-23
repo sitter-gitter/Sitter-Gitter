@@ -27,7 +27,7 @@
                 </p>
             </div>
 
-            <div class="card-action">
+            <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
                 <i class="fas fa-user-edit"></i> Edit Profile</a>
                 <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">-->
@@ -67,7 +67,7 @@
             </li>
         </ul>
 
-        <div class="card-action">
+        <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
             <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/specifications'}">
                 <i class="fas fa-user-edit"> Edit Specifications</i></a>
         </div>
@@ -93,7 +93,7 @@
                             <span th:text="${child.specialNote}"></span>
                         </p>
                     </li>
-                    <li>
+                    <li th:if="${user.getUsername() == sessionUser.getUsername()}" >
                             <a th:href="@{'/child/'+${child.id}+'/delete'}">
                                 <i class="fas fa-trash-alt"></i> Remove child</a>
                     </li>
@@ -101,7 +101,7 @@
             </li>
         </ul>
 
-        <div class="card-action">
+        <div  th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
             <a th:href="@{'/profile/'+${user.getUsername()}+'/create/children'}">
                 <i class="fas fa-plus"></i> Add a child</a>
         </div>
@@ -135,7 +135,7 @@
                     <span th:text="${appt.end}"></span>
                 </li>
                 <li>
-                    <div class="card-action">
+                    <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                         <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
                     </div>
@@ -144,7 +144,7 @@
         </li>
     </ul>
 
-        <div class="card-action">
+        <div  th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
             <a th:href="@{'/appointments/create'}">
             <i class="fas fa-plus"></i> Schedule New Appointment</a>
         </div>
@@ -153,7 +153,7 @@
 
 
     <!-- babysitter appointments -->
-    <div th:if="${(user.getisBabysitter() == true)}" class="col s12 m6 l4">
+    <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="col s12 m6 l4">
         <ul>
             <h6>Future Appointments: </h6>
             <br />
@@ -181,10 +181,7 @@
                             <span th:text="${appt.end}"></span>
                         </li>
                         <li>
-                            <div class="card-action">
-                                <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/edit/appointment/'+${appt.getId()}}">-->
-                                    <!--<i class="fas fa-user-edit"></i> Edit Appointment</a>-->
-                                <!--<br />-->
+                            <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                                 <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
                                     <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
                             </div>
@@ -215,15 +212,17 @@
                         </span>
                         <br />
 
-                        <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-                        <i class="fas fa-trash-alt"></i> Cancel Time Slot</a>
+                        <a th:if="${user.getUsername() == sessionUser.getUsername()}"
+                           th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                            <i class="fas fa-trash-alt"></i> Cancel Time Slot
+                        </a>
 
                     </div>
 
                 </li>
             </ul>
 
-            <div class="card-action">
+            <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/available-times/create'}">
                     <i class="fas fa-plus"></i> Schedule Available Hours</a>
             </div>
@@ -248,7 +247,7 @@
             </li>
 
             <li>
-                <div class="card-action">
+                <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                     <a href="#">
                         <i class="fas fa-user-edit"></i> Edit Review</a>
                     <a href="#">
