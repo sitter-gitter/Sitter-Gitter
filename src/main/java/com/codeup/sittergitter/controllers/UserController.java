@@ -135,6 +135,7 @@ public class UserController {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
 
+        model.addAttribute("sessionUser", sessionUser);
 
         List<Appointment> parentAppointments = appointmentsRepo.findAllByParentUsername(username);
         Appointment appointment = appointmentsRepo.findOne(sessionUser.getId());
