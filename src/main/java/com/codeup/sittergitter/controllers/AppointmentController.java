@@ -4,6 +4,7 @@ import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.AvailableTime;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.*;
+import com.codeup.sittergitter.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,18 +24,26 @@ public class AppointmentController {
     private final AvailableTimeRepository availableTimesRepo;
     private final ChildRepository childrenRepo;
     private final SpecificationRepository specificationsRepo;
+    private EmailService emailService;
     private List<AvailableTime> availApptTimes;
     private Long sitterId;
     private Timestamp apptStartTime;
     private Timestamp apptEndTime;
 
-    public AppointmentController(ReviewRepository reviewsRepo, UserRepository usersRepo, AppointmentRepository appointmentsRepo, AvailableTimeRepository availableTimesRepo, ChildRepository childrenRepo, SpecificationRepository specificationsRepo) {
+    public AppointmentController(ReviewRepository reviewsRepo,
+                                 UserRepository usersRepo,
+                                 AppointmentRepository appointmentsRepo,
+                                 AvailableTimeRepository availableTimesRepo,
+                                 ChildRepository childrenRepo,
+                                 SpecificationRepository specificationsRepo,
+                                 EmailService emailService) {
         this.reviewsRepo = reviewsRepo;
         this.usersRepo = usersRepo;
         this.appointmentsRepo = appointmentsRepo;
         this.availableTimesRepo = availableTimesRepo;
         this.childrenRepo = childrenRepo;
         this.specificationsRepo = specificationsRepo;
+        this.emailService = emailService;
     }
 
         // CREATE APPOINTMENT TIME GET
@@ -158,7 +167,8 @@ public class AppointmentController {
         newApptTime.setBabysitter(usersRepo.findOne(sitterId));
         newApptTime.setParent(userDB);
         newApptTime.setSitterApproved(true);
-        appointmentsRepo.save(newApptTime);
+        Appointment savedAppt = appointmentsRepo.save(newApptTime);
+        emailService.sendAppointmentNotification(savedAppt, "Babysitting Appointment", "An appointment has been made for the following time slot: " + savedAppt.getStart() + " until " + savedAppt.getEnd());
         return "redirect:/appointments";
     }
 

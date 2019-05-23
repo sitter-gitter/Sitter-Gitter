@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><th:block th:replace="fragments/head :: header('Show User')" /></head>
 <body>
+<div>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-
 
 <div class="container">
 <div class="row">
@@ -27,13 +27,12 @@
         </div>
         <div class="card-action">
             <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
-                <i class="fas fa-user-edit"></i> Edit Profile</a>
+            <i class="fas fa-user-edit"></i> Edit Profile</a>
             <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">-->
                 <!--<i class="fas fa-trash-alt"></i> Delete Profile</a>-->
         </div>
     </div>
     <hr />
-
 
     <!-- erik additions 0517:1020 -->
 
@@ -125,9 +124,18 @@
                     <span th:text="${appt.getBabysitter().getUsername()}"></span>
                 </a>
             </span>
-
             <ul>
+                <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
 
+                <!--<span th:if="${(user.getisBabysitter() == true)}">-->
+                    <!--Parent:-->
+                        <!--<span th:text="${appt.getParent().getUsername()}"></span>-->
+                <!--</span>-->
+                <span th:if="${(user.getisBabysitter() == false)}">
+                    Babysitter name:
+                    <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
+                    <span th:text="${appt.getBabysitter().getUsername()}"></span></a>
+                </span>
                 <li>
                     Start:
                     <span th:text="${appt.start}"></span>
@@ -143,14 +151,14 @@
                         <!--<br />-->
                         <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment</a>
-                    </div>
-                </li>
+                        </div>
+                    </li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
     </ul>
-    <div class="card-action">
-        <a th:href="@{'/appointments/create'}">
+        <div class="card-action">
+            <a th:href="@{'/appointments/create'}">
             <i class="fas fa-plus"></i> Schedule New Appointment</a>
     </div>
     </div>
@@ -224,34 +232,33 @@
         </li>
     </ul>
 
-    </div>
+    <!--</div>-->
 
     <!-- Available Times List -->
 
-    <div th:if="${(user.getisBabysitter() == true)}" class="col s12 m4">
-        <ul>
-            <h6>Available Hours:</h6>
-            <br />
-            <li th:each="time : ${available_times}"  style="list-style: none; display: inline;">
-                <div
-                    th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
-                    <!--<div class="card grey hoverable">-->
+    <div th:if="${(user.getisBabysitter() == true)}" class="card col s12 m4">
+        <div class="card-content">
+            <span class="card-title">Available Hours:</span>
+            <ul>
+                <li th:each="time : ${available_times}"  style="list-style: none; display: inline;">
+                    <div th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
+                        <!--<div class="card grey hoverable">-->
                         <!--<div class="card-content white-text" style="padding-top: 16px;">-->
-                            <span class="card-title">
-                                    From: <span th:text="${time.start}"></span>
-                                <br />
-                                    To: <span th:text="${time.end}"></span>
-                            </span>
-                    <br />
+                        <span class="card-title">
+                            From: <span th:text="${time.start}"></span>
+                            <br />
+                            To: <span th:text="${time.end}"></span>
+                        </span>
+                        <br />
 
-                    <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                        <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
                         <i class="fas fa-trash-alt"></i> Cancel Available Hours</a>
+                            <!--</div>-->
                         <!--</div>-->
-                    <!--</div>-->
-                </div>
-            </li>
-        </ul>
-
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div class="card-action">
             <a th:href="@{'/available-times/create'}">
                 <i class="fas fa-plus"></i> Schedule Available Hours</a>
@@ -290,12 +297,11 @@
                 <!--<i class="fas fa-plus"></i> Schedule Available Hours</a>-->
         <!--</div>-->
     </div>
-
-
 </div>
 </div>
 </div>
-
+</div>
+</div>
 
 <footer><th:block th:replace="fragments/footer :: footer"/></footer>
 <th:block th:replace="fragments/includes :: includes" />
