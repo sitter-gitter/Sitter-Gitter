@@ -48,38 +48,22 @@ public class SpecificationController {
     return "users/updateSpecifications";
   }
 
+
   @PostMapping("/profile/{username}/edit/specifications")
-  public String editUser(@PathVariable String username, @ModelAttribute Specification specificationsToBeEdited) {
+  public String editUser(@PathVariable String username,
+                         @RequestParam String birthdate,
+                         @RequestParam Integer yearsOfExperience,
+                         @RequestParam(defaultValue = "false") Boolean hasCprTraining,
+                         @RequestParam(defaultValue = "false") Boolean hasTransportation,
+                         @RequestParam(defaultValue = "false") Boolean smoker) {
 
     User user = usersRepo.findByUsername(username);
-
-    user.setSpecifications(specificationsToBeEdited);
-
-//    specificationsToBeEdited.setBabysitter(user);
-//
-//    Long specId = user.getId();
-//    specificationsToBeEdited.setId(specId);
-
-//    specificationsRepo.save(specificationsToBeEdited);
+    user.getSpecifications().setBirthdate(birthdate);
+    user.getSpecifications().setYearsOfExperience(yearsOfExperience);
+    user.getSpecifications().setHasCprTraining(hasCprTraining);
+    user.getSpecifications().setHasTransportation(hasTransportation);
+    user.getSpecifications().setSmoker(smoker);
+    usersRepo.save(user);
     return "redirect:/profile/{username}";
   }
 }
-
-//                         @RequestParam Boolean isSmoker,
-//                         @RequestParam Boolean hasCprTraining,
-//                         @RequestParam Boolean hasTransportation,
-//                         @RequestParam Integer yearsOfExperience
-
-//    User user = usersRepo.findByUsername(username);
-//
-//    List<Specification> userSpecs = specificationsRepo.findByBabysitterUsername(username);
-//    userSpecs[0].setSmoker(isSmoker);
-//    userSpecs.setHasCprTraining(hasCprTraining);
-//    userSpecs.setHasTransportation(hasTransportation);
-//    userSpecs.setYearsOfExperience(yearsOfExperience);
-//
-//    user.setSpecifications();
-//
-//
-//    specificationToEdited.setBabysitter(userDB);
-//    Specification savedSpecification = specificationsRepo.save(specificationToEdited);
