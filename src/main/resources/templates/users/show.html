@@ -115,13 +115,6 @@
 
 
         <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
-            <span th:if="${(user.getisBabysitter() == false)}">
-                Babysitter name:
-                <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
-                    <span th:text="${appt.getBabysitter().getUsername()}"></span>
-                </a>
-            </span>
-
             <ul>
                 <li th:each="appt : ${parentAppointments}"  style="list-style: none; display: inline;">
                     <span th:if="${(user.getisBabysitter() == false)}">
