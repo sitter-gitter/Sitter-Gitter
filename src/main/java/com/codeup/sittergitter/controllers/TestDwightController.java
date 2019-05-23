@@ -1,4 +1,4 @@
-package com.codeup.sittergitter.controllers.oldControllers;
+package com.codeup.sittergitter.controllers;
 
 import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.AvailableTime;
