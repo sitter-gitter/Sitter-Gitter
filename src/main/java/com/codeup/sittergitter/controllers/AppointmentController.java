@@ -168,14 +168,26 @@ public class AppointmentController {
         newApptTime.setParent(userDB);
         newApptTime.setSitterApproved(true);
         Appointment savedAppt = appointmentsRepo.save(newApptTime);
-        emailService.sendAppointmentNotification(savedAppt, "Babysitting Appointment", "An appointment has been made for the following time slot: " + savedAppt.getStart() + " until " + savedAppt.getEnd());
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
+//        emailService.sendAppointmentNotification(savedAppt, "Babysitting Appointment",
+//                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+//                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return "redirect:/appointments";
     }
 
     // DELETE AVAILABLE TIMES
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
-        appointmentsRepo.deleteById(id);
+        Appointment canxAppt = appointmentsRepo.findOne(id);
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
+//        appointmentsRepo.deleteById(id);
+//        emailService.sendAppointmentCancellation(canxAppt, "Appointment Cancellation",
+//                "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
+//                        + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return "redirect:/appointments";
     }
 

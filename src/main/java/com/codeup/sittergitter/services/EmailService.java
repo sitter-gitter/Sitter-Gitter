@@ -49,4 +49,20 @@ public class EmailService {
             System.err.println(e.getMessage());
         }
     }
+
+    public void sendAppointmentCancellation(Appointment appointment, String subject, String body) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(appointment.getBabysitter().getEmail());
+        msg.setSubject(subject);
+        msg.setText(body);
+
+        try{
+            this.emailSender.send(msg);
+        }
+        catch (MailException e) {
+            // simply log it and go on...
+            System.err.println(e.getMessage());
+        }
+    }
 }
