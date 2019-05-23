@@ -265,21 +265,25 @@
 
                 <span class="card-title">Reviews: </span>
 
-                <ul th:each="review : ${reviews}" th:if="${review.getBabysitter().getUsername() == user.getUsername()}">
-                    <li style="list-style: none; display: inline;">
-                        Author:
-                        <a th:href="@{'/reviews/' + ${review.id}}">
-                            <span th:text="${review.getParent().getUsername()}"></span>
-                        </a>
-                    </li>
-                    <li>
-                        Title:
-                        <span th:text="${review.getTitle()}"></span>
-                    </li>
-                    <li>
-                        <span th:text="${review.getBody()}"></span>
-                    </li>
-                </ul>
+                <div th:each="review : ${reviews}"
+                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
+
+                    <ul>
+                        <li style="list-style: none; display: inline;">
+                            Author:
+                            <a th:href="@{'/reviews/' + ${review.id}}">
+                                <span th:text="${review.getParent().getUsername()}"></span>
+                            </a>
+                        </li>
+                        <li>
+                            Title:
+                            <span th:text="${review.getTitle()}"></span>
+                        </li>
+                        <li>
+                            <span th:text="${review.getBody()}"></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div> <!-- end babysitters reviews -->
