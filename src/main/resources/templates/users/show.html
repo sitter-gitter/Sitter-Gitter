@@ -11,20 +11,19 @@
     <div class="col s12 m6">
         <div class="card">
 
+            <span th:text="${user.username}" class="card-title"></span>
             <div class="card-content" style="padding-bottom: 0; padding-top: 16px;">
-                <span class="card-title">
-                    <span th:text="${user.username}"></span>
-                </span>
-                <p>
-                    Email:
-                    <span th:text="${user.email}"></span>
-                </p>
-                <p>
-                    <span th:text="${user.streetAddr}"></span><br />
-                    <span th:text="${user.city}"></span>,
-                    <span th:text="${user.state}"></span>
-                    <span th:text="${user.zipCode}"></span>
-                </p>
+                <ul class="card-panel">
+                    <li>
+                        <span th:text="${user.email}"></span>
+                    </li>
+                    <li>
+                        <span th:text="${user.streetAddr}"></span><br />
+                        <span th:text="${user.city}"></span>,
+                        <span th:text="${user.state}"></span>
+                        <span th:text="${user.zipCode}"></span>
+                    </li>
+                </ul>
             </div>
 
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
@@ -43,7 +42,8 @@
 
             <div class="card-content">
                 <span class="card-title">Children:</span>
-                <ul th:each="child : ${user.children}">
+
+                <ul th:each="child : ${user.children}" class="card-panel">
                     <li>
                         Name:
                         <span th:text="${child.name}"></span>
@@ -124,7 +124,7 @@
 
                 <span class="card-title">Future Appointments: </span>
 
-                <ul th:each="appt : ${parentAppointments}">
+                <ul th:each="appt : ${parentAppointments}" class="card-panel">
                     <li th:if="${(user.getisBabysitter() == false)}" style="list-style: none; display: inline;">
                         Babysitter name:
                         <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
@@ -160,7 +160,8 @@
 
                 <span class="card-title">Future Appointments: </span>
 
-                <ul th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
+                <ul th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;"
+                    class="card-panel">
                      <li th:if="${(user.getisBabysitter() == true)}">
                         Parent:
                         <a th:href="@{'/profile/' + ${appt.getParent().getUsername()}}">
@@ -196,7 +197,8 @@
 
                 <span class="card-title">Available Hours:</span>
 
-                    <ul th:each="time : ${available_times}"  style="list-style: none; display: inline;">
+                    <ul th:each="time : ${available_times}"  style="list-style: none; display: inline;"
+                        class="card-panel">
                         <li th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}"
                            class="col s12">
                         </li>
@@ -233,7 +235,7 @@
 
                 <span class="card-title">Reviews made:</span>
 
-                <ul th:each="review : ${user.reviews}">
+                <ul th:each="review : ${user.reviews}" class="card-panel">
                     <li style="list-style: none;">
                         <a th:href="@{'/reviews/' + ${review.id}}">
                             <span th:text="${review.title}"></span>
@@ -265,25 +267,22 @@
 
                 <span class="card-title">Reviews: </span>
 
-                <div th:each="review : ${reviews}"
-                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
-
-                    <ul>
-                        <li style="list-style: none; display: inline;">
-                            Author:
-                            <a th:href="@{'/reviews/' + ${review.id}}">
-                                <span th:text="${review.getParent().getUsername()}"></span>
-                            </a>
-                        </li>
-                        <li>
-                            Title:
-                            <span th:text="${review.getTitle()}"></span>
-                        </li>
-                        <li>
-                            <span th:text="${review.getBody()}"></span>
-                        </li>
-                    </ul>
-                </div>
+                <ul th:each="review : ${reviews}"
+                    th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
+                    <li style="list-style: none; display: inline;">
+                        Author:
+                        <a th:href="@{'/reviews/' + ${review.id}}">
+                            <span th:text="${review.getParent().getUsername()}"></span>
+                        </a>
+                    </li>
+                    <li>
+                        Title:
+                        <span th:text="${review.getTitle()}"></span>
+                    </li>
+                    <li>
+                        <span th:text="${review.getBody()}"></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div> <!-- end babysitters reviews -->
