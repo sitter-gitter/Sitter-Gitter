@@ -18,34 +18,33 @@
     <div class="row">
 
         <div class="input-field col s12">
-            <input th:field="*{birthdate}" id="dob" name="dob" type="text"
+            <input th:field="*{birthdate}" id="dob" type="text"
                    class="datepicker2" />
             <label for="dob">Birthdate</label>
         </div>
 
         <div class="input-field col s12">
-            <input th:field="*{yearsOfExperience}" id="exp" name="exp" type="text" class="validate" />
+            <input th:field="*{yearsOfExperience}" id="exp" type="text" />
             <label for="exp">Years of babysitting experience?</label>
         </div>
 
         <div class="input-field col s12">
                 <label for="cpr">
-                    <input th:checked="*{hasCprTraining}" type="checkbox" name="cpr" id="cpr" />
+                    <input th:checked="*{hasCprTraining} ? 'checked'" name="hasCprTraining" type="checkbox" id="cpr" />
                     <span>Yes, I have a CPR card.</span>
                 </label>
         </div>
 
         <div class="input-field col s12">
                 <label for="transport">
-                    <input th:checked="*{hasTransportation}" type="checkbox" name="transport"
-                           id="transport" />
+                    <input th:checked="*{hasTransportation} ? 'checked'" name="hasTransportation" type="checkbox" id="transport" />
                     <span>I have my own transportation.</span>
                 </label>
         </div>
 
         <div class="input-field col s12">
                 <label for="smoking">
-                    <input th:checked="*{smoker}" type="checkbox" name="smoking" id="smoking" />
+                    <input th:checked="*{smoker} ? 'checked'" name="smoker" type="checkbox" id="smoking" />
                     <span>I use tobacco/nicotine products.</span>
                 </label>
         </div>
