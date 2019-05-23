@@ -41,13 +41,14 @@ public class Specification {
     @Column
     private String birthdate;
 
-    @ManyToOne
-    @JoinColumn(name = "babysitter_id")
+    @OneToOne
+    @JoinColumn(name = "babysitter_id", unique = true)
     private User babysitter;
 
     public Specification() {}
 
-    public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation, Integer yearsOfExperience, String birthdate, User babysitter) {
+    public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation,
+                         Integer yearsOfExperience, String birthdate, User babysitter) {
         this.isSmoker = isSmoker;
         this.hasCprTraining = hasCprTraining;
         this.hasTransportation = hasTransportation;
@@ -57,7 +58,7 @@ public class Specification {
     }
 
     //    public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation, Integer yearsOfExperience,
-//                         EducationLevel educationLevel, String birthdate, User user) {
+//                         EducationLevel educationLevel, Date birthdate, User user) {
 //        this.isSmoker = isSmoker;
 //        this.hasCprTraining = hasCprTraining;
 //        this.hasTransportation = hasTransportation;

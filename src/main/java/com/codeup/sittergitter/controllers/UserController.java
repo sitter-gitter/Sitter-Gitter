@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -147,6 +149,15 @@ public class UserController {
 //        model.addAttribute("babysitter", appointmentBabysitterName);
 //        model.addAttribute("parent", appointmentParentName);
 
+        //Erik additions for avail time //
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+        System.out.println(currentTimeStamp);
+        model.addAttribute("current_time", currentTimeStamp);
+        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+        // end additions
+
         model.addAttribute("appointment", appointment);
         model.addAttribute("parentAppointments", parentAppointments);
         model.addAttribute("babysitterAppointments", babysitterAppointments);
@@ -175,12 +186,26 @@ public class UserController {
 
     // UPDATE PROFILE POST
     @PostMapping("/profile/{username}/edit")
-    public String editUser(@PathVariable String username, @RequestParam String password, @RequestParam String email) {
+//    public String editUser(@ModelAttribute User userToBeEdited) {
+    public String editUser(@PathVariable String username,
+                           @RequestParam String email,
+                           @RequestParam String firstName,
+                           @RequestParam String lastName,
+                           @RequestParam String streetAddr,
+                           @RequestParam String city,
+                           @RequestParam String state,
+                           @RequestParam String zipCode) {
         User user = usersRepo.findByUsername(username);
-        user.setUsername(username);
-        user.setPassword(password);
         user.setEmail(email);
-        usersRepo.save(user);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setStreetAddr(streetAddr);
+        user.setCity(city);
+        user.setState(state);
+        user.setZipCode(zipCode);
+    usersRepo.save(user);
+//        usersRepo.save(userToBeEdited);
+//        return "redirect:/profile/" + userToBeEdited.getId();
         return "redirect:/profile/index";
     }
 

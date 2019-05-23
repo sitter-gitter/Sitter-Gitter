@@ -26,7 +26,7 @@ public class ChildController {
       this.specificationsRepo = specificationsRepo;
   }
 
-  @GetMapping("/profile/{username}/edit/children")
+  @GetMapping("/profile/{username}/create/children")
   public String showEditSpecs(@PathVariable String username, Model model) {
 
     User user = usersRepo.findByUsername(username);
@@ -35,7 +35,7 @@ public class ChildController {
     return "users/updateChildren";
   }
 
-    @PostMapping("/profile/{username}/edit/children")
+    @PostMapping("/profile/{username}/create/children")
     public String editUser(@ModelAttribute Child childToSaved
 //            @PathVariable String username,
 //                           @RequestParam String name,
@@ -45,6 +45,7 @@ public class ChildController {
 //        User user = usersRepo.findByUsername(username);
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
+
         childToSaved.setParent(userDB);
         Child savedChild = childrenRepo.save(childToSaved);
 
@@ -62,4 +63,11 @@ public class ChildController {
 //        usersRepo.save(user);
         return "redirect:/profile/{username}";
     }
+
+    @GetMapping("/child/{id}/delete")
+    public String deleteChild(@PathVariable Long id) {
+      childrenRepo.deleteById(id);
+      return "redirect:/my-acct";
+    }
+
 }

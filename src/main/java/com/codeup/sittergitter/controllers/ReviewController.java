@@ -82,7 +82,9 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/{id}/edit")
-    public String editReview(@ModelAttribute Review reviewToBeEdited){
+    public String editReview(@ModelAttribute Review reviewToBeEdited, @PathVariable String username){
+        User user = usersRepo.findByUsername(username);
+
         reviewToBeEdited.setParent(usersRepo.findOne(1L));
         reviewsRepo.save(reviewToBeEdited);
         return "redirect:/reviews/" + reviewToBeEdited.getId();

@@ -8,10 +8,7 @@ import com.codeup.sittergitter.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,36 +23,47 @@ public class SpecificationController {
     this.specificationsRepo = specificationsRepo;
   }
 
-  @GetMapping("/profile/{username}/create/specifications")
-  public String showCreateSpecifications(Model model) {
-    model.addAttribute("specification", new Specification());
-    return "users/updateSpecifications";
-  }
-
-  @PostMapping("/profile/{username}/create/specifications")
-  public String createSpecifications(@ModelAttribute Specification specificationToSaved) {
-    User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User userDB = usersRepo.findOne(sessionUser.getId());
-    specificationToSaved.setBabysitter(userDB);
-    return "redirect:/profile/{username}";
-  }
+//  @GetMapping("/profile/{username}/create/specifications")
+//  public String showCreateSpecifications(Model model) {
+//    model.addAttribute("specification", new Specification());
+//    return "users/updateSpecifications";
+//  }
+//
+//  @PostMapping("/profile/{username}/create/specifications")
+//  public String createSpecifications(@ModelAttribute Specification specificationToSaved) {
+//    User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    User userDB = usersRepo.findOne(sessionUser.getId());
+//    specificationToSaved.setBabysitter(userDB);
+//    return "redirect:/profile/{username}";
+//  }
 
   @GetMapping("/profile/{username}/edit/specifications")
   public String showEditSpecs(@PathVariable String username, Model model) {
     User user = usersRepo.findByUsername(username);
-    List<Specification> specification = specificationsRepo.findByBabysitterUsername(username);
-    model.addAttribute("specification", specification);
+    Specification specifications = specificationsRepo.findByBabysitterUsername(username);
+
+
+    model.addAttribute("specifications", specifications);
     model.addAttribute("user", user);
     return "users/edit-specifications";
   }
 
-  @PostMapping("/profile/{username}/edit/specifications")
-  public String editUser(@ModelAttribute Specification specificationToSaved) {
-    User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    User userDB = usersRepo.findOne(sessionUser.getId());
-    specificationToSaved.setBabysitter(userDB);
-    Specification savedSpecification = specificationsRepo.save(specificationToSaved);
 
+  @PostMapping("/profile/{username}/edit/specifications")
+  public String editUser(@PathVariable String username,
+                         @RequestParam String birthdate,
+                         @RequestParam Integer yearsOfExperience,
+                         @RequestParam(defaultValue = "false") Boolean hasCprTraining,
+                         @RequestParam(defaultValue = "false") Boolean hasTransportation,
+                         @RequestParam(defaultValue = "false") Boolean smoker) {
+
+    User user = usersRepo.findByUsername(username);
+    user.getSpecifications().setBirthdate(birthdate);
+    user.getSpecifications().setYearsOfExperience(yearsOfExperience);
+    user.getSpecifications().setHasCprTraining(hasCprTraining);
+    user.getSpecifications().setHasTransportation(hasTransportation);
+    user.getSpecifications().setSmoker(smoker);
+    usersRepo.save(user);
     return "redirect:/profile/{username}";
   }
 }

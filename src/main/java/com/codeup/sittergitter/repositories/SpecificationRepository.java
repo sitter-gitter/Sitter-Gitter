@@ -13,5 +13,5 @@ public interface SpecificationRepository extends CrudRepository<Specification, L
     //void save(Specification specification);
     //void delete(Specification specification);
 
-    List<Specification> findByBabysitterUsername(String username);
+    Specification findByBabysitterUsername(String username);
 }
