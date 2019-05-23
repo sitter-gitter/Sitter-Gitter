@@ -25,7 +25,7 @@ nav {
     max-width: 600px !important;
     margin: 0 auto !important;
     /*border: 1px solid gray !important;*/
-    border-radius: 0.5em !important;
+    border-radius: 1em !important;
     box-shadow: none !important;
     /*padding-bottom: 1em !important;*/
 }
@@ -33,7 +33,7 @@ nav {
     margin: 0 !important;
 }
 .card-content {
-    padding: 24px 24px 36px 24px !important;
+    padding: 24px 2em 36px 2em !important;
 }
 .card-action {
     border-bottom-left-radius: 2em !important;
@@ -43,12 +43,40 @@ img {
     border-top-left-radius: 2em !important;
     border-top-right-radius: 2em !important;
 }
+label {
+    padding-left: 1em !important;
+}
+/* label color */
+.input-field label {
+    color: #000 !important;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label, input[type=password]:focus + label {
+    color: #000 !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus, input[type=password]:focus {
+    border-bottom: 1px solid #F78888 !important;
+    box-shadow: 0 1px 0 0 #F78888 !important;
+}
 input {
     background-color: white !important;
+    opacity: 0.6 !important;
+    border-radius: 0.5em !important;
+}
+input[type=text], input[type=password] {
+    padding-left: 1em !important;
+}
+input:focus {
+    opacity: 1 !important;
+}
+input[type=submit] {
+    opacity: 1.0 !important;
 }
 .yellow-button {
-     background-color: #F3D250 !important;
-     color: #5DA2D5 !important;
+    background-color: #F3D250 !important;
+    color: #5DA2D5 !important;
+    opacity: 1.0 !important;
  }
 .pink-button {
     background-color: #F78888 !important;
@@ -95,12 +123,37 @@ html {
 .card i:hover, .card a:hover {
     color: #1a237e;
 }
-
 nav ul li {
     list-style: none;
 }
-
 footer ul li {
     list-style: none;
     display: inline;
+}
+.profile-pic-erik {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url("../image/erikbehnke.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.profile-pic-dwight {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url("../image/dwightbemisderfer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.profile-pic-mindy {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url("../image/mindytillman.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
