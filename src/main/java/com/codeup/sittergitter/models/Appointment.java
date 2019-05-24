@@ -4,6 +4,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Month;
 
 @Entity
 @Table(name="appointments")
@@ -96,4 +97,5 @@ public class Appointment {
     public void setParent(User parent) {
         this.parent = parent;
     }
+
 }
