@@ -1,5 +1,5 @@
 /*html {*/
-    /*font-family: 'Kaushan Script', cursive !important;*/
+/*font-family: 'Kaushan Script', cursive !important;*/
 /*}*/
 html {
     background-color: #ECECEC !important;
@@ -56,8 +56,7 @@ nav {
     /*background-color: #ECECEC !important;*/
     min-width: 200px !important;
     max-width: 600px !important;
-    margin: 1em auto;
-    /*margin-top: 1em;*/
+    margin: 0 auto !important;
     /*border: 1px solid gray !important;*/
     border-radius: 1em !important;
     box-shadow: none !important;
@@ -112,7 +111,7 @@ input[type=submit] {
     background-color: #F3D250 !important;
     color: #5DA2D5 !important;
     opacity: 1.0 !important;
- }
+}
 .pink-button {
     background-color: #F78888 !important;
     color: #F3D250 !important;
@@ -136,9 +135,9 @@ input[type=submit] {
 }
 
 /*.brand-logo {*/
-    /*font-family: 'Kaushan Script', cursive !important;*/
-    /*color: #F3D250 !important;*/
-    /*text-shadow: 3px 3px #5DA2D5;*/
+/*font-family: 'Kaushan Script', cursive !important;*/
+/*color: #F3D250 !important;*/
+/*text-shadow: 3px 3px #5DA2D5;*/
 /*}*/
 
 #splash-image {
