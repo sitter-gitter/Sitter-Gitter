@@ -181,9 +181,9 @@ public class AppointmentController {
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
         Appointment canxAppt = appointmentsRepo.findOne(id);
+        appointmentsRepo.deleteById(id);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
-//        appointmentsRepo.deleteById(id);
 //        emailService.sendAppointmentCancellation(canxAppt, "Appointment Cancellation",
 //                "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
 //                        + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
