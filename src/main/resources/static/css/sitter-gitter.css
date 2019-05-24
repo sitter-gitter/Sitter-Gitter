@@ -52,6 +52,9 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
 }
+.row {
+    margin: 0 !important;
+}
 .card {
     /*background-color: #ECECEC !important;*/
     min-width: 200px !important;
@@ -62,11 +65,11 @@ nav {
     box-shadow: none !important;
     /*padding-bottom: 1em !important;*/
 }
-.row {
-    margin: 0 !important;
-}
 .card-content {
     padding: 24px 2em 36px 2em !important;
+}
+.card-panel {
+    width: 100%;
 }
 .card-action {
     border-bottom-left-radius: 2em !important;
