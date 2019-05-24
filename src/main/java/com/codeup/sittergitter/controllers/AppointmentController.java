@@ -158,7 +158,7 @@ public class AppointmentController {
 
 
     @PostMapping("/appointments/availableBabysitters")
-    public String chooseBabysitter(@ModelAttribute Appointment newApptTime, @RequestParam long sitterid) {
+    public String chooseBabysitter(@ModelAttribute Appointment newApptTime, @ModelAttribute AvailableTime availableTime, @RequestParam long sitterid) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
         sitterId = sitterid;
