@@ -27,6 +27,7 @@ public class AppointmentController {
     private EmailService emailService;
     private List<AvailableTime> availApptTimes;
     private Long sitterId;
+    private Long availTimeId;
     private Timestamp apptStartTime;
     private Timestamp apptEndTime;
 
@@ -158,16 +159,19 @@ public class AppointmentController {
 
 
     @PostMapping("/appointments/availableBabysitters")
-    public String chooseBabysitter(@ModelAttribute Appointment newApptTime, @ModelAttribute AvailableTime availableTime, @RequestParam long sitterid) {
+    public String chooseBabysitter(@ModelAttribute Appointment newApptTime, @ModelAttribute AvailableTime availableTime, @RequestParam long sitter_id, @RequestParam long available_time_id) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-        sitterId = sitterid;
+        sitterId = sitter_id;
+        availTimeId = available_time_id;
         newApptTime.setStart(apptStartTime);
         newApptTime.setEnd(apptEndTime);
         newApptTime.setBabysitter(usersRepo.findOne(sitterId));
         newApptTime.setParent(userDB);
         newApptTime.setSitterApproved(true);
-        Appointment savedAppt = appointmentsRepo.save(newApptTime);
+        newApptTime.setAvailableTime(availableTimesRepo.findOne(availTimeId));
+        appointmentsRepo.save(newApptTime);
+        availableTimesRepo.updateIsTaken(availTimeId, true);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
 //        emailService.sendAppointmentNotification(savedAppt, "Babysitting Appointment",
