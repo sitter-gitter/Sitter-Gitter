@@ -28,6 +28,7 @@ public class AppointmentController {
     private List<AvailableTime> availApptTimes;
     private Long sitterId;
     private Long availTimeId;
+    private Long apptId;
     private Timestamp apptStartTime;
     private Timestamp apptEndTime;
 
@@ -184,9 +185,11 @@ public class AppointmentController {
     // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
-//        Appointment canxAppt = appointmentsRepo.findOne(id); // DON'T DELETE, THIS IS FOR EMAIL SERVICE FUNCTIONALITY
+        Appointment canxAppt = appointmentsRepo.findOne(id);
+        apptId = canxAppt.getAvailableTime().getId();
         appointmentsRepo.nullifyAvailTime(id);
         appointmentsRepo.deleteById(id);
+        availableTimesRepo.updateIsTaken(apptId, false);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
 //        emailService.sendAppointmentCancellation(canxAppt, "Appointment Cancellation",

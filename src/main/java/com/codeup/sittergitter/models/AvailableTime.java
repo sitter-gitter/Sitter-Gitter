@@ -30,7 +30,8 @@ public class AvailableTime {
 //    @Column
 //    private Date end;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "availableTime")
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "availableTime")
+    @OneToOne(mappedBy = "availableTime")
     private Appointment appointment;
 
     @ManyToOne
