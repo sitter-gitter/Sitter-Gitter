@@ -4,6 +4,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.Month;
 
 @Entity
 @Table(name="appointments")
@@ -23,6 +24,10 @@ public class Appointment {
     @Type(type = "numeric_boolean")
     private Boolean sitterApproved;
 
+    @OneToOne
+    @JoinColumn(name = "available_time_id", unique = true)
+    private AvailableTime availableTime;
+
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
     private User babysitter;
@@ -34,10 +39,11 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, User babysitter, User parent) {
+    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, AvailableTime availableTime, User babysitter, User parent) {
         this.start = start;
         this.end = end;
         this.sitterApproved = sitterApproved;
+        this.availableTime = availableTime;
         this.babysitter = babysitter;
         this.parent = parent;
     }
@@ -74,9 +80,11 @@ public class Appointment {
         this.sitterApproved = sitterApproved;
     }
 
-    public User getBabysitter() {
-        return babysitter;
-    }
+    public AvailableTime getAvailableTime() { return getAvailableTime(); }
+
+    public void setAvailableTime(AvailableTime availableTime) { this.availableTime = availableTime; }
+
+    public User getBabysitter() { return babysitter; }
 
     public void setBabysitter(User babysitter) {
         this.babysitter = babysitter;
@@ -89,4 +97,5 @@ public class Appointment {
     public void setParent(User parent) {
         this.parent = parent;
     }
+
 }
