@@ -184,7 +184,8 @@ public class AppointmentController {
     // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
-        Appointment canxAppt = appointmentsRepo.findOne(id);
+//        Appointment canxAppt = appointmentsRepo.findOne(id); // DON'T DELETE, THIS IS FOR EMAIL SERVICE FUNCTIONALITY
+        appointmentsRepo.nullifyAvailTime(id);
         appointmentsRepo.deleteById(id);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER

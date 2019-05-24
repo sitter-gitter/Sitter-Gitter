@@ -2,14 +2,18 @@ package com.codeup.sittergitter.repositories;
 
 import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
+public interface AppointmentRepository extends CrudRepository<Appointment, Long>, JpaRepository<Appointment, Long> {
     //List<Appointment> findAll();
     //Appointment findOne(Long id);
     //void save(Appointment appointment);
@@ -20,6 +24,11 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
 
     List<Appointment> findByOrderByStartAsc();
 //    List<Appointment> findBySitterApproved();
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Appointment appt SET appt.availableTime = null WHERE appt.id = :appointmentId")
+    void nullifyAvailTime(@Param("appointmentId") long appointmentId);
 
 
     List<Appointment> findAllByParentUsername(String username);
