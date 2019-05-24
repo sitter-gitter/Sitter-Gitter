@@ -181,7 +181,7 @@ public class AppointmentController {
         return "redirect:/appointments";
     }
 
-    // DELETE AVAILABLE TIMES
+    // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
         Appointment canxAppt = appointmentsRepo.findOne(id);
