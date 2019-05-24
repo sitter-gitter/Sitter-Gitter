@@ -3,7 +3,7 @@
 <head><th:block th:replace="fragments/head :: header('Register')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-
+<main>
 <form th:action="@{/register/babysitter}" th:method="POST" th:object="${user}">
 <div class="container">
     <div class="card center-align"><div class="card-content">
@@ -61,7 +61,7 @@
 </div>
 </div>
 </form>
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>

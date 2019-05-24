@@ -25,11 +25,19 @@ nav {
 }
 
 body {
-    padding-bottom: 7em;
+    /*padding-bottom: 7em;*/
     background-image: url("../image/muted-bkg2.png");
     background-size: 350px 350px;
     background-repeat: repeat !important;
     background-position: center;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 .brand-logo {
@@ -224,13 +232,12 @@ footer ul li {
     color: #ECECEC !important;
 }
 
-.page-footer {
-    z-index: 1;
-    background-color: #90CCF4 !important;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding-top: 0 !important;
-}
+/*.page-footer {*/
+    /*!*z-index: 1;*!*/
+    /*background-color: #90CCF4 !important;*/
+    /*!*left: 0;*!*/
+    /*!*bottom: 0;*!*/
+    /*!*width: 100%;*!*/
+    /*text-align: center;*/
+    /*!*padding-top: 0 !important;*!*/
+/*}*/
