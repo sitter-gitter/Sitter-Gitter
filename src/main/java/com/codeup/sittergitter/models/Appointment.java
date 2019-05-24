@@ -80,7 +80,7 @@ public class Appointment {
         this.sitterApproved = sitterApproved;
     }
 
-    public AvailableTime getAvailableTime() { return getAvailableTime(); }
+    public AvailableTime getAvailableTime() { return availableTime; }
 
     public void setAvailableTime(AvailableTime availableTime) { this.availableTime = availableTime; }
 
