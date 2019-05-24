@@ -29,6 +29,7 @@ public interface AvailableTimeRepository extends CrudRepository<AvailableTime, L
     @Query("UPDATE AvailableTime at SET at.isTaken = :isTaken WHERE at.id = :availableTimeId")
     void updateIsTaken(@Param("availableTimeId") long availableTimeId, @Param("isTaken") Boolean isTaken);
 
+
     List<AvailableTime> findByOrderByStartAsc();
 
 //    List<AvailableTime> findByOrOrderByEndAsc();

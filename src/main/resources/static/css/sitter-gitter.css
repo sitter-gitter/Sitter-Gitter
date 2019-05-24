@@ -39,6 +39,9 @@ main {
     flex: 1 0 auto;
 }
 
+main {
+    flex: 1 0 auto;
+}
 .brand-logo {
     font-family: 'Kaushan Script', cursive;
     color: #F3D250 !important;
