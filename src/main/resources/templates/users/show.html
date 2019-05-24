@@ -197,11 +197,11 @@
 
                 <span class="card-title">Available Hours:</span>
 
-                    <ul th:each="time : ${available_times}"  style="list-style: none; display: inline;"
-                        class="card-panel">
-                        <li th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}"
-                           class="col s12">
-                        </li>
+                    <ul
+                            th:each="time : ${available_times}"  style="list-style: none; display: inline;"
+                            th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}"
+                            class="card-panel">
+
                         <li class="card-title">
                             From: <span th:text="${time.start}"></span>
                             <br />
