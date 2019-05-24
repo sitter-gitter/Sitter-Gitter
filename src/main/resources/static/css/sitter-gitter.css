@@ -25,7 +25,6 @@ nav {
 }
 
 body {
-    /*padding-bottom: 7em;*/
     background-image: url("../image/muted-bkg2.png");
     background-size: 350px 350px;
     background-repeat: repeat !important;
@@ -113,10 +112,6 @@ main {
 
 .card i:hover, .card a:hover {
     color: #1a237e;
-}
-
-.register-card {
-
 }
 
 img {
@@ -231,13 +226,3 @@ footer ul li {
     text-transform: uppercase !important;
     color: #ECECEC !important;
 }
-
-/*.page-footer {*/
-    /*!*z-index: 1;*!*/
-    /*background-color: #90CCF4 !important;*/
-    /*!*left: 0;*!*/
-    /*!*bottom: 0;*!*/
-    /*!*width: 100%;*!*/
-    /*text-align: center;*/
-    /*!*padding-top: 0 !important;*!*/
-/*}*/
