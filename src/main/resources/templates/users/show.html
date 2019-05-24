@@ -212,6 +212,7 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">Available Hours:</span>
+
                     <ul th:each="time : ${available_times}"  style="list-style: none; display: inline;">
                         <li th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12">
                         </li>
