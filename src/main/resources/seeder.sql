@@ -25,27 +25,28 @@ VALUES ('Harry', '2015-12-11', NULL, (SELECT id FROM users WHERE email = 'dwight
        ('Mary', '2018-03-09', 'Please give Mary a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'erik@codeup.com'));
 
 
-INSERT INTO appointments (start, end, sitter_approved, babysitter_id, parent_id)
-VALUES ('2019-05-31 18:00:00', '2019-05-31 21:00:00', 1, 3, 1),
-       ('2019-06-07 18:00:00', '2019-06-07 20:00:00', 1, 3, 1),
-       ('2019-06-05 16:00:00', '2019-06-05 22:00:00', 1, 3, 2);
-
-
 INSERT INTO reviews (title, body, is_recommended, babysitter_id, parent_id)
 VALUES ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 3, 1),
        ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t even bother to clean up the mess. Horrid!', 0, 3, 2);
 
 
-INSERT INTO available_times (start, end, babysitter_id)
-VALUES ('2019-05-31 12:00:00', '2019-05-31 23:00:00', 3),
-       ('2019-06-01 12:00:00', '2019-06-01 23:00:00', 3),
-       ('2019-06-02 12:00:00', '2019-06-02 23:00:00', 3),
-       ('2019-06-03 12:00:00', '2019-06-03 23:00:00', 3),
-       ('2019-06-04 12:00:00', '2019-06-04 23:00:00', 3),
-       ('2019-06-05 12:00:00', '2019-06-05 16:00:00', 3),
-       ('2019-06-06 12:00:00', '2019-06-06 23:00:00', 3),
-       ('2019-06-07 12:00:00', '2019-06-07 14:00:00', 3),
-       ('2019-06-08 12:00:00', '2019-06-08 23:00:00', 3);
+INSERT INTO available_times (start, end, babysitter_id, is_taken)
+VALUES ('2019-05-31 12:00:00', '2019-05-31 23:00:00', 3, 1),
+       ('2019-06-01 12:00:00', '2019-06-01 23:00:00', 3, 0),
+       ('2019-06-02 12:00:00', '2019-06-02 23:00:00', 3, 0),
+       ('2019-06-03 12:00:00', '2019-06-03 23:00:00', 3, 0),
+       ('2019-06-04 12:00:00', '2019-06-04 23:00:00', 3, 0),
+       ('2019-06-05 12:00:00', '2019-06-05 23:00:00', 3, 1),
+       ('2019-06-06 12:00:00', '2019-06-06 23:00:00', 3, 0),
+       ('2019-06-07 12:00:00', '2019-06-07 21:00:00', 3, 1),
+       ('2019-06-08 12:00:00', '2019-06-08 23:00:00', 3, 0);
+
+
+INSERT INTO appointments (start, end, sitter_approved, babysitter_id, parent_id, available_time_id)
+VALUES ('2019-05-31 18:00:00', '2019-05-31 21:00:00', 1, 3, 1, 1),
+       ('2019-06-07 18:00:00', '2019-06-07 20:00:00', 1, 3, 1, 8),
+       ('2019-06-05 16:00:00', '2019-06-05 22:00:00', 1, 3, 2, 6);
+
 
 INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, birthdate, babysitter_id)
 VALUES (false, true, true, 5, '1993-10-23', 3),

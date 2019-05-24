@@ -23,6 +23,10 @@ public class Appointment {
     @Type(type = "numeric_boolean")
     private Boolean sitterApproved;
 
+    @OneToOne
+    @JoinColumn(name = "available_time_id", unique = true)
+    private AvailableTime availableTime;
+
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
     private User babysitter;
