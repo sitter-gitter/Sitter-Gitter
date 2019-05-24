@@ -1,5 +1,7 @@
 package com.codeup.sittergitter.models;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 @Entity
@@ -16,6 +18,10 @@ public class AvailableTime {
     @Column
     private Timestamp end;
 
+    @Column
+    @Type(type = "numeric_boolean")
+    private Boolean isTaken;
+
 //    @Temporal(TemporalType.TIMESTAMP)
 //    @Column
 //    private Date start;
@@ -23,6 +29,9 @@ public class AvailableTime {
 //    @Temporal(TemporalType.TIMESTAMP)
 //    @Column
 //    private Date end;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "availableTime")
+    private Appointment appointment;
 
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
