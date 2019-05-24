@@ -1,31 +1,43 @@
-/*html {*/
-/*font-family: 'Kaushan Script', cursive !important;*/
-/*}*/
+:root {
+    --sg-red: #F78888 !important;
+    --sg-yellow: #F3D250 !important;
+    --sg-grey: #ECECEC !important;
+    --sg-ltblue: #90CCF4 !important;
+    --sg-drkblue: #5DA2D5 !important;
+}
+
 html {
-    background-color: #ECECEC !important;
     font-family: 'Merriweather', serif !important;
 }
-body {
-    min-height: 100%;
-    padding-bottom: 7em !important;
-    background-image: url("../image/muted-bkg2.png");
-    background-size: 350px 350px;
-    background-repeat: repeat;
-    background-position: center;
-}
+
 html, body {
     height: 100%;
 }
+
+nav ul li {
+    list-style: none;
+}
+
 nav {
     background-color: #F78888 !important;
     margin-bottom: 2.5em !important;
     box-shadow: none !important;
 }
+
+body {
+    padding-bottom: 7em;
+    background-image: url("../image/muted-bkg2.png");
+    background-size: 350px 350px;
+    background-repeat: repeat !important;
+    background-position: center;
+}
+
 .brand-logo {
     font-family: 'Kaushan Script', cursive;
     color: #F3D250 !important;
     text-shadow: 3px 3px #5DA2D5 !important;
 }
+
 .splash-image {
     width: 200px;
     height: 200px;
@@ -35,122 +47,56 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .parent-image {
-    margin: 0 auto;
-    background-image: url("../image/parent.png");
-    background-size: cover;
+    width: 200px;
+    height: 200px;
+    margin: 2em auto;
+    background-image: url("../image/parent.jpg");
+    background-size: auto 200px;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1;
 }
+
 .babysitter-image {
     width: 200px;
     height: 200px;
-    margin: 0 auto;
-    background-image: url("../image/babysitter.png");
-    background-size: cover;
+    margin: 2em auto;
+    background-image: url("../image/babysitter.jpg");
+    background-size:  auto 200px;
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .row {
     margin: 0 !important;
 }
+
 .card {
     /*background-color: #ECECEC !important;*/
-    min-width: 200px !important;
-    max-width: 600px !important;
-    margin: 0 auto !important;
+    min-width: 100% !important;
+    /*max-width: 600px !important;*/
+    margin: 1em !important;
     /*border: 1px solid gray !important;*/
     border-radius: 1em !important;
-    box-shadow: none !important;
+    /*box-shadow: none !important;*/
     /*padding-bottom: 1em !important;*/
 }
+
 .card-content {
-    padding: 24px 2em 36px 2em !important;
+    min-width: 100% !important;
+    font-size: 0.8em !important;
+    padding: 2em !important;
 }
+
 .card-panel {
-    width: 100%;
+    min-width: 100% !important;
+    padding: 2em !important;
 }
+
 .card-action {
     border-bottom-left-radius: 2em !important;
     border-bottom-right-radius: 2em !important;
-}
-img {
-    border-top-left-radius: 2em !important;
-    border-top-right-radius: 2em !important;
-}
-label {
-    padding-left: 1em !important;
-}
-/* label color */
-.input-field label {
-    color: #000 !important;
-}
-/* label focus color */
-.input-field input[type=text]:focus + label, input[type=password]:focus + label {
-    color: #000 !important;
-}
-/* label underline focus color */
-.input-field input[type=text]:focus, input[type=password]:focus {
-    border-bottom: 1px solid #F78888 !important;
-    box-shadow: 0 1px 0 0 #F78888 !important;
-}
-input {
-    background-color: white !important;
-    opacity: 0.6 !important;
-    border-radius: 0.5em !important;
-}
-input[type=text], input[type=password] {
-    font-family: 'Merriweather', serif;
-    padding-left: 1em !important;
-}
-input:focus {
-    opacity: 1 !important;
-}
-input[type=submit] {
-    opacity: 1.0 !important;
-}
-.yellow-button {
-    background-color: #F3D250 !important;
-    color: #5DA2D5 !important;
-    opacity: 1.0 !important;
-}
-.pink-button {
-    background-color: #F78888 !important;
-    color: #F3D250 !important;
-}
-.blue-button {
-    background-color: #5DA2D5 !important;
-    color: #ECECEC !important;
-}
-.space {
-    width: 2em !important;
-}
-.page-footer {
-    z-index: 1;
-    background-color: #90CCF4 !important;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding-top: 0 !important;
-}
-
-/*.brand-logo {*/
-/*font-family: 'Kaushan Script', cursive !important;*/
-/*color: #F3D250 !important;*/
-/*text-shadow: 3px 3px #5DA2D5;*/
-/*}*/
-
-#splash-image {
-    width: 50%;
-    height: 50%;
-}
-
-html {
-    background: #eeeeee;
-    color: #212121;
 }
 
 .card i, .card a {
@@ -160,13 +106,85 @@ html {
 .card i:hover, .card a:hover {
     color: #1a237e;
 }
-nav ul li {
-    list-style: none;
+
+.register-card {
+
 }
+
+img {
+    border-top-left-radius: 2em !important;
+    border-top-right-radius: 2em !important;
+}
+
+label {
+    padding-left: 1em !important;
+}
+
+/* label color */
+.input-field label {
+    color: #000 !important;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label, input[type=password]:focus + label {
+    color: #000 !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus, input[type=password]:focus {
+    border-bottom: 1px solid #F78888 !important;
+    box-shadow: 0 1px 0 0 #F78888 !important;
+}
+
+input {
+    background-color: white !important;
+    opacity: 0.6 !important;
+    border-radius: 0.5em !important;
+}
+
+input[type=text], input[type=password] {
+    font-family: 'Merriweather', serif;
+    padding-left: 1em !important;
+}
+
+input:focus {
+    opacity: 1 !important;
+}
+
+input[type=submit] {
+    opacity: 1.0 !important;
+}
+
+.yellow-button {
+    background-color: #F3D250 !important;
+    color: #5DA2D5 !important;
+    opacity: 1.0 !important;
+}
+
+.pink-button {
+    background-color: #F78888 !important;
+    color: #F3D250 !important;
+}
+
+.blue-button {
+    background-color: #5DA2D5 !important;
+    color: #ECECEC !important;
+}
+
+.space {
+    width: 2em !important;
+}
+
+#splash-image {
+    width: 50%;
+    height: 50%;
+}
+
 footer ul li {
     list-style: none;
     display: inline;
 }
+
 .profile-pic-erik {
     width: 200px;
     height: 200px;
@@ -194,16 +212,7 @@ footer ul li {
     background-repeat: no-repeat;
     background-position: center;
 }
-.card-content {
-    font-size: 0.8em !important;
-}
-.card-content .profile {
-    max-width: 250px !important;
-    /*padding:*/
-}
-.card-panel {
-    padding: 2em !important;
-}
+
 .badge {
     padding-right: 1.5em !important;
     padding-left: 1.5em !important;
@@ -213,4 +222,15 @@ footer ul li {
     font-size: 1em !important;
     text-transform: uppercase !important;
     color: #ECECEC !important;
+}
+
+.page-footer {
+    z-index: 1;
+    background-color: #90CCF4 !important;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 0 !important;
 }
