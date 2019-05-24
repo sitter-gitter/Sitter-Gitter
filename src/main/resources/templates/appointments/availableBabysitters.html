@@ -9,19 +9,19 @@
     <div class="row">
         <h1>The following babysitters are available during your requested timeframe:</h1>
         <ul>
-            <li th:each="appointment : ${availAppts}">
+            <li th:each="avail_time : ${availAppts}">
                 <form th:action="@{/appointments/availableBabysitters}" th:method="post">
                     <div class="card grey hoverable">
                         <div class="card-content white-text" style="padding-top: 16px;">
                             <span class="card-title">
                             Babysitter:
-                            <span th:text="${appointment.babysitter.username}"></span><br/>
+                            <span th:text="${avail_time.babysitter.username}"></span><br/>
                             From:
-                            <span th:text="${appointment.start}"></span><br/>
+                            <span th:text="${avail_time.start}"></span><br/>
                             To:
-                            <span th:text="${appointment.end}"></span><br/>
-                            <span th:text="${appointment.id}"></span>
-                            <input type="hidden" th:value="${appointment.babysitter.getId()}" name="sitterid"/>
+                            <span th:text="${avail_time.end}"></span><br/>
+                            <input type="hidden" th:value="${avail_time.id}" name="available_time_id"/>
+                            <input type="hidden" th:value="${avail_time.babysitter.getId()}" name="sitter_id"/>
                             <button>Choose</button>
                             </span>
                         </div>
