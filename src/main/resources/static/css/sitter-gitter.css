@@ -191,7 +191,23 @@ footer ul li {
     background-repeat: no-repeat;
     background-position: center;
 }
+.card-content {
+    font-size: 0.8em !important;
+}
 .card-content .profile {
     max-width: 250px !important;
     /*padding:*/
+}
+.card-panel {
+    padding: 2em !important;
+}
+.badge {
+    padding-right: 1.5em !important;
+    padding-left: 1.5em !important;
+    border-radius: 1em !important;
+    background-color: #3f51b5 !important;
+    font-family: sans-serif !important;
+    font-size: 1em !important;
+    text-transform: uppercase !important;
+    color: #ECECEC !important;
 }
