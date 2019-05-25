@@ -66,7 +66,8 @@ public class AvailableTimeController {
         Timestamp currentTimeStamp = new Timestamp(now.getTime());
         System.out.println(currentTimeStamp);
         model.addAttribute("current_time", currentTimeStamp);
-        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+//        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+        model.addAttribute("available_times", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
         return "availableTimes/showAvailableTimes";
     }
 
