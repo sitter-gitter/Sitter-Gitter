@@ -150,7 +150,8 @@
 
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <br />
-                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
+                        <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
+                        <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment
                         </a>
                         </span>
@@ -206,7 +207,8 @@
 
                     <span th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <br />
-                        <a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">
+                        <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
+                        <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment
                         </a>
                     </span>
