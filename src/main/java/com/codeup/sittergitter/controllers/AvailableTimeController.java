@@ -33,7 +33,7 @@ public class AvailableTimeController {
         return "availableTimes/createAvailableTimes";
     }
 
-    // CREATE AVAILABLE TIMES POST
+    // CREATE AVAILABLE TIMES POST (SEE ALSO recreateAvailTime METHOD BELOW)
     @PostMapping("/available-times/create")
     public String createAvailTime(
             @RequestParam String datepicker1,
@@ -54,6 +54,7 @@ public class AvailableTimeController {
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
         newAvailTime.setBabysitter(userDB);
+        newAvailTime.setIsTaken(false);
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
     }
@@ -104,7 +105,7 @@ public class AvailableTimeController {
         return "availableTimes/createError";
     }
 
-    // CREATE ERROR POST
+    // CREATE AVAILABLE TIME ERROR (SECOND CHANCE TO CREATE AVAILABLE TIME IF AN ERROR WAS MADE IN ENTERING DATETIME)
     @PostMapping("/available-times/create?error")
     public String recreateAvailTime(
             @RequestParam String datepicker1,
@@ -125,6 +126,7 @@ public class AvailableTimeController {
         newAvailTime.setStart(startTimeStamp);
         newAvailTime.setEnd(endTimeStamp);
         newAvailTime.setBabysitter(userDB);
+        newAvailTime.setIsTaken(false);
         availableTimesRepo.save(newAvailTime);
         return "redirect:/available-times";
     }

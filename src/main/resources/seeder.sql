@@ -37,7 +37,7 @@ VALUES
        ('Child2', '2017-07-05', 'Child2 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'dwight@codeup.com')),
        ('Child3', '2018-03-09', 'Please give Child3 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'dwight@codeup.com')),
        ('Child4', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'erik@codeup.com')),
-       ('Child5', '2017-07-05', 'Child2 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+       ('Child5', '2017-07-05', 'Child5 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
                                                                                                            'erik@codeup
                                                                                                            .com')),
        ('Child6', '2018-03-09', 'Please give Child6 a bedtime story and a backrub to help her go to sleep.', (SELECT
