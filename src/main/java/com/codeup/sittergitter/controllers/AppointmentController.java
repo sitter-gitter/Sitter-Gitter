@@ -196,7 +196,8 @@ public class AppointmentController {
 //                "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
 //                        + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        return "redirect:/appointments";
+//        return "redirect:/appointments";
+        return "redirect:/my-acct";
     }
 
 }
