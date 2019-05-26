@@ -179,7 +179,7 @@ public class AppointmentController {
 //                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
 //                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        return "redirect:/appointments";
+        return "redirect:/my-acct";
     }
 
     // DELETE APPOINTMENTS
