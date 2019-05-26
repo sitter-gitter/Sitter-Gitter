@@ -82,18 +82,23 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/{id}/edit")
-    public String editReview(@ModelAttribute Review reviewToBeEdited, @PathVariable String username){
-        User user = usersRepo.findByUsername(username);
+    public String editReview(@ModelAttribute Review reviewToBeEdited){
+//        User user = usersRepo.findByUsername(username);
 
-        reviewToBeEdited.setParent(usersRepo.findOne(1L));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
+
+
+
+        reviewToBeEdited.setParent(userDB);
         reviewsRepo.save(reviewToBeEdited);
-        return "redirect:/reviews/" + reviewToBeEdited.getId();
+        return "redirect:/my-acct";
     }
 
     @GetMapping("/reviews/{id}/delete")
     public String deleteReview(@PathVariable Long id){
         reviewsRepo.deleteById(id);
-        return "redirect:/reviews";
+        return "redirect:/my-acct";
     }
 
 }
