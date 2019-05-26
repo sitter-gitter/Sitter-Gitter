@@ -137,7 +137,7 @@ public class UserController {
 
         model.addAttribute("sessionUser", sessionUser);
 
-        List<Appointment> parentAppointments = appointmentsRepo.findAllByParentUsername(username);
+        List<Appointment> parentAppointments = appointmentsRepo.findAllByParentUsernameOrderByStartAsc(username);
         Appointment appointment = appointmentsRepo.findOne(sessionUser.getId());
 
         List<Appointment> babysitterAppointments = appointmentsRepo.findAllByBabysitterUsernameOrderByStartAsc(username);

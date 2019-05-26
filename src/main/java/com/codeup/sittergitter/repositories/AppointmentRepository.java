@@ -31,7 +31,7 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
     void nullifyAvailTime(@Param("appointmentId") long appointmentId);
 
 
-    List<Appointment> findAllByParentUsername(String username);
+    List<Appointment> findAllByParentUsernameOrderByStartAsc(String username);
     List<Appointment> findAllByBabysitterUsernameOrderByStartAsc(String username);
 //
 //    void findAllByBabysitter(User babysitter);
