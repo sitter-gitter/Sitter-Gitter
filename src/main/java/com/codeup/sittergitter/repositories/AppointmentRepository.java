@@ -32,7 +32,7 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
 
 
     List<Appointment> findAllByParentUsername(String username);
-    List<Appointment> findAllByBabysitterUsername(String username);
+    List<Appointment> findAllByBabysitterUsernameOrderByStartAsc(String username);
 //
 //    void findAllByBabysitter(User babysitter);
 //
