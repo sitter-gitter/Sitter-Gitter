@@ -7,46 +7,65 @@
 
 <div class="container">
     <div class="row">
-
         <div class="col s12">
-            <h2>Available Hours</h2>
-            <!--<a th:href="@{'/available-times/create'}" >-->
-                <!--<h4>+ Add Times</h4>-->
-            <!--</a>-->
-        </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <span class="card-title">Available Hours</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6 l4">
+                            <ul>
+                                <li th:each="time : ${available_times}">
+                                    <div th:if="${time.start > current_time}" class="col s12 m6 l4">
+                                        <div class="card-panel hoverable">
+                                            <!--From:<br/>-->
+                                            <!--<span th:text="${time.start}"></span>-->
+                                            <!--To:<br/>-->
+                                            <!--<span th:text="${time.end}"></span>-->
 
-        <ul>
-            <li th:each="time : ${available_times}">
-                <div th:if="${time.start > current_time}" class="col s12 m6 l4">
-                    <div class="card grey hoverable">
-                        <div class="card-content white-text" style="padding-top: 16px;">
-                            <!--<a th:href="@{'/availableTimes/'+ ${time.id}}">-->
-                            <span class="card-title">
-                                <p>
-                                    From:<br/>
-                                    <span th:text="${time.start}"></span>
-                                </p>
-                                <p>
-                                    To:<br/>
-                                    <span th:text="${time.end}"></span>
-                                </p>
-                            </span>
-                            <div class="card-action">
-                                <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
-                                    <!--<i class="fas fa-edit"></i></a>-->
-                                <!--<a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">-->
-                                    <!--<i class="fas fa-trash-alt"></i> DELETE</a>-->
-                            </div>
-                            <!--</a>-->
+                                            <span th:switch="${time.start.getDay()}">
+                                                <span th:case="0">Sunday,</span>
+                                                <span th:case="1">Monday,</span>
+                                                <span th:case="2">Tuesday,</span>
+                                                <span th:case="3">Wednesday,</span>
+                                                <span th:case="4">Thursday,</span>
+                                                <span th:case="5">Friday,</span>
+                                                <span th:case="6">Saturday,</span>
+                                            </span>
+
+                                            <span th:switch="${time.start.getMonth()}">
+                                                <span th:case="0">January</span>
+                                                <span th:case="1">February</span>
+                                                <span th:case="2">March</span>
+                                                <span th:case="3">April</span>
+                                                <span th:case="4">May</span>
+                                                <span th:case="5">June</span>
+                                                <span th:case="6">July</span>
+                                                <span th:case="7">August</span>
+                                                <span th:case="8">September</span>
+                                                <span th:case="9">October</span>
+                                                <span th:case="10">November</span>
+                                                <span th:case="11">December</span>
+                                            </span> <span th:text="${time.start.getDate()}"></span>
+                                            <br />
+                                            <span th:text="${time.start.getHours()}"></span>:
+                                            <span th:text="${time.start.getMinutes()}"></span> -
+                                            <span th:text="${time.end.getHours()}"></span>:
+                                            <span th:text="${time.end.getMinutes()}"></span><br />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </li>
-        </ul>
-
+            </div>
+        </div>
     </div>
 </div>
-
 
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
