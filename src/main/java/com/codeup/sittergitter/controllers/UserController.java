@@ -140,7 +140,7 @@ public class UserController {
         List<Appointment> parentAppointments = appointmentsRepo.findAllByParentUsername(username);
         Appointment appointment = appointmentsRepo.findOne(sessionUser.getId());
 
-        List<Appointment> babysitterAppointments = appointmentsRepo.findAllByBabysitterUsername(username);
+        List<Appointment> babysitterAppointments = appointmentsRepo.findAllByBabysitterUsernameOrderByStartAsc(username);
 
 
 //        List<String> appointmentBabysitterName = appointment.getBabysitter().getUsername();
