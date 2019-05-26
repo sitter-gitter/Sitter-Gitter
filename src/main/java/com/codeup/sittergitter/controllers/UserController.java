@@ -206,7 +206,7 @@ public class UserController {
     usersRepo.save(user);
 //        usersRepo.save(userToBeEdited);
 //        return "redirect:/profile/" + userToBeEdited.getId();
-        return "redirect:/profile/index";
+        return "redirect:/my-acct";
     }
 
     // DELETE PROFILE

@@ -33,6 +33,22 @@ public class Review {
     @JoinColumn (name = "babysitter_id", referencedColumnName = "id")
     private User babysitter;
 
+    public Review(String title, String body, Boolean isRecommended, User parent, User babysitter) {
+        this.title = title;
+        this.body = body;
+        this.isRecommended = isRecommended;
+        this.parent = parent;
+        this.babysitter = babysitter;
+    }
+
+    public Boolean getRecommended() {
+        return isRecommended;
+    }
+
+    public void setRecommended(Boolean recommended) {
+        isRecommended = recommended;
+    }
+
     // C in CRUD
     public Review() {
     }

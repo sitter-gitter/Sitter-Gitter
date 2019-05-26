@@ -330,14 +330,14 @@
                     <li>
                         Sitter:
                         <a th:href="@{'/reviews/' + ${review.id}}">
-                            <span th:text="${review.babysitter.getUsername()}"></span>
+                            <!--<span th:text="${review.babysitter.getUsername()}"></span>-->
                         </a>
                     </li>
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
-                        <a href="#">
+                        <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
                             <i class="fas fa-user-edit"></i> Edit Review
                         </a>
-                        <a href="#">
+                        <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">
                             <i class="fas fa-trash-alt"></i> Delete Review
                         </a>
                     </li>
