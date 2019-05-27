@@ -28,6 +28,15 @@
                 <label for="body">Body</label>
             </div>
         </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="recommended">
+                    <input th:checked="*{isRecommended} ? 'checked'" name="isRecommended" type="checkbox"
+                           id="recommended"/>
+                    <span>I highly recommend this babysitter to other parents!</span>
+                </label>
+            </div>
+        </div>
         <input type="hidden" th:value="${appointment.babysitter.getId()}" name="sitter_id"/>
         <input type="hidden" th:value="${appointment.getId()}" name="appt_id"/>
         <!--<div class="row">-->
