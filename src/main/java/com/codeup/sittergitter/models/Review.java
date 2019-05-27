@@ -21,6 +21,10 @@ public class Review {
     @Type(type = "numeric_boolean")
     private Boolean isRecommended;
 
+    @OneToOne
+    @JoinColumn(name = "appointment_id", unique = true)
+    private Appointment appointment;
+
     @ManyToOne
 //    @JoinColumns({
 //        @JoinColumn(name = "author_id", referencedColumnName="id"),

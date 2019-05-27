@@ -182,6 +182,47 @@ public class AppointmentController {
         return "redirect:/my-acct";
     }
 
+
+    @GetMapping("/appointments/{username}/past-appointments")
+    public String showPastAppointments(@PathVariable String username, Model model) {
+        User user = usersRepo.findByUsername(username);
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+        System.out.println(currentTimeStamp);
+        model.addAttribute("user", user);
+        model.addAttribute("sessionUser", sessionUser);
+        model.addAttribute("current_time", currentTimeStamp);
+        model.addAttribute("pastAppts", appointmentsRepo.findAllByParentUsernameOrderByStartAsc(username));
+        return "appointments/showPastAppointments";
+    }
+
+//    @GetMapping("/appointments/past-appointments)
+//    public String displayPastAppointments() {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username = sessionUser.getUsername();
+//
+//        return "redirect:/profile/" + username;
+//    }
+
+
+    @PostMapping("/appointments/showPastAppointments")
+    public String chooseAppointmentToReview(@ModelAttribute Appointment appointment, @ModelAttribute AvailableTime availableTime, @RequestParam long sitter_id, @RequestParam long available_time_id) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
+        sitterId = sitter_id;
+        availTimeId = available_time_id;
+
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
+//        emailService.sendReviewNotification(savedAppt, "Babysitting Review",
+//                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+//                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        return "redirect:/my-acct";
+    }
+
     // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){

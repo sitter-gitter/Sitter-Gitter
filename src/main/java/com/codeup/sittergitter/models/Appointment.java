@@ -28,6 +28,9 @@ public class Appointment {
     @JoinColumn(name = "available_time_id", unique = true)
     private AvailableTime availableTime;
 
+    @OneToOne(mappedBy = "appointment")
+    private Review review;
+
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
     private User babysitter;
