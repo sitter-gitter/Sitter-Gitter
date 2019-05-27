@@ -16,6 +16,8 @@
         <textarea type="textarea" name="body" id="body" th:field="${review.body}"
                   class="materialize-textarea validate"></textarea>
         <input type="hidden" th:value="${review.id}" />
+        <input type="hidden" th:value="${review.babysitter.id}" name="sitter_id"/>
+        <input type="hidden" th:value="${review.appointment.id}" name="appt_id"/>
 
         <button type="submit" class="btn hoverable">Submit</button>
     </form>

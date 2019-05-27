@@ -92,15 +92,17 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/{id}/edit")
-    public String editReview(@ModelAttribute Review reviewToBeEdited){
+    public String editReview(@ModelAttribute Review reviewToBeEdited, @RequestParam Long sitter_id, @RequestParam Long appt_id){
 //        User user = usersRepo.findByUsername(username);
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-
-
+        User sitter = usersRepo.findOne(sitter_id);
+        Appointment appointment = appointmentsRepo.findOne(appt_id);
 
         reviewToBeEdited.setParent(userDB);
+        reviewToBeEdited.setBabysitter(sitter);
+        reviewToBeEdited.setAppointment(appointment);
         reviewsRepo.save(reviewToBeEdited);
         return "redirect:/my-acct";
     }
