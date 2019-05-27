@@ -109,7 +109,11 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}/delete")
     public String deleteReview(@PathVariable Long id){
+        Review review = reviewsRepo.getReviewById(id);
+        Long appointment = review.getAppointment().getId();
         reviewsRepo.deleteById(id);
+        appointmentsRepo.updateIsReviewed(appointment, false);
+
         return "redirect:/my-acct";
     }
 

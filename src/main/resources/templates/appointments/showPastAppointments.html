@@ -27,9 +27,12 @@
                         <!-- changes start here ///////////////////////////////////////////////////////// -->
                         <p>
                             From:<br/>
-                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                            <span th:text="${appointment.getStart()}"></span>
-                        </a>
+                        <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                            <!--<span th:text="${appointment.getStart()}"></span>-->
+                        <!--</a>-->
+                            <p th:href="@{'/appointments/'+${appointment.getId()}}">
+                                <span th:text="${appointment.getStart()}"></span>
+                            </p>
                         </p>
                         <!-- changes end here ///////////////////////////////////////////////////////// -->
 
@@ -37,9 +40,12 @@
                         <!-- changes start here ///////////////////////////////////////////////////////// -->
                         <p>
                             To:<br/>
-                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                            <span th:text="${appointment.getEnd()}"></span>
-                        </a>
+                        <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                            <!--<span th:text="${appointment.getEnd()}"></span>-->
+                        <!--</a>-->
+                            <p th:href="@{'/appointments/'+${appointment.getId()}}">
+                                <span th:text="${appointment.getEnd()}"></span>
+                            </p>
                         </p>
                         <!-- changes end here ///////////////////////////////////////////////////////// -->
 
