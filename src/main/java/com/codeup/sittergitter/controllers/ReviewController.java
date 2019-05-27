@@ -1,5 +1,6 @@
 package com.codeup.sittergitter.controllers;
 
+import com.codeup.sittergitter.models.Appointment;
 import com.codeup.sittergitter.models.Review;
 import com.codeup.sittergitter.models.User;
 import com.codeup.sittergitter.repositories.*;
@@ -7,10 +8,7 @@ import com.codeup.sittergitter.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ReviewController {
@@ -51,20 +49,27 @@ public class ReviewController {
         return "reviews/show";
     }
 
-    @GetMapping("/reviews/create")
-    public String showCreateReview(Model model) {
+//    @GetMapping("/reviews/create")
+    @GetMapping("/reviews/{id}/create")
+    public String showCreateReview(@PathVariable Long id, Model model) {
+        Appointment appointment = appointmentsRepo.findOne(id);
+        model.addAttribute("appointment", appointment);
         model.addAttribute("review", new Review());
         return "reviews/create";
     }
 
     @PostMapping("/reviews/create")
-    public String createReview(@ModelAttribute Review reviewToSaved) {
+    public String createReview(@ModelAttribute Review reviewToSaved, @RequestParam Long sitter_id, @RequestParam Long appt_id) {
 //        reviewToSaved.setAuthor(usersRepo.findOne(1L));
 //        Review savedReview = reviewsRepo.save(reviewToSaved);
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
+        User sitter = usersRepo.findOne(sitter_id);
+        Appointment appointment = appointmentsRepo.findOne(appt_id);
         reviewToSaved.setParent(userDB);
+        reviewToSaved.setBabysitter(sitter);
+        reviewToSaved.setAppointment(appointment);
         Review savedReview = reviewsRepo.save(reviewToSaved);
 
 //        emailService.prepareAndSend(savedReview, "Review has been created", "The review has been created successfully

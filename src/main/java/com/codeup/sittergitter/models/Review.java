@@ -42,10 +42,12 @@ public class Review {
     }
 
     // R in CRUD
-    public Review(Long id, String title, String body, User parent, User babysitter) {
+    public Review(Long id, String title, String body, Boolean isRecommended, Appointment appointment, User parent, User babysitter) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.isRecommended = isRecommended;
+        this.appointment = appointment;
         this.parent = parent;
         this.babysitter = babysitter;
     }
@@ -129,4 +131,7 @@ public class Review {
         this.isRecommended = isRecommended;
     }
 
+    public Appointment getAppointment() { return appointment; }
+
+    public void setAppointment(Appointment appointment) { this.appointment = appointment; }
 }

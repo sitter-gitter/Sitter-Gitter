@@ -211,8 +211,6 @@ public class AppointmentController {
     public String chooseAppointmentToReview(@ModelAttribute Appointment appointment, @ModelAttribute AvailableTime availableTime, @RequestParam long sitter_id, @RequestParam long available_time_id) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
-        sitterId = sitter_id;
-        availTimeId = available_time_id;
 
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
@@ -220,7 +218,7 @@ public class AppointmentController {
 //                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
 //                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        return "redirect:/my-acct";
+        return "redirect:/appointments/{id}/review";
     }
 
     // DELETE APPOINTMENTS

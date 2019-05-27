@@ -47,8 +47,9 @@
                                 <div class="card-action">
                                     <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
                                     <!--<i class="fas fa-edit"></i></a>-->
-                                    <a th:href="@{'/appointments/'+${appointment.getId()}+'/review/'}">
-                                        <i class="fas fa-trash-alt"></i> WRITE A REVIEW!</a>
+                                    <!--<a th:href="@{'/appointments/'+${appointment.getId()}+'/review/'}">-->
+                                    <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}">
+                                        <i class="fas fa-user-edit"></i> WRITE A REVIEW!</a>
                                 </div>
                             </div>
                         </div>

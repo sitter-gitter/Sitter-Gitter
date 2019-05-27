@@ -42,11 +42,12 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, AvailableTime availableTime, User babysitter, User parent) {
+    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, AvailableTime availableTime, Review review , User babysitter, User parent) {
         this.start = start;
         this.end = end;
         this.sitterApproved = sitterApproved;
         this.availableTime = availableTime;
+        this.review = review;
         this.babysitter = babysitter;
         this.parent = parent;
     }
@@ -86,6 +87,10 @@ public class Appointment {
     public AvailableTime getAvailableTime() { return availableTime; }
 
     public void setAvailableTime(AvailableTime availableTime) { this.availableTime = availableTime; }
+
+    public Review getReview() { return review; }
+
+    public void setReview(Review review) { this.review = review; }
 
     public User getBabysitter() { return babysitter; }
 
