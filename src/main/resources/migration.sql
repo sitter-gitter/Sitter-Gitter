@@ -56,6 +56,7 @@ CREATE TABLE appointments
   start    DATETIME   NOT NULL,
   end   DATETIME   NOT NULL,
   sitter_approved TINYINT NOT NULL,
+  is_reviewed TINYINT NOT NULL,
   babysitter_id INT UNSIGNED,
   parent_id INT UNSIGNED,
   available_time_id INT UNSIGNED,

@@ -17,7 +17,7 @@
                 <!-- changes start here ///////////////////////////////////////////////////////// -->
                 <li th:each="appointment : ${pastAppts}">
                     <!-- changes end here ///////////////////////////////////////////////////////// -->
-                    <div th:if="${current_time > appointment.end}" class="col s12 m6 l4">
+                    <div th:if="${current_time > appointment.end and appointment.reviewed == false}" class="col s12 m6 l4">
                     <!--<div th:if="${appointment.start > current_time}" class="col s12 m6 l4">-->
                         <div class="card grey hoverable">
 

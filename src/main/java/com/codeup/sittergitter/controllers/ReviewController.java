@@ -71,10 +71,15 @@ public class ReviewController {
         reviewToSaved.setBabysitter(sitter);
         reviewToSaved.setAppointment(appointment);
         Review savedReview = reviewsRepo.save(reviewToSaved);
+        appointmentsRepo.updateIsReviewed(appt_id, true);
 
-//        emailService.prepareAndSend(savedReview, "Review has been created", "The review has been created successfully
-//        and " + "you can find it with the ID of " + savedReview.getId());
-        return "redirect:/reviews/" + savedReview.getId();
+        //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
+//        emailService.sendReviewNotification(savedReview, "Babysitting Review",
+//                "A review has been made on your appointment lasting from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+//                        + " with the following parent: " + savedReview.getParent().getFirstName() + " " + savedReview.getParent().getLastName() + ".");
+//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        return "redirect:/my-acct";
     }
 
     @GetMapping("/reviews/{id}/edit")

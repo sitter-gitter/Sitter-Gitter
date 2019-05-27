@@ -198,26 +198,13 @@ public class AppointmentController {
         return "appointments/showPastAppointments";
     }
 
-//    @GetMapping("/appointments/past-appointments)
-//    public String displayPastAppointments() {
-//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String username = sessionUser.getUsername();
-//
-//        return "redirect:/profile/" + username;
-//    }
-
 
     @PostMapping("/appointments/showPastAppointments")
     public String chooseAppointmentToReview(@ModelAttribute Appointment appointment, @ModelAttribute AvailableTime availableTime, @RequestParam long sitter_id, @RequestParam long available_time_id) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDB = usersRepo.findOne(sessionUser.getId());
 
-//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
-//        emailService.sendReviewNotification(savedAppt, "Babysitting Review",
-//                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
-//                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
-//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         return "redirect:/appointments/{id}/review";
     }
 

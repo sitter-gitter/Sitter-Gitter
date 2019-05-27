@@ -24,6 +24,10 @@ public class Appointment {
     @Type(type = "numeric_boolean")
     private Boolean sitterApproved;
 
+    @Column
+    @Type(type = "numeric_boolean")
+    private Boolean isReviewed;
+
     @OneToOne
     @JoinColumn(name = "available_time_id", unique = true)
     private AvailableTime availableTime;
@@ -42,10 +46,11 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, AvailableTime availableTime, Review review , User babysitter, User parent) {
+    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, Boolean isReviewed, AvailableTime availableTime, Review review , User babysitter, User parent) {
         this.start = start;
         this.end = end;
         this.sitterApproved = sitterApproved;
+        this.isReviewed = isReviewed;
         this.availableTime = availableTime;
         this.review = review;
         this.babysitter = babysitter;
@@ -83,6 +88,10 @@ public class Appointment {
     public void setSitterApproved(Boolean sitterApproved) {
         this.sitterApproved = sitterApproved;
     }
+
+    public Boolean getReviewed() { return isReviewed; }
+
+    public void setReviewed(Boolean reviewed) { isReviewed = reviewed; }
 
     public AvailableTime getAvailableTime() { return availableTime; }
 
