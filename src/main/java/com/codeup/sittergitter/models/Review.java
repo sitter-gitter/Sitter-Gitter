@@ -21,6 +21,10 @@ public class Review {
     @Type(type = "numeric_boolean")
     private Boolean isRecommended;
 
+    @OneToOne
+    @JoinColumn(name = "appointment_id", unique = true)
+    private Appointment appointment;
+
     @ManyToOne
 //    @JoinColumns({
 //        @JoinColumn(name = "author_id", referencedColumnName="id"),
@@ -54,10 +58,12 @@ public class Review {
     }
 
     // R in CRUD
-    public Review(Long id, String title, String body, User parent, User babysitter) {
+    public Review(Long id, String title, String body, Boolean isRecommended, Appointment appointment, User parent, User babysitter) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.isRecommended = isRecommended;
+        this.appointment = appointment;
         this.parent = parent;
         this.babysitter = babysitter;
     }
@@ -141,4 +147,7 @@ public class Review {
         this.isRecommended = isRecommended;
     }
 
+    public Appointment getAppointment() { return appointment; }
+
+    public void setAppointment(Appointment appointment) { this.appointment = appointment; }
 }

@@ -69,34 +69,15 @@ VALUES
 
 
 
-
-INSERT INTO reviews (title, body, is_recommended, babysitter_id, parent_id)
-VALUES ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 6, 1),
-       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
-       even bother to clean up the mess. Horrid!', 0, 6, 1),
-       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 7, 2),
-       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
-       even bother to clean up the mess. Horrid!', 0, 7, 2),
-       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 8, 3),
-       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
-       even bother to clean up the mess. Horrid!', 0, 8, 3),
-       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 9, 4),
-       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
-       even bother to clean up the mess. Horrid!', 0, 9, 4),
-       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 10, 5),
-       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
-       even bother to clean up the mess. Horrid!', 0, 10, 5);
-
-
 INSERT INTO available_times (start, end, babysitter_id, is_taken)
 VALUES ('2019-05-31 08:00:00', '2019-05-31 23:00:00', 6, 0),
        ('2019-06-01 08:00:00', '2019-06-01 23:00:00', 6, 0),
        ('2019-06-02 08:00:00', '2019-06-02 23:00:00', 6, 0),
        ('2019-06-03 08:00:00', '2019-06-03 23:00:00', 6, 0),
        ('2019-06-04 08:00:00', '2019-06-04 23:00:00', 6, 0),
-       ('2019-06-05 08:00:00', '2019-06-05 23:00:00', 6, 1),
-       ('2019-06-06 08:00:00', '2019-06-06 23:00:00', 6, 1),
-       ('2019-06-07 08:00:00', '2019-06-07 21:00:00', 6, 1),
+       ('2019-05-05 08:00:00', '2019-05-05 23:00:00', 6, 1),
+       ('2019-02-06 08:00:00', '2019-02-06 23:00:00', 6, 1),
+       ('2019-04-07 08:00:00', '2019-04-07 21:00:00', 6, 1),
        ('2019-06-08 08:00:00', '2019-06-08 23:00:00', 6, 0),
        ('2019-06-09 08:00:00', '2019-06-09 21:00:00', 6, 0),
        ('2019-06-10 08:00:00', '2019-06-10 23:00:00', 6, 0),
@@ -147,22 +128,41 @@ VALUES ('2019-05-31 08:00:00', '2019-05-31 23:00:00', 6, 0),
 
 
 
-INSERT INTO appointments (start, end, sitter_approved, babysitter_id, parent_id, available_time_id)
-VALUES ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 6, 1, 6),
-       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 6, 1, 7),
-       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 6, 1, 8),
-       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 7, 2, 17),
-       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 7, 2, 18),
-       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 7, 2, 19),
-       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 8, 3, 28),
-       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 8, 3, 29),
-       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 8, 3, 30),
-       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 9, 4, 39),
-       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 9, 4, 40),
-       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 9, 4, 41),
-       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 10, 5, 51),
-       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 10, 5, 52),
-       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 10, 5, 53);
+INSERT INTO appointments (start, end, sitter_approved, is_reviewed, babysitter_id, parent_id, available_time_id)
+VALUES ('2019-05-05 11:00:00', '2019-05-05 20:00:00', 1, 0, 6, 1, 6),
+       ('2019-02-06 11:00:00', '2019-02-06 20:00:00', 1, 0, 6, 1, 7),
+       ('2019-04-07 11:00:00', '2019-04-07 20:00:00', 1, 0, 6, 1, 8),
+       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 1, 7, 2, 17),
+       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 1, 7, 2, 18),
+       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 1, 7, 2, 19),
+       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 1, 8, 3, 28),
+       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 1, 8, 3, 29),
+       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 1, 8, 3, 30),
+       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 1, 9, 4, 39),
+       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 1, 9, 4, 40),
+       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 0, 9, 4, 41),
+       ('2019-06-05 11:00:00', '2019-06-05 20:00:00', 1, 1, 10, 5, 51),
+       ('2019-06-06 11:00:00', '2019-06-06 20:00:00', 1, 1, 10, 5, 52),
+       ('2019-06-07 11:00:00', '2019-06-07 20:00:00', 1, 0, 10, 5, 53);
+
+
+INSERT INTO reviews (title, body, is_recommended, babysitter_id, parent_id, appointment_id)
+VALUES ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 7, 2, 4),
+       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
+       even bother to clean up the mess. Horrid!', 0, 8, 3, 8),
+       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 7, 2, 5),
+       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
+       even bother to clean up the mess. Horrid!', 0, 7, 2, 6),
+       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 8, 3, 7),
+       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
+       even bother to clean up the mess. Horrid!', 0, 8, 3, 9),
+       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 9, 4, 10),
+       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
+       even bother to clean up the mess. Horrid!', 0, 9, 4, 11),
+       ('Highly Recommended!', 'Everybody in the city should hire this babysitter. She\'s just that good.', 1, 10, 5, 13),
+       ('Don\'t waste your money, people!', 'This babysitter spilled a bag of potato chips on our couch and didn\'t
+       even bother to clean up the mess. Horrid!', 0, 10, 5, 14);
+
 
 
 INSERT INTO specifications (is_smoker, has_cpr_training, has_transportation, years_of_experience, birthdate, babysitter_id)

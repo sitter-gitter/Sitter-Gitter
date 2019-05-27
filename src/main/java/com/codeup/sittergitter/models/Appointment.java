@@ -24,9 +24,16 @@ public class Appointment {
     @Type(type = "numeric_boolean")
     private Boolean sitterApproved;
 
+    @Column
+    @Type(type = "numeric_boolean")
+    private Boolean isReviewed;
+
     @OneToOne
     @JoinColumn(name = "available_time_id", unique = true)
     private AvailableTime availableTime;
+
+    @OneToOne(mappedBy = "appointment")
+    private Review review;
 
     @ManyToOne
     @JoinColumn(name = "babysitter_id")
@@ -39,11 +46,13 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, AvailableTime availableTime, User babysitter, User parent) {
+    public Appointment(Timestamp start, Timestamp end, Boolean sitterApproved, Boolean isReviewed, AvailableTime availableTime, Review review , User babysitter, User parent) {
         this.start = start;
         this.end = end;
         this.sitterApproved = sitterApproved;
+        this.isReviewed = isReviewed;
         this.availableTime = availableTime;
+        this.review = review;
         this.babysitter = babysitter;
         this.parent = parent;
     }
@@ -80,9 +89,17 @@ public class Appointment {
         this.sitterApproved = sitterApproved;
     }
 
+    public Boolean getReviewed() { return isReviewed; }
+
+    public void setReviewed(Boolean reviewed) { isReviewed = reviewed; }
+
     public AvailableTime getAvailableTime() { return availableTime; }
 
     public void setAvailableTime(AvailableTime availableTime) { this.availableTime = availableTime; }
+
+    public Review getReview() { return review; }
+
+    public void setReview(Review review) { this.review = review; }
 
     public User getBabysitter() { return babysitter; }
 

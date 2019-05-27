@@ -184,6 +184,32 @@ public class AppointmentController {
         return "redirect:/my-acct";
     }
 
+
+    @GetMapping("/appointments/{username}/past-appointments")
+    public String showPastAppointments(@PathVariable String username, Model model) {
+        User user = usersRepo.findByUsername(username);
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+        System.out.println(currentTimeStamp);
+        model.addAttribute("user", user);
+        model.addAttribute("sessionUser", sessionUser);
+        model.addAttribute("current_time", currentTimeStamp);
+        model.addAttribute("pastAppts", appointmentsRepo.findAllByParentUsernameOrderByStartAsc(username));
+        return "appointments/showPastAppointments";
+    }
+
+
+    @PostMapping("/appointments/showPastAppointments")
+    public String chooseAppointmentToReview(@ModelAttribute Appointment appointment, @ModelAttribute AvailableTime availableTime, @RequestParam long sitter_id, @RequestParam long available_time_id) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
+
+
+        return "redirect:/appointments/{id}/review";
+    }
+
     // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
