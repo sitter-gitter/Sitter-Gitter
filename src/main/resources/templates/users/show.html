@@ -350,7 +350,7 @@ class="col s12">
                     <li>
                         Sitter:
                         <a th:href="@{'/reviews/' + ${review.id}}">
-                            <!--<span th:text="${review.babysitter.getUsername()}"></span>-->
+                            <span th:text="${review.babysitter.getUsername()}"></span>
                         </a>
                     </li>
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">

@@ -59,7 +59,7 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/create")
-    public String createReview(@ModelAttribute Review reviewToSaved, @RequestParam Long sitter_id, @RequestParam Long appt_id) {
+    public String createReview(@ModelAttribute Review reviewToSaved, @RequestParam Long sitter_id, @RequestParam Long appt_id, @RequestParam(defaultValue = "false") Boolean isRecommended) {
 //        reviewToSaved.setAuthor(usersRepo.findOne(1L));
 //        Review savedReview = reviewsRepo.save(reviewToSaved);
 
@@ -70,6 +70,7 @@ public class ReviewController {
         reviewToSaved.setParent(userDB);
         reviewToSaved.setBabysitter(sitter);
         reviewToSaved.setAppointment(appointment);
+        reviewToSaved.setIsRecommended(isRecommended);
         Review savedReview = reviewsRepo.save(reviewToSaved);
         appointmentsRepo.updateIsReviewed(appt_id, true);
 
