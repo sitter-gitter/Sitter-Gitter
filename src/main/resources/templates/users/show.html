@@ -122,7 +122,7 @@
 
                 <span class="card-title">Future Appointments: </span>
 
-                <ul th:each="appt : ${parentAppointments}"  style="list-style:
+                <ul th:each="appt : ${parentAppointments}" th:if="${appt.start > current_time}"  style="list-style:
                 none;">
                     <li class="card-panel" th:if="${appt.getStart() != null}" >
                         <span th:switch="${appt.start.getDay()}">
@@ -179,7 +179,7 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title center">Future Appointments</span>
-                <ul th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
+                <ul th:each="appt : ${babysitterAppointments}" th:if="${appt.start > current_time}"  style="list-style: none; display: inline;">
                     <li class="card-panel">
                         <span th:switch="${appt.start.getDay()}">
                             <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
