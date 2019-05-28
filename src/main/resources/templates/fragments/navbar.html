@@ -24,7 +24,7 @@
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-            <a th:href="@{'/appointments/' + ${username} + '/past-appointments'}">
+            <a th:href="@{'/appointments/' + ${#authentication.principal.username} + '/past-appointments'}">
                 <i class="fas fa-plus"></i>Create Reviews
             </a>
     </li>
@@ -96,7 +96,7 @@
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-        <a th:href="@{'/appointments/' + ${username} + '/past-appointments'}"><i class="fas fa-plus"></i>Create Review</a>
+        <a th:href="@{'/appointments/' + ${#authentication.principal.username} + '/past-appointments'}"><i class="fas fa-plus"></i>Create Review</a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
