@@ -153,8 +153,10 @@
                             <span th:text="${appt.end.getMinutes()}"></span></span><br />
 
 
-                        With: <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
-                        <span th:text="${appt.getBabysitter().getUsername()}"></span></a>
+                        With:
+                        <!--<a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">-->
+                        <span th:text="${appt.getBabysitter().getUsername()}"></span>
+                        <!--</a>-->
 
 
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}">

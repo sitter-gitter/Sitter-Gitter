@@ -53,21 +53,7 @@ public class AppointmentController {
         // CREATE APPOINTMENT TIME GET
         @GetMapping("/appointments/create")
         public String parentChoices1(Model model) {
-
-            // copied from GET /available-times //
-            Calendar calendar = Calendar.getInstance();
-            java.util.Date now = calendar.getTime();
-            Timestamp currentTimeStamp = new Timestamp(now.getTime());
-            System.out.println(currentTimeStamp);
-            model.addAttribute("current_time", currentTimeStamp);
-            model.addAttribute("available_times", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
-            // end copy from /available-times //
-
             model.addAttribute("datetime", new Appointment());
-
-//            availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
-//            model.addAttribute("availAppts", availApptTimes);
-
             return "appointments/createAppointment";
         }
 
@@ -244,7 +230,26 @@ public class AppointmentController {
 
 }
 
-
+//    // CREATE APPOINTMENT TIME GET
+//    @GetMapping("/appointments/create")
+//    public String parentChoices1(Model model) {
+//
+//        // copied from GET /available-times //
+//        Calendar calendar = Calendar.getInstance();
+//        java.util.Date now = calendar.getTime();
+//        Timestamp currentTimeStamp = new Timestamp(now.getTime());
+//        System.out.println(currentTimeStamp);
+//        model.addAttribute("current_time", currentTimeStamp);
+//        model.addAttribute("available_times", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
+//        // end copy from /available-times //
+//
+//        model.addAttribute("datetime", new Appointment());
+//
+////            availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
+////            model.addAttribute("availAppts", availApptTimes);
+//
+//        return "appointments/createAppointment";
+//    }
 
 
 
