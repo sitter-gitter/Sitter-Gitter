@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class ReviewController {
 
@@ -36,6 +38,20 @@ public class ReviewController {
     public String showReviews(Model model) {
         model.addAttribute("reviews", reviewsRepo.findAll());
         return "reviews/index";
+    }
+
+    @GetMapping("/reviews/{username}/show")
+    public String showSingleBabysittersReviews(@PathVariable String username, Model model) {
+//        User parent = usersRepo.findOne(1L);
+//        model.addAttribute("parent", parent);
+        //////////////////////////// refactor ^
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userDB = usersRepo.findOne(sessionUser.getId());
+//        model.addAttribute("sessionUser", sessionUser);
+
+        List reviews = reviewsRepo.findByBabysitterUsername(username);
+        model.addAttribute("reviews", reviews);
+        return "reviews/show";
     }
 
     @GetMapping("/reviews/{id}")
