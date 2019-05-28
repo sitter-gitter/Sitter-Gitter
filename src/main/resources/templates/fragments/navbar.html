@@ -24,7 +24,7 @@
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-            <a href="/reviews/create">
+            <a th:href="@{'/appointments/' + ${username} + '/past-appointments'}">
                 <i class="fas fa-plus"></i>Create Reviews
             </a>
     </li>
@@ -61,7 +61,7 @@
     <li class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()" style="display: inline;">
-        <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+        <form th:action="@{/logout}" th:method="post" style="display: inline-block;">
             <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' + ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
             <button class="btn waves-effect waves-light btn-small hoverable center" style="display: inline;">
                 Logout
@@ -96,7 +96,7 @@
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-        <a href="/reviews/create"><i class="fas fa-plus"></i>Create Review</a>
+        <a th:href="@{'/appointments/' + ${username} + '/past-appointments'}"><i class="fas fa-plus"></i>Create Review</a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
@@ -152,7 +152,7 @@
             </li>
 
             <li sec:authorize="isAuthenticated()" style="display: inline;">
-                <form th:action="@{/logout}" th:method="review" style="display: inline-block;">
+                <form th:action="@{/logout}" th:method="post" style="display: inline-block;">
                     <a href="/my-acct" style="display: inline;">
                         <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
                         ${#authentication.principal.username}" style="display: inline-block;"></span>
