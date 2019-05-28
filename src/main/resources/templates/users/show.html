@@ -5,8 +5,9 @@
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 <main>
-<div class="container"
-     th:if="${(sessionUser.getisBabysitter() == false and sessionUser.getUsername() == user.getUsername()) or (sessionUser.getisBabysitter() == true)}">
+<div class="container">
+    <!-- th:if="${(sessionUser.getisBabysitter() == false and sessionUser.getUsername() == user.getUsername()) or
+    (sessionUser.getisBabysitter() == true)} -->
 <!--<div class="card">-->
 <div class="row">
 
@@ -121,8 +122,9 @@
 
                 <span class="card-title">Future Appointments: </span>
 
-                <ul th:each="appt : ${parentAppointments}"  style="list-style: none;">
-                    <li class="card-panel">
+                <ul th:each="appt : ${parentAppointments}"  style="list-style:
+                none;">
+                    <li class="card-panel" th:if="${appt.getStart() != null}" >
                         <span th:switch="${appt.start.getDay()}">
                             <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
                             <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
