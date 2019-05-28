@@ -56,7 +56,7 @@ public class AvailableTimeController {
         newAvailTime.setBabysitter(userDB);
         newAvailTime.setIsTaken(false);
         availableTimesRepo.save(newAvailTime);
-        return "redirect:/available-times";
+        return "redirect:/my-acct";
     }
 
     // READ AVAILABLE TIMES GET
@@ -128,7 +128,7 @@ public class AvailableTimeController {
         newAvailTime.setBabysitter(userDB);
         newAvailTime.setIsTaken(false);
         availableTimesRepo.save(newAvailTime);
-        return "redirect:/available-times";
+        return "redirect:/my-acct";
     }
 
 }

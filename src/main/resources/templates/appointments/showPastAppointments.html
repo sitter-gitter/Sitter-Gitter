@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="fragments/head :: header('Parent Appointments')" /></head>
+<body>
+<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col s12">
+            <h2>Choose A Past Appointment To Review:</h2>
+        </div>
+        <div th:if="${(user.getisBabysitter() == false) and user.getUsername() == sessionUser.getUsername()}">
+            <ul>
+
+                <!-- changes start here ///////////////////////////////////////////////////////// -->
+                <li th:each="appointment : ${pastAppts}">
+                    <!-- changes end here ///////////////////////////////////////////////////////// -->
+                    <div th:if="${current_time > appointment.end and appointment.reviewed == false}" class="col s12 m6 l4">
+                    <!--<div th:if="${appointment.start > current_time}" class="col s12 m6 l4">-->
+                        <div class="card grey hoverable">
+
+                            <div class="card-content white-text" style="padding-top: 16px;">
+                    <span class="card-title">
+
+                        <!-- changes start here ///////////////////////////////////////////////////////// -->
+                        <p>
+                            From:<br/>
+                        <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                            <!--<span th:text="${appointment.getStart()}"></span>-->
+                        <!--</a>-->
+                            <p th:href="@{'/appointments/'+${appointment.getId()}}">
+                                <span th:text="${appointment.getStart()}"></span>
+                            </p>
+                        </p>
+                        <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+
+                        <!-- changes start here ///////////////////////////////////////////////////////// -->
+                        <p>
+                            To:<br/>
+                        <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                            <!--<span th:text="${appointment.getEnd()}"></span>-->
+                        <!--</a>-->
+                            <p th:href="@{'/appointments/'+${appointment.getId()}}">
+                                <span th:text="${appointment.getEnd()}"></span>
+                            </p>
+                        </p>
+                        <!-- changes end here ///////////////////////////////////////////////////////// -->
+
+                    </span>
+                                <div class="card-action">
+                                    <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
+                                    <!--<i class="fas fa-edit"></i></a>-->
+                                    <!--<a th:href="@{'/appointments/'+${appointment.getId()}+'/review/'}">-->
+                                    <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}">
+                                        <i class="fas fa-user-edit"></i> WRITE A REVIEW!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<footer><th:block th:replace="fragments/footer :: footer" /></footer>
+<th:block th:replace="fragments/includes :: includes" />
+</body>
+</html>

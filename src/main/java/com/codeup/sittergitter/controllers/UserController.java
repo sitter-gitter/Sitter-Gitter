@@ -155,6 +155,10 @@ public class UserController {
         System.out.println(currentTimeStamp);
         model.addAttribute("current_time", currentTimeStamp);
         model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+
+        // ERIK ADDITIONS SUN MAY 26 //
+        model.addAttribute("available_times2", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
+
         // end additions
 
         model.addAttribute("appointment", appointment);

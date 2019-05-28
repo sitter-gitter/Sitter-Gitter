@@ -8,17 +8,33 @@
 <div class="container">
 <div class="input-field">
 
-    <form th:action="@{'/reviews/'+${review.id}+'/edit'}" method="post">
+    <form th:action="@{'/reviews/'+${review.id}+'/edit'}" th:method="post" th:object="${review}">
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" th:value="${review.title}" class="validate" />
+        <input type="text" name="title" id="title" th:value="*{title}" class="validate" />
 
         <label for="body">Body</label>
-        <textarea type="textarea" name="body" id="body" th:field="${review.body}"
+        <textarea type="textarea" name="body" id="body" th:field="*{body}"
                   class="materialize-textarea validate"></textarea>
-        <input type="hidden" th:value="${review.id}" />
+        <label for="recommended">
+            <input id="recommended" type="checkbox" name="isRecommended" th:checked="*{isRecommended} ? 'checked'"/>
+            <span>I highly recommend this babysitter!</span>
+        </label>
+        <input type="hidden" th:value="*{id}" />
+        <input type="hidden" th:value="*{babysitter.id}" name="sitter_id"/>
+        <input type="hidden" th:value="*{appointment.id}" name="appt_id"/><br/><br/>
 
         <button type="submit" class="btn hoverable">Submit</button>
     </form>
+
+    <!--<div class="row">-->
+        <!--<div class="input-field col s12">-->
+            <!--<label for="recommended">-->
+                <!--<input th:checked="*{isRecommended} ? 'checked'" name="isRecommended" type="checkbox"-->
+                       <!--id="recommended"/>-->
+                <!--<span>I highly recommend this babysitter to other parents!</span>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</div>-->
 
 </div>
 </div>

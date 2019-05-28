@@ -30,6 +30,11 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
     @Query("UPDATE Appointment appt SET appt.availableTime = null WHERE appt.id = :appointmentId")
     void nullifyAvailTime(@Param("appointmentId") long appointmentId);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE Appointment appt SET appt.isReviewed = :isReviewed WHERE appt.id = :appointmentId")
+    void updateIsReviewed(@Param("appointmentId") long appointmentId, @Param("isReviewed") Boolean isReviewed);
+
 
     List<Appointment> findAllByParentUsernameOrderByStartAsc(String username);
     List<Appointment> findAllByBabysitterUsernameOrderByStartAsc(String username);

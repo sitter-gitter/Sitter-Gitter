@@ -2,9 +2,9 @@ CREATE DATABASE IF NOT EXISTS sitter_gitter_db;
 USE sitter_gitter_db;
 
 DROP TABLE IF EXISTS specifications;
+DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS available_times;
-DROP TABLE IF EXISTS reviews;
 DROP TABLE IF EXISTS children;
 DROP TABLE IF EXISTS users;  # need to drop tables in reverse order!!!
 
@@ -37,12 +37,26 @@ CREATE TABLE children
   FOREIGN KEY (parent_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
+
+CREATE TABLE available_times
+(
+  id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
+  start    DATETIME   NOT NULL,
+  end   DATETIME   NOT NULL,
+  babysitter_id INT UNSIGNED   NULL,
+  is_taken TINYINT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (babysitter_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+
 CREATE TABLE appointments
 (
   id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
   start    DATETIME   NOT NULL,
   end   DATETIME   NOT NULL,
   sitter_approved TINYINT NOT NULL,
+  is_reviewed TINYINT NOT NULL,
   babysitter_id INT UNSIGNED,
   parent_id INT UNSIGNED,
   available_time_id INT UNSIGNED,
@@ -60,20 +74,11 @@ CREATE TABLE reviews
   is_recommended TINYINT,
   babysitter_id INT UNSIGNED   NULL,
   parent_id INT UNSIGNED NULL,
+  appointment_id INT UNSIGNED,
   PRIMARY KEY (id),
   FOREIGN KEY (babysitter_id) REFERENCES users (id) ON DELETE CASCADE,
-  FOREIGN KEY (parent_id) REFERENCES users (id) ON DELETE CASCADE
-);
-
-CREATE TABLE available_times
-(
-  id      INT UNSIGNED   NOT NULL AUTO_INCREMENT,
-  start    DATETIME   NOT NULL,
-  end   DATETIME   NOT NULL,
-  babysitter_id INT UNSIGNED   NULL,
-  is_taken TINYINT,
-  PRIMARY KEY (id),
-  FOREIGN KEY (babysitter_id) REFERENCES users (id) ON DELETE CASCADE
+  FOREIGN KEY (parent_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (appointment_id) REFERENCES appointments (id)
 );
 
 
