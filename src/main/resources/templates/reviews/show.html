@@ -1,48 +1,38 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><th:block th:replace="fragments/head :: header('Show Review')" /></head>
+<head><th:block th:replace="fragments/head :: header('Reviews Index')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
 
 <div class="container">
-<div class="row">
-<div class="col s12">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Babysitter Spotlight:</span>
+                    <ul th:each="review : ${reviews}" class="card-panel">
+                        <li>
+                            Sitter:
+                                <span th:text="${review.getBabysitter().firstName} + ' ' + ${review.getBabysitter().lastName}"></span>
 
-    <div class="card grey">
-        <div class="card-content white-text" style="padding-bottom: 0; padding-top: 16px;">
-            <span class="card-title">
-                Title:
-                <span th:text="${review.title}"></span>
-            </span>
-            <p>
-                Body:
-                <span th:text="${review.body}"></span>
-            </p>
-            <p>
-                Email:
-                    <span th:text="${review.parent.email}"></span>
-            </p>
-            <p>
-                Parent:
-                <!--<a-->
-                        <!--th:href="@{'/profile/' + ${review.parent.username}}"><span-->
-                        <!--th:text="${review.parent.username}"></span></a>-->
-                <span th:href="@{'/profile/' + ${review.parent.username}}"></span>
-                <span th:text="${review.parent.username}"></span>
-            </p>
-            <!--<div class="card-action">-->
-            <!--&lt;!&ndash;<div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="card-action">&ndash;&gt;-->
-                <!--<a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">-->
-                    <!--<i class="fas fa-edit"></i></a>-->
-                <!--<a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">-->
-                    <!--<i class="fas fa-trash-alt"></i></a>-->
-            <!--</div>-->
+                        </li>
+                        <li>
+                            Title:
+                            <span th:text="${review.title}"></span>
+                        </li>
+                        <li>
+                            Body:
+                            <span th:text="${review.body}"></span>
+                        </li>
+                        <li th:if="${review.getIsRecommended() == true}">
+                            ** HIGHLY RECOMMENDED! **
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
-</div>
 </div>
 
 
@@ -50,3 +40,117 @@
 <th:block th:replace="fragments/includes :: includes" />
 </body>
 </html>
+
+
+
+
+
+<!--<!doctype html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head><th:block th:replace="fragments/head :: header('Show Review')" /></head>-->
+<!--<body>-->
+<!--<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>-->
+
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col s12">-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-content">-->
+                    <!--<span class="card-title">-->
+                        <!--Title:-->
+                        <!--<span th:text="${review.title}"></span>-->
+                    <!--</span>-->
+                    <!--<p>-->
+                        <!--Body:-->
+                        <!--<span th:text="${review.body}"></span>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Email:-->
+                        <!--<span th:text="${review.parent.email}"></span>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Parent:-->
+                        <!--&lt;!&ndash;<a&ndash;&gt;-->
+                        <!--&lt;!&ndash;th:href="@{'/profile/' + ${review.parent.username}}"><span&ndash;&gt;-->
+                        <!--&lt;!&ndash;th:text="${review.parent.username}"></span></a>&ndash;&gt;-->
+                        <!--<span th:href="@{'/profile/' + ${review.parent.username}}"></span>-->
+                        <!--<span th:text="${review.parent.username}"></span>-->
+                    <!--</p>-->
+                    <!--&lt;!&ndash;<div class="card-action">&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="card-action">&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<i class="fas fa-edit"></i></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<i class="fas fa-trash-alt"></i></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--<footer><th:block th:replace="fragments/footer :: footer"/></footer>-->
+<!--<th:block th:replace="fragments/includes :: includes" />-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+<!--<!doctype html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head><th:block th:replace="fragments/head :: header('Show Review')" /></head>-->
+<!--<body>-->
+<!--<nav><th:block th:replace="fragments/navbar :: navbar" /></nav>-->
+
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col s12">-->
+        <!---->
+            <!--<div class="card grey">-->
+                <!--<div class="card-content white-text" style="padding-bottom: 0; padding-top: 16px;">-->
+                    <!--<span class="card-title">-->
+                        <!--Title:-->
+                        <!--<span th:text="${review.title}"></span>-->
+                    <!--</span>-->
+                    <!--<p>-->
+                        <!--Body:-->
+                        <!--<span th:text="${review.body}"></span>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Email:-->
+                            <!--<span th:text="${review.parent.email}"></span>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Parent:-->
+                        <!--&lt;!&ndash;<a&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:href="@{'/profile/' + ${review.parent.username}}"><span&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:text="${review.parent.username}"></span></a>&ndash;&gt;-->
+                        <!--<span th:href="@{'/profile/' + ${review.parent.username}}"></span>-->
+                        <!--<span th:text="${review.parent.username}"></span>-->
+                    <!--</p>-->
+                    <!--&lt;!&ndash;<div class="card-action">&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="card-action">&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<i class="fas fa-edit"></i></a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<i class="fas fa-trash-alt"></i></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!---->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--<footer><th:block th:replace="fragments/footer :: footer"/></footer>-->
+<!--<th:block th:replace="fragments/includes :: includes" />-->
+<!--</body>-->
+<!--</html>-->
