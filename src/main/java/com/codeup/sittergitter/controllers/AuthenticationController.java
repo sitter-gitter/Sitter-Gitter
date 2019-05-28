@@ -34,7 +34,7 @@ public class AuthenticationController {
 
         if (user.getisBabysitter()) {
             Specification userSpecs = user.getSpecifications();
-//            if (userSpecs.isEmpty())
+            if (userSpecs.getBirthdate().isEmpty())
                 return "redirect:/editSpecs";
         } else if (!user.getisBabysitter()) {
             List userChildren = user.getChildren();

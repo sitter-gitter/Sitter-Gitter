@@ -50,7 +50,7 @@
                         DOB:
                         <span th:text="${specification.birthdate}"></span>
                     </li>
-                    <li   th:if="specification.hasCprTraining">
+                    <li th:if="${specification.hasCprTraining}">
                         <span class="badge">CPR-certified</span>
                     </li>
                     <li  th:unless="${specification.smoker}">
@@ -86,11 +86,10 @@
                     <li class="card-panel">
                         <span th:text="${child.name}"></span>, age
                         <span th:text="${#dates.year(#dates.createNow())-child.birthdate.getYear()-1900}"></span><br />
-
-                        <!--<p th:unless="${child.specialNote.isEmpty()}">-->
-                            <!--Notes:-->
-                            <!--<span th:text="${child.specialNote}"></span>-->
-                        <!--</p>-->
+                        <p th:unless="${child.specialNote.isEmpty()}">
+                            Notes:<br />
+                            <span th:text="${child.specialNote}"></span>
+                        </p>
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}" >
                             <a th:href="@{'/child/'+${child.id}+'/delete'}">
                                 <i class="fas fa-trash-alt"></i> Remove child
