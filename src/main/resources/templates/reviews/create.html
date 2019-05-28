@@ -6,63 +6,34 @@
 
 
 <div class="container">
-<!--<div class="row">-->
-<!--<div class="col s12">-->
-
-    <div class="input-field">
-        <div class="row">
-            <div class="col s12">
-                <h5>Create Review</h5>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Create Review</span>
+                    <form th:action="@{/reviews/create}" th:method="post" th:object="${review}">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input th:field="*{title}" id="title" class="validate" name="title" type="text" />
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea name="body" id="body" th:field="*{body}" class="materialize-textarea validate"></textarea>
+                                <label for="body">Body</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="submit" class="btn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <form th:action="@{/reviews/create}" th:method="post" th:object="${review}">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input th:field="*{title}" id="title" class="validate" name="title" type="text"/>
-                    <label for="title">Title</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="body" id="body" th:field="*{body}" class="materialize-textarea validate"></textarea>
-                    <label for="body">Body</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <label for="recommended">
-                        <input th:checked="*{isRecommended} ? 'checked'" name="isRecommended" type="checkbox"
-                               id="recommended"/>
-                        <span>I highly recommend this babysitter!</span>
-                    </label>
-                </div>
-            </div>
-            <br/>
-            <input type="hidden" th:value="${appointment.babysitter.getId()}" name="sitter_id"/>
-            <input type="hidden" th:value="${appointment.getId()}" name="appt_id"/><br/><br/>
-            <!--<div class="row">-->
-            <!--&lt;!&ndash;<div class="col">&ndash;&gt;-->
-            <!--<label for="transport">Would you recommend this babysitter to others?</label>-->
-            <!--<p>-->
-            <!--<label>-->
-            <!--<input id="transport" name="recommended" type="checkbox" />-->
-            <!--<span>Yes, this is a great babysitter!</span>-->
-            <!--</label>-->
-            <!--</p>-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="row">-->
-            <!--<div class="col s12">-->
-            <!--<input type="submit" class="btn" />-->
-            <!--</div>-->
-            <!--</div>-->
-            <button type="submit" class="btn hoverable">Submit</button>
-        </form>
     </div>
-
-<!--</div>-->
-<!--</div>-->
 </div>
 
 
