@@ -4,29 +4,33 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-<main>
 <div class="container">
-<div class="row">
-<div class="col s12">
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">Reviews</span>
-            <ul>
-                <li th:each="review : ${reviews}">
-                    <div class="card-panel">
-                        <a th:href="@{'/reviews/'+${review.getId()}}">
-                            <span th:text="${review.title}" ></span>
-                        </a><br />
-                        <span class="truncate">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Recommended Babysitters:</span>
+                    <ul th:each="review : ${reviews}" th:if="${review.getIsRecommended() == true}" class="card-panel">
+                        <li>
+                            Sitter:
+                            <a th:href="@{'/reviews/'+ ${review.getBabysitter().username} + '/show'}" >
+                                <span
+                                    th:text="${review.getBabysitter().firstName} + ' ' + ${review.getBabysitter().lastName}"></span>
+                            </a>
+                        </li>
+                        <li>
+                            Title:
+                            <span th:text="${review.title}"></span>
+                        </li>
+                        <li>
+                            Body:
                             <span th:text="${review.body}"></span>
-                        </span>
-                    </div>
-                </li>
-            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 </main>
@@ -34,3 +38,16 @@
 <th:block th:replace="fragments/includes :: includes" />
 </body>
 </html>
+
+
+<!--<div class="card grey hoverable">-->
+<!--<div class="card-content white-text" style="padding-top: 16px;">-->
+<!--<span class="card-title">-->
+<!--Title:-->
+<!--<a th:href="@{'/reviews/'+${review.getId()}}">-->
+<!--<span th:text="${review.title}"></span>-->
+<!--</a>-->
+<!--</span>-->
+
+<!--</div>-->
+<!--</div>-->
