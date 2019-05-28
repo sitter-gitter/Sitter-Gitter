@@ -228,10 +228,12 @@ public class UserController {
         return "redirect:/profile/index";
     }
 
+
     // READ SEARCH FOR BABYSITTERS
     @GetMapping("/sitters")
-    public String showSitters() {
-        //////////// logic for showing only babysitters here /////////////
+    public String showSitters(Model model) {
+        model.addAttribute("sitters", usersRepo.findAll());
+        model.addAttribute("specs", specificationsRepo.findAll());
         return "users/sitters";
     }
 
