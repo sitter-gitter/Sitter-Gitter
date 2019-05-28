@@ -354,7 +354,7 @@
                     </li>
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
-                            <i class="fas fa-user-edit"></i> Edit Review
+                            <i class="fas fa-pen"></i> Edit Review
                         </a>
                         <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">
                             <i class="fas fa-trash-alt"></i> Delete Review
