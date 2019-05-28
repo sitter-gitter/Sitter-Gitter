@@ -86,7 +86,7 @@
                 <ul th:each="child : ${user.children}">
                     <li class="card-panel">
                         <span th:text="${child.name}"></span>, age
-                        <span th:text="${#dates.year(#dates.createNow())-child.birthdate.getYear()-1900}"></span><br />
+                        <span th:text="${#dates.year(#dates.createNow())-child.birthdate.getYear()-1900}"></span><br /><br />
 
                         <!--<p th:unless="${child.specialNote.isEmpty()}">-->
                             <!--Notes:-->
@@ -156,7 +156,7 @@
 
 
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}">
-                        <br />
+                        <br /><br />
                         <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
                         <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment
@@ -218,7 +218,7 @@
                     </span>
 
                     <span th:if="${user.getUsername() == sessionUser.getUsername()}">
-                        <br />
+                        <br /><br />
                         <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
                         <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
                             <i class="fas fa-trash-alt"></i> Cancel Appointment
@@ -266,7 +266,7 @@
                         <span th:text="${time.end.getHours()}"></span>:
                         <span th:if="${time.end.getMinutes() == 0}">00</span>
                         <span th:unless="${time.end.getMinutes() == 0}">
-                            <span th:text="${time.end.getMinutes()}"></span></span><br />
+                            <span th:text="${time.end.getMinutes()}"></span></span><br /><br />
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
                            th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
@@ -320,7 +320,7 @@
                         <span th:text="${time.end.getHours()}"></span>:
                         <span th:if="${time.end.getMinutes() == 0}">00</span>
                         <span th:unless="${time.end.getMinutes() == 0}">
-                            <span th:text="${time.end.getMinutes()}"></span></span><br />
+                            <span th:text="${time.end.getMinutes()}"></span></span><br /><br />
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
                            th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
@@ -356,7 +356,7 @@
         <div class="card">
             <div class="card-content">
 
-                <span class="card-title">Reviews made:</span>
+                <span class="card-title">Reviews Made:</span>
 
                 <ul th:each="review : ${user.reviews}" class="card-panel">
                     <li>
@@ -377,11 +377,11 @@
                     </li>
                     <li th:if="${review.getIsRecommended() == true}">
                         ** Highly Recommended Babysitter! **
-                    </li>
+                    </li><br />
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
                             <i class="fas fa-pen"></i> Edit Review
-                        </a>
+                        </a><br /><br />
                         <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">
                             <i class="fas fa-trash-alt"></i> Delete Review
                         </a>
