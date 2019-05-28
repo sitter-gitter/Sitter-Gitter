@@ -341,16 +341,21 @@
                 <span class="card-title">Reviews made:</span>
 
                 <ul th:each="review : ${user.reviews}" class="card-panel">
-                    <li style="list-style: none;">
-                        <a th:href="@{'/reviews/' + ${review.id}}">
-                            <span th:text="${review.title}"></span>
-                        </a>
-                    </li>
                     <li>
                         Sitter:
-                        <a th:href="@{'/reviews/' + ${review.id}}">
-                            <span th:text="${review.babysitter.getUsername()}"></span>
-                        </a>
+                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
+                        <span th:text="${review.babysitter.getUsername()}"></span>
+                        <!--</a>-->
+                    </li>
+                    <li style="list-style: none;">
+                        Title:
+                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
+                        <span th:text="${review.title}"></span>
+                        <!--</a>-->
+                    </li>
+                    <li>
+                        Body:
+                        <span th:text="${review.getBody()}"></span>
                     </li>
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
@@ -376,15 +381,16 @@
                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
                     <li style="list-style: none; display: inline;">
                         Author:
-                        <a th:href="@{'/reviews/' + ${review.id}}">
-                            <span th:text="${review.getParent().getUsername()}"></span>
-                        </a>
+                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
+                        <span th:text="${review.getParent().getUsername()}"></span>
+                        <!--</a>-->
                     </li>
                     <li>
                         Title:
                         <span th:text="${review.getTitle()}"></span>
                     </li>
                     <li>
+                        Body:
                         <span th:text="${review.getBody()}"></span>
                     </li>
                 </ul>

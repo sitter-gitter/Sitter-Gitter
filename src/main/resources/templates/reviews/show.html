@@ -25,16 +25,19 @@
             </p>
             <p>
                 Parent:
-                <a
-                        th:href="@{'/profile/' + ${review.parent.username}}"><span
-                        th:text="${review.parent.username}"></span></a>
+                <!--<a-->
+                        <!--th:href="@{'/profile/' + ${review.parent.username}}"><span-->
+                        <!--th:text="${review.parent.username}"></span></a>-->
+                <span th:href="@{'/profile/' + ${review.parent.username}}"></span>
+                <span th:text="${review.parent.username}"></span>
             </p>
-            <div class="card-action">
-                <a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">
-                    <i class="fas fa-edit"></i></a>
-                <a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">
-                    <i class="fas fa-trash-alt"></i></a>
-            </div>
+            <!--<div class="card-action">-->
+            <!--&lt;!&ndash;<div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="card-action">&ndash;&gt;-->
+                <!--<a th:href="@{'/reviews/'+${review.getId()}+'/edit'}">-->
+                    <!--<i class="fas fa-edit"></i></a>-->
+                <!--<a th:href="@{'/reviews/'+${review.getId()}+'/delete/'}">-->
+                    <!--<i class="fas fa-trash-alt"></i></a>-->
+            <!--</div>-->
         </div>
     </div>
 

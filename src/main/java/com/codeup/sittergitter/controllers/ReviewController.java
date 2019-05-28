@@ -43,6 +43,9 @@ public class ReviewController {
 //        User parent = usersRepo.findOne(1L);
 //        model.addAttribute("parent", parent);
         //////////////////////////// refactor ^
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userDB = usersRepo.findOne(sessionUser.getId());
+//        model.addAttribute("sessionUser", sessionUser);
 
         Review review = reviewsRepo.findOne(id);
         model.addAttribute("review", review);
