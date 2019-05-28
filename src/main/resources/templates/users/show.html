@@ -358,6 +358,9 @@
                         Body:
                         <span th:text="${review.getBody()}"></span>
                     </li>
+                    <li th:if="${review.getIsRecommended() == true}">
+                        ** Highly Recommended Babysitter! **
+                    </li>
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
                             <i class="fas fa-pen"></i> Edit Review
@@ -393,6 +396,9 @@
                     <li>
                         Body:
                         <span th:text="${review.getBody()}"></span>
+                    </li>
+                    <li th:if="${review.getIsRecommended() == true}">
+                        ** Highly Recommended Babysitter! **
                     </li>
                 </ul>
             </div>
