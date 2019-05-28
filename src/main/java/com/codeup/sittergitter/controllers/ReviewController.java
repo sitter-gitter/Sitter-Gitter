@@ -93,7 +93,7 @@ public class ReviewController {
     }
 
     @PostMapping("/reviews/{id}/edit")
-    public String editReview(@ModelAttribute Review reviewToBeEdited, @RequestParam Long sitter_id, @RequestParam Long appt_id){
+    public String editReview(@ModelAttribute Review reviewToBeEdited, @RequestParam Long sitter_id, @RequestParam Long appt_id, @RequestParam(defaultValue = "false") Boolean isRecommended){
 //        User user = usersRepo.findByUsername(username);
 
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -104,6 +104,7 @@ public class ReviewController {
         reviewToBeEdited.setParent(userDB);
         reviewToBeEdited.setBabysitter(sitter);
         reviewToBeEdited.setAppointment(appointment);
+        reviewToBeEdited.setIsRecommended(isRecommended);
         reviewsRepo.save(reviewToBeEdited);
         return "redirect:/my-acct";
     }
