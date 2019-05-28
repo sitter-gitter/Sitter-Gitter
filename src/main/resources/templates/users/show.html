@@ -139,7 +139,9 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${appt.start.getDate()}"></span><br />
+                        </span>
+
+                        <span th:text="${appt.start.getDate()}"></span><br />
 
                         <span th:text="${appt.start.getHours()}"></span>:
                         <span th:if="${appt.start.getMinutes() == 0}">00</span>
@@ -283,7 +285,7 @@
 
         </div><!-- end avail times -->
 
-    <!-- Available Times List -->
+    <!-- Available Times List for parents to view -->
     <div th:if="${(user.getisBabysitter() == true) and user.getUsername() != sessionUser.getUsername()}"
     class="col s12">
         <div class="card">
@@ -292,6 +294,60 @@
                 <span class="card-title center">
                     Available Hours
                 </span>
+
+                    <!--<ul th:each="time : ${available_times2}">-->
+
+                        <!--<li  th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="card-panel">-->
+
+                        <!--&lt;!&ndash;<input type="hidden" th:value="${time.start.g}" name="available_time_id" />&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="hidden" th:value="${time.end}" name="available_time_id" />&ndash;&gt;-->
+                        <!--<span th:switch="${time.start.getDay()}">-->
+                            <!--<span th:case="0">Sunday,</span>-->
+                            <!--<span th:case="1">Monday,</span>-->
+                            <!--<span th:case="2">Tuesday,</span>-->
+                            <!--<span th:case="3">Wednesday,</span>-->
+                            <!--<span th:case="4">Thursday,</span>-->
+                            <!--<span th:case="5">Friday,</span>-->
+                            <!--<span th:case="6">Saturday,</span>-->
+                        <!--</span>-->
+
+                        <!--<span th:switch="${time.start.getMonth()}">-->
+                            <!--<span th:case="0">January</span>-->
+                            <!--<span th:case="1">February</span>-->
+                            <!--<span th:case="2">March</span>-->
+                            <!--<span th:case="3">April</span>-->
+                            <!--<span th:case="4">May</span>-->
+                            <!--<span th:case="5">June</span>-->
+                            <!--<span th:case="6">July</span>-->
+                            <!--<span th:case="7">August</span>-->
+                            <!--<span th:case="8">September</span>-->
+                            <!--<span th:case="9">October</span>-->
+                            <!--<span th:case="10">November</span>-->
+                            <!--<span th:case="11">December</span>-->
+                        <!--</span>-->
+
+                        <!--<span th:text="${time.start.getDate()}"></span> from-->
+                        <!--<span th:text="${time.start.getHours()}"></span>:-->
+                        <!--<span th:text="${time.start.getMinutes()}"></span> - -->
+                        <!--<span th:text="${time.end.getHours()}"></span>:-->
+                        <!--<span th:text="${time.end.getMinutes()}"></span><br />-->
+
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--Babysitter: <span th:text="${time.getBabysitter().getUsername()}"></span>-->
+                        <!--</li>-->
+                        <!--&lt;!&ndash; CHOOSE BTN GOES HERE &ndash;&gt;-->
+                        <!--<li>-->
+                            <!--<form th:action="@{/appointments/availableBabysitters}" th:method="post">-->
+                                <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
+                                <!--<input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>-->
+                                <!--<input type="submit" class="btn-small yellow-button" value="Choose" />-->
+                            <!--</form>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+
+                <form th:action="@{/appointments/availableBabysitters}" th:method="post">
 
                 <ul th:each="time : ${available_times2}">
 
@@ -313,6 +369,9 @@
                             <span th:case="10">November</span><span th:case="11">December</span>
                         </span>
 
+                        <span th:text="${time.start.getDate()}"></span><br />
+
+
                         <span th:text="${time.start.getHours()}"></span>:
                         <span th:if="${time.start.getMinutes() == 0}">00</span>
                         <span th:unless="${time.start.getMinutes() == 0}">
@@ -328,6 +387,10 @@
                         </a>
 
                         <!-- CHOOSE BUTTON GOES HERE -->
+
+                            <input type="hidden" th:value="${time.id}" name="available_time_id"/>
+                            <input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>
+                            <input type="submit" class="btn-small yellow-button" value="Choose" />
                         <!--<form th:if="${user.getUsername() != sessionUser.getUsername()}"-->
                               <!--th:action="@{/appointments/availableBabysitters}" th:method="post" style="display: inline;">-->
                             <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
@@ -337,6 +400,7 @@
 
                     </li>
                 </ul>
+                        </form>
             </div>
 
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
