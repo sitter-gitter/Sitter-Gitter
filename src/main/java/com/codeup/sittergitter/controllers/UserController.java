@@ -183,6 +183,10 @@ public class UserController {
     // UPDATE PROFILE GET
     @GetMapping("/profile/{username}/edit")
     public String showEditUser(@PathVariable String username, Model model) {
+
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("sessionUser", sessionUser);
+
         User user = usersRepo.findByUsername(username);
         model.addAttribute("user", user);
         return "users/edit";
