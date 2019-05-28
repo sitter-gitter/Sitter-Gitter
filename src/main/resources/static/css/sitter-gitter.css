@@ -135,7 +135,7 @@ label {
 }
 
 input {
-    background-color: white !important;
+    /*background-color: white !important;*/
     opacity: 0.6 !important;
     border-radius: 0.5em !important;
 }
