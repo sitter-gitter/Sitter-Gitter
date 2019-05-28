@@ -17,7 +17,7 @@
                   class="materialize-textarea validate"></textarea>
         <label for="recommended">
             <input id="recommended" type="checkbox" name="isRecommended" th:checked="*{isRecommended} ? 'checked'"/>
-            <span>I highly recommend this babysitter to other parents!</span>
+            <span>I highly recommend this babysitter!</span>
         </label>
         <input type="hidden" th:value="*{id}" />
         <input type="hidden" th:value="*{babysitter.id}" name="sitter_id"/>
