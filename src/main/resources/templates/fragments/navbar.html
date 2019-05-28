@@ -24,11 +24,12 @@
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-            <a th:href="@{'/appointments/' + ${#authentication.principal.username} + '/past-appointments'}">
-                <i class="fas fa-plus"></i>Create Reviews
-            </a>
+        <a th:href="@{'/appointments/' + ${#authentication.principal.username} + '/past-appointments'}">
+            <i class="fas fa-plus"></i>Create Reviews
+        </a>
     </li>
-    <li  sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+    <li class="divider" tabindex="-1"></li>
+
 
     <li sec:authorize="isAnonymous()">
         <a href="/login">Login</a>
@@ -83,7 +84,7 @@
     <li sec:authorize="isAnonymous()">
         <a href="/"><i class="fas fa-home"></i>Home</a>
     </li>
-    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
+    <!--<li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>-->
 
     <li sec:authorize="isAuthenticated()">
         <a href="/sitters"><i class="fas fa-users"></i>Find Babysitters</a>
@@ -104,6 +105,7 @@
         <a href="/available-times">Available Times</a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+    <li class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
         <a href="/appointments">Appointments</a>
