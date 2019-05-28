@@ -4,41 +4,32 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-
-<div class="row"></div>
+<main>
 <div class="container">
 <div class="row">
-<ul>
-
-    <li th:each="review : ${reviews}">
-
-        <div class="card grey hoverable">
-            <div class="card-content white-text" style="padding-top: 16px;">
-                <span class="card-title">
-                    Title:
-                    <a th:href="@{'/reviews/'+${review.getId()}}">
-                        <span th:text="${review.title}" ></span>
-                    </a>
-                </span>
-                <span>
-                    ID:
-                    <span th:text="${review.getId()}"></span>.
-                </span>
-                <br />
-                <span class="truncate">
-                    Body:
-                    <span th:text="${review.body}"></span>
-                </span>
-            </div>
+<div class="col s12">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">Reviews</span>
+            <ul>
+                <li th:each="review : ${reviews}">
+                    <div class="card-panel">
+                        <a th:href="@{'/reviews/'+${review.getId()}}">
+                            <span th:text="${review.title}" ></span>
+                        </a><br />
+                        <span class="truncate">
+                            <span th:text="${review.body}"></span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
         </div>
-
-    </li>
-
-</ul>
+    </div>
+</div>
 </div>
 </div>
 
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer"/></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>

@@ -3,36 +3,41 @@
 <head><th:block th:replace="fragments/head :: header('Available Babysitters')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-
-
+<main>
 <div class="container">
     <div class="row">
-        <h1>The following babysitters are available during your requested timeframe:</h1>
-        <ul>
-            <li th:each="avail_time : ${availAppts}">
-                <form th:action="@{/appointments/availableBabysitters}" th:method="post">
-                    <div class="card grey hoverable">
-                        <div class="card-content white-text" style="padding-top: 16px;">
-                            <span class="card-title">
-                            Babysitter:
-                            <span th:text="${avail_time.babysitter.username}"></span><br/>
-                            From:
-                            <span th:text="${avail_time.start}"></span><br/>
-                            To:
-                            <span th:text="${avail_time.end}"></span><br/>
-                            <input type="hidden" th:value="${avail_time.id}" name="available_time_id"/>
-                            <input type="hidden" th:value="${avail_time.babysitter.getId()}" name="sitter_id"/>
-                            <button>Choose</button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </li>
-        </ul>
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">The following babysitters are available during your requested timeframe:</span>
+                    <ul>
+                        <li th:each="avail_time : ${availAppts}">
+                            <form th:action="@{/appointments/availableBabysitters}" th:method="post">
+                                <div class="card-panel">
+                                    <div class="card-content white-text" style="padding-top: 16px;">
+                                        Babysitter:<span th:text="${avail_time.babysitter.username}">
+                                        </span><br/>
+                                        From:
+                                        <span th:text="${avail_time.start}"></span><br/>
+                                        To:
+                                        <span th:text="${avail_time.end}"></span><br/>
+                                        <input type="hidden" th:value="${avail_time.id}"
+                                               name="available_time_id"/>
+                                        <input type="hidden" th:value="${avail_time.babysitter.getId()}"
+                                               name="sitter_id"/>
+                                        <button>Choose</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>

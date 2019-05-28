@@ -54,19 +54,20 @@ main {
 }
 
 .parent-image {
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
-    background-image: url("../image/parent.png");
+    background-image: url("../image/parent.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1;
 }
 
 .babysitter-image {
     width: 200px;
     height: 200px;
     margin: 0 auto;
-    background-image: url("../image/babysitter.png");
+    background-image: url("../image/babysitter.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -83,7 +84,7 @@ main {
     margin: 1em !important;
     /*border: 1px solid gray !important;*/
     border-radius: 1em !important;
-    box-shadow: none !important;
+    /*box-shadow: none !important;*/
     /*padding-bottom: 1em !important;*/
 }
 
@@ -216,4 +217,6 @@ footer ul li {
     color: #ECECEC !important;
 }
 
-
+.page-footer {
+    margin-top: 2em !important;
+}
