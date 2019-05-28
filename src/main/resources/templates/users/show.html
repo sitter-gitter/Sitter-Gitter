@@ -12,7 +12,7 @@
     <!-- User info -->
     <div class="col s12 m6">
         <div class="card">
-            <div class="card-content" style="padding-bottom: 0; padding-top: 16px;">
+            <div class="card-content" >
                 <span class="card-title">
                     <span th:text="${user.username}" ></span>
                 </span>
@@ -43,24 +43,24 @@
     <div th:if="${user.getisBabysitter()}" class="col s12 m6">
         <div class="card small">
             <div class="card-content">
-                <span class="card-title">Specifications:</span>
-                <ul th:each="specification : ${user.specifications}" class="center">
-                    <li>
+                <span class="card-title center">Specifications</span>
+                <ul th:each="specification : ${user.specifications}">
+                    <li >
                         DOB:
                         <span th:text="${specification.birthdate}"></span>
                     </li>
-                    <li th:if="specification.hasCprTraining">
+                    <li   th:if="specification.hasCprTraining">
                         <span class="badge">CPR-certified</span>
                     </li>
-                    <li th:unless="${specification.smoker}">
+                    <li  th:unless="${specification.smoker}">
                         <span class="badge">Tobacco-free</span>
                     </li>
-                    <li>
+                    <li >
                         <span class="badge">
                             <span th:text="${specification.yearsOfExperience}"></span> years' experience
                         </span>
                     </li>
-                    <li th:if="${specification.hasTransportation}">
+                    <li  th:if="${specification.hasTransportation}">
                         <span class="badge">has transport</span>
                     </li>
                 </ul>
@@ -68,7 +68,7 @@
 
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/specifications'}">
-                    <i class="fas fa-user-edit"> Edit Specifications</i>
+                    <i class="fas fa-pen"></i> Edit Specifications
                 </a>
             </div>
         </div>
@@ -167,10 +167,11 @@
     </div> <!-- end parent appts -->
 
     <!-- babysitter appointments -->
-    <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="col s12 m6">
+    <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}"
+         class="col s12 m6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">Future Appointments: </span>
+                <span class="card-title center">Future Appointments</span>
                 <ul th:each="appt : ${babysitterAppointments}"  style="list-style: none; display: inline;">
                     <li class="card-panel">
                         <span th:switch="${appt.start.getDay()}">
@@ -222,118 +223,116 @@
     <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="col s12 m6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">Available Hours:</span>
 
-                    <ul th:each="time : ${available_times}"  style="list-style: none; display: inline;">
-                        <li class="col s12">
-                        </li>
-                        <li th:if="${time.getBabysitter().getId() == sessionUser.getId() and time.start > current_time}" class="card-panel">
-                            <span th:switch="${time.start.getDay()}">
-                                <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
-                                <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
-                                <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
-                                <span th:case="6">Saturday,</span>
-                            </span>
+                <span class="card-title center">
+                    Available Hours
+                </span>
 
-                            <span th:switch="${time.start.getMonth()}">
-                                <span th:case="0">January</span><span th:case="1">February</span>
-                                <span th:case="2">March</span><span th:case="3">April</span>
-                                <span th:case="4">May</span><span th:case="5">June</span>
-                                <span th:case="6">July</span><span th:case="7">August</span>
-                                <span th:case="8">September</span><span th:case="9">October</span>
-                                <span th:case="10">November</span><span th:case="11">December</span>
-                            </span> <span th:text="${time.start.getDate()}"></span>
+                <ul th:each="time : ${available_times}" >
 
-                            <span th:text="${time.start.getHours()}"></span>:
-                            <span th:text="${time.start.getMinutes()}"></span> -
-                            <span th:text="${time.end.getHours()}"></span>:
-                            <span th:text="${time.end.getMinutes()}"></span><br />
+                    <li th:if="${time.getBabysitter().getId() == sessionUser.getId() and time.start > current_time}" class="card-panel">
 
-                            <a th:if="${user.getUsername() == sessionUser.getUsername()}"
-                               th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-                                <i class="fas fa-trash-alt"></i> Cancel Time Slot
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        <span th:switch="${time.start.getDay()}">
+                            <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
+                            <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
+                            <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
+                            <span th:case="6">Saturday,</span>
+                        </span>
+
+                        <span th:switch="${time.start.getMonth()}">
+                            <span th:case="0">January</span><span th:case="1">February</span>
+                            <span th:case="2">March</span><span th:case="3">April</span>
+                            <span th:case="4">May</span><span th:case="5">June</span>
+                            <span th:case="6">July</span><span th:case="7">August</span>
+                            <span th:case="8">September</span><span th:case="9">October</span>
+                            <span th:case="10">November</span><span th:case="11">December</span>
+                        </span> <span th:text="${time.start.getDate()}"></span>
+
+                        <span th:text="${time.start.getHours()}"></span>:
+                        <span th:text="${time.start.getMinutes()}"></span> -
+                        <span th:text="${time.end.getHours()}"></span>:
+                        <span th:text="${time.end.getMinutes()}"></span><br />
+
+                        <a th:if="${user.getUsername() == sessionUser.getUsername()}"
+                           th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                            <i class="fas fa-trash-alt"></i> Cancel Time Slot
+                        </a>
+                    </li>
+                </ul>
             </div>
-
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/available-times/create'}">
                     <i class="fas fa-plus"></i> Schedule Available Hours</a>
             </div>
+        </div>
+
         </div><!-- end avail times -->
 
-<!-- Available Times List -->
-<div th:if="${(user.getisBabysitter() == true) and user.getUsername() != sessionUser.getUsername()}"
-class="col s12">
-<div class="card">
-<div class="card-content">
+    <!-- Available Times List -->
+    <div th:if="${(user.getisBabysitter() == true) and user.getUsername() != sessionUser.getUsername()}"
+    class="col s12">
+        <div class="card">
+            <div class="card-content">
 
-<span class="card-title">Available Hours:</span>
+                <span class="card-title center">
+                    Available Hours
+                </span>
 
-<ul th:each="time : ${available_times2}"  style="list-style: none; display: inline;"
-    th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="col s12 m6">
+                <ul th:each="time : ${available_times2}">
 
-<!--<li >-->
+                    <li th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="card-panel">
 
-<!--<ul>-->
+                        <span th:switch="${time.start.getDay()}">
+                            <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
+                            <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
+                            <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
+                            <span th:case="6">Saturday,</span>
+                        </span>
 
-<li class="card-panel">
+                        <span th:switch="${time.start.getMonth()}">
+                            <span th:case="0">January</span><span th:case="1">February</span>
+                            <span th:case="2">March</span><span th:case="3">April</span>
+                            <span th:case="4">May</span><span th:case="5">June</span>
+                            <span th:case="6">July</span><span th:case="7">August</span>
+                            <span th:case="8">September</span><span th:case="9">October</span>
+                            <span th:case="10">November</span><span th:case="11">December</span>
+                        </span>
 
-    <span th:switch="${time.start.getDay()}">
-        <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
-        <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
-        <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
-        <span th:case="6">Saturday,</span>
-    </span>
+                        <span th:text="${time.start.getDate()}"></span>
+                        <span th:text="${time.start.getHours()}"></span>:
+                        <span th:text="${time.start.getMinutes()}"></span> -
+                        <span th:text="${time.end.getHours()}"></span>:
+                        <span th:text="${time.end.getMinutes()}"></span><br />
 
-    <span th:switch="${time.start.getMonth()}">
-        <span th:case="0">January</span><span th:case="1">February</span>
-        <span th:case="2">March</span><span th:case="3">April</span>
-        <span th:case="4">May</span><span th:case="5">June</span>
-        <span th:case="6">July</span><span th:case="7">August</span>
-        <span th:case="8">September</span><span th:case="9">October</span>
-        <span th:case="10">November</span><span th:case="11">December</span>
-    </span>
+                        <a th:if="${user.getUsername() == sessionUser.getUsername()}"
+                           th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
+                            <i class="fas fa-trash-alt"></i> Cancel Time Slot
+                        </a>
 
-    <span th:text="${time.start.getDate()}"></span>
-    <span th:text="${time.start.getHours()}"></span>:
-    <span th:text="${time.start.getMinutes()}"></span> -
-    <span th:text="${time.end.getHours()}"></span>:
-    <span th:text="${time.end.getMinutes()}"></span><br />
+                        <!-- CHOOSE BUTTON GOES HERE -->
+                        <!--<form th:if="${user.getUsername() != sessionUser.getUsername()}"-->
+                              <!--th:action="@{/appointments/availableBabysitters}" th:method="post" style="display: inline;">-->
+                            <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
+                            <!--<input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>-->
+                            <!--<button class="btn-small center">Choose</button>-->
+                        <!--</form>-->
 
-    <a th:if="${user.getUsername() == sessionUser.getUsername()}"
-       th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-        <i class="fas fa-trash-alt"></i> Cancel Time Slot
-    </a>
+                    </li>
+                </ul>
+            </div>
 
-    <!-- CHOOSE BUTTON GOES HERE -->
-    <!--<form th:if="${user.getUsername() != sessionUser.getUsername()}"-->
-          <!--th:action="@{/appointments/availableBabysitters}" th:method="post" style="display: inline;">-->
-        <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
-        <!--<input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>-->
-        <!--<button class="btn-small center">Choose</button>-->
-    <!--</form>-->
+            <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
+            <a th:href="@{'/available-times/create'}">
+                <i class="fas fa-plus"></i> Schedule Available Hours</a>
+            </div>
+        </div>
+    </div><!-- end avail times -->
 
-</li>
 
-<!--</ul>-->
-
-<!--</li>-->
-</ul>
-</div>
-</div>
-
-<div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
-<a th:href="@{'/available-times/create'}">
-    <i class="fas fa-plus"></i> Schedule Available Hours</a>
-</div>
-</div><!-- end avail times -->
 </div> <!-- end row 2 -->
-
-
 <div class="row">
+
+
     <!-- reviews made by parent list -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12">
         <div class="card">
