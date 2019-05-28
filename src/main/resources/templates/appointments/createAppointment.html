@@ -7,29 +7,109 @@
 <main>
 <div class="container">
 <div class="row">
+
+    <!-- search section -->
     <div class="col s12">
         <div class="card">
 
+            <form th:action="@{'/appointments/create'}" th:method="post" th:object="${datetime}">
             <div class="card-content">
-                <span class="card-title">Please enter your desired appointment times.</span>
-                <form th:action="@{'/appointments/create'}" th:method="post" th:object="${datetime}">
+
+                <span class="card-title">
+                    Option 1: <br />
+                    Please enter your desired appointment times.
+                </span>
+
+
                     <input type="text" class="datepicker" name="datepicker1" required="required"
                            id="datepicker1" />
                     <label for="datepicker1">Start Date</label>
+
                     <input type="text" class="timepicker" name="timepicker1" required="required"
                            id="timepicker1" />
                     <label for="timepicker1">Start Time</label>
+
                     <input type="text" class="datepicker" name="datepicker2"  required="required"
                            id="datepicker2" />
                     <label for="datepicker2">End Date</label>
+
                     <input type="text" class="timepicker" name="timepicker2" required="required"
                            id="timepicker2" />
                     <label for="timepicker2">End Time</label><br />
-                    <button type="submit" class="btn hoverable">Submit</button>
-                </form>
+
             </div>
+                <div class="card-action center">
+                    <button type="submit" class="btn hoverable">Submit</button>
+                </div>
+            </form>
         </div>
-    </div>
+    </div><!-- end search section -->
+
+    <!-- list of available times -->
+    <div class="col s12">
+        <div class="card">
+                <!--<div class="col s12 m6 l4">-->
+            <div class="card-content">
+
+                <span class="card-title">
+                    Option 2: <br />
+                    Select from available times:</span>
+
+    <form th:action="@{/appointments/availableBabysitters}" th:method="post">
+    <ul th:each="time : ${available_times}" class="card-panel">
+        <li  th:if="${time.start > current_time}" >
+
+            <!--<input type="hidden" th:value="${time.start.g}" name="available_time_id" />-->
+            <!--<input type="hidden" th:value="${time.end}" name="available_time_id" />-->
+                <span th:switch="${time.start.getDay()}">
+                    <span th:case="0">Sunday,</span>
+                    <span th:case="1">Monday,</span>
+                    <span th:case="2">Tuesday,</span>
+                    <span th:case="3">Wednesday,</span>
+                    <span th:case="4">Thursday,</span>
+                    <span th:case="5">Friday,</span>
+                    <span th:case="6">Saturday,</span>
+                </span>
+
+                <span th:switch="${time.start.getMonth()}">
+                    <span th:case="0">January</span>
+                    <span th:case="1">February</span>
+                    <span th:case="2">March</span>
+                    <span th:case="3">April</span>
+                    <span th:case="4">May</span>
+                    <span th:case="5">June</span>
+                    <span th:case="6">July</span>
+                    <span th:case="7">August</span>
+                    <span th:case="8">September</span>
+                    <span th:case="9">October</span>
+                    <span th:case="10">November</span>
+                    <span th:case="11">December</span>
+                </span>
+
+                <span th:text="${time.start.getDate()}"></span> from
+                <span th:text="${time.start.getHours()}"></span>:
+                <span th:text="${time.start.getMinutes()}"></span> -
+                <span th:text="${time.end.getHours()}"></span>:
+                <span th:text="${time.end.getMinutes()}"></span><br />
+        </li>
+        <li>
+            Babysitter: <span th:text="${time.getBabysitter().getUsername()}"></span>
+        </li>
+        <!-- CHOOSE BTN GOES HERE -->
+        <li>
+            <input type="hidden" th:value="${time.id}" name="available_time_id"/>
+            <input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>
+            <input type="submit" class="btn-small yellow-button" value="Choose" />
+        </li>
+    </ul>
+            </form>
+
+                <!--</div>-->
+            </div> <!-- end card-content -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+
+
 </div>
 </div>
 </main>
