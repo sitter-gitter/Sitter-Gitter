@@ -29,22 +29,24 @@
                         </div>
 
                         <div class="input-field col s12">
-                            <label for="cpr">
-                                <input th:checked="*{hasCprTraining} ? 'checked'" name="hasCprTraining" type="checkbox" id="cpr" />
+                            <label th:for="cpr">
+                                <input th:checked="*{hasCprTraining} ? 'checked'" th:name="hasCprTraining"
+                                       th:type="checkbox" th:id="cpr" style="visibility: hidden" />
                                 <span>Yes, I have a CPR card.</span>
                             </label>
                         </div>
 
                         <div class="input-field col s12">
                             <label for="transport">
-                                <input th:checked="*{hasTransportation} ? 'checked'" name="hasTransportation" type="checkbox" id="transport" />
+                                <input th:checked="*{hasTransportation} ? 'checked'" name="hasTransportation"
+                                       type="checkbox" id="transport" style="visibility: hidden" />
                                 <span>I have my own transportation.</span>
                             </label>
                         </div>
 
                         <div class="input-field col s12">
                             <label for="smoking">
-                                <input th:checked="*{smoker} ? 'checked'" name="smoker" type="checkbox" id="smoking" />
+                                <input th:checked="*{smoker} ? 'checked'" name="smoker" type="checkbox" id="smoking" style="visibility: hidden" />
                                 <span>I use tobacco/nicotine products.</span>
                             </label>
                         </div>
