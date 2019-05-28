@@ -44,8 +44,8 @@ main {
 }
 
 .splash-image {
-    width: 200px;
-    height: 200px;
+    width:  300px;
+    height: 300px;
     margin: 0 auto;
     background-image: url("../image/babysitter2.jpg");
     background-size: cover;
@@ -171,11 +171,6 @@ input[type=submit] {
 
 .space {
     width: 2em !important;
-}
-
-#splash-image {
-    width: 50%;
-    height: 50%;
 }
 
 footer ul li {

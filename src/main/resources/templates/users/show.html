@@ -137,12 +137,16 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${appt.start.getDate()}"></span>
+                        </span> <span th:text="${appt.start.getDate()}"></span><br />
 
                         <span th:text="${appt.start.getHours()}"></span>:
-                        <span th:text="${appt.start.getMinutes()}"></span> -
+                        <span th:if="${appt.start.getMinutes() == 0}">00</span>
+                        <span th:unless="${appt.start.getMinutes() == 0}">
+                            <span th:text="${appt.start.getMinutes()}"></span></span> -
                         <span th:text="${appt.end.getHours()}"></span>:
-                        <span th:text="${appt.end.getMinutes()}"></span><br />
+                        <span th:if="${appt.end.getMinutes() == 0}">00</span>
+                        <span th:unless="${appt.end.getMinutes() == 0}">
+                            <span th:text="${appt.end.getMinutes()}"></span></span><br />
 
 
                         With: <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
@@ -189,12 +193,16 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${appt.start.getDate()}"></span>
+                        </span> <span th:text="${appt.start.getDate()}"></span><br />
 
                         <span th:text="${appt.start.getHours()}"></span>:
-                        <span th:text="${appt.start.getMinutes()}"></span> -
+                        <span th:if="${appt.start.getMinutes() == 0}">00</span>
+                        <span th:unless="${appt.start.getMinutes() == 0}">
+                            <span th:text="${appt.start.getMinutes()}"></span></span> -
                         <span th:text="${appt.end.getHours()}"></span>:
-                        <span th:text="${appt.end.getMinutes()}"></span><br />
+                        <span th:if="${appt.end.getMinutes() == 0}">00</span>
+                        <span th:unless="${appt.end.getMinutes() == 0}">
+                            <span th:text="${appt.end.getMinutes()}"></span></span><br />
 
                      <span th:if="${(user.getisBabysitter() == true)}">
                         For:
@@ -247,12 +255,16 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${time.start.getDate()}"></span>
+                        </span> <span th:text="${time.start.getDate()}"></span><br />
 
                         <span th:text="${time.start.getHours()}"></span>:
-                        <span th:text="${time.start.getMinutes()}"></span> -
+                        <span th:if="${time.start.getMinutes() == 0}">00</span>
+                        <span th:unless="${time.start.getMinutes() == 0}">
+                            <span th:text="${time.start.getMinutes()}"></span></span> -
                         <span th:text="${time.end.getHours()}"></span>:
-                        <span th:text="${time.end.getMinutes()}"></span><br />
+                        <span th:if="${time.end.getMinutes() == 0}">00</span>
+                        <span th:unless="${time.end.getMinutes() == 0}">
+                            <span th:text="${time.end.getMinutes()}"></span></span><br />
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
                            th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
@@ -299,11 +311,14 @@
                             <span th:case="10">November</span><span th:case="11">December</span>
                         </span>
 
-                        <span th:text="${time.start.getDate()}"></span>
                         <span th:text="${time.start.getHours()}"></span>:
-                        <span th:text="${time.start.getMinutes()}"></span> -
+                        <span th:if="${time.start.getMinutes() == 0}">00</span>
+                        <span th:unless="${time.start.getMinutes() == 0}">
+                            <span th:text="${time.start.getMinutes()}"></span></span> -
                         <span th:text="${time.end.getHours()}"></span>:
-                        <span th:text="${time.end.getMinutes()}"></span><br />
+                        <span th:if="${time.end.getMinutes() == 0}">00</span>
+                        <span th:unless="${time.end.getMinutes() == 0}">
+                            <span th:text="${time.end.getMinutes()}"></span></span><br />
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
                            th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
