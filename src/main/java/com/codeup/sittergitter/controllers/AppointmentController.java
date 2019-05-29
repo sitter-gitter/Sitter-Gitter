@@ -184,7 +184,7 @@ public class AppointmentController {
                 "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
                         + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
         emailService.sendAppointmentNotificationToParent(savedAppt, "Babysitting Appointment",
-                "You have scheduled on appointment from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+                "You have scheduled an appointment from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
                         + " with the following babysitter: " + savedAppt.getBabysitter().getFirstName() + " " + savedAppt.getBabysitter().getLastName() + ".");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return "redirect:/my-acct";
