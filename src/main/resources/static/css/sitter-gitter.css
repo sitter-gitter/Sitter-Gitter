@@ -212,6 +212,11 @@ footer ul li {
     list-style: none;
     display: inline;
 }
+
+footer i {
+    margin-right: 1em;
+}
+
 .profile-pic-erik {
     max-width: 20em;
     min-height: 20em;
