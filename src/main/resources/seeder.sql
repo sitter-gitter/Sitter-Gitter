@@ -37,20 +37,35 @@ VALUES
        ('Child2', '2017-07-05', 'Child2 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'dwight@codeup.com')),
        ('Child3', '2018-03-09', 'Please give Child3 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'dwight@codeup.com')),
        ('Child4', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'erik@codeup.com')),
-       ('Child5', '2017-07-05', 'Child5 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'erik@codeup.com')),
-       ('Child6', '2018-03-09', 'Please give Child6 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'erik@codeup.com')),
+       ('Child5', '2017-07-05', 'Child5 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+                                                                                                           'erik@codeup
+                                                                                                           .com')),
+       ('Child6', '2018-03-09', 'Please give Child6 a bedtime story and a backrub to help her go to sleep.', (SELECT
+                                                                                                                     id FROM users WHERE email = 'erik@codeup.com')),
        ('Child7', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'mindy@codeup.com')),
-       ('Child8', '2017-07-05', 'Child8 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'mindy@codeup.com')),
-       ('Child9', '2018-03-09', 'Please give Child9 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'mindy@codeup.com')),
+       ('Child8', '2017-07-05', 'Child8 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+                                                                                                           'mindy@codeup
+                                                                                                           .com')),
+       ('Child9', '2018-03-09', 'Please give Child9 a bedtime story and a backrub to help her go to sleep.', (SELECT
+                                                                                                                      id FROM users WHERE email = 'mindy@codeup.com')),
        ('Child10', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'parent1@codeup.com')),
-       ('Child11', '2017-07-05', 'Child11 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'parent1@codeup.com')),
-       ('Child12', '2018-03-09', 'Please give Child12 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'parent1@codeup.com')),
+       ('Child11', '2017-07-05', 'Child11 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+                                                                                                           'parent1@codeup
+                                                                                                           .com')),
+       ('Child12', '2018-03-09', 'Please give Child12 a bedtime story and a backrub to help her go to sleep.', (SELECT
+                                                                                                                     id FROM users WHERE email = 'parent1@codeup.com')),
        ('Child13', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'parent2@codeup.com')),
-       ('Child14', '2017-07-05', 'Child14 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'parent2@codeup.com')),
-       ('Child15', '2018-03-09', 'Please give Child15 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'parent2@codeup.com')),
+       ('Child14', '2017-07-05', 'Child14 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+                                                                                                           'parent2@codeup
+                                                                                                           .com')),
+       ('Child15', '2018-03-09', 'Please give Child15 a bedtime story and a backrub to help her go to sleep.', (SELECT
+                                                                                                                     id FROM users WHERE email = 'parent2@codeup.com')),
        ('Child16', '2015-12-11', 'Special Note', (SELECT id FROM users WHERE email = 'erik@codeup.com')),
-       ('Child17', '2017-07-05', 'Child17 likes warm milk before going to bed.', (SELECT id FROM users WHERE email = 'mindy@codeup.com')),
-       ('Child18', '2018-03-09', 'Please give Child18 a bedtime story and a backrub to help her go to sleep.', (SELECT id FROM users WHERE email = 'dwight@codeup.com'));
+       ('Child17', '2017-07-05', 'Child17 likes warm milk before going to bed.', (SELECT id FROM users WHERE email =
+                                                                                                           'mindy@codeup
+                                                                                                           .com')),
+       ('Child18', '2018-03-09', 'Please give Child18 a bedtime story and a backrub to help her go to sleep.', (SELECT
+                                                                                                                     id FROM users WHERE email = 'dwight@codeup.com'));
 
 
 

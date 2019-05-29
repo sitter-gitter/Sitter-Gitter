@@ -218,9 +218,10 @@ public class AppointmentController {
     public String deleteAppointment(@PathVariable Long id){
         Appointment canxAppt = appointmentsRepo.findOne(id);
         apptId = canxAppt.getAvailableTime().getId();
-        appointmentsRepo.nullifyAvailTime(id);
-        appointmentsRepo.deleteById(id);
         availableTimesRepo.updateIsTaken(apptId, false);
+//        appointmentsRepo.nullifyAvailTime(id);
+        appointmentsRepo.deleteById(id);
+//        availableTimesRepo.updateIsTaken(apptId, false);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
 //        emailService.sendAppointmentCancellation(canxAppt, "Appointment Cancellation",
