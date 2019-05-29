@@ -14,7 +14,7 @@
                         <li th:each="avail_time : ${availAppts}">
                             <form th:action="@{/appointments/availableBabysitters}" th:method="post">
                                 <div class="card-panel">
-                                    <div class="card-content white-text" style="padding-top: 16px;">
+                                    <div class="card-content">
                                         Babysitter:<span th:text="${avail_time.babysitter.username}">
                                         </span><br/>
                                         From:
