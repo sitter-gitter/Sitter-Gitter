@@ -176,14 +176,17 @@ public class AppointmentController {
         newApptTime.setSitterApproved(true);
         newApptTime.setReviewed(false);
         newApptTime.setAvailableTime(availableTimesRepo.findOne(availTimeId));
-        appointmentsRepo.save(newApptTime);
+        Appointment savedAppt = appointmentsRepo.save(newApptTime);
         availableTimesRepo.updateIsTaken(availTimeId, true);
-//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
-//        emailService.sendAppointmentNotification(savedAppt, "Babysitting Appointment",
-//                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
-//                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
-//        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        emailService.sendAppointmentNotificationToSitter(savedAppt, "Babysitting Appointment",
+                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
+        emailService.sendAppointmentNotificationToParent(savedAppt, "Babysitting Appointment",
+                "You have scheduled on appointment from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+                        + " with the following babysitter: " + savedAppt.getBabysitter().getFirstName() + " " + savedAppt.getBabysitter().getLastName() + ".");
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return "redirect:/my-acct";
     }
 
@@ -216,17 +219,25 @@ public class AppointmentController {
     // DELETE APPOINTMENTS
     @GetMapping("/appointments/{id}/delete")
     public String deleteAppointment(@PathVariable Long id){
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDB = usersRepo.findOne(sessionUser.getId());
         Appointment canxAppt = appointmentsRepo.findOne(id);
         apptId = canxAppt.getAvailableTime().getId();
         availableTimesRepo.updateIsTaken(apptId, false);
 //        appointmentsRepo.nullifyAvailTime(id);
         appointmentsRepo.deleteById(id);
-//        availableTimesRepo.updateIsTaken(apptId, false);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
-//        emailService.sendAppointmentCancellation(canxAppt, "Appointment Cancellation",
-//                "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
-//                        + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
+//        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER/PARENT
+        if(userDB.getisBabysitter() == false) {
+            emailService.sendAppointmentCancellationToSitter(canxAppt, "Appointment Cancellation",
+                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
+                            + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
+        } else {
+            emailService.sendAppointmentCancellationToParent(canxAppt, "Appointment Cancellation",
+                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
+                            + " has been cancelled by " + canxAppt.getBabysitter().getFirstName() + " " + canxAppt.getBabysitter().getLastName() + ".");
+        }
+
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        return "redirect:/appointments";
         return "redirect:/my-acct";
