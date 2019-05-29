@@ -114,14 +114,14 @@ public class AppointmentController {
     }
 
     // READ APPOINTMENT BY ID
-    @GetMapping("/appointments/{id}")
-    public String showAppointment(@PathVariable Long id, Model model) {
-
-        Appointment appointment = appointmentsRepo.findOne(id);
-        model.addAttribute("appointment", appointment);
-
-        return "appointments/showAppointment";
-    }
+//    @GetMapping("/appointments/{id}")
+//    public String showAppointment(@PathVariable Long id, Model model) {
+//
+//        Appointment appointment = appointmentsRepo.findOne(id);
+//        model.addAttribute("appointment", appointment);
+//
+//        return "appointments/showAppointment";
+//    }
 
     public Timestamp makeStartTimeStamp(String date, String time) {
         String startTime = date + " " + time + ":00.000";
