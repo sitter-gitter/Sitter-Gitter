@@ -137,7 +137,8 @@ public class AppointmentController {
 
     public List<AvailableTime> checkTimeAvailability(Timestamp apptFrom, Timestamp apptTo) {
         List<AvailableTime> babysitterTimes = new ArrayList<>();
-        List<AvailableTime> availableTimes = availableTimesRepo.findAll();
+//        List<AvailableTime> availableTimes = availableTimesRepo.findAll();
+        List<AvailableTime> availableTimes = availableTimesRepo.findAvailableTimesByIsTakenFalse();
         for (AvailableTime time : availableTimes) {
             Timestamp startTime = time.getStart();
             Timestamp endTime = time.getEnd();
@@ -157,6 +158,7 @@ public class AppointmentController {
     @GetMapping("/appointments/available-babysitters")
     public String displayAvailBabysitters(Model model) {
         model.addAttribute("availAppts", availApptTimes);
+//        model.addAttribute("availAppts", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
         return "appointments/availableBabysitters";
     }
 

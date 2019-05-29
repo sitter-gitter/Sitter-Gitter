@@ -71,6 +71,7 @@ public class AvailableTimeController {
         model.addAttribute("available_times", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
         return "availableTimes/showAvailableTimes";
     }
+    
 
 //    //// TURNED EDIT FUNCTIONALITY OFF //////////
 //    @GetMapping("/available-times/{id}/edit")
