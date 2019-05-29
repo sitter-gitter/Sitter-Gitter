@@ -32,15 +32,15 @@ public class AuthenticationController {
     public String loggedIn(@RequestParam String username) {
         User user = usersRepo.findByUsername(username);
 
-        if (user.getisBabysitter()) {
-            Specification userSpecs = user.getSpecifications();
-            if (userSpecs.getBirthdate().isEmpty())
-                return "redirect:/editSpecs";
-        } else if (!user.getisBabysitter()) {
-            List userChildren = user.getChildren();
-            if (userChildren.isEmpty())
-                return "redirect:/editChildren";
-        }
+//        if (user.getisBabysitter()) {
+//            Specification userSpecs = user.getSpecifications();
+//            if (userSpecs.getHasCprTraining().isEmpty())
+//                return "redirect:/editSpecs";
+//        } else if (!user.getisBabysitter()) {
+//            List userChildren = user.getChildren();
+//            if (userChildren.isEmpty())
+//                return "redirect:/editChildren";
+//        }
 
         return "redirect:/my-acct";
     }

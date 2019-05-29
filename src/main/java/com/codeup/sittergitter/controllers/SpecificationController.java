@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -51,7 +52,7 @@ public class SpecificationController {
 
   @PostMapping("/profile/{username}/edit/specifications")
   public String editUser(@PathVariable String username,
-                         @RequestParam String birthdate,
+                         @RequestParam Date birthdate,
                          @RequestParam Integer yearsOfExperience,
                          @RequestParam(defaultValue = "false") Boolean hasCprTraining,
                          @RequestParam(defaultValue = "false") Boolean hasTransportation,

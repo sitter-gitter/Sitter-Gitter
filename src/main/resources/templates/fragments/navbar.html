@@ -153,6 +153,12 @@
                 <a href="/register">Register</a>
             </li>
 
+            <li>
+               <a class="dropdown-trigger" href="#" data-target="dropdown1">Menu
+                   <i class="material-icons right">arrow_drop_down</i>
+               </a>
+            </li>
+
             <li sec:authorize="isAuthenticated()" style="display: inline;">
                 <form th:action="@{/logout}" th:method="post" style="display: inline-block;">
                     <a href="/my-acct" style="display: inline;">
@@ -161,11 +167,6 @@
                     </a>
                     <button class="btn-small waves-effect waves-light hoverable blue-button" style="display: inline;">Logout</button>
                 </form>
-            </li>
-            <li>
-               <a class="dropdown-trigger" href="#" data-target="dropdown1">Menu
-                   <i class="material-icons right">arrow_drop_down</i>
-               </a>
             </li>
         </ul>
     </div>
@@ -180,7 +181,6 @@
     <!--Username: <span th:text="${#authentication.principal.username}"/>-->
     <!--Email: <span th:text="${#authentication.principal.email}"/>-->
 <!--</div>-->
-
 
 </th:block>
 </body>
