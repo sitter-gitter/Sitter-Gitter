@@ -34,6 +34,8 @@ public interface AvailableTimeRepository extends CrudRepository<AvailableTime, L
 
     List<AvailableTime> findAvailableTimesByIsTakenFalseOrderByStartAsc();
 
+    List<AvailableTime> findAvailableTimesByIsTakenFalse();
+
 
 
 
