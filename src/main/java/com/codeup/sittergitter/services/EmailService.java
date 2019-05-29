@@ -34,7 +34,7 @@ public class EmailService {
         }
     }
 
-    public void sendAppointmentNotification(Appointment appointment, String subject, String body) {
+    public void sendAppointmentNotificationToSitter(Appointment appointment, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(appointment.getBabysitter().getEmail());
@@ -50,10 +50,42 @@ public class EmailService {
         }
     }
 
-    public void sendAppointmentCancellation(Appointment appointment, String subject, String body) {
+    public void sendAppointmentNotificationToParent(Appointment appointment, String subject, String body) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(appointment.getParent().getEmail());
+        msg.setSubject(subject);
+        msg.setText(body);
+
+        try{
+            this.emailSender.send(msg);
+        }
+        catch (MailException e) {
+            // simply log it and go on...
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void sendAppointmentCancellationToSitter(Appointment appointment, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(appointment.getBabysitter().getEmail());
+        msg.setSubject(subject);
+        msg.setText(body);
+
+        try{
+            this.emailSender.send(msg);
+        }
+        catch (MailException e) {
+            // simply log it and go on...
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void sendAppointmentCancellationToParent(Appointment appointment, String subject, String body) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(appointment.getParent().getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 
