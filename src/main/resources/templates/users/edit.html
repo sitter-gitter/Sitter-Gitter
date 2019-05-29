@@ -7,7 +7,7 @@
 
 <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="container">
 
-    <div class="card center-align">
+    <div class="card ltblue-card center-align">
         <form th:action="@{'/profile/'+${user.username}+'/edit'}" method="post" th:object="${user}">
 
         <div class="card-content">

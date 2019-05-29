@@ -7,7 +7,7 @@
 }
 
 html {
-    font-family: 'Merriweather', serif !important;
+    font-family: "Merriweather", serif !important;
 }
 
 html, body {
@@ -24,6 +24,14 @@ nav {
     box-shadow: none !important;
 }
 
+nav a {
+    color: #FFFFFF !important;
+}
+
+nav ul a {
+    color: var(--sg-drkblue) !important;
+}
+
 body {
     background-image: url("../image/muted-bkg2.png");
     background-size: 350px 350px;
@@ -37,6 +45,10 @@ body {
 main {
     flex: 1 0 auto;
 }
+a {
+    color: var(--sg-drkblue) !important;
+}
+
 .brand-logo {
     font-family: 'Kaushan Script', cursive;
     color: #F3D250 !important;
@@ -78,31 +90,52 @@ main {
 }
 
 .card {
-    /*background-color: #ECECEC !important;*/
     min-width: 100% !important;
-    /*max-width: 600px !important;*/
     margin: 1em !important;
-    /*border: 1px solid gray !important;*/
     border-radius: 1em !important;
-    /*box-shadow: none !important;*/
-    /*padding-bottom: 1em !important;*/
+    font-size: 1.2em !important;
+}
+
+.pink-card {
+    background-color: var(--sg-red) !important;
+}
+.yellow-card {
+    background-color: var(--sg-yellow) !important;
+}
+.ltblue-card {
+    background-color: var(--sg-ltblue) !important;
+}
+.blue-card {
+    background-color: var(--sg-drkblue) !important;
+}
+
+.card-title {
+    color: #ffffff !important;
+    /*font-weight: bold !important;*/
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px dimgrey;
 }
 
 .card-content {
     min-width: 100% !important;
-    font-size: 0.8em !important;
-    padding: 2em !important;
+    padding: 1.5em 1.5em 1em 1.5em!important;
 }
 
 .card-panel {
+    text-align: left !important;
     min-width: 100% !important;
-    padding: 2em !important;
-
+    padding: 1.2em !important;
 }
 
 .card-action {
     border-bottom-left-radius: 2em !important;
     border-bottom-right-radius: 2em !important;
+    text-align: center !important;
+}
+
+.card-action a {
+    color: white !important;
 }
 
 .card i, .card a {
@@ -142,6 +175,7 @@ input {
 }
 
 input[type=text], input[type=password] {
+    background-color: #FFFFFF !important;
     font-family: 'Merriweather', serif;
     padding-left: 1em !important;
 }
@@ -207,16 +241,18 @@ footer ul li {
 }
 
 .badge {
+    float: none !important;
     padding-right: 1.5em !important;
     padding-left: 1.5em !important;
     border-radius: 1em !important;
     background-color: #3f51b5 !important;
     font-family: sans-serif !important;
-    font-size: 1em !important;
+    font-size: 0.8em !important;
     text-transform: uppercase !important;
     color: #ECECEC !important;
 }
 
 .page-footer {
     margin-top: 2em !important;
+    background-color: var(--sg-ltblue) !important;
 }

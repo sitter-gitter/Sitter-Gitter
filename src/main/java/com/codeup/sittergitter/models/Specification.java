@@ -37,7 +37,7 @@ public class Specification {
 //    EducationLevel e3 = EducationLevel.collegeDegree;
 
     @Column
-    private String birthdate;
+    private Date birthdate;
 
     @OneToOne
     @JoinColumn(name = "babysitter_id", unique = true)
@@ -46,7 +46,7 @@ public class Specification {
     public Specification() {}
 
     public Specification(Boolean isSmoker, Boolean hasCprTraining, Boolean hasTransportation,
-                         Integer yearsOfExperience, String birthdate, User babysitter) {
+                         Integer yearsOfExperience, Date birthdate, User babysitter) {
         this.isSmoker = isSmoker;
         this.hasCprTraining = hasCprTraining;
         this.hasTransportation = hasTransportation;
@@ -113,11 +113,11 @@ public class Specification {
 //        this.educationLevel = educationLevel;
 //    }
 
-    public String getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 

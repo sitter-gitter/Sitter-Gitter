@@ -8,22 +8,25 @@
 <div class="container">
     <!-- th:if="${(sessionUser.getisBabysitter() == false and sessionUser.getUsername() == user.getUsername()) or
     (sessionUser.getisBabysitter() == true)} -->
-<!--<div class="card">-->
 <div class="row">
 
     <!-- User info -->
     <div class="col s12 m6">
-        <div class="card">
-            <div class="card-content" >
+        <div class="card ltblue-card">
+            <div class="card-content center" >
                 <span class="card-title">
                     <span th:text="${user.username}" ></span>
                 </span>
                 <ul class="card-panel">
                     <li>
+                        <b><span th:text="${user.firstName}"></span>
+                        <span th:text="${user.lastName}"></span></b><br />
+                    </li>
+                    <li>
                         <span th:text="${user.streetAddr}"></span><br />
                         <span th:text="${user.city}"></span>,
                         <span th:text="${user.state}"></span>
-                        <span th:text="${user.zipCode}"></span>
+                        <span th:text="${user.zipCode}"></span><br />
                     </li>
                     <li>
                         <span th:text="${user.email}"></span>
@@ -35,37 +38,40 @@
                 <a th:href="@{'/profile/'+${user.getUsername()}+'/edit'}">
                     <i class="fas fa-user-edit"></i> Edit Profile
                 </a>
-                <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/'}">-->
-                    <!--<i class="fas fa-trash-alt"></i> Delete Profile</a>-->
             </div>
         </div>
     </div> <!-- end user info -->
 
     <!-- specifications stuff -->
     <div th:if="${user.getisBabysitter()}" class="col s12 m6">
-        <div class="card small">
-            <div class="card-content">
-                <span class="card-title center">Specifications</span>
-                <ul th:each="specification : ${user.specifications}">
-                    <li >
-                        DOB:
-                        <span th:text="${specification.birthdate}"></span>
-                    </li>
-                    <li th:if="${specification.hasCprTraining}">
-                        <span class="badge">CPR-certified</span>
-                    </li>
-                    <li  th:unless="${specification.smoker}">
-                        <span class="badge">Tobacco-free</span>
-                    </li>
-                    <li >
-                        <span class="badge">
-                            <span th:text="${specification.yearsOfExperience}"></span> years' experience
-                        </span>
-                    </li>
-                    <li  th:if="${specification.hasTransportation}">
-                        <span class="badge">has transport</span>
-                    </li>
-                </ul>
+        <div class="card yellow-card">
+            <div class="card-content center">
+                <span class="card-title">My Experience</span>
+                <div class="card-panel center">
+                    <ul th:each="specification : ${user.specifications}">
+                        <li>
+                            <span class="badge">
+                            Age <span th:text="${#dates.year(#dates.createNow())-
+                            specification.birthdate.getYear()-1900}"></span></span>
+                            <!--DOB:-->
+                            <!--<span th:text="${specification.birthdate}"></span>-->
+                        </li>
+                        <li th:if="${specification.hasCprTraining}">
+                            <span class="badge">CPR-certified</span>
+                        </li>
+                        <li  th:unless="${specification.smoker}">
+                            <span class="badge">Tobacco-free</span>
+                        </li>
+                        <li >
+                            <span class="badge">
+                                <span th:text="${specification.yearsOfExperience}"></span> years' experience
+                            </span>
+                        </li>
+                        <li  th:if="${specification.hasTransportation}">
+                            <span class="badge">has transport</span>
+                        </li>
+                    </ul>
+                    </div>
             </div>
 
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
@@ -78,19 +84,19 @@
 
     <!-- children list -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12 m6">
-        <div class="card">
+        <div class="card yellow-card">
 
-            <div class="card-content">
-                <span class="card-title">Children:</span>
+            <div class="card-content center">
+                <span class="card-title">My Children</span>
 
                 <ul th:each="child : ${user.children}">
                     <li class="card-panel">
-                        <span th:text="${child.name}"></span>, age
+                        <b><span th:text="${child.name}"></span></b>, age
+                        <span th:text="${#dates.year(#dates.createNow())-child.birthdate.getYear()-1900}"></span><br /><br />
 
-                        <span th:text="${#dates.year(#dates.createNow())-child.birthdate.getYear()-1900}"></span><br />
                         <p th:unless="${child.specialNote.isEmpty()}">
-                            Notes:<br />
-                            <span th:text="${child.specialNote}"></span>
+                            <em>Notes:</em>
+                            <span th:text="${child.specialNote}"></span><br /><br />
                         </p>
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}" >
                             <a th:href="@{'/child/'+${child.id}+'/delete'}">
@@ -108,23 +114,22 @@
             </div>
         </div>
     </div> <!-- end children list -->
-
-
 </div> <!-- end row 1 -->
-<div class="row">
 
+<div class="row">
 
     <!-- parent appointments -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12">
-        <div class="card">
+        <div class="card pink-card">
 
-            <div class="card-content">
+            <div class="card-content center">
 
-                <span class="card-title">Future Appointments: </span>
+                <span class="card-title">Upcoming Appointments</span>
 
                 <ul th:each="appt : ${parentAppointments}" th:if="${appt.start > current_time}"  style="list-style:
                 none;">
                     <li class="card-panel" th:if="${appt.getStart() != null}" >
+                        <b>
                         <span th:switch="${appt.start.getDay()}">
                             <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
                             <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
@@ -141,7 +146,7 @@
                             <span th:case="10">November</span><span th:case="11">December</span>
                         </span>
 
-                        <span th:text="${appt.start.getDate()}"></span><br />
+                        <span th:text="${appt.start.getDate()}"></span></b><br />
 
                         <span th:text="${appt.start.getHours()}"></span>:
                         <span th:if="${appt.start.getMinutes() == 0}">00</span>
@@ -150,21 +155,18 @@
                         <span th:text="${appt.end.getHours()}"></span>:
                         <span th:if="${appt.end.getMinutes() == 0}">00</span>
                         <span th:unless="${appt.end.getMinutes() == 0}">
-                            <span th:text="${appt.end.getMinutes()}"></span></span><br />
+                            <span th:text="${appt.end.getMinutes()}"></span></span><br /><br />
 
-
-                        With:
-                        <!--<a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">-->
+                        <em>With:</em>
+                        <a th:href="@{'/profile/' + ${appt.getBabysitter().getUsername()}}">
                         <span th:text="${appt.getBabysitter().getUsername()}"></span>
-                        <!--</a>-->
-
+                        </a>
 
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <br /><br />
-                        <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
-                        <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
-                            <i class="fas fa-trash-alt"></i> Cancel Appointment
-                        </a>
+                            <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
+                                <i class="fas fa-trash-alt"></i> Cancel Appointment
+                            </a>
                         </span>
                     </li>
                 </ul>
@@ -180,9 +182,9 @@
     <!-- babysitter appointments -->
     <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}"
          class="col s12 m6">
-        <div class="card">
+        <div class="card pink-card">
             <div class="card-content">
-                <span class="card-title center">Future Appointments</span>
+                <span class="card-title center">Upcoming Appointments</span>
                 <ul th:each="appt : ${babysitterAppointments}" th:if="${appt.start > current_time}"  style="list-style: none; display: inline;">
                     <li class="card-panel">
                         <span th:switch="${appt.start.getDay()}">
@@ -236,17 +238,18 @@
 
     <!-- Available Times List -->
     <div th:if="${(user.getisBabysitter() == true) and user.getUsername() == sessionUser.getUsername()}" class="col s12 m6">
-        <div class="card">
+        <div class="card blue-card">
             <div class="card-content">
 
                 <span class="card-title center">
-                    Available Hours
+                    My Availability
                 </span>
 
                 <ul th:each="time : ${available_times}" >
 
                     <li th:if="${time.getBabysitter().getId() == sessionUser.getId() and time.start > current_time}" class="card-panel">
 
+                        <b>
                         <span th:switch="${time.start.getDay()}">
                             <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
                             <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
@@ -261,7 +264,7 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${time.start.getDate()}"></span><br />
+                        </span> <span th:text="${time.start.getDate()}"></span></b><br />
 
                         <span th:text="${time.start.getHours()}"></span>:
                         <span th:if="${time.start.getMinutes() == 0}">00</span>
@@ -281,7 +284,7 @@
             </div>
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/available-times/create'}">
-                    <i class="fas fa-plus"></i> Schedule Available Hours</a>
+                    <i class="fas fa-plus"></i> Edit Availability</a>
             </div>
         </div>
 
@@ -294,60 +297,8 @@
             <div class="card-content">
 
                 <span class="card-title center">
-                    Available Hours
+                    <span th:text="${user.username}"></span>'s Availability
                 </span>
-
-                    <!--<ul th:each="time : ${available_times2}">-->
-
-                        <!--<li  th:if="${time.getBabysitter().getId() == user.getId() and time.start > current_time}" class="card-panel">-->
-
-                        <!--&lt;!&ndash;<input type="hidden" th:value="${time.start.g}" name="available_time_id" />&ndash;&gt;-->
-                        <!--&lt;!&ndash;<input type="hidden" th:value="${time.end}" name="available_time_id" />&ndash;&gt;-->
-                        <!--<span th:switch="${time.start.getDay()}">-->
-                            <!--<span th:case="0">Sunday,</span>-->
-                            <!--<span th:case="1">Monday,</span>-->
-                            <!--<span th:case="2">Tuesday,</span>-->
-                            <!--<span th:case="3">Wednesday,</span>-->
-                            <!--<span th:case="4">Thursday,</span>-->
-                            <!--<span th:case="5">Friday,</span>-->
-                            <!--<span th:case="6">Saturday,</span>-->
-                        <!--</span>-->
-
-                        <!--<span th:switch="${time.start.getMonth()}">-->
-                            <!--<span th:case="0">January</span>-->
-                            <!--<span th:case="1">February</span>-->
-                            <!--<span th:case="2">March</span>-->
-                            <!--<span th:case="3">April</span>-->
-                            <!--<span th:case="4">May</span>-->
-                            <!--<span th:case="5">June</span>-->
-                            <!--<span th:case="6">July</span>-->
-                            <!--<span th:case="7">August</span>-->
-                            <!--<span th:case="8">September</span>-->
-                            <!--<span th:case="9">October</span>-->
-                            <!--<span th:case="10">November</span>-->
-                            <!--<span th:case="11">December</span>-->
-                        <!--</span>-->
-
-                        <!--<span th:text="${time.start.getDate()}"></span> from-->
-                        <!--<span th:text="${time.start.getHours()}"></span>:-->
-                        <!--<span th:text="${time.start.getMinutes()}"></span> - -->
-                        <!--<span th:text="${time.end.getHours()}"></span>:-->
-                        <!--<span th:text="${time.end.getMinutes()}"></span><br />-->
-
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--Babysitter: <span th:text="${time.getBabysitter().getUsername()}"></span>-->
-                        <!--</li>-->
-                        <!--&lt;!&ndash; CHOOSE BTN GOES HERE &ndash;&gt;-->
-                        <!--<li>-->
-                            <!--<form th:action="@{/appointments/availableBabysitters}" th:method="post">-->
-                                <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
-                                <!--<input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>-->
-                                <!--<input type="submit" class="btn-small yellow-button" value="Choose" />-->
-                            <!--</form>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-
 
                 <form th:action="@{/appointments/availableBabysitters}" th:method="post">
 
@@ -389,7 +340,6 @@
                         </a>
 
                         <!-- CHOOSE BUTTON GOES HERE -->
-
                             <input type="hidden" th:value="${time.id}" name="available_time_id"/>
                             <input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>
                             <input type="submit" class="btn-small yellow-button" value="Choose" />
@@ -419,37 +369,38 @@
 
     <!-- reviews made by parent list -->
     <div th:if="${(user.getisBabysitter() == false)}" class="col s12">
-        <div class="card">
-            <div class="card-content">
+        <div class="card blue-card">
+            <div class="card-content center">
 
-                <span class="card-title">Reviews Made:</span>
+                <span class="card-title">My Reviews</span>
 
                 <ul th:each="review : ${user.reviews}" class="card-panel">
+                    <li style="list-style: none;">
+                        <b><span th:text="${review.title}"></span></b>
+                    </li>
                     <li>
-                        Sitter:
+                        For:
                         <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
                         <span th:text="${review.babysitter.getUsername()}"></span>
                         <!--</a>-->
-                    </li>
-                    <li style="list-style: none;">
-                        Title:
-                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
-                        <span th:text="${review.title}"></span>
-                        <!--</a>-->
+
+                        <span th:if="${review.getIsRecommended()}" class="badge">
+                            Highly Recommended</span><br /> <br />
                     </li>
                     <li>
-                        Body:
-                        <span th:text="${review.getBody()}"></span>
+                        <span th:text="${review.getBody()}"></span><br /><br />
                     </li>
-                    <li th:if="${review.getIsRecommended() == true}">
-                        ** Highly Recommended Babysitter! **
-                    </li><br />
+
+                    <!--<li th:if="${review.getIsRecommended() == true}">-->
+                        <!--** Highly Recommended Babysitter! **-->
+                    <!--</li><br />-->
+
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
                             <i class="fas fa-pen"></i> Edit Review
-                        </a><br /><br />
+                        </a>
                         <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">
-                            <i class="fas fa-trash-alt"></i> Delete Review
+                            <i class="fas fa-trash-alt" style="margin-left: 1em;"></i> Delete Review
                         </a>
                     </li>
                 </ul>
@@ -460,17 +411,14 @@
     <!-- Reviews on babysitters List -->
     <div th:if="${(user.getisBabysitter() == true)}" class="col s12">
         <div class="card">
-            <div class="card-content">
+            <div class="card-content yellow-card">
 
-                <span class="card-title">Reviews: </span>
+                <span class="card-title">Reviews</span>
 
                 <ul th:each="review : ${reviews}"
                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
                     <li style="list-style: none; display: inline;">
-                        Author:
-                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
                         <span th:text="${review.getParent().getUsername()}"></span>
-                        <!--</a>-->
                     </li>
                     <li>
                         Title:
@@ -489,9 +437,7 @@
     </div>
  <!-- end babysitters reviews -->
 
-
 </div> <!-- end row 3 -->
-<!--</div>-->
 </div> <!-- end container -->
 </main>
 <footer><th:block th:replace="fragments/footer :: footer"/></footer>
