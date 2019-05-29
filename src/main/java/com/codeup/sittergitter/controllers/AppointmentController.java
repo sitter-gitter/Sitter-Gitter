@@ -172,6 +172,7 @@ public class AppointmentController {
         newApptTime.setBabysitter(usersRepo.findOne(sitterId));
         newApptTime.setParent(userDB);
         newApptTime.setSitterApproved(true);
+        newApptTime.setReviewed(false);
         newApptTime.setAvailableTime(availableTimesRepo.findOne(availTimeId));
         appointmentsRepo.save(newApptTime);
         availableTimesRepo.updateIsTaken(availTimeId, true);
