@@ -180,12 +180,12 @@ public class AppointmentController {
         availableTimesRepo.updateIsTaken(availTimeId, true);
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER
-        emailService.sendAppointmentNotificationToSitter(savedAppt, "Babysitting Appointment",
-                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
-                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
-        emailService.sendAppointmentNotificationToParent(savedAppt, "Babysitting Appointment",
-                "You have scheduled an appointment from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
-                        + " with the following babysitter: " + savedAppt.getBabysitter().getFirstName() + " " + savedAppt.getBabysitter().getLastName() + ".");
+//        emailService.sendAppointmentNotificationToSitter(savedAppt, "Babysitting Appointment",
+//                "An appointment has been made from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+//                        + " with the following parent: " + savedAppt.getParent().getFirstName() + " " + savedAppt.getParent().getLastName() + ".");
+//        emailService.sendAppointmentNotificationToParent(savedAppt, "Babysitting Appointment",
+//                "You have scheduled an appointment from " + savedAppt.getStart() + " until " + savedAppt.getEnd()
+//                        + " with the following babysitter: " + savedAppt.getBabysitter().getFirstName() + " " + savedAppt.getBabysitter().getLastName() + ".");
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         return "redirect:/my-acct";
     }
@@ -228,15 +228,15 @@ public class AppointmentController {
         appointmentsRepo.deleteById(id);
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        DO NOT DELETE: THIS IS TO SEND NOTIFICATION EMAILS TO THE BABYSITTER/PARENT
-        if(userDB.getisBabysitter() == false) {
-            emailService.sendAppointmentCancellationToSitter(canxAppt, "Appointment Cancellation",
-                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
-                            + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
-        } else {
-            emailService.sendAppointmentCancellationToParent(canxAppt, "Appointment Cancellation",
-                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
-                            + " has been cancelled by " + canxAppt.getBabysitter().getFirstName() + " " + canxAppt.getBabysitter().getLastName() + ".");
-        }
+//        if(userDB.getisBabysitter() == false) {
+//            emailService.sendAppointmentCancellationToSitter(canxAppt, "Appointment Cancellation",
+//                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
+//                            + " has been cancelled by " + canxAppt.getParent().getFirstName() + " " + canxAppt.getParent().getLastName() + ".");
+//        } else {
+//            emailService.sendAppointmentCancellationToParent(canxAppt, "Appointment Cancellation",
+//                    "The appointment scheduled from " + canxAppt.getStart() + " until " + canxAppt.getEnd()
+//                            + " has been cancelled by " + canxAppt.getBabysitter().getFirstName() + " " + canxAppt.getBabysitter().getLastName() + ".");
+//        }
 
 //        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        return "redirect:/appointments";
