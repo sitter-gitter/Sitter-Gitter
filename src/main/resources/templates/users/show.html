@@ -293,7 +293,7 @@
     <!-- Available Times List for parents to view -->
     <div th:if="${(user.getisBabysitter() == true) and user.getUsername() != sessionUser.getUsername()}"
     class="col s12">
-        <div class="card">
+        <div class="card pink-card">
             <div class="card-content">
 
                 <span class="card-title center">
@@ -342,7 +342,7 @@
                         <!-- CHOOSE BUTTON GOES HERE -->
                             <input type="hidden" th:value="${time.id}" name="available_time_id"/>
                             <input type="hidden" th:value="${time.babysitter.getId()}" name="sitter_id"/>
-                            <input type="submit" class="btn-small yellow-button" value="Choose" />
+                            <input type="submit" class="btn-small yellow-button" value="Choose" disabled="disabled" />
                         <!--<form th:if="${user.getUsername() != sessionUser.getUsername()}"-->
                               <!--th:action="@{/appointments/availableBabysitters}" th:method="post" style="display: inline;">-->
                             <!--<input type="hidden" th:value="${time.id}" name="available_time_id"/>-->
