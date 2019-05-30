@@ -418,7 +418,10 @@
                 <ul th:each="review : ${reviews}"
                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
                     <li style="list-style: none; display: inline;">
-                        <span th:text="${review.getParent().getUsername()}"></span>
+                        <!--<span th:text="${review.getParent().getUsername()}"></span>-->
+                        <a th:href="@{'/profile/' + ${review.getParent().getUsername()}}">
+                            <span th:text="${review.getParent().getUsername()}"></span>
+                        </a>
                     </li>
                     <li>
                         Title:
