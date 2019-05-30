@@ -21,19 +21,22 @@ nav ul li {
 nav {
     background-color: #F78888 !important;
     margin-bottom: 2.5em !important;
-    box-shadow: none !important;
 }
 
 nav a {
     color: #FFFFFF !important;
 }
 
-nav ul a {
+.dropdown-content a {
+    color: var(--sg-drkblue) !important;
+}
+
+.sidenav a {
     color: var(--sg-drkblue) !important;
 }
 
 body {
-    background-image: url("../image/muted-bkg2.png");
+    background-image: url("../image/background.png");
     background-size: 350px 350px;
     background-repeat: repeat !important;
     background-position: center;
@@ -176,7 +179,7 @@ input, textarea {
 
 input[type=text], input[type=password], textarea {
     background-color: #FFFFFF !important;
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', serif !important;
     padding-left: 1em !important;
 }
 
@@ -259,5 +262,16 @@ footer i {
 
 .page-footer {
     margin-top: 2em !important;
+    padding-top: 0.4em !important;
     background-color: var(--sg-ltblue) !important;
+}
+
+.error-img {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-image: url("../image/error.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
