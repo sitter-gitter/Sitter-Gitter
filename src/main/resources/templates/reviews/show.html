@@ -26,7 +26,7 @@
                             <span th:text="${review.body}"></span>
                         </li>
                         <li th:if="${review.getIsRecommended() == true}">
-                            ** HIGHLY RECOMMENDED! **
+                            <span class="badge">HIGHLY RECOMMENDED</span>
                         </li>
                     </ul>
                 </div>

@@ -35,6 +35,10 @@ nav a {
     color: var(--sg-drkblue) !important;
 }
 
+#nav-login-button {
+    margin: 0 !important;
+}
+
 body {
     background-image: url("../image/background.png");
     background-size: 350px 350px;
@@ -92,9 +96,13 @@ a {
     margin: 0 !important;
 }
 
+.col {
+    padding: 0 !important;
+}
+
 .card {
     min-width: 100% !important;
-    margin: 1em !important;
+    /*margin: 1em !important;*/
     border-radius: 1em !important;
     font-size: 1.2em !important;
 }
