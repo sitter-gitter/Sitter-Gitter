@@ -49,13 +49,13 @@
                 <span class="card-title">My Experience</span>
                 <div class="card-panel center">
                     <ul th:each="specification : ${user.specifications}">
-                        <li>
-                            <span class="badge">
-                            Age <span th:text="${#dates.year(#dates.createNow())-
-                            specification.birthdate.getYear()-1900}"></span></span>
-                            <!--DOB:-->
-                            <!--<span th:text="${specification.birthdate}"></span>-->
-                        </li>
+                        <!--<li>-->
+                            <!--<span class="badge">-->
+                            <!--Age <span th:text="${#dates.year(#dates.createNow())- -->
+                            <!--specification.birthdate.getYear()-1900}"></span></span>-->
+                            <!--&lt;!&ndash;DOB:&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span th:text="${specification.birthdate}"></span>&ndash;&gt;-->
+                        <!--</li>-->
                         <li th:if="${specification.hasCprTraining}">
                             <span class="badge">CPR-certified</span>
                         </li>
@@ -76,7 +76,7 @@
 
             <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="card-action">
                 <a th:href="@{'/profile/'+${user.getUsername()}+'/edit/specifications'}">
-                    <i class="fas fa-pen"></i> Edit Specifications
+                    <i class="fas fa-pen"></i> Edit Qualifications
                 </a>
             </div>
         </div>

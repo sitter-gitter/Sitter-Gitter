@@ -52,7 +52,7 @@ public class SpecificationController {
 
   @PostMapping("/profile/{username}/edit/specifications")
   public String editUser(@PathVariable String username,
-                         @RequestParam Date birthdate,
+                         @RequestParam String birthdate,
                          @RequestParam Integer yearsOfExperience,
                          @RequestParam(defaultValue = "false") Boolean hasCprTraining,
                          @RequestParam(defaultValue = "false") Boolean hasTransportation,
