@@ -3,70 +3,60 @@
 <head><th:block th:replace="fragments/head :: header('Available Times')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-
+<main>
 
 <div class="container">
     <div class="row">
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <div class="row">
-                        <div class="col s12">
-                            <span class="card-title">Available Hours</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m6 l4">
-                            <ul>
-                                <li th:each="time : ${available_times}">
-                                    <div th:if="${time.start > current_time}" class="col s12 m6 l4">
-                                        <div class="card-panel hoverable">
-                                            <!--From:<br/>-->
-                                            <!--<span th:text="${time.start}"></span>-->
-                                            <!--To:<br/>-->
-                                            <!--<span th:text="${time.end}"></span>-->
+                    <span class="card-title">Available Hours</span>
+                    <ul th:each="time : ${available_times}">
+                        <li th:if="${time.start > current_time}" class="card-panel">
 
-                                            <span th:switch="${time.start.getDay()}">
-                                                <span th:case="0">Sunday,</span>
-                                                <span th:case="1">Monday,</span>
-                                                <span th:case="2">Tuesday,</span>
-                                                <span th:case="3">Wednesday,</span>
-                                                <span th:case="4">Thursday,</span>
-                                                <span th:case="5">Friday,</span>
-                                                <span th:case="6">Saturday,</span>
-                                            </span>
+                            <!--From:<br/>-->
+                            <!--<span th:text="${time.start}"></span>-->
+                            <!--To:<br/>-->
+                            <!--<span th:text="${time.end}"></span>-->
 
-                                            <span th:switch="${time.start.getMonth()}">
-                                                <span th:case="0">January</span>
-                                                <span th:case="1">February</span>
-                                                <span th:case="2">March</span>
-                                                <span th:case="3">April</span>
-                                                <span th:case="4">May</span>
-                                                <span th:case="5">June</span>
-                                                <span th:case="6">July</span>
-                                                <span th:case="7">August</span>
-                                                <span th:case="8">September</span>
-                                                <span th:case="9">October</span>
-                                                <span th:case="10">November</span>
-                                                <span th:case="11">December</span>
-                                            </span> <span th:text="${time.start.getDate()}"></span>
-                                            <br />
-                                            <span th:text="${time.start.getHours()}"></span>:
-                                            <span th:text="${time.start.getMinutes()}"></span> -
-                                            <span th:text="${time.end.getHours()}"></span>:
-                                            <span th:text="${time.end.getMinutes()}"></span><br />
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                            <b>
+                            <span th:switch="${time.start.getDay()}">
+                                <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
+                                <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
+                                <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
+                                <span th:case="6">Saturday,</span>
+                            </span>
+
+                            <span th:switch="${time.start.getMonth()}">
+                                <span th:case="0">January</span><span th:case="1">February</span>
+                                <span th:case="2">March</span><span th:case="3">April</span>
+                                <span th:case="4">May</span><span th:case="5">June</span>
+                                <span th:case="6">July</span><span th:case="7">August</span>
+                                <span th:case="8">September</span><span th:case="9">October</span>
+                                <span th:case="10">November</span><span th:case="11">December</span>
+                            </span><span th:text="${time.start.getDate()}"></span></b><br />
+
+                            <span th:text="${time.start.getHours()}"></span>:
+                            <span th:if="${time.start.getMinutes() == 0}">00</span>
+                            <span th:unless="${time.start.getMinutes() == 0}">
+                                <span th:text="${time.start.getMinutes()}"></span>
+                            </span> -
+                            <span th:text="${time.end.getHours()}"></span>:
+                            <span th:if="${time.end.getMinutes() == 0}">00</span>
+                            <span th:unless="${time.end.getMinutes() == 0}">
+                                <span th:text="${time.end.getMinutes()}"></span>
+                            </span><br />
+                            With:  <span th:text="${time.getBabysitter()}"></span>
+                            <br /><br />
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>

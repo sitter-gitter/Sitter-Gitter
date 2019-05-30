@@ -14,19 +14,17 @@
                         <li th:each="avail_time : ${availAppts}">
                             <form th:action="@{/appointments/availableBabysitters}" th:method="post">
                                 <div class="card-panel">
-                                    <div class="card-content">
-                                        Babysitter:<span th:text="${avail_time.babysitter.username}">
-                                        </span><br/>
-                                        From:
-                                        <span th:text="${avail_time.start}"></span><br/>
-                                        To:
-                                        <span th:text="${avail_time.end}"></span><br/>
-                                        <input type="hidden" th:value="${avail_time.id}"
-                                               name="available_time_id"/>
-                                        <input type="hidden" th:value="${avail_time.babysitter.getId()}"
-                                               name="sitter_id"/>
-                                        <button>Choose</button>
-                                    </div>
+                                    Babysitter:<span th:text="${avail_time.babysitter.username}">
+                                    </span><br/>
+                                    From:
+                                    <span th:text="${avail_time.start}"></span><br/>
+                                    To:
+                                    <span th:text="${avail_time.end}"></span><br/>
+                                    <input type="hidden" th:value="${avail_time.id}"
+                                           name="available_time_id"/>
+                                    <input type="hidden" th:value="${avail_time.babysitter.getId()}"
+                                           name="sitter_id"/>
+                                    <button>Choose</button>
                                 </div>
                             </form>
                         </li>
