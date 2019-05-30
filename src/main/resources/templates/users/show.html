@@ -187,6 +187,7 @@
                 <span class="card-title center">Upcoming Appointments</span>
                 <ul th:each="appt : ${babysitterAppointments}" th:if="${appt.start > current_time}"  style="list-style: none; display: inline;">
                     <li class="card-panel">
+                        <b>
                         <span th:switch="${appt.start.getDay()}">
                             <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
                             <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
@@ -201,7 +202,7 @@
                             <span th:case="6">July</span><span th:case="7">August</span>
                             <span th:case="8">September</span><span th:case="9">October</span>
                             <span th:case="10">November</span><span th:case="11">December</span>
-                        </span> <span th:text="${appt.start.getDate()}"></span><br />
+                        </span> <span th:text="${appt.start.getDate()}"></span></b><br />
 
                         <span th:text="${appt.start.getHours()}"></span>:
                         <span th:if="${appt.start.getMinutes() == 0}">00</span>
@@ -372,7 +373,9 @@
         <div class="card blue-card">
             <div class="card-content center">
 
-                <span class="card-title">My Reviews</span>
+                <span class="card-title">Reviews by
+                <span th:text="${user.getUsername()}"></span>
+                </span>
 
                 <ul th:each="review : ${user.reviews}" class="card-panel">
                     <li style="list-style: none;">
@@ -380,15 +383,17 @@
                     </li>
                     <li>
                         For:
-                        <!--<a th:href="@{'/reviews/' + ${review.id}}">-->
-                        <span th:text="${review.babysitter.getUsername()}"></span>
-                        <!--</a>-->
+                        <a th:href="@{'/profile/'+${review.babysitter.getUsername()}}">
+                            <span th:text="${review.babysitter.getUsername()}"></span>
+                        </a>
 
                         <span th:if="${review.getIsRecommended()}" class="badge">
                             Highly Recommended</span><br /> <br />
                     </li>
                     <li>
-                        <span th:text="${review.getBody()}"></span><br /><br />
+                        <blockquote>
+                            <span th:text="${review.getBody()}"></span>
+                        </blockquote>
                     </li>
 
                     <!--<li th:if="${review.getIsRecommended() == true}">-->
@@ -413,26 +418,30 @@
         <div class="card">
             <div class="card-content yellow-card">
 
-                <span class="card-title">Reviews</span>
+                <span class="card-title">Reviews on
+                    <span th:text="${user.getUsername()}"></span>
+                </span>
 
                 <ul th:each="review : ${reviews}"
                     th:if="${review.getBabysitter().getUsername() == user.getUsername()}" class="card-panel">
+
+                    <li>
+                        <span th:text="${review.getTitle()}"></span>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <span th:text="${review.getBody()}"></span>
+                        </blockquote>
+                    </li>
+                    <li th:if="${review.getIsRecommended() == true}">
+                        ** Highly Recommended Babysitter! **
+                    </li>
                     <li style="list-style: none; display: inline;">
+                        Parent:
                         <!--<span th:text="${review.getParent().getUsername()}"></span>-->
                         <a th:href="@{'/profile/' + ${review.getParent().getUsername()}}">
                             <span th:text="${review.getParent().getUsername()}"></span>
                         </a>
-                    </li>
-                    <li>
-                        Title:
-                        <span th:text="${review.getTitle()}"></span>
-                    </li>
-                    <li>
-                        Body:
-                        <span th:text="${review.getBody()}"></span>
-                    </li>
-                    <li th:if="${review.getIsRecommended() == true}">
-                        ** Highly Recommended Babysitter! **
                     </li>
                 </ul>
             </div>
