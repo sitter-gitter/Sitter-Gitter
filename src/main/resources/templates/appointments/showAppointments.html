@@ -4,61 +4,75 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-
+<main>
 <div class="container">
 <div class="row">
-
     <div class="col s12">
-        <h2>Scheduled Appointments</h2>
-    </div>
-    <ul>
+        <div class="card center">
+            <div class="card-content">
+                <span class="card-title">Scheduled Appointments</span>
+                <ul>
+                    <li th:each="appointment : ${appointments}">
+                        <div th:if="${appointment.start > current_time}" class="card-panel">
 
-        <!-- changes start here ///////////////////////////////////////////////////////// -->
-        <li th:each="appointment : ${appointments}">
-        <!-- changes end here ///////////////////////////////////////////////////////// -->
-        <div th:if="${appointment.start > current_time}" class="col s12 m6 l4">
-            <div class="card grey hoverable">
+                            <b>
+                            <span th:switch="${appointment.start.getDay()}">
+                                <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
+                                <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
+                                <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
+                                <span th:case="6">Saturday,</span>
+                            </span>
 
-                <div class="card-content white-text" style="padding-top: 16px;">
-                    <span class="card-title">
+                            <span th:switch="${appointment.start.getMonth()}">
+                                <span th:case="0">January</span><span th:case="1">February</span>
+                                <span th:case="2">March</span><span th:case="3">April</span>
+                                <span th:case="4">May</span><span th:case="5">June</span>
+                                <span th:case="6">July</span><span th:case="7">August</span>
+                                <span th:case="8">September</span><span th:case="9">October</span>
+                                <span th:case="10">November</span><span th:case="11">December</span>
+                            </span> <span th:text="${appointment.start.getDate()}"></span></b><br />
 
-                        <!-- changes start here ///////////////////////////////////////////////////////// -->
-                        <p>
-                            From:<br/>
-                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                            <span th:text="${appointment.getStart()}"></span>
-                        </a>
-                        </p>
-                        <!-- changes end here ///////////////////////////////////////////////////////// -->
+                            <span th:text="${appointment.start.getHours()}"></span>:
+                            <span th:if="${appointment.start.getMinutes() == 0}">00</span>
+                            <span th:unless="${appointment.start.getMinutes() == 0}">
+                                <span th:text="${appointment.start.getMinutes()}"></span>
+                            </span> -
+                            <span th:text="${appointment.end.getHours()}"></span>:
+                            <span th:if="${appointment.end.getMinutes() == 0}">00</span>
+                            <span th:unless="${appointment.end.getMinutes() == 0}">
+                                <span th:text="${appointment.end.getMinutes()}"></span>
+                            </span><br /><br />
 
+                            <!--<a th:if="${user.getUsername() == sessionUser.getUsername()}"-->
+                               <!--th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">-->
+                                <!--<i class="fas fa-trash-alt"></i> Cancel Time Slot-->
+                            <!--</a>-->
 
-                        <!-- changes start here ///////////////////////////////////////////////////////// -->
-                        <p>
-                            To:<br/>
-                        <a th:href="@{'/appointments/'+${appointment.getId()}}">
-                            <span th:text="${appointment.getEnd()}"></span>
-                        </a>
-                        </p>
-                        <!-- changes end here ///////////////////////////////////////////////////////// -->
-
-                    </span>
-                    <div class="card-action">
-                        <!--<a th:href="@{'/available-times/'+${time.getId()}+'/edit'}">-->
-                        <!--<i class="fas fa-edit"></i></a>-->
-                        <a th:href="@{'/appointments/'+${appointment.getId()}+'/delete/'}">
-                            <i class="fas fa-trash-alt"></i> DELETE</a>
-                    </div>
-                </div>
+                            <!--<p>-->
+                                <!--From:<br />-->
+                                <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                                    <!--<span th:text="${appointment.getStart()}"></span>-->
+                                <!--</a>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--To:<br/>-->
+                                <!--<a th:href="@{'/appointments/'+${appointment.getId()}}">-->
+                                    <!--<span th:text="${appointment.getEnd()}"></span>-->
+                                <!--</a>-->
+                            <!--</p>-->
+                            <a th:href="@{'/appointments/'+${appointment.getId()}+'/delete/'}">
+                                <i class="fas fa-trash-alt"></i> DELETE</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        </li>
-
-    </ul>
 </div>
 </div>
 
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>
