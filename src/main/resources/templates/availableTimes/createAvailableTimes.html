@@ -9,9 +9,11 @@
 <div class="row">
     <div class="col s12">
         <form th:action="@{'/available-times/create'}" th:method="post" th:object="${datetime}">
-        <div class="card">
+        <div class="card pink-card">
             <div class="card-content">
-                <span class="card-title">Please enter your available times.</span>
+                <div class="center">
+                    <span class="card-title">Please enter your available times.</span>
+                </div>
                 <div class="input-field">
                     <input type="text" class="datepicker" name="datepicker1" required="required"
                            id="datepicker1" />
@@ -34,7 +36,7 @@
                 </div>
             </div>
             <div class="card-action">
-                    <button type="submit" class="btn hoverable">Submit</button>
+                    <button type="submit" class="btn yellow-button hoverable">Submit</button>
             </div>
         </div>
         </form>
