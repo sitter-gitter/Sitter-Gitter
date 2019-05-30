@@ -32,7 +32,7 @@ public class Appointment {
     @JoinColumn(name = "available_time_id", unique = true)
     private AvailableTime availableTime;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "appointment")
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "appointment")
     private Review review;
 
     @ManyToOne
