@@ -262,5 +262,6 @@ footer i {
 
 .page-footer {
     margin-top: 2em !important;
+    padding-top: 0.4em !important;
     background-color: var(--sg-ltblue) !important;
 }
