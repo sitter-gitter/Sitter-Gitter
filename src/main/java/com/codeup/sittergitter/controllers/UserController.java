@@ -41,11 +41,11 @@ public class UserController {
 //    }
 
     // CREATE PROFILE GET
-    @GetMapping("/register")
-    public String showSignupForm(Model model) {
-        model.addAttribute("user", new User());
-        return "users/select-acct-type";
-    }
+//    @GetMapping("/register")
+//    public String showSignupForm(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/select-acct-type";
+//    }
 
     @GetMapping("/register/parent")
     public String showParentForm(Model model){
