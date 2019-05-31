@@ -99,8 +99,14 @@
                             <span th:text="${child.specialNote}"></span><br /><br />
                         </p>
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}" >
-                            <a th:href="@{'/child/'+${child.id}+'/delete'}">
-                                <i class="fas fa-trash-alt"></i> Remove child
+                            <!--<a th:href="@{'/child/'+${child.id}+'/delete'}">-->
+                                <!--<i class="fas fa-trash-alt"></i> Remove child-->
+                            <!--</a>-->
+                            <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}"
+                               class="waves-effect waves-light btn blue-button center valign-wrapper" style="color:
+                               var(--sg-yellow)!important;">
+                                <i class="material-icons left fas fa-trash-alt"
+                                   style="color: var(--sg-yellow)!important;"></i>Remove Child
                             </a>
                         </span>
                     </li>
@@ -164,10 +170,14 @@
 
                         <span th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <br /><br />
-                            <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
-                                <i class="fas fa-trash-alt"></i> Cancel Appointment
+                            <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}"
+                               class="waves-effect waves-light btn blue-button center valign-wrapper" style="color:
+                                   var(--sg-yellow)!important;">
+                                <i class="material-icons left fas fa-trash-alt"
+                                   style="color: var(--sg-yellow)!important;"></i>Cancel Appointment
                             </a>
                         </span>
+
                     </li>
                 </ul>
             </div>
@@ -227,11 +237,14 @@
                     <span th:if="${user.getUsername() == sessionUser.getUsername()}">
                         <br /><br />
                         <!--<a th:href="@{'/profile/'+${user.getUsername()}+'/delete/appointment/'+${appt.getId()}}">-->
-                        <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}">
-                            <i class="fas fa-trash-alt"></i> Cancel Appointment
-                        </a>
+                    <a th:href="@{'/appointments/'+${appt.getId()}+'/delete'}"
+                       class="waves-effect waves-light btn blue-button center valign-wrapper" style="color: var(--sg-yellow)!important;">
+                        <i class="material-icons left fas fa-trash-alt"
+                           style="color: var(--sg-yellow)!important;"></i>Cancel Appointment
+                    </a>
                     </span>
                  </li>
+
                 </ul>
             </div>
         </div>
@@ -358,8 +371,9 @@
 
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
-                           th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
-                            <i class="fas fa-trash-alt"></i> Cancel Time Slot
+                           class="waves-effect waves-light btn blue-button center valign-wrapper" style="color: var(--sg-yellow)!important;">
+                            <i class="material-icons left fas fa-trash-alt"
+                               style="color: var(--sg-yellow)!important;"></i>Cancel Opening
                         </a>
                     </li>
                 </ul>
@@ -482,14 +496,22 @@
                     <!--</li><br />-->
 
                     <li th:if="${user.getUsername() == sessionUser.getUsername()}">
-                        <a th:href="@{'/reviews/' + ${review.id} + '/edit'}">
-                            <i class="fas fa-pen"></i> Edit Review
+                        <a th:href="@{'/reviews/' + ${review.id} + '/edit'}"
+                           class="waves-effect waves-light btn blue-button center valign-wrapper" style="color:
+                               var(--sg-yellow)!important;">
+                            <i class="material-icons left fas fa-pen"
+                               style="color: var(--sg-yellow)!important;"></i>Edit Review
                         </a>
-                        <a th:href="@{'/reviews/' + ${review.id} + '/delete'}">
-                            <i class="fas fa-trash-alt" style="margin-left: 1em;"></i> Delete Review
+                        <a th:href="@{'/reviews/' + ${review.id} + '/delete'}"
+                           class="waves-effect waves-light btn blue-button center valign-wrapper" style="color:
+                               var(--sg-yellow)!important;">
+                            <i class="material-icons left fas fa-trash-alt"
+                               style="color: var(--sg-yellow)!important;"></i>Delete Review
                         </a>
                     </li>
                 </ul>
+
+
             </div>
         </div>
     </div> <!-- end reviews made -->

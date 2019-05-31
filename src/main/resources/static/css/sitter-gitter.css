@@ -241,8 +241,8 @@ footer i {
 }
 
 .profile-pic-erik {
-    max-width: 19rem;
-    min-height: 19rem;
+    width:  15em;
+    height: 18em;
     margin: 0 auto;
     background-image: url("../image/ErikBehnke.jpg");
     background-size: cover;
@@ -250,8 +250,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-dwight {
-    max-width: 19rem;
-    min-height: 19rem;
+    width:  15em;
+    height: 18em;
     margin: 0 auto;
     background-image: url("../image/DwightBemisderfer.jpg");
     background-size: cover;
@@ -259,8 +259,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-mindy {
-    max-width: 19rem;
-    min-height: 19rem;
+    width:  15em;
+    height: 18em;
     margin: 0 auto;
     background-image: url("../image/MindyTillman.jpg");
     background-size: cover;
@@ -307,3 +307,17 @@ footer i {
 .datepicker-date-display {
     background-color: var(--sg-drkblue) !important;
 }
+
+/*.codeup-icon {*/
+    /*height: 1.37em;*/
+    /*width: 1.37em;*/
+    /*background-image: url("../image/codeup-arrow.png");*/
+    /*background-size: cover !important;*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center !important;*/
+    /*display: inline !important;*/
+    /*align-self: center !important;*/
+    /*vertical-align: center !important;*/
+    /*margin: 0!important;*/
+    /*padding: 0!important;*/
+/*}*/
