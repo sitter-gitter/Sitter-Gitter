@@ -63,8 +63,8 @@ a {
 }
 
 .splash-image {
-    width:  300px;
-    height: 300px;
+    width:  30rem;
+    height: 30rem;
     margin: 0 auto;
     background-image: url("../image/babysitter2.jpg");
     background-size: cover;
@@ -100,7 +100,9 @@ a {
     /*padding: 0 !important;*/
 /*}*/
 
-
+.card-panel {
+    border-radius: 1em !important;
+}
 
 .card {
     min-width: 100% !important;

@@ -6,38 +6,64 @@
 
 <main>
 <div class="container">
-    <div class="row">
-        <div class="col s12">
-            <div class="card ltblue-card">
-                <div class="card-content">
-                    <span class="card-title">Choose A Past Appointment To Review:</span>
-                    <div th:if="${(user.getisBabysitter() == false) and user.getUsername() == sessionUser.getUsername()}" class="">
+<div class="row">
+<div class="col s12">
+<div class="card ltblue-card row">
 
-                        <ul th:each="appointment : ${pastAppts}" th:if="${current_time > appointment.end and appointment.reviewed == false}" class="card-panel">
-                            <li>
-                                Sitter:
-                                <span th:text="${appointment.getBabysitter().firstName} + ' ' + ${appointment.getBabysitter()
-                    .lastName}"></span>
-                            </li>
-                            <li>
-                                From: <span th:text="${appointment.getStart()}"></span>
-                            </li>
+    <div class="card-content">
 
-                            <li>
-                                To: <span th:text="${appointment.getEnd()}"></span>
-                            </li>
+        <span class="card-title center">
+            Choose A Past Appointment To Review:
+        </span>
 
-                            <li>
-                                <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}">
-                                    <i class="fas fa-user-edit"></i> WRITE A REVIEW!</a>
-                            </li>
+        <div th:if="${(user.getisBabysitter() == false) and user.getUsername() == sessionUser.getUsername()}">
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <ul th:each="appointment : ${pastAppts}"
+                th:if="${current_time > appointment.end and appointment.reviewed == false}" class="card-panel">
+
+                <li>
+                    <a th:href="@{'/profile/' + ${appointment.getBabysitter().getUsername()}}"
+                       style="color: var(--sg-drkblue)!important;">
+                        <b><span th:text="${appointment.getBabysitter().firstName} + ' ' + ${appointment.getBabysitter().lastName}"></span></b>
+                    </a>
+                </li>
+                <li>
+                    <span th:switch="${appointment.start.getMonth()}">
+                        <span th:case="0">January</span><span th:case="1">February</span>
+                        <span th:case="2">March</span><span th:case="3">April</span>
+                        <span th:case="4">May</span><span th:case="5">June</span>
+                        <span th:case="6">July</span><span th:case="7">August</span>
+                        <span th:case="8">September</span><span th:case="9">October</span>
+                        <span th:case="10">November</span><span th:case="11">December</span>
+                    </span>
+
+                    <span th:text="${appointment.start.getDate()}"></span>
+                    at
+                    <span th:text="${appointment.start.getHours()}"></span>:
+                    <span th:if="${appointment.start.getMinutes() == 0}">00</span>
+                    <span th:unless="${appointment.start.getMinutes() == 0}">
+                        <span th:text="${appointment.start.getMinutes()}"></span></span> -
+                    <span th:text="${appointment.end.getHours()}"></span>:
+                    <span th:if="${appointment.end.getMinutes() == 0}">00</span>
+                    <span th:unless="${appointment.end.getMinutes() == 0}">
+                        <span th:text="${appointment.end.getMinutes()}"></span></span>
+
+                </li>
+                <li style="padding-top: .25em;">
+                    <!--<a -->
+                        <!--<i class="fas fa-user-edit"></i> Write a review!</a>-->
+                    <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}"
+                       class="waves-effect waves-light btn yellow-button center valign-wrapper" style="color: var(--sg-drkblue)
+                       !important;">
+                    <i class="material-icons left far fa-comment-dots" style="color: var(--sg-drkblue)!important;"></i>Write a review!</a>
+                </li>
+
+            </ul>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 </main>
 
