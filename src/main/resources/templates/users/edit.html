@@ -4,7 +4,7 @@
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
 
-
+<main>
 <div th:if="${user.getUsername() == sessionUser.getUsername()}" class="container">
 
     <div class="card ltblue-card center-align">
@@ -67,7 +67,7 @@
         </form>
     </div>
 </div>
-
+</main>
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
 </body>

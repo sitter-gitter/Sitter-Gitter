@@ -35,6 +35,10 @@ nav a {
     color: var(--sg-drkblue) !important;
 }
 
+#nav-login-button {
+    margin: 0 !important;
+}
+
 body {
     background-image: url("../image/background.png");
     background-size: 350px 350px;
@@ -92,9 +96,13 @@ a {
     margin: 0 !important;
 }
 
+.col {
+    padding: 0 !important;
+}
+
 .card {
     min-width: 100% !important;
-    margin: 1em !important;
+    /*margin: 1em !important;*/
     border-radius: 1em !important;
     font-size: 1.2em !important;
 }
@@ -220,9 +228,13 @@ footer i {
     margin-right: 1em;
 }
 
+.contact-card>.card-content {
+    padding: 0 !important;
+}
+
 .profile-pic-erik {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/ErikBehnke.jpg");
     background-size: cover;
@@ -230,8 +242,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-dwight {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/DwightBemisderfer.jpg");
     background-size: cover;
@@ -239,8 +251,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-mindy {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/MindyTillman.jpg");
     background-size: cover;
@@ -274,4 +286,12 @@ footer i {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.margin-lt {
+     margin-left: 0.3em;
+}
+
+.margin-rt {
+    margin-right: 0.3em;
 }
