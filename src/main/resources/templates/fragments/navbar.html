@@ -28,48 +28,61 @@
             <i class="fas fa-plus"></i>Create Reviews
         </a>
     </li>
-    <li class="divider" tabindex="-1"></li>
-
-
-    <li sec:authorize="isAnonymous()">
-        <a href="/login">Login</a>
-    </li>
-    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAnonymous()">
-        <a href="/register/parent">Register as a parent</a>
-    </li>
-    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAnonymous()">
-        <a href="/register/babysitter">Register as a babysitter</a>
-    </li>
-    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAuthenticated()">
-        <a href="/available-times">Available Hours</a>
-    </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
-    <li sec:authorize="isAuthenticated()">
-        <a href="/appointments">Appointments</a>
+
+    <li sec:authorize="isAnonymous()">
+        <a href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
     </li>
-    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+    <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
+
+    <!--<li sec:authorize="isAnonymous()">-->
+        <!--<a href="/register/parent">Register as a parent</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAnonymous()">-->
+        <!--<a href="/register/babysitter">Register as a babysitter</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/available-times">Available Hours</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/appointments">Appointments</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
 
     <li sec:authorize="isAuthenticated()">
-        <a href="/appointments/create">Create Appointment</a>
+        <a href="/appointments/create">
+            <i class="far fa-clock"></i>Create Appointment
+        </a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li>
-        <a href="/contact">Contact</a>
+        <a href="/contact">
+            <i class="fas fa-address-card"></i>Contact
+        </a>
     </li>
     <li class="divider" tabindex="-1"></li>
 
-    <li sec:authorize="isAuthenticated()" style="display: inline;">
-        <form th:action="@{/logout}" th:method="post" style="display: inline-block;">
-            <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' + ${#authentication.principal.username} + ' '" style="display: inline-block;"> </span>
-            <button class="btn waves-effect waves-light btn-small hoverable center" style="display: inline;">
+    <li sec:authorize="isAuthenticated()">
+        <a href="/my-acct" style="display: inline;">
+            <i class="fas fa-user" style="margin-left: 1.3em; margin-right: 0;"></i>Logged in as
+            <span sec:authorize="isAuthenticated()" th:text="${#authentication.principal.username}" style="display: inline-block; color: var(--sg-drkblue) !important;"></span>
+        </a>
+    </li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+
+
+    <li sec:authorize="isAuthenticated()" style="display: inline;" class="center center-align">
+        <form th:action="@{/logout}" th:method="post" style="display: inline-block;" class="center center-align">
+            <button class="btn waves-effect waves-light btn-small hoverable center center-align blue-button"
+                    style="margin-left: 2em;">
                 Logout
             </button>
         </form>
@@ -106,24 +119,27 @@
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
-    <li sec:authorize="isAuthenticated()">
-        <a href="/available-times">Available Times</a>
-    </li>
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/available-times">Available Times</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/appointments">Appointments</a>-->
+    <!--</li>-->
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
-    <li class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-        <a href="/appointments">Appointments</a>
-    </li>
-    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAuthenticated()">
-        <a href="/appointments/create">Create Appointment</a>
+        <a href="/appointments/create">
+            <i class="far fa-clock"></i>Create Appointment
+        </a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li>
-        <a href="/contact">Contact</a>
+        <a href="/contact"><i class="fas fa-address-card"></i>Contact</a>
     </li>
     <li class="divider" tabindex="-1"></li>
 
@@ -171,7 +187,9 @@
                         <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
                         ${#authentication.principal.username}" style="display: inline-block;"></span>
                     </a>
-                    <button class="btn-small waves-effect waves-light hoverable blue-button" style="display: inline;">Logout</button>
+                    <button class="btn btn-small waves-effect waves-light hoverable yellow-button" style="display:
+                    inline;">Logout
+                    </button>
                 </form>
             </li>
         </ul>

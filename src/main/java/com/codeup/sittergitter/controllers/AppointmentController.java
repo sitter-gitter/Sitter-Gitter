@@ -66,6 +66,9 @@ public class AppointmentController {
                 @RequestParam String timepicker2,
                 @ModelAttribute Appointment newApptTime) {
 
+            timepicker1 = timeConverter(timepicker1);
+            timepicker2 = timeConverter(timepicker2);
+
             String startTime = datepicker1 + " " + timepicker1 + ":00.000";
             apptStartTime = Timestamp.valueOf(startTime);
             String endTime = datepicker2 + " " + timepicker2 + ":00.000";
@@ -76,6 +79,21 @@ public class AppointmentController {
             availApptTimes = checkTimeAvailability(apptStartTime, apptEndTime);
             return "redirect:/appointments/available-babysitters";
         }
+
+    public String timeConverter(String time) {
+        System.out.println(time.charAt(6));
+        if (time.charAt(6) == 'A') {
+            return time.substring(0,5);
+        } else if (time.charAt(6) == 'P') {
+            int pmHour = Integer.parseInt(time.substring(0,2));
+            if (pmHour < 12) {
+                pmHour += 12;
+            }
+            String newTime = Integer.toString(pmHour);
+            return newTime.concat(time.substring(2,5));
+        }
+        return "0";
+    }
 
         // CREATE ERROR GET asdf
         @GetMapping("/appointments/create?error")

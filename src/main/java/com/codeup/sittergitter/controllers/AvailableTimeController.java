@@ -42,6 +42,12 @@ public class AvailableTimeController {
             @RequestParam String timepicker2,
             @ModelAttribute AvailableTime newAvailTime) {
 
+        timepicker1 = timeConverter(timepicker1);
+        timepicker2 = timeConverter(timepicker2);
+
+        System.out.println(timepicker1);
+        System.out.println(timepicker2);
+
         String startTime = datepicker1 + " " + timepicker1 + ":00.000";
         Timestamp startTimeStamp = Timestamp.valueOf(startTime);
         String endTime = datepicker2 + " " + timepicker2 + ":00.000";
@@ -57,6 +63,21 @@ public class AvailableTimeController {
         newAvailTime.setIsTaken(false);
         availableTimesRepo.save(newAvailTime);
         return "redirect:/my-acct";
+    }
+
+    public String timeConverter(String time) {
+        System.out.println(time.charAt(6));
+        if (time.charAt(6) == 'A') {
+            return time.substring(0,5);
+        } else if (time.charAt(6) == 'P') {
+            int pmHour = Integer.parseInt(time.substring(0,2));
+            if (pmHour < 12) {
+                pmHour += 12;
+            }
+            String newTime = Integer.toString(pmHour);
+           return newTime.concat(time.substring(2,5));
+        }
+        return "0";
     }
 
     // READ AVAILABLE TIMES GET
