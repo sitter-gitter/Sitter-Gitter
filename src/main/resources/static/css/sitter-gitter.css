@@ -295,3 +295,7 @@ footer i {
 .margin-rt {
     margin-right: 0.3em;
 }
+
+.datepicker-date-display {
+    background-color: var(--sg-drkblue) !important;
+}
