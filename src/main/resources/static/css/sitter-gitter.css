@@ -228,9 +228,13 @@ footer i {
     margin-right: 1em;
 }
 
+.contact-card>.card-content {
+    padding: 0 !important;
+}
+
 .profile-pic-erik {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/ErikBehnke.jpg");
     background-size: cover;
@@ -238,8 +242,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-dwight {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/DwightBemisderfer.jpg");
     background-size: cover;
@@ -247,8 +251,8 @@ footer i {
     background-position: center;
 }
 .profile-pic-mindy {
-    max-width: 20em;
-    min-height: 20em;
+    max-width: 175px;
+    min-height: 175px;
     margin: 0 auto;
     background-image: url("../image/MindyTillman.jpg");
     background-size: cover;
@@ -282,4 +286,12 @@ footer i {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.margin-lt {
+     margin-left: 0.3em;
+}
+
+.margin-rt {
+    margin-right: 0.3em;
 }
