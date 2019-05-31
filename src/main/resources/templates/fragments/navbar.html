@@ -28,7 +28,7 @@
             <i class="fas fa-plus"></i>Create Reviews
         </a>
     </li>
-    <li class="divider" tabindex="-1"></li>
+    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
 
     <li sec:authorize="isAnonymous()">
@@ -187,7 +187,9 @@
                         <span sec:authorize="isAuthenticated()" th:text="'Logged in as ' +
                         ${#authentication.principal.username}" style="display: inline-block;"></span>
                     </a>
-                    <button class="btn-small waves-effect waves-light hoverable blue-button" style="display: inline;">Logout</button>
+                    <button class="btn btn-small waves-effect waves-light hoverable yellow-button" style="display:
+                    inline;">Logout
+                    </button>
                 </form>
             </li>
         </ul>
