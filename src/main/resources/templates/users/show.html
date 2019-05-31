@@ -102,7 +102,7 @@
                             <!--<a th:href="@{'/child/'+${child.id}+'/delete'}">-->
                                 <!--<i class="fas fa-trash-alt"></i> Remove child-->
                             <!--</a>-->
-                            <a th:href="@{'/reviews/'+${appointment.getId()}+'/create/'}"
+                            <a th:href="@{'/child/'+${child.id}+'/delete'}"
                                class="waves-effect waves-light btn blue-button center valign-wrapper" style="color:
                                var(--sg-yellow)!important;">
                                 <i class="material-icons left fas fa-trash-alt"
@@ -370,7 +370,8 @@
 
 
 
-                        <a th:if="${user.getUsername() == sessionUser.getUsername()}"
+                        <a th:href="@{'/available-times/'+${time.getId()}+'/delete/'}"
+                                th:if="${user.getUsername() == sessionUser.getUsername()}"
                            class="waves-effect waves-light btn blue-button center valign-wrapper" style="color: var(--sg-yellow)!important;">
                             <i class="material-icons left fas fa-trash-alt"
                                style="color: var(--sg-yellow)!important;"></i>Cancel Opening
@@ -521,7 +522,7 @@
         <div class="card yellow-card">
             <div class="card-content ">
 
-                <span class="card-title">Reviews on
+                <span class="card-title center">Reviews on
                     <span th:text="${user.getUsername()}"></span>
                 </span>
 
