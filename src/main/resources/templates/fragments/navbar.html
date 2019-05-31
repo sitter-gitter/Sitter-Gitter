@@ -46,23 +46,25 @@
     </li>
     <li sec:authorize="isAnonymous()" class="divider" tabindex="-1"></li>
 
-    <li sec:authorize="isAuthenticated()">
-        <a href="/available-times">Available Hours</a>
-    </li>
-    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/available-times">Available Hours</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/appointments">Appointments</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
 
     <li sec:authorize="isAuthenticated()">
-        <a href="/appointments">Appointments</a>
-    </li>
-    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAuthenticated()">
-        <a href="/appointments/create">Create Appointment</a>
+        <a href="/appointments/create">
+            <i class="far fa-clock"></i>Create Appointment
+        </a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li>
-        <a href="/contact">Contact</a>
+        <a href="/contact"><i class="fas fa-address-card"></i>Contact</a>
     </li>
     <li class="divider" tabindex="-1"></li>
 
@@ -106,24 +108,27 @@
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
-    <li sec:authorize="isAuthenticated()">
-        <a href="/available-times">Available Times</a>
-    </li>
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/available-times">Available Times</a>-->
+    <!--</li>-->
+    <!--<li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>-->
+
+    <!--<li class="divider" tabindex="-1"></li>-->
+
+    <!--<li sec:authorize="isAuthenticated()">-->
+        <!--<a href="/appointments">Appointments</a>-->
+    <!--</li>-->
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
-    <li class="divider" tabindex="-1"></li>
 
     <li sec:authorize="isAuthenticated()">
-        <a href="/appointments">Appointments</a>
-    </li>
-    <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
-
-    <li sec:authorize="isAuthenticated()">
-        <a href="/appointments/create">Create Appointment</a>
+        <a href="/appointments/create">
+            <i class="far fa-clock"></i>Create Appointment
+        </a>
     </li>
     <li sec:authorize="isAuthenticated()" class="divider" tabindex="-1"></li>
 
     <li>
-        <a href="/contact">Contact</a>
+        <a href="/contact"><i class="fas fa-address-card"></i>Contact</a>
     </li>
     <li class="divider" tabindex="-1"></li>
 

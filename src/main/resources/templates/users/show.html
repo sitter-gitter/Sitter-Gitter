@@ -333,7 +333,7 @@
                         <span th:text="${time.end.getHours()}"></span>:
                         <span th:if="${time.end.getMinutes() == 0}">00</span>
                         <span th:unless="${time.end.getMinutes() == 0}">
-                            <span th:text="${time.end.getMinutes()}"></span></span><br /><br />
+                            <span th:text="${time.end.getMinutes()}"></span></span><br />
 
                         <a th:if="${user.getUsername() == sessionUser.getUsername()}"
                            th:href="@{'/available-times/'+${time.getId()}+'/delete/'}">
@@ -415,8 +415,8 @@
 
     <!-- Reviews on babysitters List -->
     <div th:if="${(user.getisBabysitter() == true)}" class="col s12">
-        <div class="card">
-            <div class="card-content yellow-card">
+        <div class="card yellow-card">
+            <div class="card-content ">
 
                 <span class="card-title">Reviews on
                     <span th:text="${user.getUsername()}"></span>

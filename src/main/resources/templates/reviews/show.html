@@ -6,33 +6,65 @@
 
 <main>
 <div class="container">
-    <div class="row">
-        <div class="col s12">
-            <div class="card yellow-card">
-                <div class="card-content">
-                    <span class="card-title">Babysitter Spotlight:</span>
-                    <ul th:each="review : ${reviews}" class="card-panel">
-                        <li>
-                            Sitter:
-                                <span th:text="${review.getBabysitter().firstName} + ' ' + ${review.getBabysitter().lastName}"></span>
+<div class="row">
+<div class="col s12">
+<div class="card yellow-card">
 
-                        </li>
-                        <li>
-                            Title:
-                            <span th:text="${review.title}"></span>
-                        </li>
-                        <li>
-                            Body:
-                            <span th:text="${review.body}"></span>
-                        </li>
-                        <li th:if="${review.getIsRecommended() == true}">
-                            <span class="badge">HIGHLY RECOMMENDED</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="card-content">
+
+        <span class="card-title center">Babysitter Spotlight:</span>
+
+        <div>
+
+        <!--<ul th:each="review : ${reviews}" class="card-panel">-->
+            <!--<li>-->
+                    <!--<span th:text="${review.getBabysitter().firstName} + ' ' + ${review.getBabysitter().lastName}"></span>-->
+
+            <!--</li>-->
+            <!--<li>-->
+                <!--Title:-->
+                <!--<span th:text="${review.title}"></span>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--Body:-->
+                <!--<span th:text="${review.body}"></span>-->
+        <!--</li>-->
+        <ul th:each="review : ${reviews}" th:if="${review.getIsRecommended() == true}" class="card-panel">
+            <li>
+                <a th:href="@{'/profile/'+ ${review.getParent().username}}"><b>
+                <span
+                        th:text="${review.getBabysitter().firstName} + ' ' + ${review.getBabysitter().lastName}"
+                        style="color: var(--sg-drkblue)!important;">
+                </span></b>
+                </a>
+            </li>
+            <li th:if="${review.getIsRecommended() == true}">
+                <span class="badge">HIGHLY RECOMMENDED</span>
+            </li>
+            <li>
+                <span th:text="${review.title}"></span>
+            </li>
+            <li>
+                <blockquote>
+                    <span th:text="${review.body}"></span>
+                </blockquote>
+            </li>
+            <li>
+                Recommended by:
+                <a th:href="@{'/profile/'+ ${review.getParent().username}}" >
+                    <span th:text="${review.getParent().getUsername()}"></span>
+                </a>
+            </li>
+
+        </ul>
+
         </div>
+
     </div>
+
+</div>
+</div>
+</div>
 </div>
 
 </main>
