@@ -52,14 +52,14 @@ public class SpecificationController {
 
   @PostMapping("/profile/{username}/edit/specifications")
   public String editUser(@PathVariable String username,
-                         @RequestParam String birthdate,
+//                         @RequestParam String birthdate,
                          @RequestParam Integer yearsOfExperience,
                          @RequestParam(defaultValue = "false") Boolean hasCprTraining,
                          @RequestParam(defaultValue = "false") Boolean hasTransportation,
                          @RequestParam(defaultValue = "false") Boolean smoker) {
 
     User user = usersRepo.findByUsername(username);
-    user.getSpecifications().setBirthdate(birthdate);
+//    user.getSpecifications().setBirthdate(birthdate);
     user.getSpecifications().setYearsOfExperience(yearsOfExperience);
     user.getSpecifications().setHasCprTraining(hasCprTraining);
     user.getSpecifications().setHasTransportation(hasTransportation);
