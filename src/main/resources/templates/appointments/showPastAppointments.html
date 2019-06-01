@@ -28,6 +28,13 @@
                     </a>
                 </li>
                 <li>
+                    <span th:switch="${appointment.start.getDay()}">
+                        <span th:case="0">Sunday,</span><span th:case="1">Monday,</span>
+                        <span th:case="2">Tuesday,</span><span th:case="3">Wednesday,</span>
+                        <span th:case="4">Thursday,</span><span th:case="5">Friday,</span>
+                        <span th:case="6">Saturday,</span>
+                    </span>
+
                     <span th:switch="${appointment.start.getMonth()}">
                         <span th:case="0">January</span><span th:case="1">February</span>
                         <span th:case="2">March</span><span th:case="3">April</span>
@@ -39,14 +46,138 @@
 
                     <span th:text="${appointment.start.getDate()}"></span>
                     at
-                    <span th:text="${appointment.start.getHours()}"></span>:
-                    <span th:if="${appointment.start.getMinutes() == 0}">00</span>
-                    <span th:unless="${appointment.start.getMinutes() == 0}">
-                        <span th:text="${appointment.start.getMinutes()}"></span></span> -
-                    <span th:text="${appointment.end.getHours()}"></span>:
-                    <span th:if="${appointment.end.getMinutes() == 0}">00</span>
-                    <span th:unless="${appointment.end.getMinutes() == 0}">
-                        <span th:text="${appointment.end.getMinutes()}"></span></span>
+
+                    <!-- START 12 HOUR TIME-->
+
+                    <!-- START TIME -->
+                    <span th:switch="${appointment.start.getHours()}">
+                        <span th:case="0">12:</span><span th:case="1">1:</span>
+                        <span th:case="2">2:</span><span th:case="3">3:</span>
+                        <span th:case="4">4:</span><span th:case="5">5:</span>
+                        <span th:case="6">6:</span><span th:case="7">7:</span>
+                        <span th:case="8">8:</span><span th:case="9">9:</span>
+                        <span th:case="10">10:</span><span th:case="11">11:</span>
+                    </span>
+
+                    <span th:switch="${appointment.start.getHours()}">
+                        <span th:case="12">12:</span><span th:case="13">1:</span>
+                        <span th:case="14">2:</span><span th:case="15">3:</span>
+                        <span th:case="16">4:</span><span th:case="17">5:</span>
+                        <span th:case="18">6:</span><span th:case="19">7:</span>
+                        <span th:case="20">8:</span><span th:case="21">9:</span>
+                        <span th:case="22">10:</span><span th:case="23">11:</span>
+                    </span>
+
+                    <span th:if="${12 > appointment.start.getHours()}">
+                        <span th:switch="${appointment.start.getMinutes()}">
+                            <span th:case="0">00</span><span th:case="1">01</span><span th:case="1">01</span><span th:case="2">02</span><span th:case="3">03</span>
+                            <span th:case="4">04</span><span th:case="5">05</span><span th:case="6">06</span><span th:case="7">07</span><span th:case="8">08</span>
+                            <span th:case="9">09</span><span th:case="10">10</span><span th:case="11">11</span><span th:case="12"></span><span th:case="13"></span>
+                            <span th:case="14">14</span><span th:case="15">15</span><span th:case="16">16</span><span th:case="17">17</span><span th:case="18">18</span>
+                            <span th:case="19">19</span><span th:case="20">20</span><span th:case="21">21</span><span th:case="22">22</span><span th:case="23">23</span>
+                            <span th:case="24">24</span><span th:case="25">25</span><span th:case="26">26</span><span th:case="27">27</span><span th:case="28">28</span>
+                            <span th:case="29">29</span><span th:case="30">30</span><span th:case="31">31</span><span th:case="32">32</span><span th:case="33">33</span>
+                            <span th:case="34">34</span><span th:case="35">35</span><span th:case="36">36</span><span th:case="37">37</span><span th:case="38">38</span>
+                            <span th:case="39">39</span><span th:case="40">40</span><span th:case="41">41</span><span th:case="42">42</span><span th:case="43">43</span>
+                            <span th:case="44">44</span><span th:case="45">45</span><span th:case="46">46</span><span th:case="47">47</span><span th:case="48">48</span>
+                            <span th:case="49">49</span><span th:case="50">50</span><span th:case="51">51</span><span th:case="52">52</span><span th:case="53">53</span>
+                            <span th:case="54">54</span><span th:case="55">55</span><span th:case="56">56</span><span th:case="57">57</span><span th:case="58">58</span>
+                            <span th:case="59">59</span>
+
+                        </span> AM
+                    </span>
+
+                    <span th:if="${appointment.start.getHours() > 11}">
+                    <span th:switch="${appointment.start.getMinutes()}">
+                        <span th:case="0">00</span><span th:case="1">01</span><span th:case="1">01</span><span th:case="2">02</span><span th:case="3">03</span>
+                        <span th:case="4">04</span><span th:case="5">05</span><span th:case="6">06</span><span th:case="7">07</span><span th:case="8">08</span>
+                        <span th:case="9">09</span><span th:case="10">10</span><span th:case="11">11</span><span th:case="12"></span><span th:case="13"></span>
+                        <span th:case="14">14</span><span th:case="15">15</span><span th:case="16">16</span><span th:case="17">17</span><span th:case="18">18</span>
+                        <span th:case="19">19</span><span th:case="20">20</span><span th:case="21">21</span><span th:case="22">22</span><span th:case="23">23</span>
+                        <span th:case="24">24</span><span th:case="25">25</span><span th:case="26">26</span><span th:case="27">27</span><span th:case="28">28</span>
+                        <span th:case="29">29</span><span th:case="30">30</span><span th:case="31">31</span><span th:case="32">32</span><span th:case="33">33</span>
+                        <span th:case="34">34</span><span th:case="35">35</span><span th:case="36">36</span><span th:case="37">37</span><span th:case="38">38</span>
+                        <span th:case="39">39</span><span th:case="40">40</span><span th:case="41">41</span><span th:case="42">42</span><span th:case="43">43</span>
+                        <span th:case="44">44</span><span th:case="45">45</span><span th:case="46">46</span><span th:case="47">47</span><span th:case="48">48</span>
+                        <span th:case="49">49</span><span th:case="50">50</span><span th:case="51">51</span><span th:case="52">52</span><span th:case="53">53</span>
+                        <span th:case="54">54</span><span th:case="55">55</span><span th:case="56">56</span><span th:case="57">57</span><span th:case="58">58</span>
+                        <span th:case="59">59</span>
+
+                    </span> PM
+                    </span> -
+
+                    <!-- END TIME -->
+                    <span th:switch="${appointment.end.getHours()}">
+                        <span th:case="0">12:</span><span th:case="1">1:</span>
+                        <span th:case="2">2:</span><span th:case="3">3:</span>
+                        <span th:case="4">4:</span><span th:case="5">5:</span>
+                        <span th:case="6">6:</span><span th:case="7">7:</span>
+                        <span th:case="8">8:</span><span th:case="9">9:</span>
+                        <span th:case="10">10:</span><span th:case="11">11:</span>
+                    </span>
+
+                    <span th:switch="${appointment.end.getHours()}">
+                        <span th:case="12">12:</span><span th:case="13">1:</span>
+                        <span th:case="14">2:</span><span th:case="15">3:</span>
+                        <span th:case="16">4:</span><span th:case="17">5:</span>
+                        <span th:case="18">6:</span><span th:case="19">7:</span>
+                        <span th:case="20">8:</span><span th:case="21">9:</span>
+                        <span th:case="22">10:</span><span th:case="23">11:</span>
+                    </span>
+
+                    <span th:if="${12 > appointment.end.getHours()}">
+                    <span th:switch="${appointment.end.getMinutes()}">
+                        <span th:case="0">00</span><span th:case="1">01</span><span th:case="1">01</span><span th:case="2">02</span><span th:case="3">03</span>
+                        <span th:case="4">04</span><span th:case="5">05</span><span th:case="6">06</span><span th:case="7">07</span><span th:case="8">08</span>
+                        <span th:case="9">09</span><span th:case="10">10</span><span th:case="11">11</span><span th:case="12"></span><span th:case="13"></span>
+                        <span th:case="14">14</span><span th:case="15">15</span><span th:case="16">16</span><span th:case="17">17</span><span th:case="18">18</span>
+                        <span th:case="19">19</span><span th:case="20">20</span><span th:case="21">21</span><span th:case="22">22</span><span th:case="23">23</span>
+                        <span th:case="24">24</span><span th:case="25">25</span><span th:case="26">26</span><span th:case="27">27</span><span th:case="28">28</span>
+                        <span th:case="29">29</span><span th:case="30">30</span><span th:case="31">31</span><span th:case="32">32</span><span th:case="33">33</span>
+                        <span th:case="34">34</span><span th:case="35">35</span><span th:case="36">36</span><span th:case="37">37</span><span th:case="38">38</span>
+                        <span th:case="39">39</span><span th:case="40">40</span><span th:case="41">41</span><span th:case="42">42</span><span th:case="43">43</span>
+                        <span th:case="44">44</span><span th:case="45">45</span><span th:case="46">46</span><span th:case="47">47</span><span th:case="48">48</span>
+                        <span th:case="49">49</span><span th:case="50">50</span><span th:case="51">51</span><span th:case="52">52</span><span th:case="53">53</span>
+                        <span th:case="54">54</span><span th:case="55">55</span><span th:case="56">56</span><span th:case="57">57</span><span th:case="58">58</span>
+                        <span th:case="59">59</span>
+
+                    </span> AM
+                    </span>
+
+                    <span th:if="${appointment.end.getHours() > 11}">
+                    <span th:switch="${appointment.end.getMinutes()}">
+                        <span th:case="0">00</span><span th:case="1">01</span><span th:case="1">01</span><span th:case="2">02</span><span th:case="3">03</span>
+                        <span th:case="4">04</span><span th:case="5">05</span><span th:case="6">06</span><span th:case="7">07</span><span th:case="8">08</span>
+                        <span th:case="9">09</span><span th:case="10">10</span><span th:case="11">11</span><span th:case="12"></span><span th:case="13"></span>
+                        <span th:case="14">14</span><span th:case="15">15</span><span th:case="16">16</span><span th:case="17">17</span><span th:case="18">18</span>
+                        <span th:case="19">19</span><span th:case="20">20</span><span th:case="21">21</span><span th:case="22">22</span><span th:case="23">23</span>
+                        <span th:case="24">24</span><span th:case="25">25</span><span th:case="26">26</span><span th:case="27">27</span><span th:case="28">28</span>
+                        <span th:case="29">29</span><span th:case="30">30</span><span th:case="31">31</span><span th:case="32">32</span><span th:case="33">33</span>
+                        <span th:case="34">34</span><span th:case="35">35</span><span th:case="36">36</span><span th:case="37">37</span><span th:case="38">38</span>
+                        <span th:case="39">39</span><span th:case="40">40</span><span th:case="41">41</span><span th:case="42">42</span><span th:case="43">43</span>
+                        <span th:case="44">44</span><span th:case="45">45</span><span th:case="46">46</span><span th:case="47">47</span><span th:case="48">48</span>
+                        <span th:case="49">49</span><span th:case="50">50</span><span th:case="51">51</span><span th:case="52">52</span><span th:case="53">53</span>
+                        <span th:case="54">54</span><span th:case="55">55</span><span th:case="56">56</span><span th:case="57">57</span><span th:case="58">58</span>
+                        <span th:case="59">59</span>
+
+                    </span> PM
+                    </span><br/>
+
+                    <!-- END 12 HOUR TIME -->
+
+
+                    <!-- START 24 HOUR TIME -->
+
+                    <!--<span th:text="${appointment.start.getHours()}"></span>:-->
+                    <!--<span th:if="${appointment.start.getMinutes() == 0}">00</span>-->
+                    <!--<span th:unless="${appointment.start.getMinutes() == 0}">-->
+                        <!--<span th:text="${appointment.start.getMinutes()}"></span></span> - -->
+                    <!--<span th:text="${appointment.end.getHours()}"></span>:-->
+                    <!--<span th:if="${appointment.end.getMinutes() == 0}">00</span>-->
+                    <!--<span th:unless="${appointment.end.getMinutes() == 0}">-->
+                        <!--<span th:text="${appointment.end.getMinutes()}"></span></span>-->
+
+                    <!-- END 24 HOUR TIME -->
 
                 </li>
                 <li style="padding-top: .25em;">
