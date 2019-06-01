@@ -78,12 +78,6 @@
                                             <span th:case="59">59</span>
 
                                         </span> AM<br/>
-
-
-                                                <!--<span th:if="${avail_time.start.getMinutes() == 0}">00</span>-->
-                                                <!--<span th:unless="${avail_time.start.getMinutes() == 0}">-->
-                                                <!--<span th:text="${avail_time.start.getMinutes()}"></span>-->
-                                                <!--</span> AM - -->
                                     </span>
 
                                     <span th:if="${avail_time.start.getHours() > 11}">
@@ -102,12 +96,7 @@
                                         <span th:case="54">54</span><span th:case="55">55</span><span th:case="56">56</span><span th:case="57">57</span><span th:case="58">58</span>
                                         <span th:case="59">59</span>
 
-                                    </span> PM
-
-                                                <!--<span th:if="${avail_time.start.getMinutes() == 0}">00</span>-->
-                                                <!--<span th:unless="${avail_time.start.getMinutes() == 0}">-->
-                                                <!--<span th:text="${avail_time.start.getMinutes()}"></span>-->
-                                                <!--</span> PM - -->
+                                    </span> PM<br/>
                                     </span>
 
                                     <!-- END 12 HOUR TIME -->
@@ -172,12 +161,6 @@
                                         <span th:case="59">59</span>
 
                                     </span> AM
-
-
-                                        <!--<span th:if="${avail_time.end.getMinutes() == 0}">00</span>-->
-                                        <!--<span th:unless="${avail_time.end.getMinutes() == 0}">-->
-                                        <!--<span th:text="${avail_time.end.getMinutes()}"></span>-->
-                                        <!--</span> AM - -->
                                     </span>
 
                                     <span th:if="${avail_time.end.getHours() > 11}">
@@ -197,11 +180,6 @@
                                         <span th:case="59">59</span>
 
                                     </span> PM
-
-                                        <!--<span th:if="${avail_time.end.getMinutes() == 0}">00</span>-->
-                                        <!--<span th:unless="${avail_time.end.getMinutes() == 0}">-->
-                                        <!--<span th:text="${avail_time.end.getMinutes()}"></span>-->
-                                        <!--</span> PM - -->
                                     </span><br/>
 
                                     <!-- END 12 HOUR TIME -->
