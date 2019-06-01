@@ -556,7 +556,8 @@
 
                 <ul th:each="time : ${available_times}" >
 
-                    <li th:if="${time.getBabysitter().getId() == sessionUser.getId() and time.start > current_time}" class="card-panel">
+                    <li
+                            th:if="${time.getBabysitter().getId() == sessionUser.getId() and time.start > current_time}" class="card-panel">
 
                         <b>
                         <span th:switch="${time.start.getDay()}">
