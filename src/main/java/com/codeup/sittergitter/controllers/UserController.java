@@ -154,7 +154,7 @@ public class UserController {
         Timestamp currentTimeStamp = new Timestamp(now.getTime());
         System.out.println(currentTimeStamp);
         model.addAttribute("current_time", currentTimeStamp);
-        model.addAttribute("available_times", availableTimesRepo.findByOrderByStartAsc());
+        model.addAttribute("available_times", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
 
         // ERIK ADDITIONS SUN MAY 26 //
         model.addAttribute("available_times2", availableTimesRepo.findAvailableTimesByIsTakenFalseOrderByStartAsc());
