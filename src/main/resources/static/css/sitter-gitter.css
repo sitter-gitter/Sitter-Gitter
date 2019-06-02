@@ -6,7 +6,7 @@
     --sg-drkblue: #5DA2D5 !important;
 }
 
-html {
+html, main, button, input {
     font-family: "Merriweather", serif !important;
 }
 
@@ -24,7 +24,7 @@ nav {
 }
 
 nav a {
-    color: #FFFFFF !important;
+    color: var(--sg-grey) !important;
 }
 
 .dropdown-content a {
@@ -33,6 +33,10 @@ nav a {
 
 .sidenav a {
     color: var(--sg-drkblue) !important;
+}
+
+.sidenav, .dropdown-content {
+    background-color: var(--sg-grey) !important;
 }
 
 #nav-login-button {
@@ -60,11 +64,23 @@ a {
     font-family: 'Kaushan Script', cursive;
     color: #F3D250 !important;
     text-shadow: 3px 3px #5DA2D5 !important;
+    font-size: xx-large !important;
+    font-weight: bold;
 }
 
+/*.splash-image {*/
+    /*width:  20rem;*/
+    /*height: 32rem;*/
+    /*margin: 0 auto;*/
+    /*background-image: url("../image/babysitter2.jpg");*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+/*}*/
+
 .splash-image {
-    width:  30rem;
-    height: 30rem;
+    /*width:  30%;*/
+    /*height: 30%;*/
     margin: 0 auto;
     background-image: url("../image/babysitter2.jpg");
     background-size: cover;
@@ -108,7 +124,7 @@ a {
     min-width: 100% !important;
     /*margin: 1em !important;*/
     border-radius: 1em !important;
-    font-size: 1.2em !important;
+    /*font-size: 1.2em !important;*/
 }
 
 .pink-card {
@@ -125,22 +141,26 @@ a {
 }
 
 .card-title {
-    color: #ffffff !important;
+    color: var(--sg-grey) !important;
     /*font-weight: bold !important;*/
     text-transform: uppercase;
+    font-weight: bolder !important;
+    font-size: xx-large !important;
     letter-spacing: 4px;
     text-shadow: 2px 2px dimgrey;
+    text-wrap: none !important;
 }
 
 .card-content {
     min-width: 100% !important;
-    padding: 1.5em 1.5em 1em 1.5em!important;
+    padding: 1.5em!important;
 }
 
 .card-panel {
     text-align: left !important;
     min-width: 100% !important;
     padding: 1.2em !important;
+    background-color: var(--sg-grey) !important;
 }
 
 .card-action {
@@ -150,7 +170,9 @@ a {
 }
 
 .card-action a {
-    color: white !important;
+    color: var(--sg-grey) !important;
+    font-size: larger !important;
+
 }
 
 .card i, .card a {
@@ -161,16 +183,24 @@ a {
     color: #1a237e;
 }
 
+/*img {*/
+    /*border-top-left-radius: 2em !important;*/
+    /*border-top-right-radius: 2em !important;*/
+/*}*/
+
 img {
-    border-top-left-radius: 2em !important;
-    border-top-right-radius: 2em !important;
+    border-radius: 1em !important;
 }
+
 label {
     padding-left: 1em !important;
+    margin-bottom: .1em !important;
+    padding-bottom: .1em !important;
 }
 /* label color */
 .input-field label {
     color: #000 !important;
+    padding-left: 0;
 }
 /* label focus color */
 .input-field input[type=text]:focus + label, input[type=password]:focus + label, textarea:focus + label {
@@ -181,18 +211,24 @@ label {
 .input-field input[type=text]:focus, input[type=password]:focus, textarea:focus {
     border-bottom: 1px solid #F78888 !important;
     box-shadow: 0 1px 0 0 #F78888 !important;
+    padding: 0 !important;
 }
 
 input, textarea {
     /*background-color: white !important;*/
     opacity: 0.6 !important;
     border-radius: 0.5em !important;
+    /*margin: 0 !important;*/
+    /*padding: 0 !important;*/
 }
 
 input[type=text], input[type=password], textarea {
-    background-color: #FFFFFF !important;
+    margin-top: .1em !important;
+    background-color: var(--sg-grey) !important;
     font-family: 'Merriweather', serif !important;
-    padding-left: 1em !important;
+    padding-left: .5em !important;
+    /*padding-right: .25em !important;*/
+    /*margin-right: 1em !important;*/
 }
 
 input:focus {
@@ -201,6 +237,10 @@ input:focus {
 
 input[type=submit] {
     opacity: 1.0 !important;
+}
+
+div .input-field .col .s12 {
+    margin-left: 0 !important;
 }
 
 .yellow-button {
@@ -234,10 +274,11 @@ footer ul li {
 
 footer i {
     margin-right: 1em;
+    color: var(--sg-grey) !important;
 }
 
 .contact-card>.card-content {
-    padding: 0 !important;
+    /*padding: 0 !important;*/
 }
 
 .profile-pic-erik {

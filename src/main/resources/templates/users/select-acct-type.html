@@ -3,41 +3,85 @@
 <head><th:block th:replace="fragments/head :: header('Register')" /></head>
 <body>
 <nav><th:block th:replace="fragments/navbar :: navbar" /></nav>
-<main class="center">
-<div class="container ">
+<!--<main class="center">-->
+<!--<div class="container " style="max-height: 70vh;">-->
+<!--<div class="row">-->
+<!--<div class="col s10  offset-s1">-->
+<!--<div class="card ltblue-card center" >-->
+
+    <!--<div class="card-content">-->
+
+        <!--<span class="card-title flow-text">Welcome!</span>-->
+
+        <!--<div class="row">-->
+            <!--<div class="card-panel col s12 splash-image">-->
+                <!--&lt;!&ndash;<div class="splash-image"></div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="col s12 flow-text">-->
+                <!--<h4>Connecting parents with babysitters</h4>-->
+                <!--<h4>Register to get started!</h4>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <!--<div class="card-action flow-text hide-on-small-">-->
+        <!--Register as a...-->
+        <!--<a class="waves-effect waves-light btn-small blue-button hoverable"-->
+           <!--href="/register/parent" style="margin-left: 0.6em; margin-right: 1em;">Parent</a> or-->
+        <!--<a class="waves-effect waves-light btn-small pink-button hoverable"-->
+           <!--href="/register/babysitter" style="margin-left: 1em;">Babysitter</a>-->
+    <!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</main>-->
+
+<main>
+<div class="container">
 <div class="row">
-<div class="col s8  offset-m2">
-<div class="card ltblue-card center">
+<div class="col s12">
+<div class="card blue-card" >
 
-    <div class="card-content">
+    <div class="card-image waves-effect waves-block">
+        <img th:src="@{../image/babysitter2.jpg}" alt="" class="activator" style="border-bottom-left-radius: 0!important;
+        border-bottom-right-radius: 0 !important;"/>
+    <span class="card-title activator center"
+          style="color: var(--sg-red) !important; text-shadow: 3px 3px var(--sg-yellow);">Connecting parents and
+        babysitters!</span>
+    </div>
 
-        <span class="card-title flow-text">Welcome!</span>
 
-        <div class="row">
-            <div class="card-panel col s12 splash-image">
-                <!--<div class="splash-image"></div>-->
-            </div>
-            <div class="col s12 flow-text">
-                <h4>Connecting parents with babysitters</h4>
-                <h4>Register to get started!</h4>
-            </div>
+    <div class="card-content center" style="font-weight: bolder !important;">
+            <a class="activator btn btn-floating hoverable pulse pink-button"
+               style="width: 50%!important; border-radius: 0 !important;">Register</a>
+    </div>
+
+    <div class="card-reveal blue-card center">
+        <span class="card-title" style="color: var(--sg-grey) !important; text-shadow: 3px 3px var(--sg-red);">
+            &nbsp;&nbsp;&nbsp; I am a...<i class="material-icons right" style="color: white;">
+            close</i></span>
+        <div class="row" style="padding-top: 6em !important;">
+            <a class="waves-effect waves-light btn-large yellow-button hoverable valign-wrapper center-align"
+               href="/register/parent" style="margin-left: 0.6em; margin-right: 1em;">Parent</a>
+            <a class="waves-effect waves-light btn-large pink-button hoverable valign-wrapper center-align"
+               href="/register/babysitter" style="margin-left: 1em;">Babysitter</a>
         </div>
-
     </div>
 
-    <div class="card-action flow-text">
-        Register as a...
-        <a class="waves-effect waves-light btn-small blue-button hoverable"
-           href="/register/parent" style="margin-left: 0.6em; margin-right: 1em;">Parent</a> or
-        <a class="waves-effect waves-light btn-small pink-button hoverable"
-           href="/register/babysitter" style="margin-left: 1em;">Babysitter</a>
-    </div>
+    <!--<div class="card-action flow-text">-->
+        <!--Register as a...-->
+ <!---->
+    <!--</div>-->
 
 </div>
 </div>
 </div>
 </div>
 </main>
+
 
 <footer><th:block th:replace="fragments/footer :: footer" /></footer>
 <th:block th:replace="fragments/includes :: includes" />
