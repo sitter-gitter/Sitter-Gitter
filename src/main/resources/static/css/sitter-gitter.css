@@ -172,6 +172,7 @@ a {
 .card-action a {
     color: var(--sg-grey) !important;
     font-size: larger !important;
+    text-shadow: 1px 1px dimgrey;
 
 }
 
