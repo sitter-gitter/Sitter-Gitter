@@ -201,7 +201,6 @@ label {
 /* label color */
 .input-field label {
     color: #000 !important;
-    padding-left: 0;
 }
 /* label focus color */
 .input-field input[type=text]:focus + label, input[type=password]:focus + label, textarea:focus + label {
@@ -212,22 +211,20 @@ label {
 .input-field input[type=text]:focus, input[type=password]:focus, textarea:focus {
     border-bottom: 1px solid #F78888 !important;
     box-shadow: 0 1px 0 0 #F78888 !important;
-    padding: 0 !important;
 }
 
 input, textarea {
-    /*background-color: white !important;*/
+    box-sizing: border-box !important;
+    padding-left: 0.5em !important;
     opacity: 0.6 !important;
     border-radius: 0.5em !important;
-    /*margin: 0 !important;*/
-    /*padding: 0 !important;*/
 }
 
 input[type=text], input[type=password], textarea {
     margin-top: .1em !important;
     background-color: var(--sg-grey) !important;
     font-family: 'Merriweather', serif !important;
-    padding-left: .5em !important;
+    /*padding-left: .5em !important;*/
     /*padding-right: .25em !important;*/
     /*margin-right: 1em !important;*/
 }
