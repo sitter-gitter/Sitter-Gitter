@@ -83,6 +83,9 @@ public class AppointmentController {
     public String timeConverter(String time) {
         System.out.println(time.charAt(6));
         if (time.charAt(6) == 'A') {
+            if(time.charAt(0) == '1' && time.charAt(1) == '2') {
+                return "00" + time.substring(2,5);
+            }
             return time.substring(0,5);
         } else if (time.charAt(6) == 'P') {
             int pmHour = Integer.parseInt(time.substring(0,2));
